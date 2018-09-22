@@ -1,0 +1,44 @@
+version: '3'
+
+# Run as
+# docker-compose build; docker-compose up -d
+# Check with
+# docker ps
+# Then check the logs with
+# docker logs --tail 50 $container_id
+# docker-compose logs --tail 20 tf_counts
+
+services:
+    # RabbitMQ, used by the flask app to queue up jobs whee
+    rabbit:
+        hostname: rabbit
+        image: rabbitmq:latest
+        environment:
+            - RABBITMQ_DEFAULT_USER=admin
+            - RABBITMQ_DEFAULT_PASS=mypass
+            - SERVICE_PORTS=5672
+            - TCP_PORTS=5672
+        ports:
+            - "5672:5672"
+
+    # App that actually runs the tf_counts
+    # In order to build the image run
+    # It needs to be retagged to upload to quay
+    # docker-compose build --force-rm
+    # docker tag tf_14_faster_rcnn_inception_resnet_v2_atrous_coco_tf_counts quay.io/nyuad_cgsb/tf_14_faster_rcnn_inception_resnet_v2_atrous_coco_tf_counts:latest
+    tf_counts:
+#        image: quay.io/nyuad_cgsb/tf_14_faster_rcnn_inception_resnet_v2_atrous_coco_tf_counts
+        environment:
+            - CELERY_INSTANCES=2
+        build:
+            context: .
+            dockerfile: Dockerfile
+        #volumes:
+        #    - "/mnt/image:/mnt/image"
+        links:
+            - "rabbit:rabbit"
+        depends_on:
+            - rabbit
+        ports:
+            - "5010:5000"
+

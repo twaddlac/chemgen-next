@@ -1,0 +1,1045 @@
+{
+  "A01": {
+    "isValid": true,
+    "well": "A01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "A02": {
+    "isValid": true,
+    "well": "A02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "A02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "A03": {
+    "isValid": true,
+    "well": "A03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "A03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "A04": {
+    "isValid": true,
+    "well": "A04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "A04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "A05": {
+    "isValid": true,
+    "well": "A05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "A05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "A06": {
+    "isValid": true,
+    "well": "A06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "A06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "A07": {
+    "isValid": true,
+    "well": "A07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "A07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "A08": {
+    "isValid": true,
+    "well": "A08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "A08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "A09": {
+    "isValid": true,
+    "well": "A09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "A09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "A10": {
+    "isValid": true,
+    "well": "A10",
+    "chemicalData": {}
+  },
+  "A11": {
+    "isValid": true,
+    "well": "A11",
+    "chemicalData": {}
+  },
+  "A12": {
+    "isValid": true,
+    "well": "A12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "B01": {
+    "isValid": true,
+    "well": "B01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "B02": {
+    "isValid": true,
+    "well": "B02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "B02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "B03": {
+    "isValid": true,
+    "well": "B03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "B03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "B04": {
+    "isValid": true,
+    "well": "B04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "B04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "B05": {
+    "isValid": true,
+    "well": "B05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "B05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "B06": {
+    "isValid": true,
+    "well": "B06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "B06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "B07": {
+    "isValid": true,
+    "well": "B07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "B07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "B08": {
+    "isValid": true,
+    "well": "B08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "B08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "B09": {
+    "isValid": true,
+    "well": "B09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "B09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "B10": {
+    "isValid": true,
+    "well": "B10",
+    "chemicalData": {}
+  },
+  "B11": {
+    "isValid": true,
+    "well": "B11",
+    "chemicalData": {}
+  },
+  "B12": {
+    "isValid": true,
+    "well": "B12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "C01": {
+    "isValid": true,
+    "well": "C01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "C02": {
+    "isValid": true,
+    "well": "C02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "C02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "C03": {
+    "isValid": true,
+    "well": "C03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "C03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "C04": {
+    "isValid": true,
+    "well": "C04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "C04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "C05": {
+    "isValid": true,
+    "well": "C05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "C05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "C06": {
+    "isValid": true,
+    "well": "C06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "C06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "C07": {
+    "isValid": true,
+    "well": "C07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "C07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "C08": {
+    "isValid": true,
+    "well": "C08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "C08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "C09": {
+    "isValid": true,
+    "well": "C09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "C09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "C10": {
+    "isValid": true,
+    "well": "C10",
+    "chemicalData": {}
+  },
+  "C11": {
+    "isValid": true,
+    "well": "C11",
+    "chemicalData": {}
+  },
+  "C12": {
+    "isValid": true,
+    "well": "C12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "D01": {
+    "isValid": true,
+    "well": "D01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "D02": {
+    "isValid": true,
+    "well": "D02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "D02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "D03": {
+    "isValid": true,
+    "well": "D03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "D03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "D04": {
+    "isValid": true,
+    "well": "D04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "D04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "D05": {
+    "isValid": true,
+    "well": "D05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "D05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "D06": {
+    "isValid": true,
+    "well": "D06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "D06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "D07": {
+    "isValid": true,
+    "well": "D07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "D07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "D08": {
+    "isValid": true,
+    "well": "D08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "D08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "D09": {
+    "isValid": true,
+    "well": "D09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "D09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "D10": {
+    "isValid": true,
+    "well": "D10",
+    "chemicalData": {}
+  },
+  "D11": {
+    "isValid": true,
+    "well": "D11",
+    "chemicalData": {}
+  },
+  "D12": {
+    "isValid": true,
+    "well": "D12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "E01": {
+    "isValid": true,
+    "well": "E01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "E02": {
+    "isValid": true,
+    "well": "E02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "E02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "E03": {
+    "isValid": true,
+    "well": "E03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "E03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "E04": {
+    "isValid": true,
+    "well": "E04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "E04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "E05": {
+    "isValid": true,
+    "well": "E05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "E05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "E06": {
+    "isValid": true,
+    "well": "E06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "E06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "E07": {
+    "isValid": true,
+    "well": "E07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "E07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "E08": {
+    "isValid": true,
+    "well": "E08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "E08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "E09": {
+    "isValid": true,
+    "well": "E09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "E09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "E10": {
+    "isValid": true,
+    "well": "E10",
+    "chemicalData": {}
+  },
+  "E11": {
+    "isValid": true,
+    "well": "E11",
+    "chemicalData": {}
+  },
+  "E12": {
+    "isValid": true,
+    "well": "E12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "F01": {
+    "isValid": true,
+    "well": "F01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "F02": {
+    "isValid": true,
+    "well": "F02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "F02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "F03": {
+    "isValid": true,
+    "well": "F03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "F03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "F04": {
+    "isValid": true,
+    "well": "F04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "F04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "F05": {
+    "isValid": true,
+    "well": "F05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "F05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "F06": {
+    "isValid": true,
+    "well": "F06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "F06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "F07": {
+    "isValid": true,
+    "well": "F07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "F07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "F08": {
+    "isValid": true,
+    "well": "F08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "F08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "F09": {
+    "isValid": true,
+    "well": "F09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "F09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "F10": {
+    "isValid": true,
+    "well": "F10",
+    "chemicalData": {}
+  },
+  "F11": {
+    "isValid": true,
+    "well": "F11",
+    "chemicalData": {}
+  },
+  "F12": {
+    "isValid": true,
+    "well": "F12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "G01": {
+    "isValid": true,
+    "well": "G01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "G02": {
+    "isValid": true,
+    "well": "G02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "G02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "G03": {
+    "isValid": true,
+    "well": "G03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "G03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "G04": {
+    "isValid": true,
+    "well": "G04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "G04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "G05": {
+    "isValid": true,
+    "well": "G05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "G05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "G06": {
+    "isValid": true,
+    "well": "G06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "G06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "G07": {
+    "isValid": true,
+    "well": "G07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "G07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "G08": {
+    "isValid": true,
+    "well": "G08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "G08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "G09": {
+    "isValid": true,
+    "well": "G09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "G09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "G10": {
+    "isValid": true,
+    "well": "G10",
+    "chemicalData": {}
+  },
+  "G11": {
+    "isValid": true,
+    "well": "G11",
+    "chemicalData": {}
+  },
+  "G12": {
+    "isValid": true,
+    "well": "G12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "H01": {
+    "isValid": true,
+    "well": "H01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "H02": {
+    "isValid": true,
+    "well": "H02",
+    "lookUp": "27-E11",
+    "parentLibrary": {
+      "compoundId": 220,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "H02",
+      "chemicalName": "AVOCATIN B"
+    },
+    "chemicalData": {}
+  },
+  "H03": {
+    "isValid": true,
+    "well": "H03",
+    "lookUp": "27-F06",
+    "parentLibrary": {
+      "compoundId": 183,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "H03",
+      "chemicalName": "AVOCATIN A"
+    },
+    "chemicalData": {}
+  },
+  "H04": {
+    "isValid": true,
+    "well": "H04",
+    "lookUp": "29-D02",
+    "parentLibrary": {
+      "compoundId": 234,
+      "libraryId": 3,
+      "plate": "29",
+      "well": "H04",
+      "chemicalName": "AVOCADENE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "H05": {
+    "isValid": true,
+    "well": "H05",
+    "lookUp": "25-B08",
+    "parentLibrary": {
+      "compoundId": 2086,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "H05",
+      "chemicalName": "AVOCADYNOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "H06": {
+    "isValid": true,
+    "well": "H06",
+    "lookUp": "25-G09",
+    "parentLibrary": {
+      "compoundId": 242,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "H06",
+      "chemicalName": "AVOCADYNE ACETATE"
+    },
+    "chemicalData": {}
+  },
+  "H07": {
+    "isValid": true,
+    "well": "H07",
+    "lookUp": "25-H11",
+    "parentLibrary": {
+      "compoundId": 1815,
+      "libraryId": 3,
+      "plate": "25",
+      "well": "H07",
+      "chemicalName": "AVOCADYNE"
+    },
+    "chemicalData": {}
+  },
+  "H08": {
+    "isValid": true,
+    "well": "H08",
+    "lookUp": "26-C07",
+    "parentLibrary": {
+      "compoundId": 2085,
+      "libraryId": 3,
+      "plate": "26",
+      "well": "H08",
+      "chemicalName": "AVOCADENOFURAN"
+    },
+    "chemicalData": {}
+  },
+  "H09": {
+    "isValid": true,
+    "well": "H09",
+    "lookUp": "27-D09",
+    "parentLibrary": {
+      "compoundId": 243,
+      "libraryId": 3,
+      "plate": "27",
+      "well": "H09",
+      "chemicalName": "AVOCADENE"
+    },
+    "chemicalData": {}
+  },
+  "H10": {
+    "isValid": true,
+    "well": "H10",
+    "chemicalData": {}
+  },
+  "H11": {
+    "isValid": true,
+    "well": "H11",
+    "chemicalData": {}
+  },
+  "H12": {
+    "isValid": true,
+    "well": "H12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "platePlanUploadDate": "2018-07-24T18:57:34.339Z",
+  "platePlanName": "CHEM-FDA-2018-05-30-Avocado",
+  "libraryId": 3
+}

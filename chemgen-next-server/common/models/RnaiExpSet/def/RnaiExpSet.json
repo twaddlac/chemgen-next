@@ -1,0 +1,33 @@
+{
+  "name": "RnaiExpSet",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "treat_rnai": {
+      "type": "object",
+      "required": true
+    },
+    "ctrl_strain": {
+      "type": [
+        "any"
+      ]
+    },
+    "ctrl_null": {
+      "type": [
+        "any"
+      ]
+    },
+    "ctrl_rnai": {
+      "type": [
+        "any"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

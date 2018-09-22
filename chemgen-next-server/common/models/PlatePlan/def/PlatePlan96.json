@@ -1,0 +1,313 @@
+{
+  "name": "PlatePlan96",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "platePlanName": {
+      "type": "string"
+    },
+    "platePlanUploadDate": {
+      "type": "date"
+    },
+    "libraryId": {
+      "type": "number"
+    },
+    "A01": {
+      "type": "object"
+    },
+    "A02": {
+      "type": "object"
+    },
+    "A03": {
+      "type": "object"
+    },
+    "A04": {
+      "type": "object"
+    },
+    "A05": {
+      "type": "object"
+    },
+    "A06": {
+      "type": "object"
+    },
+    "A07": {
+      "type": "object"
+    },
+    "A08": {
+      "type": "object"
+    },
+    "A09": {
+      "type": "object"
+    },
+    "A10": {
+      "type": "object"
+    },
+    "A11": {
+      "type": "object"
+    },
+    "A12": {
+      "type": "object"
+    },
+    "B01": {
+      "type": "object"
+    },
+    "B02": {
+      "type": "object"
+    },
+    "B03": {
+      "type": "object"
+    },
+    "B04": {
+      "type": "object"
+    },
+    "B05": {
+      "type": "object"
+    },
+    "B06": {
+      "type": "object"
+    },
+    "B07": {
+      "type": "object"
+    },
+    "B08": {
+      "type": "object"
+    },
+    "B09": {
+      "type": "object"
+    },
+    "B10": {
+      "type": "object"
+    },
+    "B11": {
+      "type": "object"
+    },
+    "B12": {
+      "type": "object"
+    },
+    "C01": {
+      "type": "object"
+    },
+    "C02": {
+      "type": "object"
+    },
+    "C03": {
+      "type": "object"
+    },
+    "C04": {
+      "type": "object"
+    },
+    "C05": {
+      "type": "object"
+    },
+    "C06": {
+      "type": "object"
+    },
+    "C07": {
+      "type": "object"
+    },
+    "C08": {
+      "type": "object"
+    },
+    "C09": {
+      "type": "object"
+    },
+    "C10": {
+      "type": "object"
+    },
+    "C11": {
+      "type": "object"
+    },
+    "C12": {
+      "type": "object"
+    },
+    "D01": {
+      "type": "object"
+    },
+    "D02": {
+      "type": "object"
+    },
+    "D03": {
+      "type": "object"
+    },
+    "D04": {
+      "type": "object"
+    },
+    "D05": {
+      "type": "object"
+    },
+    "D06": {
+      "type": "object"
+    },
+    "D07": {
+      "type": "object"
+    },
+    "D08": {
+      "type": "object"
+    },
+    "D09": {
+      "type": "object"
+    },
+    "D10": {
+      "type": "object"
+    },
+    "D11": {
+      "type": "object"
+    },
+    "D12": {
+      "type": "object"
+    },
+    "E01": {
+      "type": "object"
+    },
+    "E02": {
+      "type": "object"
+    },
+    "E03": {
+      "type": "object"
+    },
+    "E04": {
+      "type": "object"
+    },
+    "E05": {
+      "type": "object"
+    },
+    "E06": {
+      "type": "object"
+    },
+    "E07": {
+      "type": "object"
+    },
+    "E08": {
+      "type": "object"
+    },
+    "E09": {
+      "type": "object"
+    },
+    "E10": {
+      "type": "object"
+    },
+    "E11": {
+      "type": "object"
+    },
+    "E12": {
+      "type": "object"
+    },
+    "F01": {
+      "type": "object"
+    },
+    "F02": {
+      "type": "object"
+    },
+    "F03": {
+      "type": "object"
+    },
+    "F04": {
+      "type": "object"
+    },
+    "F05": {
+      "type": "object"
+    },
+    "F06": {
+      "type": "object"
+    },
+    "F07": {
+      "type": "object"
+    },
+    "F08": {
+      "type": "object"
+    },
+    "F09": {
+      "type": "object"
+    },
+    "F10": {
+      "type": "object"
+    },
+    "F11": {
+      "type": "object"
+    },
+    "F12": {
+      "type": "object"
+    },
+    "G01": {
+      "type": "object"
+    },
+    "G02": {
+      "type": "object"
+    },
+    "G03": {
+      "type": "object"
+    },
+    "G04": {
+      "type": "object"
+    },
+    "G05": {
+      "type": "object"
+    },
+    "G06": {
+      "type": "object"
+    },
+    "G07": {
+      "type": "object"
+    },
+    "G08": {
+      "type": "object"
+    },
+    "G09": {
+      "type": "object"
+    },
+    "G10": {
+      "type": "object"
+    },
+    "G11": {
+      "type": "object"
+    },
+    "G12": {
+      "type": "object"
+    },
+    "H01": {
+      "type": "object"
+    },
+    "H02": {
+      "type": "object"
+    },
+    "H03": {
+      "type": "object"
+    },
+    "H04": {
+      "type": "object"
+    },
+    "H05": {
+      "type": "object"
+    },
+    "H06": {
+      "type": "object"
+    },
+    "H07": {
+      "type": "object"
+    },
+    "H08": {
+      "type": "object"
+    },
+    "H09": {
+      "type": "object"
+    },
+    "H10": {
+      "type": "object"
+    },
+    "H11": {
+      "type": "object"
+    },
+    "H12": {
+      "type": "object"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [],
+  "methods": {
+  }
+}

@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <!--Begin ExpSet Data-->
+    <div class="row">
+      <div class="col-md-8">
+        <h2>{{expSet.expScreen.screenName}}</h2>
+        <h4>{{expSet.expWorkflow.name}}</h4>
+        <div class="row">
+          <!--Begin Exp Workflow Data-->
+          <div class="col-md-4">
+            <table class="table table-striped table-hover">
+              <tbody>
+              <tr>
+                <td>Temperature</td>
+                <td>{{expSet.expWorkflow.temperature}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Screen Stage</td>
+                <td>{{expSet.expWorkflow.screenStage}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Screen Type</td>
+                <td>{{expSet.expWorkflow.screenType}}</td>
+                <td></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--End Exp Workflow Data-->
+
+          <!--Begin Gene Info-->
+          <div class="col-md-6">
+
+          </div>
+          <!--End Gene Info-->
+        </div>
+      </div>
+
+    </div>
+    <!--Begin ExpSet Data-->
+
+    <!--Begin CtrlStrain Row - 4 images per row-->
+    <div class="row" id="ctrl_strain">
+      <div class="col-md-12">
+        <h3>L4440 (ts)</h3>
+        <div class="row">
+          <div *ngFor="let image of expSetAlbums.ctrlStrainImages; let i=index">
+            <div *ngIf="image">
+              <div class="col-md-3">
+                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                     (click)="open(expSetAlbums.ctrlStrainImages, i)"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End CtrlStrain Row - 4 images per row-->
+
+    <!--Begin TreatReagent Row - 4 images per row-->
+    <div class="row" id="treat">
+      <div class="col-md-12">
+        <!--<h3>{{expSetAlbum.expWorkflow.biosamples.experimentBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
+        <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + reagent</h3>
+        <div class="row">
+          <div *ngFor="let image of expSetAlbums.treatmentReagentImages; let i=index">
+            <div *ngIf="image">
+              <div class="col-md-6">
+                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                     (click)="open(expSetAlbums.treatmentReagentImages, i)"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End TreatReagent Row - 4 images per row-->
+
+    <!--Begin CtrlNull Row - 4 images per row-->
+    <div class="row" id="ctrl_null">
+      <div class="col-md-12">
+        <h3>Control Null / L4440</h3>
+        <div class="row">
+          <div *ngFor="let image of expSetAlbums.ctrlNullImages; let i=index">
+            <div *ngIf="image">
+              <div class="col-md-3">
+                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                     (click)="open(expSetAlbums.ctrlNullImages, i)"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End CtrlNull Row - 4 images per row-->
+
+    <!--Begin TreatReagent Row - 4 images per row-->
+    <div class="row" id="ctrl_reagent">
+      <div class="col-md-12">
+        <!--<h3>{{expSetAlbum.results.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
+        <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + reagent </h3>
+        <div class="row">
+          <div *ngFor="let image of expSetAlbums.ctrlReagentImages; let i=index">
+            <div *ngIf="image">
+              <div class="col-md-6">
+                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                     (click)="open(expSetAlbums.ctrlReagentImages, i)"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End TreatReagent Row - 4 images per row-->
+
+  </div>
+
+
+</div>

@@ -1,0 +1,1013 @@
+{
+  "A01": {
+    "isValid": true,
+    "well": "A01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "A02": {
+    "isValid": true,
+    "well": "A02",
+    "lookUp": "1-A03",
+    "parentLibrary": {
+      "compoundId": 964,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "A02",
+      "chemicalName": "ETOPOSIDE"
+    },
+    "chemicalData": {}
+  },
+  "A03": {
+    "isValid": true,
+    "well": "A03",
+    "lookUp": "2-A07",
+    "parentLibrary": {
+      "compoundId": 1174,
+      "libraryId": 3,
+      "plate": "02",
+      "well": "A03",
+      "chemicalName": "DOCETAXEL"
+    },
+    "chemicalData": {}
+  },
+  "A04": {
+    "isValid": true,
+    "well": "A04",
+    "lookUp": "4-A11",
+    "parentLibrary": {
+      "compoundId": 364,
+      "libraryId": 3,
+      "plate": "04",
+      "well": "A04",
+      "chemicalName": "MITOTANE"
+    },
+    "chemicalData": {}
+  },
+  "A05": {
+    "isValid": true,
+    "well": "A05",
+    "lookUp": "1-D07",
+    "parentLibrary": {
+      "compoundId": 695,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "A05",
+      "chemicalName": "NORETHINDRONE"
+    },
+    "chemicalData": {}
+  },
+  "A06": {
+    "isValid": true,
+    "well": "A06",
+    "lookUp": "2-E07",
+    "parentLibrary": {
+      "compoundId": 1181,
+      "libraryId": 3,
+      "plate": "02",
+      "well": "A06",
+      "chemicalName": "LOMUSTINE"
+    },
+    "chemicalData": {}
+  },
+  "A07": {
+    "isValid": true,
+    "well": "A07",
+    "lookUp": "3-E05",
+    "parentLibrary": {
+      "compoundId": 1804,
+      "libraryId": 3,
+      "plate": "03",
+      "well": "A07",
+      "chemicalName": "VALSARTAN"
+    },
+    "chemicalData": {}
+  },
+  "A08": {
+    "isValid": true,
+    "well": "A08",
+    "lookUp": "1-H07",
+    "parentLibrary": {
+      "compoundId": 2077,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "A08",
+      "chemicalName": "TRICLABENDAZOLE"
+    },
+    "chemicalData": {}
+  },
+  "A09": {
+    "isValid": true,
+    "well": "A09",
+    "lookUp": "8-A10",
+    "parentLibrary": {
+      "compoundId": 818,
+      "libraryId": 3,
+      "plate": "08",
+      "well": "A09",
+      "chemicalName": "TRIMETHOPRIM"
+    },
+    "chemicalData": {}
+  },
+  "A10": {
+    "isValid": true,
+    "well": "A10",
+    "lookUp": "5-B10",
+    "parentLibrary": {
+      "compoundId": 515,
+      "libraryId": 3,
+      "plate": "05",
+      "well": "A10",
+      "chemicalName": "COLCHICINE"
+    },
+    "chemicalData": {}
+  },
+  "A11": {
+    "isValid": true,
+    "well": "A11",
+    "lookUp": "6-D08",
+    "parentLibrary": {
+      "compoundId": 618,
+      "libraryId": 3,
+      "plate": "06",
+      "well": "A11",
+      "chemicalName": "HOMATROPINE METHYLBROMIDE"
+    },
+    "chemicalData": {}
+  },
+  "A12": {
+    "isValid": true,
+    "well": "A12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "B01": {
+    "isValid": true,
+    "well": "B01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "B02": {
+    "isValid": true,
+    "well": "B02",
+    "lookUp": "11-A11 ",
+    "parentLibrary": {
+      "compoundId": 1632,
+      "libraryId": 3,
+      "plate": "11",
+      "well": "B02",
+      "chemicalName": "CYSTEAMINE HYDROCHLORIDE"
+    },
+    "chemicalData": {}
+  },
+  "B03": {
+    "isValid": true,
+    "well": "B03",
+    "lookUp": "10-E02 ",
+    "parentLibrary": {
+      "compoundId": 1407,
+      "libraryId": 3,
+      "plate": "10",
+      "well": "B03",
+      "chemicalName": "NIMODIPINE"
+    },
+    "chemicalData": {}
+  },
+  "B04": {
+    "isValid": true,
+    "well": "B04",
+    "lookUp": "9-E08 ",
+    "parentLibrary": {
+      "compoundId": 1295,
+      "libraryId": 3,
+      "plate": "09",
+      "well": "B04",
+      "chemicalName": "MEFLOQUINE"
+    },
+    "chemicalData": {}
+  },
+  "B05": {
+    "isValid": true,
+    "well": "B05",
+    "lookUp": "12-E08",
+    "parentLibrary": {
+      "compoundId": 2001,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "B05",
+      "chemicalName": "LAMOTRIGINE"
+    },
+    "chemicalData": {}
+  },
+  "B06": {
+    "isValid": true,
+    "well": "B06",
+    "lookUp": "11-F05",
+    "parentLibrary": {
+      "compoundId": 1829,
+      "libraryId": 3,
+      "plate": "11",
+      "well": "B06",
+      "chemicalName": "SERTRALINE HYDROCHLORIDE"
+    },
+    "chemicalData": {}
+  },
+  "B07": {
+    "isValid": true,
+    "well": "B07",
+    "lookUp": "12-F05",
+    "parentLibrary": {
+      "compoundId": 1844,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "B07",
+      "chemicalName": "OXFENDAZOLE"
+    },
+    "chemicalData": {}
+  },
+  "B08": {
+    "isValid": true,
+    "well": "B08",
+    "lookUp": "12-G11",
+    "parentLibrary": {
+      "compoundId": 1103,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "B08",
+      "chemicalName": "VIGABATRIN"
+    },
+    "chemicalData": {}
+  },
+  "B09": {
+    "isValid": true,
+    "well": "B09",
+    "lookUp": "9-H10",
+    "parentLibrary": {
+      "compoundId": 2179,
+      "libraryId": 3,
+      "plate": "09",
+      "well": "B09",
+      "chemicalName": "TYLOXAPOL"
+    },
+    "chemicalData": {}
+  },
+  "B10": {
+    "isValid": true,
+    "well": "B10",
+    "lookUp": "14-A09",
+    "parentLibrary": {
+      "compoundId": 1810,
+      "libraryId": 3,
+      "plate": "14",
+      "well": "B10",
+      "chemicalName": "TEGASEROD MALEATE"
+    },
+    "chemicalData": {}
+  },
+  "B11": {
+    "isValid": true,
+    "well": "B11",
+    "lookUp": "24-F03",
+    "parentLibrary": {
+      "compoundId": 112,
+      "libraryId": 3,
+      "plate": "24",
+      "well": "B11",
+      "chemicalName": "KOPARIN"
+    },
+    "chemicalData": {}
+  },
+  "B12": {
+    "isValid": true,
+    "well": "B12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "C01": {
+    "isValid": true,
+    "well": "C01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "C02": {
+    "isValid": true,
+    "well": "C02",
+    "lookUp": "1-A03",
+    "parentLibrary": {
+      "compoundId": 964,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "C02",
+      "chemicalName": "ETOPOSIDE"
+    },
+    "chemicalData": {}
+  },
+  "C03": {
+    "isValid": true,
+    "well": "C03",
+    "lookUp": "2-A07",
+    "parentLibrary": {
+      "compoundId": 1174,
+      "libraryId": 3,
+      "plate": "02",
+      "well": "C03",
+      "chemicalName": "DOCETAXEL"
+    },
+    "chemicalData": {}
+  },
+  "C04": {
+    "isValid": true,
+    "well": "C04",
+    "lookUp": "4-A11",
+    "parentLibrary": {
+      "compoundId": 364,
+      "libraryId": 3,
+      "plate": "04",
+      "well": "C04",
+      "chemicalName": "MITOTANE"
+    },
+    "chemicalData": {}
+  },
+  "C05": {
+    "isValid": true,
+    "well": "C05",
+    "lookUp": "1-D07",
+    "parentLibrary": {
+      "compoundId": 695,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "C05",
+      "chemicalName": "NORETHINDRONE"
+    },
+    "chemicalData": {}
+  },
+  "C06": {
+    "isValid": true,
+    "well": "C06",
+    "lookUp": "2-E07",
+    "parentLibrary": {
+      "compoundId": 1181,
+      "libraryId": 3,
+      "plate": "02",
+      "well": "C06",
+      "chemicalName": "LOMUSTINE"
+    },
+    "chemicalData": {}
+  },
+  "C07": {
+    "isValid": true,
+    "well": "C07",
+    "lookUp": "3-E05",
+    "parentLibrary": {
+      "compoundId": 1804,
+      "libraryId": 3,
+      "plate": "03",
+      "well": "C07",
+      "chemicalName": "VALSARTAN"
+    },
+    "chemicalData": {}
+  },
+  "C08": {
+    "isValid": true,
+    "well": "C08",
+    "lookUp": "1-H07",
+    "parentLibrary": {
+      "compoundId": 2077,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "C08",
+      "chemicalName": "TRICLABENDAZOLE"
+    },
+    "chemicalData": {}
+  },
+  "C09": {
+    "isValid": true,
+    "well": "C09",
+    "lookUp": "8-A10",
+    "parentLibrary": {
+      "compoundId": 818,
+      "libraryId": 3,
+      "plate": "08",
+      "well": "C09",
+      "chemicalName": "TRIMETHOPRIM"
+    },
+    "chemicalData": {}
+  },
+  "C10": {
+    "isValid": true,
+    "well": "C10",
+    "lookUp": "5-B10",
+    "parentLibrary": {
+      "compoundId": 515,
+      "libraryId": 3,
+      "plate": "05",
+      "well": "C10",
+      "chemicalName": "COLCHICINE"
+    },
+    "chemicalData": {}
+  },
+  "C11": {
+    "isValid": true,
+    "well": "C11",
+    "lookUp": "6-D08",
+    "parentLibrary": {
+      "compoundId": 618,
+      "libraryId": 3,
+      "plate": "06",
+      "well": "C11",
+      "chemicalName": "HOMATROPINE METHYLBROMIDE"
+    },
+    "chemicalData": {}
+  },
+  "C12": {
+    "isValid": true,
+    "well": "C12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "D01": {
+    "isValid": true,
+    "well": "D01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "D02": {
+    "isValid": true,
+    "well": "D02",
+    "lookUp": "11-A11",
+    "parentLibrary": {
+      "compoundId": 1632,
+      "libraryId": 3,
+      "plate": "11",
+      "well": "D02",
+      "chemicalName": "CYSTEAMINE HYDROCHLORIDE"
+    },
+    "chemicalData": {}
+  },
+  "D03": {
+    "isValid": true,
+    "well": "D03",
+    "lookUp": "10-E02",
+    "parentLibrary": {
+      "compoundId": 1407,
+      "libraryId": 3,
+      "plate": "10",
+      "well": "D03",
+      "chemicalName": "NIMODIPINE"
+    },
+    "chemicalData": {}
+  },
+  "D04": {
+    "isValid": true,
+    "well": "D04",
+    "lookUp": "9-E08",
+    "parentLibrary": {
+      "compoundId": 1295,
+      "libraryId": 3,
+      "plate": "09",
+      "well": "D04",
+      "chemicalName": "MEFLOQUINE"
+    },
+    "chemicalData": {}
+  },
+  "D05": {
+    "isValid": true,
+    "well": "D05",
+    "lookUp": "12-E08",
+    "parentLibrary": {
+      "compoundId": 2001,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "D05",
+      "chemicalName": "LAMOTRIGINE"
+    },
+    "chemicalData": {}
+  },
+  "D06": {
+    "isValid": true,
+    "well": "D06",
+    "lookUp": "11-F05",
+    "parentLibrary": {
+      "compoundId": 1829,
+      "libraryId": 3,
+      "plate": "11",
+      "well": "D06",
+      "chemicalName": "SERTRALINE HYDROCHLORIDE"
+    },
+    "chemicalData": {}
+  },
+  "D07": {
+    "isValid": true,
+    "well": "D07",
+    "lookUp": "12-F05",
+    "parentLibrary": {
+      "compoundId": 1844,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "D07",
+      "chemicalName": "OXFENDAZOLE"
+    },
+    "chemicalData": {}
+  },
+  "D08": {
+    "isValid": true,
+    "well": "D08",
+    "lookUp": "12-G11",
+    "parentLibrary": {
+      "compoundId": 1103,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "D08",
+      "chemicalName": "VIGABATRIN"
+    },
+    "chemicalData": {}
+  },
+  "D09": {
+    "isValid": true,
+    "well": "D09",
+    "lookUp": "9-H10",
+    "parentLibrary": {
+      "compoundId": 2179,
+      "libraryId": 3,
+      "plate": "09",
+      "well": "D09",
+      "chemicalName": "TYLOXAPOL"
+    },
+    "chemicalData": {}
+  },
+  "D10": {
+    "isValid": true,
+    "well": "D10",
+    "lookUp": "14-A09",
+    "parentLibrary": {
+      "compoundId": 1810,
+      "libraryId": 3,
+      "plate": "14",
+      "well": "D10",
+      "chemicalName": "TEGASEROD MALEATE"
+    },
+    "chemicalData": {}
+  },
+  "D11": {
+    "isValid": true,
+    "well": "D11",
+    "lookUp": "24-F03",
+    "parentLibrary": {
+      "compoundId": 112,
+      "libraryId": 3,
+      "plate": "24",
+      "well": "D11",
+      "chemicalName": "KOPARIN"
+    },
+    "chemicalData": {}
+  },
+  "D12": {
+    "isValid": true,
+    "well": "D12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "E01": {
+    "isValid": true,
+    "well": "E01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "E02": {
+    "isValid": true,
+    "well": "E02",
+    "lookUp": "1-A03",
+    "parentLibrary": {
+      "compoundId": 964,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "E02",
+      "chemicalName": "ETOPOSIDE"
+    },
+    "chemicalData": {}
+  },
+  "E03": {
+    "isValid": true,
+    "well": "E03",
+    "chemicalData": {}
+  },
+  "E04": {
+    "isValid": true,
+    "well": "E04",
+    "lookUp": "4-A11",
+    "parentLibrary": {
+      "compoundId": 364,
+      "libraryId": 3,
+      "plate": "04",
+      "well": "E04",
+      "chemicalName": "MITOTANE"
+    },
+    "chemicalData": {}
+  },
+  "E05": {
+    "isValid": true,
+    "well": "E05",
+    "lookUp": "1-D07",
+    "parentLibrary": {
+      "compoundId": 695,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "E05",
+      "chemicalName": "NORETHINDRONE"
+    },
+    "chemicalData": {}
+  },
+  "E06": {
+    "isValid": true,
+    "well": "E06",
+    "lookUp": "2-E07",
+    "parentLibrary": {
+      "compoundId": 1181,
+      "libraryId": 3,
+      "plate": "02",
+      "well": "E06",
+      "chemicalName": "LOMUSTINE"
+    },
+    "chemicalData": {}
+  },
+  "E07": {
+    "isValid": true,
+    "well": "E07",
+    "lookUp": "3-E05",
+    "parentLibrary": {
+      "compoundId": 1804,
+      "libraryId": 3,
+      "plate": "03",
+      "well": "E07",
+      "chemicalName": "VALSARTAN"
+    },
+    "chemicalData": {}
+  },
+  "E08": {
+    "isValid": true,
+    "well": "E08",
+    "lookUp": "1-H07",
+    "parentLibrary": {
+      "compoundId": 2077,
+      "libraryId": 3,
+      "plate": "01",
+      "well": "E08",
+      "chemicalName": "TRICLABENDAZOLE"
+    },
+    "chemicalData": {}
+  },
+  "E09": {
+    "isValid": true,
+    "well": "E09",
+    "lookUp": "8-A10",
+    "parentLibrary": {
+      "compoundId": 818,
+      "libraryId": 3,
+      "plate": "08",
+      "well": "E09",
+      "chemicalName": "TRIMETHOPRIM"
+    },
+    "chemicalData": {}
+  },
+  "E10": {
+    "isValid": true,
+    "well": "E10",
+    "lookUp": "5-B10",
+    "parentLibrary": {
+      "compoundId": 515,
+      "libraryId": 3,
+      "plate": "05",
+      "well": "E10",
+      "chemicalName": "COLCHICINE"
+    },
+    "chemicalData": {}
+  },
+  "E11": {
+    "isValid": true,
+    "well": "E11",
+    "lookUp": "6-D08",
+    "parentLibrary": {
+      "compoundId": 618,
+      "libraryId": 3,
+      "plate": "06",
+      "well": "E11",
+      "chemicalName": "HOMATROPINE METHYLBROMIDE"
+    },
+    "chemicalData": {}
+  },
+  "E12": {
+    "isValid": true,
+    "well": "E12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "F01": {
+    "isValid": true,
+    "well": "F01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "F02": {
+    "isValid": true,
+    "well": "F02",
+    "lookUp": "11-A11",
+    "parentLibrary": {
+      "compoundId": 1632,
+      "libraryId": 3,
+      "plate": "11",
+      "well": "F02",
+      "chemicalName": "CYSTEAMINE HYDROCHLORIDE"
+    },
+    "chemicalData": {}
+  },
+  "F03": {
+    "isValid": true,
+    "well": "F03",
+    "lookUp": "10-E02",
+    "parentLibrary": {
+      "compoundId": 1407,
+      "libraryId": 3,
+      "plate": "10",
+      "well": "F03",
+      "chemicalName": "NIMODIPINE"
+    },
+    "chemicalData": {}
+  },
+  "F04": {
+    "isValid": true,
+    "well": "F04",
+    "lookUp": "9-E08",
+    "parentLibrary": {
+      "compoundId": 1295,
+      "libraryId": 3,
+      "plate": "09",
+      "well": "F04",
+      "chemicalName": "MEFLOQUINE"
+    },
+    "chemicalData": {}
+  },
+  "F05": {
+    "isValid": true,
+    "well": "F05",
+    "lookUp": "12-E08",
+    "parentLibrary": {
+      "compoundId": 2001,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "F05",
+      "chemicalName": "LAMOTRIGINE"
+    },
+    "chemicalData": {}
+  },
+  "F06": {
+    "isValid": true,
+    "well": "F06",
+    "lookUp": "11-F05",
+    "parentLibrary": {
+      "compoundId": 1829,
+      "libraryId": 3,
+      "plate": "11",
+      "well": "F06",
+      "chemicalName": "SERTRALINE HYDROCHLORIDE"
+    },
+    "chemicalData": {}
+  },
+  "F07": {
+    "isValid": true,
+    "well": "F07",
+    "lookUp": "12-F05",
+    "parentLibrary": {
+      "compoundId": 1844,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "F07",
+      "chemicalName": "OXFENDAZOLE"
+    },
+    "chemicalData": {}
+  },
+  "F08": {
+    "isValid": true,
+    "well": "F08",
+    "lookUp": "12-G11",
+    "parentLibrary": {
+      "compoundId": 1103,
+      "libraryId": 3,
+      "plate": "12",
+      "well": "F08",
+      "chemicalName": "VIGABATRIN"
+    },
+    "chemicalData": {}
+  },
+  "F09": {
+    "isValid": true,
+    "well": "F09",
+    "lookUp": "9-H10",
+    "parentLibrary": {
+      "compoundId": 2179,
+      "libraryId": 3,
+      "plate": "09",
+      "well": "F09",
+      "chemicalName": "TYLOXAPOL"
+    },
+    "chemicalData": {}
+  },
+  "F10": {
+    "isValid": true,
+    "well": "F10",
+    "lookUp": "14-A09",
+    "parentLibrary": {
+      "compoundId": 1810,
+      "libraryId": 3,
+      "plate": "14",
+      "well": "F10",
+      "chemicalName": "TEGASEROD MALEATE"
+    },
+    "chemicalData": {}
+  },
+  "F11": {
+    "isValid": true,
+    "well": "F11",
+    "lookUp": "24-F03",
+    "parentLibrary": {
+      "compoundId": 112,
+      "libraryId": 3,
+      "plate": "24",
+      "well": "F11",
+      "chemicalName": "KOPARIN"
+    },
+    "chemicalData": {}
+  },
+  "F12": {
+    "isValid": true,
+    "well": "F12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "G01": {
+    "isValid": true,
+    "well": "G01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "G02": {
+    "isValid": true,
+    "well": "G02",
+    "lookUp": "2-A07",
+    "parentLibrary": {
+      "compoundId": 1174,
+      "libraryId": 3,
+      "plate": "02",
+      "well": "G02",
+      "chemicalName": "DOCETAXEL"
+    },
+    "chemicalData": {}
+  },
+  "G03": {
+    "isValid": true,
+    "well": "G03",
+    "chemicalData": {}
+  },
+  "G04": {
+    "isValid": true,
+    "well": "G04",
+    "chemicalData": {}
+  },
+  "G05": {
+    "isValid": true,
+    "well": "G05",
+    "chemicalData": {}
+  },
+  "G06": {
+    "isValid": true,
+    "well": "G06",
+    "chemicalData": {}
+  },
+  "G07": {
+    "isValid": true,
+    "well": "G07",
+    "chemicalData": {}
+  },
+  "G08": {
+    "isValid": true,
+    "well": "G08",
+    "chemicalData": {}
+  },
+  "G09": {
+    "isValid": true,
+    "well": "G09",
+    "chemicalData": {}
+  },
+  "G10": {
+    "isValid": true,
+    "well": "G10",
+    "chemicalData": {}
+  },
+  "G11": {
+    "isValid": true,
+    "well": "G11",
+    "chemicalData": {}
+  },
+  "G12": {
+    "isValid": true,
+    "well": "G12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "H01": {
+    "isValid": true,
+    "well": "H01",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "H02": {
+    "isValid": true,
+    "well": "H02",
+    "chemicalData": {}
+  },
+  "H03": {
+    "isValid": true,
+    "well": "H03",
+    "chemicalData": {}
+  },
+  "H04": {
+    "isValid": true,
+    "well": "H04",
+    "chemicalData": {}
+  },
+  "H05": {
+    "isValid": true,
+    "well": "H05",
+    "chemicalData": {}
+  },
+  "H06": {
+    "isValid": true,
+    "well": "H06",
+    "chemicalData": {}
+  },
+  "H07": {
+    "isValid": true,
+    "well": "H07",
+    "chemicalData": {}
+  },
+  "H08": {
+    "isValid": true,
+    "well": "H08",
+    "chemicalData": {}
+  },
+  "H09": {
+    "isValid": true,
+    "well": "H09",
+    "chemicalData": {}
+  },
+  "H10": {
+    "isValid": true,
+    "well": "H10",
+    "chemicalData": {}
+  },
+  "H11": {
+    "isValid": true,
+    "well": "H11",
+    "chemicalData": {}
+  },
+  "H12": {
+    "isValid": true,
+    "well": "H12",
+    "taxTerm": "DMSO",
+    "chemicalName": "DMSO",
+    "lookUp": "DMSO",
+    "chemicalData": {}
+  },
+  "platePlanUploadDate": "2018-07-24T18:57:27.076Z",
+  "platePlanName": "CHEM-FDA-2018-02-01",
+  "libraryId": 3
+}

@@ -1,0 +1,125 @@
+<h2>RNAi Ahringer2 Plate Plan</h2>
+
+<!--Begin Choose Plan Plan-->
+<div id="choosePlatePlan" class="row">
+  <div class="col-md-12">
+
+    <div class="x_panel">
+      <div class="x_title">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Choose a Plate Plan</h2>
+          </div>
+        </div>
+      </div>
+      <div class="x_content">
+        <div class="row">
+          <div class="col-md-12">
+            <p>If you would like to edit a plate plan, select it here. Otherwise, create a plate plan below.</p>
+            <form #platePlanForm="ngForm">
+              <div class="col-md-4">
+                <label for="platePlan">Plate Plan</label>
+              </div>
+              <div class="col-md-8">
+                <select class="form-control" id="platePlan"
+                        [(ngModel)]="platePlan"
+                        (ngModelChange)="updatePlatePlan()"
+                        name="platePlan"
+                >
+                  <option *ngFor="let platePlan of platePlansModel.platePlans" [ngValue]="platePlan">
+                    {{platePlan.platePlanUploadDate}} {{platePlan.platePlanName}}
+                  </option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Choose Plan Plan-->
+
+<!--Begin Create/Edit Plate Plan-->
+<div id="platePlanDiv">
+
+  <div class="x_panel">
+    <div class="x_content">
+
+      <form (ngSubmit)="submitPlatePlan()" (keydown.enter)="$event.preventDefault()" #platePlanForm="ngForm">
+        <div class="row">
+          <div class="col-md-2">
+            <label for="platePlanName">Plate Plan Name</label>
+          </div>
+          <div class="col-md-4">
+            <input #value class="form-control" id="platePlanName" name="platePlanName" required #name="ngModel"
+                   [(ngModel)]="platePlanName">
+          </div>
+          <div *ngIf="!validName"
+               class="alert alert-danger col-md-3">
+            Plate plan name must be unique
+          </div>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger col-md-3">
+            Required
+          </div>
+        </div>
+        <br>
+        <div class="row" *ngFor="let row of rows; let rowi = index">
+          <div class="col-md-2" *ngFor="let column of columns; let columni = index">
+            <div id="wellData-{{row}}{{column}}" class="x_panel">
+              <div class="x_title">
+                {{row}}{{column}}
+              </div>
+              <div tabindex="0" class="x_body">
+                <div class="item form-group  {{wellData[row + column].isValid ? 'valid' : 'bad'}}">
+                  <label for="wellLookup-{{row}}{{column}}">Well</label>
+                  <input #value id="wellLookup-{{row}}{{column}}"
+                         name="wellLookup-{{row}}{{column}}"
+                         [(ngModel)]="wellData[row + column].lookUp"
+                         (ngModelChange)="setWellDataLookup(row, column); checkWellDataValid()"
+                         class="form-control">
+                </div>
+                <div class="">
+                  <label for="comment-{{row}}{{column}}">Comment</label>
+                  <input class="form-control" name="coment-{{row}}{{column}}" id="comment-{{row}}{{column}}">
+                </div>
+                <div>
+                  <div *ngIf="!wellData[row + column].isValid">
+                    <br>
+                    <div class="alert alert-danger">
+                      Not Found!
+                    </div>
+                  </div>
+                  <p>GeneName: {{wellData[row + column].taxTerm}}</p>
+                  <p>CosmidID: {{wellData[row + column].geneData.wbGeneCgcName}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-success" [disabled]="!platePlanForm.form.valid">
+              Submit
+              Plate Plan Submit
+            </button>
+            <button type="button" class="btn btn-default"
+                    (click)="clearForm()">
+              Reset Plate Search
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 {{messageClass}}">
+            {{message}}
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<!--End Create/Edit Plate Plan-->

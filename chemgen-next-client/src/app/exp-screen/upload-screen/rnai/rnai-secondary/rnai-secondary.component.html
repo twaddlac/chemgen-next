@@ -1,0 +1,334 @@
+<div class="container">
+
+  <!--Title-->
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Primary RNAi - Upload Screen Data</h1>
+    </div>
+  </div>
+  <!--Title-->
+
+  <br>
+  <hr>
+
+  <app-exp-screen-info [expDataModel]="expDataModel" [expBiosampleModel]="expBiosampleModel"></app-exp-screen-info>
+
+  <hr>
+
+  <!--Begin Choose Plan Plan-->
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="x_panel">
+        <div class="x_title">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Choose a Plate Plan</h2>
+            </div>
+          </div>
+        </div>
+        <div class="x_content">
+          <div class="row">
+            <form #platePlanForm="ngForm">
+              <div class="col-md-4">
+                <label for="platePlan">Plate Plan</label>
+              </div>
+              <div class="col-md-8">
+                <select class="form-control" id="platePlan"
+                        required
+                        [(ngModel)]="platePlan"
+                        name="condition"
+                >
+                  <option *ngFor="let platePlan of platePlansModel.platePlans" [ngValue]="platePlan">
+                    {{platePlan.platePlanUploadDate}} {{platePlan.platePlanName}}
+                  </option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Choose Plan Plan-->
+
+  <!--Begin add new plateModel to list-->
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Plate Set Search And Assign</h2>
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary" (click)="addNewScreenDesign()">Add Plate Set
+      </button>
+    </div>
+  </div>
+  <br>
+  <!--End add new plateModel to list-->
+
+
+  <!--Begin search for plates-->
+  <div id="all-search_and_assign_plates" *ngFor="let plateModel of plateModels;  let plate_model_index= index"
+       [attr.data-index]="plate_model_index">
+    <!--Begin Search and Assign Plates-->
+    <div id="search_and_assign_plates-{{plate_model_index}}" class="x_panel">
+      <div class="x_title">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Plate Set {{plate_model_index + 1}}</h2>
+          </div>
+          <div class="col-md-6 col-sm-6 pull-right">
+            <button type="button" class="btn btn-danger" (click)="removeScreenDesign(plate_model_index)">Remove</button>
+          </div>
+        </div>
+      </div>
+      <div class="x_content">
+        <!--Begin Search For Plates-->
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="!plate_model_index">
+              <p> The sections 'Plate Imaging Dates' and 'Library and Barcode Information' build the search parameters
+                for the
+                Arrayscan DB and the experimental data for the Chemgen DB.</p>
+            </div>
+            <!--Begin Plate Imaging Dates Search Form-->
+            <div class="row" [hidden]="plateModel.submitted">
+              <div class="col-md-12">
+                <h2>Plate Imaging Dates</h2>
+                <div *ngIf="!plate_model_index">
+                  <p>Dates should correspond to those in the Arrayscan DB.</p>
+                  <p>Select a date by clicking on the field with the date to the right of 'Select Imaging Date' (Default
+                    is todays date).</p>
+                  <p>Add dates by clicking the 'Add Imaging Date' button.</p>
+                  <p>Remove a date by the 'Remove Imaging Date' button next to the corresponding date.</p>
+                </div>
+                <form (ngSubmit)="plateModel.getPlates()" #plateSearchForm="ngForm">
+
+                  <!--Begin add new imaging date to list-->
+                  <app-plate-imaging-dates [plateModel]="plateModel"></app-plate-imaging-dates>
+                  <!--End add new imaging date to list-->
+
+                  <br>
+                  <hr>
+                  <!--End Loop to Add/Remove Dates-->
+                  <!--End FormGroup CreationDates-->
+
+                  <!--Begin Library Info / Barcode Identifier Section-->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h2>Library and Barcode Information</h2>
+                      <div *ngIf="!plate_model_index">
+                        <p>This section builds the library information, as well as the search codes for querying the
+                          database.</p>
+                        <p>Condition: Permissive </p>
+                        <p>Builds the barcode search patterns: RNAi%E% where '%' means match
+                          anything.</p>
+                        <p>Please ensure that the number of plates returned by the search matches the number
+                          expected</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <!--Begin Select for Conditions-->
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="conditions">Condition</label>
+                        <select class="form-control" id="conditions"
+                                required
+                                [(ngModel)]="plateModel.conditionCode" (ngModelChange)="plateModel.buildSearchNames()"
+                                name="condition"
+                        >
+                          <option *ngFor="let condition of plateModel.conditions" [ngValue]="condition.code">
+                            {{condition.condition}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <!--End Select for Conditions-->
+
+                  </div>
+                  <!--End Library Info / Barcode Identifier Section-->
+
+                  <!--Begin Barcode Editing Section-->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h5>Barcode Search Patterns</h5>
+                      <div id="all-search-terms" *ngFor="let searchTerm of plateModel.searchNamePatterns; let i = index"
+                           [attr.data-index]="i">
+                        <div class="row">
+                          <div class="col-sm-4 col-md-4">
+                            <label for="searchTerm-{{i}}">Barcode Pattern</label>
+                          </div>
+                          <div class="col-sm-4 col-md-4">
+                            <input class="form-control" type="text" id="searchTerm-{{i}}" name="searchTerm-{{i}}"
+                                   [(ngModel)]="plateModel.searchNamePatterns[i]"
+                                   value="{{searchTerm}}">
+                          </div>
+                          <div class="col-sm-4 col-md-4">
+                            <button type="button" class="btn btn-danger" (click)="plateModel.removeSearchTerm(i)">Remove
+                            </button>
+                          </div>
+                        </div>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Barcode Editing Section-->
+                  <br>
+                  <hr>
+
+                  <div class="row">
+
+                    <div class="col-md-12">
+                      <button type="submit" class="btn btn-success" [disabled]="!plateSearchForm.form.valid">Submit
+                        Plate
+                        Search
+                      </button>
+                      <button type="button" class="btn btn-default"
+                              (click)="plateModel.clearForm(); plateSearchForm.reset()">
+                        Reset Plate Search
+                      </button>
+                    </div>
+
+                  </div>
+
+                  <br>
+
+
+                </form>
+              </div>
+            </div>
+            <br>
+            <hr>
+            <!--End Plate Search Form-->
+
+          </div>
+        </div>
+        <!--End Search For Plates-->
+
+        <!--Begin Plate -> Exp Design-->
+        <!--This is very specific to to RNAi Primary Screens-->
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Assign Plates to Design</h2>
+            </div>
+          </div>
+          <!--Begin Unsorted Plate Panel-->
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  Unassigned Plates
+                </div>
+                <div class="panel-body" dnd-sortable-container [dropZones]="['plates-zone']"
+                     [sortableData]="plateModel.plates">
+                  <ul class="list-group">
+                    <li *ngFor="let plate of plateModel.plates; let i = index" class="list-group-item" dnd-sortable
+                        [sortableIndex]="i">
+                      Barcode: {{plate.name}}<br> Date: {{plate.creationdate | date:'yyyy-MM-dd' }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End Unsorted Plate Panel-->
+
+          <!--Begin Replicate Info-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-success">
+                <div class="panel-body">
+                  Number of Replicates: {{plateModel.treat_rnai_plates.length}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--!End Replicate Info-->
+
+          <!--Begin Sorted Plate Panels-->
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  Treatment + RNAi
+                </div>
+                <div class="panel-body" dnd-sortable-container [dropZones]="['plates-zone']"
+                     [sortableData]="plateModel.treat_rnai_plates">
+                  <ul class="list-group">
+                    <li *ngFor="let plate of plateModel.treat_rnai_plates; let i = index" class="list-group-item"
+                        dnd-sortable
+                        [sortableIndex]="i">
+                      Barcode: {{plate.name}}<br>
+                      Date: {{plate.creationdate | date:'yyyy-MM-dd' }}<br>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  N2 + RNAi
+                </div>
+                <div class="panel-body" dnd-sortable-container [dropZones]="['plates-zone']"
+                     [sortableData]="plateModel.ctrl_rnai_plates">
+                  <ul class="list-group">
+                    <li *ngFor="let plate of plateModel.ctrl_rnai_plates; let i = index" class="list-group-item"
+                        dnd-sortable
+                        [sortableIndex]="i">
+                      Barcode: {{plate.name}}<br>
+                      Date: {{plate.creationdate | date:'yyyy-MM-dd' }}<br>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!--End Sorted Plate Panel-->
+        </div>
+        <!--End Plate -> Exp Design-->
+      </div>
+      <!--End Search and Assign Plates-->
+    </div>
+    <!--End Search and Assign Plates-->
+  </div>
+  <!--End search for plates-->
+
+  <br>
+
+  <!--Begin Complete Data Form-->
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary" (click)="submitWorkflowData()">Complete Upload
+      </button>
+    </div>
+  </div>
+  <br>
+  <!--End Complete Data Form-->
+
+  <!--Begin Error Messages-->
+  <div class="row" id="message">
+    <div class="col-md-12">
+      <div *ngIf="errorMessages.length">
+        <div *ngFor="let message of errorMessages" class="alert alert-danger">
+          {{message}}
+        </div>
+      </div>
+      <div *ngIf="success">
+        <div class="alert alert-success">
+          Screen Data submitted successfully!
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Error Messages-->
+
+  <div id="results">
+    <h2>Results!</h2>
+    {{expScreenUploads | json}}
+  </div>
+
+</div>

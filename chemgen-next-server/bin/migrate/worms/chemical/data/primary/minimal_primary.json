@@ -1,0 +1,91 @@
+{
+  "libraryModel": "ChemicalLibrary",
+  "libraryStockModel": "ChemicalLibraryStock",
+  "librarycode": "chembridge",
+  "biosampleType": "worm",
+  "reagentLookUp": "compoundId",
+  "instrumentPlateIdLookup": "csPlateid",
+  "assayViewType": "exp_assay_chembridge",
+  "plateViewType": "exp_plate_chembridge",
+  "instrumentId": 1,
+  "instrumentLookUp": "arrayScan",
+  "conditions": [
+    "treat_chemical",
+    "ctrl_chemical",
+    "ctrl_null",
+    "ctrl_strain"
+  ],
+  "controlConditions": [
+    "ctrl_strain",
+    "ctrl_null"
+  ],
+  "experimentConditions": [
+    "treat_chemical",
+    "ctrl_chemical"
+  ],
+  "experimentMatchConditions": {
+    "treat_chemical": "ctrl_chemical"
+  },
+  "biosampleMatchConditions": {
+    "treat_chemical": "ctrl_strain",
+    "ctrl_chemical": "ctrl_null"
+  },
+  "experimentDesign": {
+    "treat_chemical": [
+      "ctrl_chemical",
+      "ctrl_strain",
+      "ctrl_null"
+    ]
+  },
+  "name": "",
+  "comment": "",
+  "screenId": 1,
+  "screenType": "permissive",
+  "libraryId": 1,
+  "stockPrepDate": "",
+  "assayDates": [
+    ""
+  ],
+  "biosamples": {
+    "experimentBiosample": {
+      "id": 7,
+      "name": "Pristionchus pacificus"
+    },
+    "ctrlBiosample": {
+      "id": 4,
+      "name": "N2"
+    }
+  },
+  "temperature": "17.5",
+  "replicates": {
+  },
+  "experimentGroups": {
+    "treat_chemical": {
+      "plates": [
+      ],
+      "biosampleId": 7
+    },
+    "ctrl_chemical": {
+      "plates": [
+      ],
+      "biosampleId": 4
+    },
+    "ctrl_strain": {
+      "plates": [
+      ],
+      "biosampleId": 7
+    },
+    "ctrl_null": {
+      "plates": [
+      ],
+      "biosampleId": 4
+    }
+  },
+  "search": {
+    "chemicalLibrary": {
+      "plate": "2",
+      "quadrant": "Q4"
+    }
+  },
+  "screenStage": "primary"
+}

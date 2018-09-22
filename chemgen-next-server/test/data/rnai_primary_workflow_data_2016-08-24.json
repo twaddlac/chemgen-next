@@ -1,0 +1,177 @@
+[
+  {
+    "screenId": 1,
+    "libraryId": 1,
+    "instrumentId": 1,
+    "instrumentPlateIdLookup": "csPlateid",
+    "librarycode": "ahringer2",
+    "screenStage": "primary",
+    "screenType": "permissive",
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "reagentLookUp": "rnaiId",
+    "instrumentLookUp": "arrayScan",
+    "biosampleType": "worm",
+    "screenName": "mel-28 Primary RNAi Enhancer Screen",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "stockPrepDate": "2016-08-17T06:02:06.000Z",
+    "assayDates": [
+      "2016-08-17T06:02:06.000Z"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 5,
+        "name": "mel-28"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "17.5",
+    "search": {
+      "rnaiLibrary": {
+        "plate": "3",
+        "quadrant": "A1",
+        "chrom": "I"
+      }
+    },
+    "replicates": {
+      "1": [
+        6813,
+        6811,
+        6930,
+        6928
+      ],
+      "2": [
+        6814,
+        6812,
+        6931,
+        6929
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 6813,
+            "instrumentPlateId": 6813,
+            "id": "MFGTMP-PC_160824020005",
+            "name": "RNAiI.3A1E_M",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824020005\\",
+            "platebarcode": "RNAII.3A1E_M"
+          },
+          {
+            "csPlateid": 6814,
+            "instrumentPlateId": 6814,
+            "id": "MFGTMP-PC_160824020006",
+            "name": "RNAiI.3A1E_D_M",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824020006\\",
+            "platebarcode": "RNAII.3A1E_D_M"
+          }
+        ],
+        "biosampleId": 5
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 6811,
+            "instrumentPlateId": 6811,
+            "id": "MFGTMP-PC_160824020003",
+            "name": "RNAiI.3A1E",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824020003\\",
+            "platebarcode": "RNAII.3A1E"
+          },
+          {
+            "csPlateid": 6812,
+            "instrumentPlateId": 6812,
+            "id": "MFGTMP-PC_160824020004",
+            "name": "RNAiI.3A1E_D",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824020004\\",
+            "platebarcode": "RNAII.3A1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 6930,
+            "instrumentPlateId": 6930,
+            "id": "MFGTMP-PC_160824120008",
+            "name": "L4440E_M",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824120008\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 6931,
+            "instrumentPlateId": 6931,
+            "id": "MFGTMP-PC_160824120009",
+            "name": "L4440E_D_M",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824120009\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 5
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 6928,
+            "instrumentPlateId": 6928,
+            "id": "MFGTMP-PC_160824120006",
+            "name": "L4440E",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824120006\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 6929,
+            "instrumentPlateId": 6929,
+            "id": "MFGTMP-PC_160824120007",
+            "name": "L4440E_D",
+            "creationdate": "2016-08-24T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2016Aug22\\MFGTMP-PC_160824120007\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    }
+  }
+]

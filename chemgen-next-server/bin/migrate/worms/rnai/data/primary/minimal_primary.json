@@ -1,0 +1,92 @@
+{
+  "libraryModel": "RnaiLibrary",
+  "libraryStockModel": "RnaiLibraryStock",
+  "librarycode": "ahringer2",
+  "biosampleType": "worm",
+  "reagentLookUp": "rnaiId",
+  "instrumentPlateIdLookup": "csPlateid",
+  "assayViewType": "exp_assay_ahringer2",
+  "plateViewType": "exp_plate_ahringer2",
+  "instrumentId": 1,
+  "instrumentLookUp": "arrayScan",
+  "conditions": [
+    "treat_rnai",
+    "ctrl_rnai",
+    "ctrl_null",
+    "ctrl_strain"
+  ],
+  "controlConditions": [
+    "ctrl_strain",
+    "ctrl_null"
+  ],
+  "experimentConditions": [
+    "treat_rnai",
+    "ctrl_rnai"
+  ],
+  "experimentMatchConditions": {
+    "treat_rnai": "ctrl_rnai"
+  },
+  "biosampleMatchConditions": {
+    "treat_rnai": "ctrl_strain",
+    "ctrl_rnai": "ctrl_null"
+  },
+  "experimentDesign": {
+    "treat_rnai": [
+      "ctrl_rnai",
+      "ctrl_strain",
+      "ctrl_null"
+    ]
+  },
+  "name": "",
+  "comment": "",
+  "screenId": 1,
+  "screenType": "permissive",
+  "libraryId": 1,
+  "stockPrepDate": "",
+  "assayDates": [
+    ""
+  ],
+  "biosamples": {
+    "experimentBiosample": {
+      "id": 5,
+      "name": "mel-28"
+    },
+    "ctrlBiosample": {
+      "id": 4,
+      "name": "N2"
+    }
+  },
+  "temperature": "17.5",
+  "replicates": {
+  },
+  "experimentGroups": {
+    "treat_rnai": {
+      "plates": [
+      ],
+      "biosampleId": 5
+    },
+    "ctrl_rnai": {
+      "plates": [
+      ],
+      "biosampleId": 4
+    },
+    "ctrl_strain": {
+      "plates": [
+      ],
+      "biosampleId": 5
+    },
+    "ctrl_null": {
+      "plates": [
+      ],
+      "biosampleId": 4
+    }
+  },
+  "search": {
+    "rnaiLibrary": {
+      "plate": "2",
+      "quadrant": "Q4",
+      "chrom": "I"
+    }
+  },
+  "screenStage": "primary"
+}

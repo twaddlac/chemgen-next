@@ -1,0 +1,34 @@
+{
+  "name": "Analysis",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "dateCreated": {
+      "type": "date"
+    },
+    "dateModified": {
+      "type": "date"
+    },
+    "results": {
+      "type": "object"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [],
+  "methods": {
+  }
+}

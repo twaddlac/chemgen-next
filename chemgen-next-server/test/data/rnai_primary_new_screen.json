@@ -1,0 +1,3711 @@
+{
+  "plateDataList": [
+    {
+      "expPlate": {
+        "plateId": 1,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9277",
+        "barcode": "L4440E",
+        "instrumentId": 1,
+        "instrumentPlateId": 9277,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150001\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 1,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 1,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9277
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-1"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 1,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 1,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 1,
+            "stockId": 1,
+            "stockLibraryWell": "A01",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 2,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 2,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9277
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-2"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 2,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 2,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 2,
+            "stockId": 2,
+            "stockLibraryWell": "A02",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 3,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 3,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9277
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-3"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 3,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 3,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 3,
+            "stockId": 3,
+            "stockLibraryWell": "A03",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 4,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 4,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9277
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-4"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 4,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 4,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 4,
+            "stockId": 4,
+            "stockLibraryWell": "A12",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 8,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9278",
+        "barcode": "L4440E_D",
+        "instrumentId": 1,
+        "instrumentPlateId": 9278,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150002\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 29,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 29,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9278
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-29"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 29,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 29,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 29,
+            "stockId": 29,
+            "stockLibraryWell": "A01",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 30,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 30,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9278
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-30"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 30,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 30,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 30,
+            "stockId": 30,
+            "stockLibraryWell": "A02",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 31,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 31,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9278
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-31"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 31,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 31,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 31,
+            "stockId": 31,
+            "stockLibraryWell": "A03",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 32,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 32,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-1"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_null-EGI-1"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9278
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-32"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 32,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 32,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 32,
+            "stockId": 32,
+            "stockLibraryWell": "A12",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_null",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 7,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9279",
+        "barcode": "L4440E_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9279,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150003\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 25,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 25,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9279
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-25"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 25,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 25,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 25,
+            "stockId": 25,
+            "stockLibraryWell": "A01",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 26,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 26,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9279
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-26"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 26,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 26,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 26,
+            "stockId": 26,
+            "stockLibraryWell": "A02",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 27,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 27,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9279
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-27"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 27,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 27,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 27,
+            "stockId": 27,
+            "stockLibraryWell": "A03",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 28,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 28,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9279
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-28"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 28,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 28,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 28,
+            "stockId": 28,
+            "stockLibraryWell": "A12",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 6,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9280",
+        "barcode": "L4440E_D_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9280,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150004\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 21,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 21,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9280
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-21"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 21,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 21,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 21,
+            "stockId": 21,
+            "stockLibraryWell": "A01",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 22,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 22,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9280
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-22"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 22,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 22,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 22,
+            "stockId": 22,
+            "stockLibraryWell": "A02",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 23,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 23,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9280
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-23"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 23,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 23,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 23,
+            "stockId": 23,
+            "stockLibraryWell": "A03",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 24,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 24,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_strain-EGI-8"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9280
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "L4440E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-24"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 24,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 24,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 24,
+            "stockId": 24,
+            "stockLibraryWell": "A12",
+            "reagentName": "L4440",
+            "reagentType": "ctrl_strain",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 5,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9281",
+        "barcode": "RNAiI.3A1E",
+        "instrumentId": 1,
+        "instrumentPlateId": 9281,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150005\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 17,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 5,
+            "assayId": 17,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-5"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-5"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9281
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-17"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 5,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 17,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "5",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 17,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 5,
+            "assayId": 17,
+            "stockId": 17,
+            "reagentId": 701,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A01",
+            "stockLibraryWell": "A01",
+            "reagentName": "C48E7.5",
+            "reagentType": "ctrl_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 18,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 5,
+            "assayId": 18,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-7"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-7"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9281
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-18"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 7,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 18,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "7",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 18,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 5,
+            "assayId": 18,
+            "stockId": 18,
+            "reagentId": 702,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A02",
+            "stockLibraryWell": "A02",
+            "reagentName": "C48E7.6",
+            "reagentType": "ctrl_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 19,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 5,
+            "assayId": 19,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-6"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-6"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9281
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-19"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 6,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 19,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "6",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 19,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 5,
+            "assayId": 19,
+            "stockId": 19,
+            "reagentId": 703,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A03",
+            "stockLibraryWell": "A03",
+            "reagentName": "C48E7.7",
+            "reagentType": "ctrl_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 20,
+            "libraryId": 1,
+            "plateId": 5,
+            "assayId": 20,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9281
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-20"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 20,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 20,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 5,
+            "assayId": 20,
+            "stockId": 20,
+            "stockLibraryWell": "A12",
+            "reagentName": "empty",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 4,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9282",
+        "barcode": "RNAiI.3A1E_D",
+        "instrumentId": 1,
+        "instrumentPlateId": 9282,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218160001\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 13,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 4,
+            "assayId": 13,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-5"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-5"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9282
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-13"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 5,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 13,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "5",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 13,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 4,
+            "assayId": 13,
+            "stockId": 13,
+            "reagentId": 701,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A01",
+            "stockLibraryWell": "A01",
+            "reagentName": "C48E7.5",
+            "reagentType": "ctrl_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 14,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 4,
+            "assayId": 14,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-7"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-7"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9282
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-14"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 7,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 14,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "7",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 14,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 4,
+            "assayId": 14,
+            "stockId": 14,
+            "reagentId": 702,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A02",
+            "stockLibraryWell": "A02",
+            "reagentName": "C48E7.6",
+            "reagentType": "ctrl_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 15,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 4,
+            "assayId": 15,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-6"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-6"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9282
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-15"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 6,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 15,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "6",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 15,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 4,
+            "assayId": 15,
+            "stockId": 15,
+            "reagentId": 703,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A03",
+            "stockLibraryWell": "A03",
+            "reagentName": "C48E7.7",
+            "reagentType": "ctrl_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 16,
+            "libraryId": 1,
+            "plateId": 4,
+            "assayId": 16,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9282
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-16"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 16,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 16,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 4,
+            "assayId": 16,
+            "stockId": 16,
+            "stockLibraryWell": "A12",
+            "reagentName": "empty",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 3,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9283",
+        "barcode": "RNAiI.3A1E_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9283,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218160002\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 9,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 3,
+            "assayId": 9,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-2"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-2"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9283
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-9"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 9,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 9,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 3,
+            "assayId": 9,
+            "stockId": 9,
+            "reagentId": 701,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A01",
+            "stockLibraryWell": "A01",
+            "reagentName": "C48E7.5",
+            "reagentType": "treat_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 10,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 3,
+            "assayId": 10,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-4"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-4"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9283
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-10"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 4,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 10,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "4",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 10,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 3,
+            "assayId": 10,
+            "stockId": 10,
+            "reagentId": 702,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A02",
+            "stockLibraryWell": "A02",
+            "reagentName": "C48E7.6",
+            "reagentType": "treat_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 11,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 3,
+            "assayId": 11,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-3"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-3"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9283
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-11"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 3,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 11,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "3",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 11,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 3,
+            "assayId": 11,
+            "stockId": 11,
+            "reagentId": 703,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A03",
+            "stockLibraryWell": "A03",
+            "reagentName": "C48E7.7",
+            "reagentType": "treat_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 12,
+            "libraryId": 1,
+            "plateId": 3,
+            "assayId": 12,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9283
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-12"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 12,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 12,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 3,
+            "assayId": 12,
+            "stockId": 12,
+            "stockLibraryWell": "A12",
+            "reagentName": "empty",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    },
+    {
+      "expPlate": {
+        "plateId": 2,
+        "screenId": 1,
+        "screenStage": "primary",
+        "screenType": "permissive",
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9284",
+        "barcode": "RNAiI.3A1E_D_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9284,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218160003\\",
+        "expWorkflowId": "1"
+      },
+      "wellDataList": [
+        {
+          "well": "A01",
+          "stockLibraryData": {
+            "stockId": 5,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 2,
+            "assayId": 5,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-2"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-2"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 2
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9284
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-5"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 5,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A01",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 5,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 2,
+            "assayId": 5,
+            "stockId": 5,
+            "reagentId": 701,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A01",
+            "stockLibraryWell": "A01",
+            "reagentName": "C48E7.5",
+            "reagentType": "treat_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A02",
+          "stockLibraryData": {
+            "stockId": 6,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 2,
+            "assayId": 6,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-4"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-4"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 2
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9284
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-6"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 4,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 6,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "4",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A02",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 6,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 2,
+            "assayId": 6,
+            "stockId": 6,
+            "reagentId": 702,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A02",
+            "stockLibraryWell": "A02",
+            "reagentName": "C48E7.6",
+            "reagentType": "treat_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A03",
+          "stockLibraryData": {
+            "stockId": 7,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 2,
+            "assayId": 7,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-3"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-3"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 2
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9284
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-7"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 3,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay": {
+            "assayId": 7,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "3",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A03",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 7,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 2,
+            "assayId": 7,
+            "stockId": 7,
+            "reagentId": 703,
+            "parentLibraryPlate": "9",
+            "parentLibraryWell": "A03",
+            "stockLibraryWell": "A03",
+            "reagentName": "C48E7.7",
+            "reagentType": "treat_rnai",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        },
+        {
+          "well": "A12",
+          "stockLibraryData": {
+            "stockId": 8,
+            "libraryId": 1,
+            "plateId": 2,
+            "assayId": 8,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "image_date",
+                "taxTerm": "2017-12-18T00:00:00.000Z"
+              },
+              {
+                "taxonomy": "screen_type",
+                "taxTerm": "permissive"
+              },
+              {
+                "taxonomy": "screen_stage",
+                "taxTerm": "primary"
+              },
+              {
+                "taxonomy": "exp_plate_id",
+                "taxTerm": 2
+              },
+              {
+                "taxonomy": "instrument_plate_id",
+                "taxTerm": 9284
+              },
+              {
+                "taxonomy": "barcode",
+                "taxTerm": "RNAiI.3A1E_D_M"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "AI-8"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 8,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 2,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A12",
+            "expWorkflowId": "1"
+          },
+          "expAssay2reagent": {
+            "assay2reagentId": 8,
+            "screenId": 1,
+            "libraryId": 1,
+            "plateId": 2,
+            "assayId": 8,
+            "stockId": 8,
+            "stockLibraryWell": "A12",
+            "reagentName": "empty",
+            "reagentTable": "RnaiLibraryStock"
+          }
+        }
+      ]
+    }
+  ],
+  "expDesignList": [
+    {
+      "expDesignId": 1,
+      "treatmentGroupId": 2,
+      "controlGroupId": 5
+    },
+    {
+      "expDesignId": 2,
+      "treatmentGroupId": 2,
+      "controlGroupId": 8
+    },
+    {
+      "expDesignId": 3,
+      "treatmentGroupId": 2,
+      "controlGroupId": 1
+    },
+    {
+      "expDesignId": 4,
+      "treatmentGroupId": 4,
+      "controlGroupId": 7
+    },
+    {
+      "expDesignId": 5,
+      "treatmentGroupId": 4,
+      "controlGroupId": 8
+    },
+    {
+      "expDesignId": 6,
+      "treatmentGroupId": 4,
+      "controlGroupId": 1
+    },
+    {
+      "expDesignId": 7,
+      "treatmentGroupId": 3,
+      "controlGroupId": 6
+    },
+    {
+      "expDesignId": 8,
+      "treatmentGroupId": 3,
+      "controlGroupId": 8
+    },
+    {
+      "expDesignId": 9,
+      "treatmentGroupId": 3,
+      "controlGroupId": 1
+    }
+  ]
+}

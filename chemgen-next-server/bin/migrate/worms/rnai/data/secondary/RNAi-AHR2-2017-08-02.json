@@ -1,0 +1,1120 @@
+{
+  "A01": {
+    "isValid": true,
+    "well": "A01",
+    "taxTerm": "F42H11.2",
+    "geneName": "F42H11.2",
+    "lookUp": "I-4-B14",
+    "parentLibrary": {
+      "rnaiId": 1336,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "16",
+      "well": "A01",
+      "chrom": "I",
+      "geneName": "F42H11.2",
+      "fwdPrimer": "GCTACCAGCTTCGTTTCCTG",
+      "revPrimer": "TCGTCAGTTGTTTTCCGTTG",
+      "bioloc": "I-4B14",
+      "stocktitle": "I-4--B2",
+      "stockloc": "B2-A07"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "F42H11.2",
+      "wbGeneAccession": "WBGene00002276",
+      "wbGeneCgcName": "lem-3",
+      "wbTranscript": "F42H11.2",
+      "wbProteinAccession": "CE47022",
+      "insdcParentSeq": "BX284601",
+      "insdcLocusTag": "CELE_F42H11.2",
+      "insdcProteinId": "CAB05722",
+      "uniprotAccession": "G5EGA3"
+    }
+  },
+  "A02": {
+    "isValid": true,
+    "well": "A02",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "A03": {
+    "isValid": true,
+    "well": "A03",
+    "taxTerm": "F26A3.3",
+    "geneName": "F26A3.3",
+    "lookUp": "I-3-D18",
+    "parentLibrary": {
+      "rnaiId": 997,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "12",
+      "well": "A03",
+      "chrom": "I",
+      "geneName": "F26A3.3",
+      "fwdPrimer": "ATCCGATCCGAACCATTACA",
+      "revPrimer": "CAATTTTCATCCCAAATGCC",
+      "bioloc": "I-3D18",
+      "stocktitle": "I-3--B2",
+      "stockloc": "B2-B09"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "F26A3.3",
+      "wbGeneAccession": "WBGene00001214",
+      "wbGeneCgcName": "ego-1",
+      "wbTranscript": "F26A3.3",
+      "wbProteinAccession": "CE27140",
+      "insdcParentSeq": "BX284601",
+      "insdcLocusTag": "CELE_F26A3.3",
+      "insdcProteinId": "CAB01701",
+      "uniprotAccession": "G5EBQ3"
+    }
+  },
+  "A04": {
+    "isValid": true,
+    "well": "A04",
+    "taxTerm": "F26E4.1",
+    "geneName": "F26E4.1",
+    "lookUp": "I-4-J16",
+    "parentLibrary": {
+      "rnaiId": 1382,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "16",
+      "well": "A04",
+      "chrom": "I",
+      "geneName": "F26E4.1",
+      "fwdPrimer": "TCGTGCCAATGGAGTTGATA",
+      "revPrimer": "TGTTTCTCTTCCGTTTCGCT",
+      "bioloc": "I-4J16",
+      "stocktitle": "I-4--B2",
+      "stockloc": "B2-E12"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "F26E4.1",
+      "wbGeneAccession": "WBGene00006352",
+      "wbGeneCgcName": "sur-6",
+      "wbTranscript": "F26E4.1",
+      "wbProteinAccession": "CE09685",
+      "insdcParentSeq": "BX284601",
+      "insdcLocusTag": "CELE_F26E4.1",
+      "insdcProteinId": "CAB03008",
+      "uniprotAccession": "G5EDR3"
+    }
+  },
+  "A05": {
+    "isValid": true,
+    "well": "A05",
+    "geneData": {}
+  },
+  "A06": {
+    "isValid": true,
+    "well": "A06",
+    "taxTerm": "T24F1.1",
+    "geneName": "T24F1.1",
+    "lookUp": "II-7-B10",
+    "parentLibrary": {
+      "rnaiId": 18516,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "58",
+      "well": "A06",
+      "chrom": "II",
+      "geneName": "T24F1.1",
+      "fwdPrimer": "AACTTCCTCGTCTCGCAAAA",
+      "revPrimer": "CGGAAAATCTAAGCGGTGAA",
+      "bioloc": "II-7B10",
+      "stocktitle": "II-7--B2",
+      "stockloc": "B2-A05"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "T24F1.1",
+      "wbGeneAccession": "WBGene00006414",
+      "wbGeneCgcName": "raga-1",
+      "wbTranscript": "T24F1.1",
+      "wbProteinAccession": "CE02361",
+      "insdcParentSeq": "BX284602",
+      "insdcLocusTag": "CELE_T24F1.1",
+      "insdcProteinId": "CAA90136",
+      "uniprotAccession": "Q22743"
+    }
+  },
+  "A07": {
+    "isValid": true,
+    "well": "A07",
+    "taxTerm": "C14A4.4",
+    "geneName": "C14A4.4",
+    "lookUp": "II-7-K20",
+    "parentLibrary": {
+      "rnaiId": 18401,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "56",
+      "well": "A07",
+      "chrom": "II",
+      "geneName": "C14A4.4",
+      "fwdPrimer": "AAAACGACATTCTTGGCAGG",
+      "revPrimer": "CGGAGAGTGAGGTAGGCAAG",
+      "bioloc": "II-7K20",
+      "stocktitle": "II-7--A2",
+      "stockloc": "A2-F10"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "C14A4.4",
+      "wbGeneAccession": "WBGene00000796",
+      "wbGeneCgcName": "crn-3",
+      "wbTranscript": "C14A4.4a",
+      "wbProteinAccession": "CE02145",
+      "insdcParentSeq": "BX284602",
+      "insdcLocusTag": "CELE_C14A4.4",
+      "insdcProteinId": "CAA90108",
+      "uniprotAccession": "G5EBX6"
+    }
+  },
+  "A08": {
+    "isValid": true,
+    "well": "A08",
+    "taxTerm": "W10C6.1",
+    "geneName": "W10C6.1",
+    "lookUp": "II-7-L19",
+    "parentLibrary": {
+      "rnaiId": 18486,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "57",
+      "well": "A08",
+      "chrom": "II",
+      "geneName": "W10C6.1",
+      "fwdPrimer": "CTGGGAAGAAGCATTTCGAG",
+      "revPrimer": "AAACGTTGACCTCATCCTGC",
+      "bioloc": "II-7L19",
+      "stocktitle": "II-7--B1",
+      "stockloc": "B1-F10"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "W10C6.1",
+      "wbGeneAccession": "WBGene00003133",
+      "wbGeneCgcName": "mat-2",
+      "wbTranscript": "W10C6.1",
+      "wbProteinAccession": "CE43328",
+      "insdcParentSeq": "BX284602",
+      "insdcLocusTag": "CELE_W10C6.1",
+      "insdcProteinId": "CAB16467",
+      "uniprotAccession": "O18191"
+    }
+  },
+  "A09": {
+    "isValid": true,
+    "well": "A09",
+    "taxTerm": "F32A11.1",
+    "geneName": "F32A11.1",
+    "lookUp": "II-8-J15",
+    "parentLibrary": {
+      "rnaiId": 18809,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "61",
+      "well": "A09",
+      "chrom": "II",
+      "geneName": "F32A11.1",
+      "fwdPrimer": "TTTTTGAACTGTTTTTCTGGAGG",
+      "revPrimer": "TTTCGCATTTGAAAAGAATTTGT",
+      "bioloc": "II-8J15",
+      "stocktitle": "II-8--B1",
+      "stockloc": "B1-E08"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "F32A11.1",
+      "wbGeneAccession": "WBGene00009307",
+      "wbGeneCgcName": null,
+      "wbTranscript": "F32A11.1",
+      "wbProteinAccession": "CE17737",
+      "insdcParentSeq": "BX284602",
+      "insdcLocusTag": "CELE_F32A11.1",
+      "insdcProteinId": "CAB04226",
+      "uniprotAccession": "O62198"
+    }
+  },
+  "A10": {
+    "isValid": true,
+    "well": "A10",
+    "taxTerm": "ZK131.7",
+    "geneName": "ZK131.7",
+    "lookUp": "II-8-J20",
+    "parentLibrary": {
+      "rnaiId": 18874,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "62",
+      "well": "A10",
+      "chrom": "II",
+      "geneName": "ZK131.7",
+      "fwdPrimer": "TGAAGAACTGATTGAAATTGCCT",
+      "revPrimer": "TTTTTGAGACGGATTCATTCCTA",
+      "bioloc": "II-8J20",
+      "stocktitle": "II-8--B2",
+      "stockloc": "B2-E10"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "ZK131.7",
+      "wbGeneAccession": "WBGene00001887",
+      "wbGeneCgcName": "his-13",
+      "wbTranscript": "ZK131.7",
+      "wbProteinAccession": "CE03253",
+      "insdcParentSeq": "BX284602",
+      "insdcLocusTag": "CELE_ZK131.7",
+      "insdcProteinId": "CAB05834",
+      "uniprotAccession": "P08898"
+    }
+  },
+  "A11": {
+    "isValid": true,
+    "well": "A11",
+    "geneData": {}
+  },
+  "A12": {
+    "isValid": true,
+    "well": "A12",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "B01": {
+    "isValid": true,
+    "well": "B01",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "B02": {
+    "isValid": true,
+    "well": "B02",
+    "geneData": {}
+  },
+  "B03": {
+    "isValid": true,
+    "well": "B03",
+    "taxTerm": "C14B1.4",
+    "geneName": "C14B1.4",
+    "lookUp": "III-1-H22",
+    "parentLibrary": {
+      "rnaiId": 9097,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "69",
+      "well": "B03",
+      "chrom": "III",
+      "geneName": "C14B1.4",
+      "fwdPrimer": "GCTCCTGCTCCATCTGTAGG",
+      "revPrimer": "CGGGTTCTGAAATGGAAAAA",
+      "bioloc": "III-1H22",
+      "stocktitle": "III-1--B2",
+      "stockloc": "B2-D11"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "C14B1.4",
+      "wbGeneAccession": "WBGene00006474",
+      "wbGeneCgcName": "wdr-5.1",
+      "wbTranscript": "C14B1.4",
+      "wbProteinAccession": "CE00901",
+      "insdcParentSeq": "BX284603",
+      "insdcLocusTag": "CELE_C14B1.4",
+      "insdcProteinId": "CAA85487",
+      "uniprotAccession": "Q17963"
+    }
+  },
+  "B04": {
+    "isValid": true,
+    "well": "B04",
+    "geneData": {}
+  },
+  "B05": {
+    "isValid": true,
+    "well": "B05",
+    "geneData": {}
+  },
+  "B06": {
+    "isValid": true,
+    "well": "B06",
+    "geneData": {}
+  },
+  "B07": {
+    "isValid": true,
+    "well": "B07",
+    "geneData": {}
+  },
+  "B08": {
+    "isValid": true,
+    "well": "B08",
+    "taxTerm": "K06H7.6",
+    "geneName": "K06H7.6",
+    "lookUp": "III-4-C20",
+    "parentLibrary": {
+      "rnaiId": 9969,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "79",
+      "well": "B08",
+      "chrom": "III",
+      "geneName": "K06H7.6",
+      "fwdPrimer": "ATGACGACAGTTCTGCAACG",
+      "revPrimer": "TTGTACAGTGTCAGGTCGCC",
+      "bioloc": "III-4C20",
+      "stocktitle": "III-4--A2",
+      "stockloc": "A2-B10"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "K06H7.6",
+      "wbGeneAccession": "WBGene00000143",
+      "wbGeneCgcName": "apc-2",
+      "wbTranscript": "K06H7.6",
+      "wbProteinAccession": "CE41679",
+      "insdcParentSeq": "BX284603",
+      "insdcLocusTag": "CELE_K06H7.6",
+      "insdcProteinId": "CCD64457",
+      "uniprotAccession": "P34514"
+    }
+  },
+  "B09": {
+    "isValid": true,
+    "well": "B09",
+    "taxTerm": "R05D3.11",
+    "geneName": "R05D3.11",
+    "lookUp": "III-4-O24",
+    "parentLibrary": {
+      "rnaiId": 10040,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "79",
+      "well": "B09",
+      "chrom": "III",
+      "geneName": "R05D3.11",
+      "fwdPrimer": "CAGAATGTCGCTTCGACAAA",
+      "revPrimer": "TTTTCCAGCTCCACGGTATC",
+      "bioloc": "III-4O24",
+      "stocktitle": "III-4--A2",
+      "stockloc": "A2-H12"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "R05D3.11",
+      "wbGeneAccession": "WBGene00019883",
+      "wbGeneCgcName": "met-2",
+      "wbTranscript": "R05D3.11",
+      "wbProteinAccession": "CE47959",
+      "insdcParentSeq": "BX284603",
+      "insdcLocusTag": "CELE_R05D3.11",
+      "insdcProteinId": "CCD73198",
+      "uniprotAccession": "P34544"
+    }
+  },
+  "B10": {
+    "isValid": true,
+    "well": "B10",
+    "geneData": {}
+  },
+  "B11": {
+    "isValid": true,
+    "well": "B11",
+    "geneData": {}
+  },
+  "B12": {
+    "isValid": true,
+    "well": "B12",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "C01": {
+    "isValid": true,
+    "well": "C01",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "C02": {
+    "isValid": true,
+    "well": "C02",
+    "taxTerm": "M03C11.8",
+    "geneName": "M03C11.8",
+    "lookUp": "III-5-H13",
+    "parentLibrary": {
+      "rnaiId": 10413,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "84",
+      "well": "C02",
+      "chrom": "III",
+      "geneName": "M03C11.8",
+      "fwdPrimer": "CCTGGAAAAATTGGCTGAAA",
+      "revPrimer": "CTGTGTGAACGATTCCGATG",
+      "bioloc": "III-5H13",
+      "stocktitle": "III-5--B1",
+      "stockloc": "B1-D07"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "M03C11.8",
+      "wbGeneAccession": "WBGene00010845",
+      "wbGeneCgcName": null,
+      "wbTranscript": "M03C11.8",
+      "wbProteinAccession": "CE34059",
+      "insdcParentSeq": "BX284603",
+      "insdcLocusTag": "CELE_M03C11.8",
+      "insdcProteinId": "CAA88960",
+      "uniprotAccession": "G5EDG2"
+    }
+  },
+  "C03": {
+    "isValid": true,
+    "well": "C03",
+    "taxTerm": "D2045.1",
+    "geneName": "D2045.1",
+    "lookUp": "III-5-H21",
+    "parentLibrary": {
+      "rnaiId": 10417,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "84",
+      "well": "C03",
+      "chrom": "III",
+      "geneName": "D2045.1",
+      "fwdPrimer": "ATCATCCACAACAACAGCCA",
+      "revPrimer": "GAAAGAGGGAAACATGCGAA",
+      "bioloc": "III-5H21",
+      "stocktitle": "III-5--B1",
+      "stockloc": "B1-D11"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "D2045.1",
+      "wbGeneAccession": "WBGene00000231",
+      "wbGeneCgcName": "atx-2",
+      "wbTranscript": "D2045.1b",
+      "wbProteinAccession": "CE37967",
+      "insdcParentSeq": "BX284603",
+      "insdcLocusTag": "CELE_D2045.1",
+      "insdcProteinId": "CAI46560",
+      "uniprotAccession": "Q5FC83"
+    }
+  },
+  "C04": {
+    "isValid": true,
+    "well": "C04",
+    "geneData": {}
+  },
+  "C05": {
+    "isValid": true,
+    "well": "C05",
+    "taxTerm": "Y43F4B.3",
+    "geneName": "Y43F4B.3",
+    "lookUp": "III-6-H17",
+    "parentLibrary": {
+      "rnaiId": 10711,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "88",
+      "well": "C05",
+      "chrom": "III",
+      "geneName": "Y43F4B.3",
+      "fwdPrimer": "CGCTGCTAACTTCGACAGTAAAT",
+      "revPrimer": "AACGTACCCCCTCTTCTAATCAA",
+      "bioloc": "III-6H17",
+      "stocktitle": "III-6--B1",
+      "stockloc": "B1-D09"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "Y43F4B.3",
+      "wbGeneAccession": "WBGene00012802",
+      "wbGeneCgcName": "set-25",
+      "wbTranscript": "Y43F4B.3",
+      "wbProteinAccession": "CE41469",
+      "insdcParentSeq": "BX284603",
+      "insdcLocusTag": "CELE_Y43F4B.3",
+      "insdcProteinId": "CAA16332",
+      "uniprotAccession": "G5EEU2"
+    }
+  },
+  "C06": {
+    "isValid": true,
+    "well": "C06",
+    "geneData": {}
+  },
+  "C07": {
+    "isValid": true,
+    "well": "C07",
+    "taxTerm": "T12E12.4",
+    "geneName": "T12E12.4",
+    "lookUp": "IV-2-L12",
+    "parentLibrary": {
+      "rnaiId": 3530,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "99",
+      "well": "C07",
+      "chrom": "IV",
+      "geneName": "T12E12.4",
+      "fwdPrimer": "TAGTCGGTCGGGATTTTCTG",
+      "revPrimer": "CTGGTACGAAAAGAGCTGGC",
+      "bioloc": "IV-2L12",
+      "stocktitle": "IV-2--B2",
+      "stockloc": "B2-F06"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "T12E12.4",
+      "wbGeneAccession": "WBGene00001093",
+      "wbGeneCgcName": "drp-1",
+      "wbTranscript": "T12E12.4b.2",
+      "wbProteinAccession": "CE30173",
+      "insdcParentSeq": "BX284604",
+      "insdcLocusTag": "CELE_T12E12.4",
+      "insdcProteinId": "CCD70526",
+      "uniprotAccession": "Q8WQC9"
+    }
+  },
+  "C08": {
+    "isValid": true,
+    "well": "C08",
+    "taxTerm": "K08F11.5",
+    "geneName": "K08F11.5",
+    "lookUp": "IV-2-M12",
+    "parentLibrary": {
+      "rnaiId": 3367,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "97",
+      "well": "C08",
+      "chrom": "IV",
+      "geneName": "K08F11.5",
+      "fwdPrimer": "ATGAGCGTTGTCATGTTCCA",
+      "revPrimer": "TCAGAGTGCTCATACCAGCG",
+      "bioloc": "IV-2M12",
+      "stocktitle": "IV-2--A2",
+      "stockloc": "A2-G06"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "K08F11.5",
+      "wbGeneAccession": "WBGene00019544",
+      "wbGeneCgcName": "miro-1",
+      "wbTranscript": "K08F11.5",
+      "wbProteinAccession": "CE11958",
+      "insdcParentSeq": "BX284604",
+      "insdcLocusTag": "CELE_K08F11.5",
+      "insdcProteinId": "CCD68726",
+      "uniprotAccession": "Q94263"
+    }
+  },
+  "C09": {
+    "isValid": true,
+    "well": "C09",
+    "geneData": {}
+  },
+  "C10": {
+    "isValid": true,
+    "well": "C10",
+    "geneData": {}
+  },
+  "C11": {
+    "isValid": true,
+    "well": "C11",
+    "geneData": {}
+  },
+  "C12": {
+    "isValid": true,
+    "well": "C12",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "D01": {
+    "isValid": true,
+    "well": "D01",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "D02": {
+    "isValid": true,
+    "well": "D02",
+    "taxTerm": "F54D11.2",
+    "geneName": "F54D11.2",
+    "lookUp": "V-3-B24",
+    "parentLibrary": {
+      "rnaiId": 12248,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "136",
+      "well": "D02",
+      "chrom": "V",
+      "geneName": "F54D11.2",
+      "fwdPrimer": "GCTTAAAGGCTCAAGTAAGGAGC",
+      "revPrimer": "GAAATATCCGAAAATCGGAAAAC",
+      "bioloc": "V-3B24",
+      "stocktitle": "V-3--B2",
+      "stockloc": "B2-A12"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "F54D11.2",
+      "wbGeneAccession": "WBGene00018812",
+      "wbGeneCgcName": "sumv-2",
+      "wbTranscript": "F54D11.2.2",
+      "wbProteinAccession": "CE30805",
+      "insdcParentSeq": "BX284605",
+      "insdcLocusTag": "CELE_F54D11.2",
+      "insdcProteinId": "CCD71035",
+      "uniprotAccession": "Q22992"
+    }
+  },
+  "D03": {
+    "isValid": true,
+    "well": "D03",
+    "geneData": {}
+  },
+  "D04": {
+    "isValid": true,
+    "well": "D04",
+    "taxTerm": "C53A5.3",
+    "geneName": "C53A5.3",
+    "lookUp": "V-9-F11",
+    "parentLibrary": {
+      "rnaiId": 13965,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "159",
+      "well": "D04",
+      "chrom": "V",
+      "geneName": "C53A5.3",
+      "fwdPrimer": "AGGAGCTGGAAAAGGAAAGC",
+      "revPrimer": "GGGACGACAAGAGAAATGGA",
+      "bioloc": "V-9F11",
+      "stocktitle": "V-9--B1",
+      "stockloc": "B1-C06"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "C53A5.3",
+      "wbGeneAccession": "WBGene00001834",
+      "wbGeneCgcName": "hda-1",
+      "wbTranscript": "C53A5.3",
+      "wbProteinAccession": "CE08952",
+      "insdcParentSeq": "BX284605",
+      "insdcLocusTag": "CELE_C53A5.3",
+      "insdcProteinId": "CAB03984",
+      "uniprotAccession": "O17695"
+    }
+  },
+  "D05": {
+    "isValid": true,
+    "well": "D05",
+    "taxTerm": "F26F12.7.1",
+    "geneName": "F26F12.7.1",
+    "lookUp": "V-14-A11",
+    "parentLibrary": {
+      "rnaiId": 15120,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "S1",
+      "well": "D05",
+      "chrom": "V",
+      "geneName": "F26F12.7.1",
+      "fwdPrimer": "ttggtttcaatccacgtcaa",
+      "revPrimer": "gtctagacacgtcggcctt",
+      "bioloc": "V-14A11",
+      "stocktitle": "V-14--A1",
+      "stockloc": "A1-A06"
+    },
+    "geneData": {}
+  },
+  "D06": {
+    "isValid": true,
+    "well": "D06",
+    "taxTerm": "F53H2.3",
+    "geneName": "F53H2.3",
+    "lookUp": "V-15-O10",
+    "parentLibrary": {
+      "rnaiId": 15839,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "S30",
+      "well": "D06",
+      "chrom": "V",
+      "geneName": "F53H2.3",
+      "fwdPrimer": "cggactatttgcccacagtt",
+      "revPrimer": "aatttcccccaaaatctcc",
+      "bioloc": "V-15O10",
+      "stocktitle": "V-15--A2",
+      "stockloc": "A2-H05"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "F53H2.3",
+      "wbGeneAccession": "WBGene00010006",
+      "wbGeneCgcName": null,
+      "wbTranscript": "F53H2.3d",
+      "wbProteinAccession": null,
+      "insdcParentSeq": "Z82270",
+      "insdcLocusTag": "CELE_F53H2.3",
+      "insdcProteinId": null,
+      "uniprotAccession": null
+    }
+  },
+  "D07": {
+    "isValid": true,
+    "well": "D07",
+    "taxTerm": "R04A9.2",
+    "geneName": "R04A9.2",
+    "lookUp": "X-1-A17",
+    "parentLibrary": {
+      "rnaiId": 6104,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "176",
+      "well": "D07",
+      "chrom": "X",
+      "geneName": "R04A9.2",
+      "fwdPrimer": "CCCCAAGTGTGGAGGAACTA",
+      "revPrimer": "AATTATGCCCAAAAGTTGCG",
+      "bioloc": "X-1A17",
+      "stocktitle": "X-1--A1",
+      "stockloc": "A1-A09"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "R04A9.2",
+      "wbGeneAccession": "WBGene00019862",
+      "wbGeneCgcName": "nrde-3",
+      "wbTranscript": "R04A9.2",
+      "wbProteinAccession": "CE04789",
+      "insdcParentSeq": "BX284606",
+      "insdcLocusTag": "CELE_R04A9.2",
+      "insdcProteinId": "CCD62910",
+      "uniprotAccession": "Q21691"
+    }
+  },
+  "D08": {
+    "isValid": true,
+    "well": "D08",
+    "taxTerm": "M163.4",
+    "geneName": "M163.4",
+    "lookUp": "X-6-B14",
+    "parentLibrary": {
+      "rnaiId": 8054,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "199",
+      "well": "D08",
+      "chrom": "X",
+      "geneName": "M163.4",
+      "fwdPrimer": "CGGAAGAACTTTCTTGGCAG",
+      "revPrimer": "TGTAAGAACAGACGGGGGTC",
+      "bioloc": "X-6B14",
+      "stocktitle": "X-6--B2",
+      "stockloc": "B2-A07"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "M163.4",
+      "wbGeneAccession": "WBGene00001583",
+      "wbGeneCgcName": "gfi-3",
+      "wbTranscript": "M163.4",
+      "wbProteinAccession": "CE12452",
+      "insdcParentSeq": "BX284606",
+      "insdcLocusTag": "CELE_M163.4",
+      "insdcProteinId": "CAB01894",
+      "uniprotAccession": "Q93903"
+    }
+  },
+  "D09": {
+    "isValid": true,
+    "well": "D09",
+    "geneData": {}
+  },
+  "D10": {
+    "isValid": true,
+    "well": "D10",
+    "taxTerm": "C10E2.3",
+    "geneName": "C10E2.3",
+    "lookUp": "X-7-B21",
+    "parentLibrary": {
+      "rnaiId": 8311,
+      "libraryId": 1,
+      "rnaiType": "clone",
+      "plate": "202",
+      "well": "D10",
+      "chrom": "X",
+      "geneName": "C10E2.3",
+      "fwdPrimer": "ACAGGCCAAACTCCAACAAC",
+      "revPrimer": "TGTGACTTCATATCCGCCAA",
+      "bioloc": "X-7B21",
+      "stocktitle": "X-7--B1",
+      "stockloc": "B1-A11"
+    },
+    "geneData": {
+      "wbGeneSequenceId": "C10E2.3",
+      "wbGeneAccession": "WBGene00001837",
+      "wbGeneCgcName": "hda-4",
+      "wbTranscript": "C10E2.3a",
+      "wbProteinAccession": "CE42060",
+      "insdcParentSeq": "BX284606",
+      "insdcLocusTag": "CELE_C10E2.3",
+      "insdcProteinId": "CCD64116",
+      "uniprotAccession": "O17323"
+    }
+  },
+  "D11": {
+    "isValid": true,
+    "well": "D11",
+    "geneData": {}
+  },
+  "D12": {
+    "isValid": true,
+    "well": "D12",
+    "taxTerm": "L4440",
+    "geneName": "L4440",
+    "lookUp": "L4440",
+    "geneData": {}
+  },
+  "E01": {
+    "isValid": true,
+    "well": "E01",
+    "geneData": {}
+  },
+  "E02": {
+    "isValid": true,
+    "well": "E02",
+    "geneData": {}
+  },
+  "E03": {
+    "isValid": true,
+    "well": "E03",
+    "geneData": {}
+  },
+  "E04": {
+    "isValid": true,
+    "well": "E04",
+    "geneData": {}
+  },
+  "E05": {
+    "isValid": true,
+    "well": "E05",
+    "geneData": {}
+  },
+  "E06": {
+    "isValid": true,
+    "well": "E06",
+    "geneData": {}
+  },
+  "E07": {
+    "isValid": true,
+    "well": "E07",
+    "geneData": {}
+  },
+  "E08": {
+    "isValid": true,
+    "well": "E08",
+    "geneData": {}
+  },
+  "E09": {
+    "isValid": true,
+    "well": "E09",
+    "geneData": {}
+  },
+  "E10": {
+    "isValid": true,
+    "well": "E10",
+    "geneData": {}
+  },
+  "E11": {
+    "isValid": true,
+    "well": "E11",
+    "geneData": {}
+  },
+  "E12": {
+    "isValid": true,
+    "well": "E12",
+    "geneData": {}
+  },
+  "F01": {
+    "isValid": true,
+    "well": "F01",
+    "geneData": {}
+  },
+  "F02": {
+    "isValid": true,
+    "well": "F02",
+    "geneData": {}
+  },
+  "F03": {
+    "isValid": true,
+    "well": "F03",
+    "geneData": {}
+  },
+  "F04": {
+    "isValid": true,
+    "well": "F04",
+    "geneData": {}
+  },
+  "F05": {
+    "isValid": true,
+    "well": "F05",
+    "geneData": {}
+  },
+  "F06": {
+    "isValid": true,
+    "well": "F06",
+    "geneData": {}
+  },
+  "F07": {
+    "isValid": true,
+    "well": "F07",
+    "geneData": {}
+  },
+  "F08": {
+    "isValid": true,
+    "well": "F08",
+    "geneData": {}
+  },
+  "F09": {
+    "isValid": true,
+    "well": "F09",
+    "geneData": {}
+  },
+  "F10": {
+    "isValid": true,
+    "well": "F10",
+    "geneData": {}
+  },
+  "F11": {
+    "isValid": true,
+    "well": "F11",
+    "geneData": {}
+  },
+  "F12": {
+    "isValid": true,
+    "well": "F12",
+    "geneData": {}
+  },
+  "G01": {
+    "isValid": true,
+    "well": "G01",
+    "geneData": {}
+  },
+  "G02": {
+    "isValid": true,
+    "well": "G02",
+    "geneData": {}
+  },
+  "G03": {
+    "isValid": true,
+    "well": "G03",
+    "geneData": {}
+  },
+  "G04": {
+    "isValid": true,
+    "well": "G04",
+    "geneData": {}
+  },
+  "G05": {
+    "isValid": true,
+    "well": "G05",
+    "geneData": {}
+  },
+  "G06": {
+    "isValid": true,
+    "well": "G06",
+    "geneData": {}
+  },
+  "G07": {
+    "isValid": true,
+    "well": "G07",
+    "geneData": {}
+  },
+  "G08": {
+    "isValid": true,
+    "well": "G08",
+    "geneData": {}
+  },
+  "G09": {
+    "isValid": true,
+    "well": "G09",
+    "geneData": {}
+  },
+  "G10": {
+    "isValid": true,
+    "well": "G10",
+    "geneData": {}
+  },
+  "G11": {
+    "isValid": true,
+    "well": "G11",
+    "geneData": {}
+  },
+  "G12": {
+    "isValid": true,
+    "well": "G12",
+    "geneData": {}
+  },
+  "H01": {
+    "isValid": true,
+    "well": "H01",
+    "geneData": {}
+  },
+  "H02": {
+    "isValid": true,
+    "well": "H02",
+    "geneData": {}
+  },
+  "H03": {
+    "isValid": true,
+    "well": "H03",
+    "geneData": {}
+  },
+  "H04": {
+    "isValid": true,
+    "well": "H04",
+    "geneData": {}
+  },
+  "H05": {
+    "isValid": true,
+    "well": "H05",
+    "geneData": {}
+  },
+  "H06": {
+    "isValid": true,
+    "well": "H06",
+    "geneData": {}
+  },
+  "H07": {
+    "isValid": true,
+    "well": "H07",
+    "geneData": {}
+  },
+  "H08": {
+    "isValid": true,
+    "well": "H08",
+    "geneData": {}
+  },
+  "H09": {
+    "isValid": true,
+    "well": "H09",
+    "geneData": {}
+  },
+  "H10": {
+    "isValid": true,
+    "well": "H10",
+    "geneData": {}
+  },
+  "H11": {
+    "isValid": true,
+    "well": "H11",
+    "geneData": {}
+  },
+  "H12": {
+    "isValid": true,
+    "well": "H12",
+    "geneData": {}
+  },
+  "platePlanUploadDate": "2018-05-16T09:18:10.746Z",
+  "platePlanName": "RNAi-AHR2-2017-08-02",
+  "libraryId": 1
+}

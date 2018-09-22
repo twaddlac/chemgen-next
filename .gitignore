@@ -1,0 +1,63 @@
+**/node_modules
+node_modules
+**/.idea
+.idea
+**/.DS_Store
+**/Thumbs.db
+.DS_Store
+Thumbs.db
+
+**/*.gz
+**/*.zip
+**/*.sql.gz
+**/*.sql
+**/*.csv
+
+## chemgen-next-client .gitignore
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+chemgen-next-client/dist
+chemgen-next-client/dist-server
+chemgen-next-client/tmp
+chemgen-next-client/out-tsc
+
+# IDEs and editors
+chemgen-next-client/.idea
+chemgen-next-client/.project
+chemgen-next-client/.classpath
+chemgen-next-client/.c9/
+chemgen-next-client/*.launch
+chemgen-next-client/.settings/
+chemgen-next-client/*.sublime-workspace
+
+# IDE - VSCode
+chemgen-next-client/.vscode/*
+chemgen-next-client/!.vscode/settings.json
+chemgen-next-client/!.vscode/tasks.json
+chemgen-next-client/!.vscode/launch.json
+chemgen-next-client/!.vscode/extensions.json
+
+# misc
+chemgen-next-client/.sass-cache
+chemgen-next-client/connect.lock
+chemgen-next-client/coverage
+chemgen-next-client/libpeerconnection.log
+chemgen-next-clientnpm-debug.log
+chemgen-next-clientyarn-error.log
+chemgen-next-clienttestem.log
+chemgen-next-client/typings
+
+# e2e
+chemgen-next-client/e2e/*.js
+chemgen-next-client/e2e/*.map
+
+# System Files
+chemgen-next-client/.DS_Store
+chemgen-next-client/Thumbs.db
+
+
+# chemgen-next-analysis-docker
+chemgen-next-analysis-docker/counts/tf_1.4_faster_rcnn_inception_resnet_v2_atrous_coco/frozen_inference_graph.pb
+chemgen-next-analysis-docker/classify_image/emb_leth_ad_ny_1_inception_v3_default/emb_leth_ad_ny_1_hub_inceptionv3/output_graph.pb

@@ -1,0 +1,33 @@
+<div class="row" name="expSet">
+  <div class="col-md-12">
+    <h3>{{title}}</h3>
+  </div>
+  <div *ngFor="let image of album; let i=index">
+    <div class="col-md-3">
+      <div>
+        <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+             (click)="open(album, i)"/>
+      </div>
+      <br>
+      <div>
+        <dl class="dl-horizontal">
+          <dt>Worm Count</dt>
+          <dd>{{image.counts.wormCount}}</dd>
+          <dt>Larva Count</dt>
+          <dd>{{image.counts.larvaCount}}</dd>
+          <dt>Egg Count</dt>
+          <dd>{{image.counts.eggCount}}</dd>
+          <dt>% Embryonic Lethality</dt>
+          <dd>{{image.counts.percEmbLeth}}</dd>
+          <dt>% Sterility</dt>
+          <dd>{{image.counts.percSter}}</dd>
+          <dt>Brood Size</dt>
+          <dd>{{image.counts.broodSize}}</dd>
+          <dt>Image Path</dt>
+          <dd>{{image.counts.assayImagePath}}</dd>
+        </dl>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

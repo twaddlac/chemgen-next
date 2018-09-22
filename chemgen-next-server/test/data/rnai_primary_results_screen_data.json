@@ -1,0 +1,5531 @@
+{
+  "plateDataList": [
+    {
+      "expPlate": {
+        "plateId": 1,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9277",
+        "barcode": "L4440E",
+        "instrumentId": 1,
+        "instrumentPlateId": 9277,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150001\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 1,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 1,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 1,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 2,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 2,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 2,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 3,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 3,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 3,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 4,
+            "libraryId": 1,
+            "plateId": 1,
+            "assayId": 4,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 4,
+            "screenId": 1,
+            "plateId": 1,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9277/L4440E_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 1,
+            "termId": 1,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440"
+          },
+          {
+            "termTaxonomyId": 191,
+            "termId": 213,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "1"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 175,
+            "termId": 213,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "1"
+          },
+          {
+            "termTaxonomyId": 169,
+            "termId": 208,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9277"
+          },
+          {
+            "termTaxonomyId": 164,
+            "termId": 202,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440E"
+          },
+          {
+            "termTaxonomyId": 162,
+            "termId": 199,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440"
+          },
+          {
+            "termTaxonomyId": 157,
+            "termId": 196,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+          },
+          {
+            "termTaxonomyId": 149,
+            "termId": 191,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E"
+          },
+          {
+            "termTaxonomyId": 141,
+            "termId": 186,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_W-A01"
+          },
+          {
+            "termTaxonomyId": 133,
+            "termId": 178,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_W-A01"
+          },
+          {
+            "termTaxonomyId": 125,
+            "termId": 170,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_AI-1"
+          },
+          {
+            "termTaxonomyId": 117,
+            "termId": 162,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_R-A"
+          },
+          {
+            "termTaxonomyId": 112,
+            "termId": 154,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_C-01"
+          },
+          {
+            "termTaxonomyId": 107,
+            "termId": 146,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 102,
+            "termId": 138,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-1"
+          },
+          {
+            "termTaxonomyId": 97,
+            "termId": 136,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+          },
+          {
+            "termTaxonomyId": 89,
+            "termId": 130,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_W-A02"
+          },
+          {
+            "termTaxonomyId": 81,
+            "termId": 124,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_W-A02"
+          },
+          {
+            "termTaxonomyId": 73,
+            "termId": 118,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_AI-2"
+          },
+          {
+            "termTaxonomyId": 65,
+            "termId": 113,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_C-02"
+          },
+          {
+            "termTaxonomyId": 57,
+            "termId": 108,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 52,
+            "termId": 100,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-2"
+          },
+          {
+            "termTaxonomyId": 51,
+            "termId": 95,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+          },
+          {
+            "termTaxonomyId": 47,
+            "termId": 87,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_W-A03"
+          },
+          {
+            "termTaxonomyId": 43,
+            "termId": 79,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_W-A03"
+          },
+          {
+            "termTaxonomyId": 39,
+            "termId": 71,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_AI-3"
+          },
+          {
+            "termTaxonomyId": 35,
+            "termId": 63,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_C-03"
+          },
+          {
+            "termTaxonomyId": 31,
+            "termId": 58,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 27,
+            "termId": 53,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-3"
+          },
+          {
+            "termTaxonomyId": 26,
+            "termId": 51,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+          },
+          {
+            "termTaxonomyId": 22,
+            "termId": 43,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_W-A12"
+          },
+          {
+            "termTaxonomyId": 18,
+            "termId": 35,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_W-A12"
+          },
+          {
+            "termTaxonomyId": 14,
+            "termId": 27,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_AI-4"
+          },
+          {
+            "termTaxonomyId": 10,
+            "termId": 19,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_C-12"
+          },
+          {
+            "termTaxonomyId": 6,
+            "termId": 11,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-1_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 2,
+            "termId": 3,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-4"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 8,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9278",
+        "barcode": "L4440E_D",
+        "instrumentId": 1,
+        "instrumentPlateId": 9278,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150002\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 5,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 5,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 5,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 6,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 6,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 6,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 7,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 7,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 7,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 8,
+            "libraryId": 1,
+            "plateId": 8,
+            "assayId": 8,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 1
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 1,
+            "expGroupType": "ctrl_null",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 8,
+            "screenId": 1,
+            "plateId": 8,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "1",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9278/L4440E_D_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 1,
+            "termId": 1,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440"
+          },
+          {
+            "termTaxonomyId": 191,
+            "termId": 213,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "1"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 176,
+            "termId": 135,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "8"
+          },
+          {
+            "termTaxonomyId": 170,
+            "termId": 209,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9278"
+          },
+          {
+            "termTaxonomyId": 165,
+            "termId": 203,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440E_D"
+          },
+          {
+            "termTaxonomyId": 162,
+            "termId": 199,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440"
+          },
+          {
+            "termTaxonomyId": 157,
+            "termId": 196,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+          },
+          {
+            "termTaxonomyId": 150,
+            "termId": 192,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D"
+          },
+          {
+            "termTaxonomyId": 142,
+            "termId": 187,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_W-A01"
+          },
+          {
+            "termTaxonomyId": 134,
+            "termId": 179,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_W-A01"
+          },
+          {
+            "termTaxonomyId": 126,
+            "termId": 171,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_AI-5"
+          },
+          {
+            "termTaxonomyId": 118,
+            "termId": 163,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_R-A"
+          },
+          {
+            "termTaxonomyId": 113,
+            "termId": 155,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_C-01"
+          },
+          {
+            "termTaxonomyId": 108,
+            "termId": 147,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 103,
+            "termId": 139,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-5"
+          },
+          {
+            "termTaxonomyId": 97,
+            "termId": 136,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+          },
+          {
+            "termTaxonomyId": 90,
+            "termId": 131,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_W-A02"
+          },
+          {
+            "termTaxonomyId": 82,
+            "termId": 125,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_W-A02"
+          },
+          {
+            "termTaxonomyId": 74,
+            "termId": 119,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_AI-6"
+          },
+          {
+            "termTaxonomyId": 66,
+            "termId": 114,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_C-02"
+          },
+          {
+            "termTaxonomyId": 58,
+            "termId": 109,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 53,
+            "termId": 101,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-6"
+          },
+          {
+            "termTaxonomyId": 51,
+            "termId": 95,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+          },
+          {
+            "termTaxonomyId": 48,
+            "termId": 88,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_W-A03"
+          },
+          {
+            "termTaxonomyId": 44,
+            "termId": 80,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_W-A03"
+          },
+          {
+            "termTaxonomyId": 40,
+            "termId": 72,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_AI-7"
+          },
+          {
+            "termTaxonomyId": 36,
+            "termId": 64,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_C-03"
+          },
+          {
+            "termTaxonomyId": 32,
+            "termId": 59,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 28,
+            "termId": 54,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-7"
+          },
+          {
+            "termTaxonomyId": 26,
+            "termId": 51,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+          },
+          {
+            "termTaxonomyId": 23,
+            "termId": 44,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_W-A12"
+          },
+          {
+            "termTaxonomyId": 19,
+            "termId": 36,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_W-A12"
+          },
+          {
+            "termTaxonomyId": 15,
+            "termId": 28,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_AI-8"
+          },
+          {
+            "termTaxonomyId": 11,
+            "termId": 20,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_C-12"
+          },
+          {
+            "termTaxonomyId": 7,
+            "termId": 12,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-8_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 3,
+            "termId": 4,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-8"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 7,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9279",
+        "barcode": "L4440E_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9279,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150003\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 9,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 9,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 9,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 10,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 10,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 10,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 11,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 11,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 11,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 12,
+            "libraryId": 1,
+            "plateId": 7,
+            "assayId": 12,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 12,
+            "screenId": 1,
+            "plateId": 7,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_M_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9279/L4440E_M_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 1,
+            "termId": 1,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440"
+          },
+          {
+            "termTaxonomyId": 192,
+            "termId": 234,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "2"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 177,
+            "termId": 207,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "7"
+          },
+          {
+            "termTaxonomyId": 171,
+            "termId": 210,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9279"
+          },
+          {
+            "termTaxonomyId": 166,
+            "termId": 204,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440E_M"
+          },
+          {
+            "termTaxonomyId": 162,
+            "termId": 199,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440"
+          },
+          {
+            "termTaxonomyId": 157,
+            "termId": 196,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+          },
+          {
+            "termTaxonomyId": 151,
+            "termId": 193,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_M"
+          },
+          {
+            "termTaxonomyId": 143,
+            "termId": 188,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_M_W-A01"
+          },
+          {
+            "termTaxonomyId": 135,
+            "termId": 180,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_W-A01"
+          },
+          {
+            "termTaxonomyId": 127,
+            "termId": 172,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_AI-9"
+          },
+          {
+            "termTaxonomyId": 119,
+            "termId": 164,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_R-A"
+          },
+          {
+            "termTaxonomyId": 114,
+            "termId": 156,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_C-01"
+          },
+          {
+            "termTaxonomyId": 109,
+            "termId": 148,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 104,
+            "termId": 140,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-9"
+          },
+          {
+            "termTaxonomyId": 97,
+            "termId": 136,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+          },
+          {
+            "termTaxonomyId": 91,
+            "termId": 132,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_M_W-A02"
+          },
+          {
+            "termTaxonomyId": 83,
+            "termId": 126,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_W-A02"
+          },
+          {
+            "termTaxonomyId": 75,
+            "termId": 120,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_AI-10"
+          },
+          {
+            "termTaxonomyId": 67,
+            "termId": 115,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_C-02"
+          },
+          {
+            "termTaxonomyId": 59,
+            "termId": 110,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 54,
+            "termId": 102,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-10"
+          },
+          {
+            "termTaxonomyId": 51,
+            "termId": 95,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+          },
+          {
+            "termTaxonomyId": 49,
+            "termId": 89,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_M_W-A03"
+          },
+          {
+            "termTaxonomyId": 45,
+            "termId": 81,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_W-A03"
+          },
+          {
+            "termTaxonomyId": 41,
+            "termId": 73,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_AI-11"
+          },
+          {
+            "termTaxonomyId": 37,
+            "termId": 65,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_C-03"
+          },
+          {
+            "termTaxonomyId": 33,
+            "termId": 60,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 29,
+            "termId": 55,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-11"
+          },
+          {
+            "termTaxonomyId": 26,
+            "termId": 51,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+          },
+          {
+            "termTaxonomyId": 24,
+            "termId": 45,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_M_W-A12"
+          },
+          {
+            "termTaxonomyId": 20,
+            "termId": 37,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_W-A12"
+          },
+          {
+            "termTaxonomyId": 16,
+            "termId": 29,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_AI-12"
+          },
+          {
+            "termTaxonomyId": 12,
+            "termId": 21,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_C-12"
+          },
+          {
+            "termTaxonomyId": 8,
+            "termId": 13,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-7_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 4,
+            "termId": 5,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-12"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 6,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9280",
+        "barcode": "L4440E_D_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9280,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150004\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 13,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 13,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 13,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 14,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 14,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 14,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 15,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 15,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 15,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 16,
+            "libraryId": 1,
+            "plateId": 6,
+            "assayId": 16,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "L4440",
+            "geneName": "L4440"
+          },
+          "annotationData": {
+            "geneName": "L4440",
+            "taxTerm": "L4440",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "L4440"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 2
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 2,
+            "expGroupType": "ctrl_strain",
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 2,
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 16,
+            "screenId": 1,
+            "plateId": 6,
+            "biosampleId": 2,
+            "assayCodeName": "L4440E_D_M_A12",
+            "assayWell": "A12",
+            "assayExpGroup": "2",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9280/L4440E_D_M_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 1,
+            "termId": 1,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440"
+          },
+          {
+            "termTaxonomyId": 192,
+            "termId": 234,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "2"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 178,
+            "termId": 214,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "6"
+          },
+          {
+            "termTaxonomyId": 172,
+            "termId": 211,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9280"
+          },
+          {
+            "termTaxonomyId": 167,
+            "termId": 205,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "L4440E_D_M"
+          },
+          {
+            "termTaxonomyId": 162,
+            "termId": 199,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440"
+          },
+          {
+            "termTaxonomyId": 157,
+            "termId": 196,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A01"
+          },
+          {
+            "termTaxonomyId": 152,
+            "termId": 194,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_M"
+          },
+          {
+            "termTaxonomyId": 144,
+            "termId": 189,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_M_W-A01"
+          },
+          {
+            "termTaxonomyId": 136,
+            "termId": 181,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_W-A01"
+          },
+          {
+            "termTaxonomyId": 128,
+            "termId": 173,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_AI-13"
+          },
+          {
+            "termTaxonomyId": 120,
+            "termId": 165,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_R-A"
+          },
+          {
+            "termTaxonomyId": 115,
+            "termId": 157,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_C-01"
+          },
+          {
+            "termTaxonomyId": 110,
+            "termId": 149,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 105,
+            "termId": 141,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-13"
+          },
+          {
+            "termTaxonomyId": 97,
+            "termId": 136,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A02"
+          },
+          {
+            "termTaxonomyId": 92,
+            "termId": 133,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_M_W-A02"
+          },
+          {
+            "termTaxonomyId": 84,
+            "termId": 127,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_W-A02"
+          },
+          {
+            "termTaxonomyId": 76,
+            "termId": 121,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_AI-14"
+          },
+          {
+            "termTaxonomyId": 68,
+            "termId": 116,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_C-02"
+          },
+          {
+            "termTaxonomyId": 60,
+            "termId": 111,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 55,
+            "termId": 103,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-14"
+          },
+          {
+            "termTaxonomyId": 51,
+            "termId": 95,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A03"
+          },
+          {
+            "termTaxonomyId": 50,
+            "termId": 90,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_M_W-A03"
+          },
+          {
+            "termTaxonomyId": 46,
+            "termId": 82,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_W-A03"
+          },
+          {
+            "termTaxonomyId": 42,
+            "termId": 74,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_AI-15"
+          },
+          {
+            "termTaxonomyId": 38,
+            "termId": 66,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_C-03"
+          },
+          {
+            "termTaxonomyId": 34,
+            "termId": 61,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 30,
+            "termId": 56,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-15"
+          },
+          {
+            "termTaxonomyId": 26,
+            "termId": 51,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-2_TT-L4440_W-A12"
+          },
+          {
+            "termTaxonomyId": 25,
+            "termId": 46,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-L4440E_D_M_W-A12"
+          },
+          {
+            "termTaxonomyId": 21,
+            "termId": 38,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_W-A12"
+          },
+          {
+            "termTaxonomyId": 17,
+            "termId": 30,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_AI-16"
+          },
+          {
+            "termTaxonomyId": 13,
+            "termId": 22,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_C-12"
+          },
+          {
+            "termTaxonomyId": 9,
+            "termId": 14,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-6_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 5,
+            "termId": 6,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-16"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 5,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9281",
+        "barcode": "RNAiI.3A1E",
+        "instrumentId": 1,
+        "instrumentPlateId": 9281,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150005\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 17,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 5,
+            "assayId": 17,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-3"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-3"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 3,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 17,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "3",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 18,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 5,
+            "assayId": 18,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-4"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-4"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 4,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 18,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "4",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 19,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 5,
+            "assayId": 19,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-5"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-5"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 5,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 19,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "5",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 20,
+            "libraryId": 1,
+            "plateId": 5,
+            "assayId": 20,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 20,
+            "screenId": 1,
+            "plateId": 5,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9281/RNAiI.3A1E_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 56,
+            "termId": 2,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.5"
+          },
+          {
+            "termTaxonomyId": 274,
+            "termId": 261,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "3"
+          },
+          {
+            "termTaxonomyId": 272,
+            "termId": 266,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-3"
+          },
+          {
+            "termTaxonomyId": 270,
+            "termId": 264,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai"
+          },
+          {
+            "termTaxonomyId": 268,
+            "termId": 262,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai-EGI-3"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 264,
+            "termId": 134,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "5"
+          },
+          {
+            "termTaxonomyId": 260,
+            "termId": 257,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9281"
+          },
+          {
+            "termTaxonomyId": 256,
+            "termId": 253,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "RNAiI.3A1E"
+          },
+          {
+            "termTaxonomyId": 255,
+            "termId": 252,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75"
+          },
+          {
+            "termTaxonomyId": 254,
+            "termId": 251,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+          },
+          {
+            "termTaxonomyId": 250,
+            "termId": 247,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E"
+          },
+          {
+            "termTaxonomyId": 246,
+            "termId": 243,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_W-A01"
+          },
+          {
+            "termTaxonomyId": 242,
+            "termId": 239,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_W-A01"
+          },
+          {
+            "termTaxonomyId": 238,
+            "termId": 235,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_AI-17"
+          },
+          {
+            "termTaxonomyId": 234,
+            "termId": 230,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_R-A"
+          },
+          {
+            "termTaxonomyId": 230,
+            "termId": 225,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_C-01"
+          },
+          {
+            "termTaxonomyId": 226,
+            "termId": 220,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 222,
+            "termId": 215,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-17"
+          },
+          {
+            "termTaxonomyId": 221,
+            "termId": 212,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.6"
+          },
+          {
+            "termTaxonomyId": 219,
+            "termId": 206,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "4"
+          },
+          {
+            "termTaxonomyId": 217,
+            "termId": 200,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-4"
+          },
+          {
+            "termTaxonomyId": 215,
+            "termId": 197,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai-EGI-4"
+          },
+          {
+            "termTaxonomyId": 214,
+            "termId": 195,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76"
+          },
+          {
+            "termTaxonomyId": 213,
+            "termId": 190,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+          },
+          {
+            "termTaxonomyId": 209,
+            "termId": 182,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_W-A02"
+          },
+          {
+            "termTaxonomyId": 205,
+            "termId": 174,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_W-A02"
+          },
+          {
+            "termTaxonomyId": 201,
+            "termId": 166,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_AI-18"
+          },
+          {
+            "termTaxonomyId": 197,
+            "termId": 158,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_C-02"
+          },
+          {
+            "termTaxonomyId": 193,
+            "termId": 150,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 187,
+            "termId": 142,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-18"
+          },
+          {
+            "termTaxonomyId": 185,
+            "termId": 137,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.7"
+          },
+          {
+            "termTaxonomyId": 182,
+            "termId": 134,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "5"
+          },
+          {
+            "termTaxonomyId": 179,
+            "termId": 128,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-5"
+          },
+          {
+            "termTaxonomyId": 173,
+            "termId": 122,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai-EGI-5"
+          },
+          {
+            "termTaxonomyId": 168,
+            "termId": 117,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77"
+          },
+          {
+            "termTaxonomyId": 163,
+            "termId": 112,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+          },
+          {
+            "termTaxonomyId": 158,
+            "termId": 104,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_W-A03"
+          },
+          {
+            "termTaxonomyId": 153,
+            "termId": 96,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_W-A03"
+          },
+          {
+            "termTaxonomyId": 145,
+            "termId": 91,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_AI-19"
+          },
+          {
+            "termTaxonomyId": 137,
+            "termId": 83,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_C-03"
+          },
+          {
+            "termTaxonomyId": 129,
+            "termId": 75,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 121,
+            "termId": 67,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-19"
+          },
+          {
+            "termTaxonomyId": 116,
+            "termId": 62,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "empty"
+          },
+          {
+            "termTaxonomyId": 111,
+            "termId": 57,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty"
+          },
+          {
+            "termTaxonomyId": 106,
+            "termId": 52,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+          },
+          {
+            "termTaxonomyId": 98,
+            "termId": 47,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_W-A12"
+          },
+          {
+            "termTaxonomyId": 93,
+            "termId": 39,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_W-A12"
+          },
+          {
+            "termTaxonomyId": 85,
+            "termId": 31,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_AI-20"
+          },
+          {
+            "termTaxonomyId": 77,
+            "termId": 23,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_C-12"
+          },
+          {
+            "termTaxonomyId": 69,
+            "termId": 15,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-5_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 61,
+            "termId": 7,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-20"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 4,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9282",
+        "barcode": "RNAiI.3A1E_D",
+        "instrumentId": 1,
+        "instrumentPlateId": 9282,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218160001\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 21,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 4,
+            "assayId": 21,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 3
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-3"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-3"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 3,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 21,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "3",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 22,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 4,
+            "assayId": 22,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 4
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-4"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-4"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 4,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 22,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "4",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 23,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 4,
+            "assayId": 23,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 5
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-5"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-ctrl_rnai-EGI-5"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 5,
+            "expGroupType": "ctrl_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 23,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "5",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 24,
+            "libraryId": 1,
+            "plateId": 4,
+            "assayId": 24,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 24,
+            "screenId": 1,
+            "plateId": 4,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9282/RNAiI.3A1E_D_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 56,
+            "termId": 2,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.5"
+          },
+          {
+            "termTaxonomyId": 274,
+            "termId": 261,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "3"
+          },
+          {
+            "termTaxonomyId": 272,
+            "termId": 266,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-3"
+          },
+          {
+            "termTaxonomyId": 270,
+            "termId": 264,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai"
+          },
+          {
+            "termTaxonomyId": 268,
+            "termId": 262,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai-EGI-3"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 265,
+            "termId": 206,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "4"
+          },
+          {
+            "termTaxonomyId": 261,
+            "termId": 258,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9282"
+          },
+          {
+            "termTaxonomyId": 257,
+            "termId": 254,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "RNAiI.3A1E_D"
+          },
+          {
+            "termTaxonomyId": 255,
+            "termId": 252,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75"
+          },
+          {
+            "termTaxonomyId": 254,
+            "termId": 251,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+          },
+          {
+            "termTaxonomyId": 251,
+            "termId": 248,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D"
+          },
+          {
+            "termTaxonomyId": 247,
+            "termId": 244,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_W-A01"
+          },
+          {
+            "termTaxonomyId": 243,
+            "termId": 240,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_W-A01"
+          },
+          {
+            "termTaxonomyId": 239,
+            "termId": 236,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_AI-21"
+          },
+          {
+            "termTaxonomyId": 235,
+            "termId": 231,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_R-A"
+          },
+          {
+            "termTaxonomyId": 231,
+            "termId": 226,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_C-01"
+          },
+          {
+            "termTaxonomyId": 227,
+            "termId": 221,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 223,
+            "termId": 216,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-21"
+          },
+          {
+            "termTaxonomyId": 221,
+            "termId": 212,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.6"
+          },
+          {
+            "termTaxonomyId": 219,
+            "termId": 206,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "4"
+          },
+          {
+            "termTaxonomyId": 217,
+            "termId": 200,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-4"
+          },
+          {
+            "termTaxonomyId": 215,
+            "termId": 197,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai-EGI-4"
+          },
+          {
+            "termTaxonomyId": 214,
+            "termId": 195,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76"
+          },
+          {
+            "termTaxonomyId": 213,
+            "termId": 190,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+          },
+          {
+            "termTaxonomyId": 210,
+            "termId": 183,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_W-A02"
+          },
+          {
+            "termTaxonomyId": 206,
+            "termId": 175,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_W-A02"
+          },
+          {
+            "termTaxonomyId": 202,
+            "termId": 167,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_AI-22"
+          },
+          {
+            "termTaxonomyId": 198,
+            "termId": 159,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_C-02"
+          },
+          {
+            "termTaxonomyId": 194,
+            "termId": 151,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 188,
+            "termId": 143,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-22"
+          },
+          {
+            "termTaxonomyId": 185,
+            "termId": 137,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.7"
+          },
+          {
+            "termTaxonomyId": 182,
+            "termId": 134,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "5"
+          },
+          {
+            "termTaxonomyId": 179,
+            "termId": 128,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-5"
+          },
+          {
+            "termTaxonomyId": 173,
+            "termId": 122,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-ctrl_rnai-EGI-5"
+          },
+          {
+            "termTaxonomyId": 168,
+            "termId": 117,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77"
+          },
+          {
+            "termTaxonomyId": 163,
+            "termId": 112,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+          },
+          {
+            "termTaxonomyId": 159,
+            "termId": 105,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_W-A03"
+          },
+          {
+            "termTaxonomyId": 154,
+            "termId": 97,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_W-A03"
+          },
+          {
+            "termTaxonomyId": 146,
+            "termId": 92,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_AI-23"
+          },
+          {
+            "termTaxonomyId": 138,
+            "termId": 84,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_C-03"
+          },
+          {
+            "termTaxonomyId": 130,
+            "termId": 76,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 122,
+            "termId": 68,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-23"
+          },
+          {
+            "termTaxonomyId": 116,
+            "termId": 62,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "empty"
+          },
+          {
+            "termTaxonomyId": 111,
+            "termId": 57,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty"
+          },
+          {
+            "termTaxonomyId": 106,
+            "termId": 52,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+          },
+          {
+            "termTaxonomyId": 99,
+            "termId": 48,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_W-A12"
+          },
+          {
+            "termTaxonomyId": 94,
+            "termId": 40,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_W-A12"
+          },
+          {
+            "termTaxonomyId": 86,
+            "termId": 32,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_AI-24"
+          },
+          {
+            "termTaxonomyId": 78,
+            "termId": 24,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_C-12"
+          },
+          {
+            "termTaxonomyId": 70,
+            "termId": 16,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-4_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 62,
+            "termId": 8,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-24"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 3,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9283",
+        "barcode": "RNAiI.3A1E_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9283,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218160002\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 25,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 3,
+            "assayId": 25,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-6"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-6"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 6,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 25,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "6",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 26,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 3,
+            "assayId": 26,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-7"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-7"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 7,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 26,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "7",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 27,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 3,
+            "assayId": 27,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-8"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 27,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 28,
+            "libraryId": 1,
+            "plateId": 3,
+            "assayId": 28,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 28,
+            "screenId": 1,
+            "plateId": 3,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_M_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 1,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9283/RNAiI.3A1E_M_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 56,
+            "termId": 2,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.5"
+          },
+          {
+            "termTaxonomyId": 275,
+            "termId": 214,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "6"
+          },
+          {
+            "termTaxonomyId": 273,
+            "termId": 267,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-6"
+          },
+          {
+            "termTaxonomyId": 271,
+            "termId": 265,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai"
+          },
+          {
+            "termTaxonomyId": 269,
+            "termId": 263,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai-EGI-6"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 266,
+            "termId": 261,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "3"
+          },
+          {
+            "termTaxonomyId": 262,
+            "termId": 259,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9283"
+          },
+          {
+            "termTaxonomyId": 258,
+            "termId": 255,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "RNAiI.3A1E_M"
+          },
+          {
+            "termTaxonomyId": 255,
+            "termId": 252,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75"
+          },
+          {
+            "termTaxonomyId": 254,
+            "termId": 251,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+          },
+          {
+            "termTaxonomyId": 252,
+            "termId": 249,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_M"
+          },
+          {
+            "termTaxonomyId": 248,
+            "termId": 245,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_M_W-A01"
+          },
+          {
+            "termTaxonomyId": 244,
+            "termId": 241,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_W-A01"
+          },
+          {
+            "termTaxonomyId": 240,
+            "termId": 237,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_AI-25"
+          },
+          {
+            "termTaxonomyId": 236,
+            "termId": 232,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_R-A"
+          },
+          {
+            "termTaxonomyId": 232,
+            "termId": 227,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_C-01"
+          },
+          {
+            "termTaxonomyId": 228,
+            "termId": 222,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 224,
+            "termId": 217,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-25"
+          },
+          {
+            "termTaxonomyId": 221,
+            "termId": 212,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.6"
+          },
+          {
+            "termTaxonomyId": 220,
+            "termId": 207,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "7"
+          },
+          {
+            "termTaxonomyId": 218,
+            "termId": 201,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-7"
+          },
+          {
+            "termTaxonomyId": 216,
+            "termId": 198,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai-EGI-7"
+          },
+          {
+            "termTaxonomyId": 214,
+            "termId": 195,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76"
+          },
+          {
+            "termTaxonomyId": 213,
+            "termId": 190,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+          },
+          {
+            "termTaxonomyId": 211,
+            "termId": 184,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_M_W-A02"
+          },
+          {
+            "termTaxonomyId": 207,
+            "termId": 176,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_W-A02"
+          },
+          {
+            "termTaxonomyId": 203,
+            "termId": 168,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_AI-26"
+          },
+          {
+            "termTaxonomyId": 199,
+            "termId": 160,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_C-02"
+          },
+          {
+            "termTaxonomyId": 195,
+            "termId": 152,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 189,
+            "termId": 144,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-26"
+          },
+          {
+            "termTaxonomyId": 185,
+            "termId": 137,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.7"
+          },
+          {
+            "termTaxonomyId": 183,
+            "termId": 135,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "8"
+          },
+          {
+            "termTaxonomyId": 180,
+            "termId": 129,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-8"
+          },
+          {
+            "termTaxonomyId": 174,
+            "termId": 123,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai-EGI-8"
+          },
+          {
+            "termTaxonomyId": 168,
+            "termId": 117,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77"
+          },
+          {
+            "termTaxonomyId": 163,
+            "termId": 112,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+          },
+          {
+            "termTaxonomyId": 160,
+            "termId": 106,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_M_W-A03"
+          },
+          {
+            "termTaxonomyId": 155,
+            "termId": 98,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_W-A03"
+          },
+          {
+            "termTaxonomyId": 147,
+            "termId": 93,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_AI-27"
+          },
+          {
+            "termTaxonomyId": 139,
+            "termId": 85,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_C-03"
+          },
+          {
+            "termTaxonomyId": 131,
+            "termId": 77,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 123,
+            "termId": 69,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-27"
+          },
+          {
+            "termTaxonomyId": 116,
+            "termId": 62,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "empty"
+          },
+          {
+            "termTaxonomyId": 111,
+            "termId": 57,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty"
+          },
+          {
+            "termTaxonomyId": 106,
+            "termId": 52,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+          },
+          {
+            "termTaxonomyId": 100,
+            "termId": 49,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_M_W-A12"
+          },
+          {
+            "termTaxonomyId": 95,
+            "termId": 41,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_W-A12"
+          },
+          {
+            "termTaxonomyId": 87,
+            "termId": 33,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_AI-28"
+          },
+          {
+            "termTaxonomyId": 79,
+            "termId": 25,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_C-12"
+          },
+          {
+            "termTaxonomyId": 71,
+            "termId": 17,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-3_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 63,
+            "termId": 9,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-28"
+          }
+        ]
+      }
+    },
+    {
+      "expPlate": {
+        "plateId": 2,
+        "screenId": 1,
+        "plateImageDate": "2017-12-18T00:00:00.000Z",
+        "plateTemperature": "25.5C",
+        "plateAssayDate": "2018-04-01T15:06:36.698Z",
+        "plateImagePath": "2017Dec18/9284",
+        "barcode": "RNAiI.3A1E_D_M",
+        "instrumentId": 1,
+        "instrumentPlateId": 9284,
+        "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218160003\\",
+        "expWorkflowId": 1,
+        "screenStage": "primary"
+      },
+      "wellDataList": [
+        {
+          "stockLibraryData": {
+            "stockId": 29,
+            "libraryId": 1,
+            "rnaiId": 701,
+            "plateId": 2,
+            "assayId": 29,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A01"
+          },
+          "parentLibraryData": {
+            "rnaiId": 701,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A01",
+            "chrom": "I",
+            "geneName": "C48E7.5",
+            "fwdPrimer": "TGTCGCAACTGAAAATCAGC",
+            "revPrimer": "CGTTTTGAAGTCGGCAATCT",
+            "bioloc": "I-3A01",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A01"
+          },
+          "annotationData": {
+            "geneName": "C48E7.5",
+            "taxTerm": "C48E7.5",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.5"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 6
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-6"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-6"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 6,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 701,
+            "biosampleId": 1,
+            "well": "A01",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 29,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A01",
+            "assayWell": "A01",
+            "assayExpGroup": "6",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A01"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 30,
+            "libraryId": 1,
+            "rnaiId": 702,
+            "plateId": 2,
+            "assayId": 30,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A02"
+          },
+          "parentLibraryData": {
+            "rnaiId": 702,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A02",
+            "chrom": "I",
+            "geneName": "C48E7.6",
+            "fwdPrimer": "TTTATTGGGTGGCTGGAGAG",
+            "revPrimer": "TCTCTGATGGTGATGGTGGA",
+            "bioloc": "I-3A03",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A02"
+          },
+          "annotationData": {
+            "geneName": "C48E7.6",
+            "taxTerm": "C48E7.6",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.6"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 7
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-7"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-7"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 7,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 702,
+            "biosampleId": 1,
+            "well": "A02",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 30,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A02",
+            "assayWell": "A02",
+            "assayExpGroup": "7",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A02"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 31,
+            "libraryId": 1,
+            "rnaiId": 703,
+            "plateId": 2,
+            "assayId": 31,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A03"
+          },
+          "parentLibraryData": {
+            "rnaiId": 703,
+            "libraryId": 1,
+            "rnaiType": "clone",
+            "plate": "9",
+            "well": "A03",
+            "chrom": "I",
+            "geneName": "C48E7.7",
+            "fwdPrimer": "GTAAAGGTCGATCAAACATCGAG",
+            "revPrimer": "GCAAATTCTCAACCAACTTCATC",
+            "bioloc": "I-3A05",
+            "stocktitle": "I-3--A1",
+            "stockloc": "A1-A03"
+          },
+          "annotationData": {
+            "geneName": "C48E7.7",
+            "taxTerm": "C48E7.7",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "C48E7.7"
+              },
+              {
+                "taxonomy": "exp_group_id",
+                "taxTerm": 8
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGI-8"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai"
+              },
+              {
+                "taxonomy": "envira-tag",
+                "taxTerm": "EGT-treat_rnai-EGI-8"
+              }
+            ]
+          },
+          "expGroup": {
+            "expGroupId": 8,
+            "expGroupType": "treat_rnai",
+            "screenId": 1,
+            "libraryId": 1,
+            "reagentId": 703,
+            "biosampleId": 1,
+            "well": "A03",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 31,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A03",
+            "assayWell": "A03",
+            "assayExpGroup": "8",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A03"
+          }
+        },
+        {
+          "stockLibraryData": {
+            "stockId": 32,
+            "libraryId": 1,
+            "plateId": 2,
+            "assayId": 32,
+            "datePrepared": "2018-04-01T15:06:36.698Z",
+            "location": "",
+            "preparedBy": "",
+            "well": "A12"
+          },
+          "parentLibraryData": {
+            "name": "empty",
+            "geneName": "empty"
+          },
+          "annotationData": {
+            "geneName": "empty",
+            "taxTerm": "empty",
+            "taxTerms": [
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              },
+              {
+                "taxonomy": "wb_gene_sequence_id",
+                "taxTerm": "empty"
+              }
+            ]
+          },
+          "expGroup": {
+            "screenId": 1,
+            "libraryId": 1,
+            "biosampleId": 1,
+            "well": "A12",
+            "expWorkflowId": 1
+          },
+          "expAssay": {
+            "assayId": 32,
+            "screenId": 1,
+            "plateId": 2,
+            "biosampleId": 1,
+            "assayCodeName": "RNAiI.3A1E_D_M_A12",
+            "assayWell": "A12",
+            "assayReplicateNum": 2,
+            "expWorkflowId": 1,
+            "assayImagePath": "2017Dec18/9284/RNAiI.3A1E_D_M_A12"
+          }
+        }
+      ],
+      "annotationData": {
+        "taxTerms": [
+          {
+            "termTaxonomyId": 56,
+            "termId": 2,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.5"
+          },
+          {
+            "termTaxonomyId": 275,
+            "termId": 214,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "6"
+          },
+          {
+            "termTaxonomyId": 273,
+            "termId": 267,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-6"
+          },
+          {
+            "termTaxonomyId": 271,
+            "termId": 265,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai"
+          },
+          {
+            "termTaxonomyId": 269,
+            "termId": 263,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai-EGI-6"
+          },
+          {
+            "termTaxonomyId": 186,
+            "termId": 229,
+            "taxonomy": "image_date",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "Mon Dec 18 2017 04:00:00 GMT+0400 (+04)"
+          },
+          {
+            "termTaxonomyId": 184,
+            "termId": 224,
+            "taxonomy": "screen_type",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "permissive"
+          },
+          {
+            "termTaxonomyId": 181,
+            "termId": 219,
+            "taxonomy": "screen_stage",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "primary"
+          },
+          {
+            "termTaxonomyId": 267,
+            "termId": 234,
+            "taxonomy": "exp_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "2"
+          },
+          {
+            "termTaxonomyId": 263,
+            "termId": 260,
+            "taxonomy": "instrument_plate_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "9284"
+          },
+          {
+            "termTaxonomyId": 259,
+            "termId": 256,
+            "taxonomy": "barcode",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "RNAiI.3A1E_D_M"
+          },
+          {
+            "termTaxonomyId": 255,
+            "termId": 252,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75"
+          },
+          {
+            "termTaxonomyId": 254,
+            "termId": 251,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E75_W-A01"
+          },
+          {
+            "termTaxonomyId": 253,
+            "termId": 250,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_M"
+          },
+          {
+            "termTaxonomyId": 249,
+            "termId": 246,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_M_W-A01"
+          },
+          {
+            "termTaxonomyId": 245,
+            "termId": 242,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_W-A01"
+          },
+          {
+            "termTaxonomyId": 241,
+            "termId": 238,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_AI-29"
+          },
+          {
+            "termTaxonomyId": 237,
+            "termId": 233,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_R-A"
+          },
+          {
+            "termTaxonomyId": 233,
+            "termId": 228,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_C-01"
+          },
+          {
+            "termTaxonomyId": 229,
+            "termId": 223,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_R-A_C-01"
+          },
+          {
+            "termTaxonomyId": 225,
+            "termId": 218,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-29"
+          },
+          {
+            "termTaxonomyId": 221,
+            "termId": 212,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.6"
+          },
+          {
+            "termTaxonomyId": 220,
+            "termId": 207,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "7"
+          },
+          {
+            "termTaxonomyId": 218,
+            "termId": 201,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-7"
+          },
+          {
+            "termTaxonomyId": 216,
+            "termId": 198,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai-EGI-7"
+          },
+          {
+            "termTaxonomyId": 214,
+            "termId": 195,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76"
+          },
+          {
+            "termTaxonomyId": 213,
+            "termId": 190,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E76_W-A02"
+          },
+          {
+            "termTaxonomyId": 212,
+            "termId": 185,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_M_W-A02"
+          },
+          {
+            "termTaxonomyId": 208,
+            "termId": 177,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_W-A02"
+          },
+          {
+            "termTaxonomyId": 204,
+            "termId": 169,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_AI-30"
+          },
+          {
+            "termTaxonomyId": 200,
+            "termId": 161,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_C-02"
+          },
+          {
+            "termTaxonomyId": 196,
+            "termId": 153,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_R-A_C-02"
+          },
+          {
+            "termTaxonomyId": 190,
+            "termId": 145,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-30"
+          },
+          {
+            "termTaxonomyId": 185,
+            "termId": 137,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "C48E7.7"
+          },
+          {
+            "termTaxonomyId": 183,
+            "termId": 135,
+            "taxonomy": "exp_group_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "8"
+          },
+          {
+            "termTaxonomyId": 180,
+            "termId": 129,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGI-8"
+          },
+          {
+            "termTaxonomyId": 174,
+            "termId": 123,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "EGT-treat_rnai-EGI-8"
+          },
+          {
+            "termTaxonomyId": 168,
+            "termId": 117,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77"
+          },
+          {
+            "termTaxonomyId": 163,
+            "termId": 112,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-C48E77_W-A03"
+          },
+          {
+            "termTaxonomyId": 161,
+            "termId": 107,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_M_W-A03"
+          },
+          {
+            "termTaxonomyId": 156,
+            "termId": 99,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_W-A03"
+          },
+          {
+            "termTaxonomyId": 148,
+            "termId": 94,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_AI-31"
+          },
+          {
+            "termTaxonomyId": 140,
+            "termId": 86,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_C-03"
+          },
+          {
+            "termTaxonomyId": 132,
+            "termId": 78,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_R-A_C-03"
+          },
+          {
+            "termTaxonomyId": 124,
+            "termId": 70,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-31"
+          },
+          {
+            "termTaxonomyId": 116,
+            "termId": 62,
+            "taxonomy": "wb_gene_sequence_id",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "empty"
+          },
+          {
+            "termTaxonomyId": 111,
+            "termId": 57,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty"
+          },
+          {
+            "termTaxonomyId": 106,
+            "termId": 52,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_SS-primary_BS-1_TT-empty_W-A12"
+          },
+          {
+            "termTaxonomyId": 101,
+            "termId": 50,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_B-RNAiI3A1E_D_M_W-A12"
+          },
+          {
+            "termTaxonomyId": 96,
+            "termId": 42,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_W-A12"
+          },
+          {
+            "termTaxonomyId": 88,
+            "termId": 34,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_AI-32"
+          },
+          {
+            "termTaxonomyId": 80,
+            "termId": 26,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_C-12"
+          },
+          {
+            "termTaxonomyId": 72,
+            "termId": 18,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "SI-1_PI-2_R-A_C-12"
+          },
+          {
+            "termTaxonomyId": 64,
+            "termId": 10,
+            "taxonomy": "envira-tag",
+            "description": "",
+            "parent": 0,
+            "count": 1,
+            "term": "AI-32"
+          }
+        ]
+      }
+    }
+  ],
+  "expDesignList": [
+    {
+      "expDesignId": 1,
+      "treatmentGroupId": 6,
+      "controlGroupId": 3
+    },
+    {
+      "expDesignId": 9,
+      "treatmentGroupId": 6,
+      "controlGroupId": 2
+    },
+    {
+      "expDesignId": 8,
+      "treatmentGroupId": 6,
+      "controlGroupId": 1
+    },
+    {
+      "expDesignId": 7,
+      "treatmentGroupId": 7,
+      "controlGroupId": 4
+    },
+    {
+      "expDesignId": 6,
+      "treatmentGroupId": 7,
+      "controlGroupId": 2
+    },
+    {
+      "expDesignId": 5,
+      "treatmentGroupId": 7,
+      "controlGroupId": 1
+    },
+    {
+      "expDesignId": 4,
+      "treatmentGroupId": 8,
+      "controlGroupId": 5
+    },
+    {
+      "expDesignId": 3,
+      "treatmentGroupId": 8,
+      "controlGroupId": 2
+    },
+    {
+      "expDesignId": 2,
+      "treatmentGroupId": 8,
+      "controlGroupId": 1
+    }
+  ]
+}

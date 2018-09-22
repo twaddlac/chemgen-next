@@ -1,0 +1,95 @@
+version: '3'
+# If you haven't already initialized docker swarm
+# Get the IP address of the machine
+# docker swarm init --advertise-addr IP_ADDRESS
+# Run with
+# docker stack deploy --compose-file=docker-compose-swarm.yml prod
+# Investigate the service with
+# docker service ls
+# docker service logs prod_rabbit
+# docker service logs prod_tf_counts
+# Scale the service with
+# docker service scale prod_tf_counts=N
+# If the service gets stuck (and it does sometimes)
+# docker service rm prod_tf_counts prod_rabbit prod_proxy
+# docker system prune
+# And then deploy again
+
+services:
+    # RabbitMQ, used by the flask app to queue up jobs whee
+    rabbit:
+        hostname: rabbit
+        image: rabbitmq:latest
+        ports:
+            - "5672:5672"
+        environment:
+            - SERVICE_PORTS=5672
+            - TCP_PORTS=5672
+            - MODE=tcp
+            - RABBITMQ_DEFAULT_USER=admin
+            - RABBITMQ_DEFAULT_PASS=mypass
+        deploy:
+          replicas: 1
+          update_config:
+              parallelism: 1
+              delay: 10s
+          restart_policy:
+              condition: on-failure
+              max_attempts: 3
+              window: 120s
+          placement:
+            constraints: [node.role == worker]
+        networks:
+            - web
+
+    # App that actually runs the tf_counts
+    tf_counts:
+        image: quay.io/nyuad_cgsb/tf_14_faster_rcnn_inception_resnet_v2_atrous_coco_tf_counts:latest
+        volumes:
+            - "/mnt/image:/mnt/image"
+        depends_on:
+            - rabbit
+        ports:
+            - "5000:5000"
+        environment:
+            - SERVICE_PORTS=5000
+            - CELERY_INSTANCES=2
+            - TF_CPUS=6
+        deploy:
+          replicas: 2
+          update_config:
+              parallelism: 2
+              delay: 10s
+          restart_policy:
+              condition: on-failure
+              max_attempts: 3
+              window: 120s
+          placement:
+            constraints: [node.role == worker]
+        networks:
+            - web
+
+    # Magical container that load balances all the things
+    proxy:
+      image: dockercloud/haproxy
+      depends_on:
+          - rabbit
+          - tf_counts
+      environment:
+          - MODE=tcp
+          - BALANCE=leastconn
+          - RABBITMQ_DEFAULT_USER=admin
+          - RABBITMQ_DEFAULT_PASS=mypass
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+          - 3005:80
+      networks:
+          - web
+      deploy:
+        placement:
+          constraints: [node.role == manager]
+
+networks:
+    web:
+        driver: overlay

@@ -1,0 +1,55 @@
+<div>
+  <!--Plate Information-->
+  <div class="row">
+    <div class="col-md-12">
+      <div id="screenInfo">
+        <h2>Screen Information</h2>
+        <p> Screen {{{workflowData.screenName}}}</p>
+        <h2>Plate View</h2>
+        <p>Barcode: {{{expPlate.barcode}}}</p>
+        <p>Temperature: {{{workflowData.temperature}}}</p>
+      </div>
+    </div>
+  </div>
+    <!--!!Plate Information-->
+
+    <!--Plate Gallery-->
+  <section>
+    <div name="row-A" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-A" cols="12"]
+      </div>
+    </div>
+    <div name="row-B" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-B" cols="12"]
+      </div>
+    </div>
+    <div name="row-C" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-C" cols="12"]
+      </div>
+    </div>
+    <div name="row-D" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-D" cols="12"]
+      </div>
+    </div>
+    <div name="row-E" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-E" cols="12"]
+      </div>
+    </div>
+    <div name="row-F" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-F" cols="12"]
+      </div>
+    </div>
+    <div name="row-G" class="row">
+      <div class="col-md-12">
+        [envira-gallery-dynamic id="tags-SI-{{{workflowData.screenId}}}_PI-{{expPlate.plateId}}_R-G" cols="12"]
+      </div>
+    </div>
+  </section>
+    <!--!! Plate Gallery-->
+</div>

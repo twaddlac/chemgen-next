@@ -1,0 +1,18 @@
+
+.interesting {
+  border: 3px solid;
+  border-color: darkgreen;
+  border-radius: 10px;
+  height: auto;
+  padding: 2px;
+}
+
+.not_interesting {
+  border: 3px solid;
+  border-radius: 10px;
+  border-color: darkred;
+  height: auto;
+  padding: 2px;
+}
+
+

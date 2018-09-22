@@ -1,0 +1,38 @@
+<!--Begin FormGroup CreationDates-->
+<div class="row">
+  <div class="form-group">
+    <!--Begin Loop to Modify Dates-->
+    <div id="all-imaging-dates"
+         *ngFor="let date of plateModel.creationDates;  let creationdate_index = index"
+         [attr.data-index]="creationdate_index">
+      <div class="col-md-4">
+        <label for="all-imaging-dates">Select Image Date</label>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <input name="date-{{creationdate_index}}"
+               type="text"
+               placeholder="Datepicker"
+               class="form-control"
+               [(ngModel)]="plateModel.creationDates[creationdate_index]"
+               bsDatepicker>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <button type="button" class="btn btn-danger"
+                (click)="plateModel.removeDate(creationdate_index)">Remove
+        </button>
+      </div>
+      <br>
+      <br>
+    </div>
+    <!--End Loop to Modify Dates-->
+  </div>
+</div>
+<!--Begin add new imaging date to list-->
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary" (click)="plateModel.addEmptyDate()">Add Imaging Date
+    </button>
+  </div>
+</div>
+<!--End add new imaging date to list-->
+

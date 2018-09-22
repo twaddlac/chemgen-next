@@ -1,0 +1,235 @@
+<!--Begin Add Screen Data-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Add Screen Data</h2>
+          </div>
+        </div>
+      </div>
+      <div class="x_content">
+        <form #screenDataForm="ngForm">
+          <!--Begin Set Name-->
+          <div class="row">
+            <!--Begin Select for Screen-->
+            <div class="col-md-4">
+              <label for="name">Name</label>
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="text" required name="name" id="name" [(ngModel)]="expDataModel.name">
+            </div>
+            <!--End Select for Screen-->
+          </div>
+          <br>
+          <!--End Set Name-->
+          <!--Begin Set Name-->
+          <div class="row">
+            <!--Begin Select for Screen-->
+            <div class="col-md-4">
+              <label for="comment">Comment</label>
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="text" required name="comment" id="comment" [(ngModel)]="expDataModel.comment">
+            </div>
+            <!--End Select for Screen-->
+          </div>
+          <br>
+          <!--End Set Name-->
+          <!--Begin Set Screen-->
+          <div class="row">
+            <!--Begin Select for Screen-->
+            <div class="col-md-4">
+              <label for="expScreen">Select Screen</label>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control" id="expScreen"
+                      required
+                      [(ngModel)]="expDataModel.expScreen" name="expScreen"
+              >
+                <option *ngFor="let expScreen of expDataModel.expScreens" [ngValue]="expScreen">
+                  {{expScreen.screenName}}
+                </option>
+              </select>
+            </div>
+            <!--End Select for Screen-->
+          </div>
+          <!--End Set Screen-->
+          <br>
+          <!--Begin Set Library-->
+          <div class="row">
+            <!--Begin Select for Library-->
+            <div class="col-md-4">
+              <label for="expScreen">Select Library</label>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control" id="library"
+                      required
+                      [(ngModel)]="expDataModel.library" name="library"
+              >
+                <option *ngFor="let library of expDataModel.libraries" [ngValue]="library">
+                  {{library.libraryShortName}}
+                </option>
+              </select>
+            </div>
+            <!--End Select for Screen-->
+          </div>
+          <!--End Set Screen-->
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <form #biosampleForm="ngForm">
+      <div class="x_panel">
+        <div class="x_title">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Add Biosamples</h2>
+            </div>
+          </div>
+        </div>
+        <div class="x_content">
+          <!--Begin Set Mutant Strain-->
+          <div class="row">
+            <!--Begin Select for Mutant Strain-->
+            <div class="col-md-4">
+              <label for="expBiosample">Mutant Biosample</label>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control" id="expBiosample"
+                      required
+                      [(ngModel)]="expBiosampleModel.expBiosample" name="expStrain"
+              >
+                <option *ngFor="let expStrain of expBiosampleModel.allBiosamples" [ngValue]="expStrain">
+                  {{expStrain.biosampleName}}
+                </option>
+              </select>
+            </div>
+            <!--End Select for Mutant Strain-->
+          </div>
+          <!--End Set Mutant Strain-->
+          <br>
+          <!-- Begin Set Control Strain-->
+          <div class="row">
+            <!--Begin Select for Control Strain-->
+            <div class="col-md-4">
+              <label for="ctrlBiosample">Control Biosample</label>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control" id="ctrlBiosample"
+                      required
+                      [(ngModel)]="expBiosampleModel.ctrlBiosample" name="strain"
+              >
+                <option *ngFor="let strain of expBiosampleModel.allBiosamples" [ngValue]="strain">
+                  {{strain.biosampleName}}
+                </option>
+              </select>
+            </div>
+            <!--End Select for Conditions-->
+          </div>
+          <!--End Set Control Strain-->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--End Add Screen Data-->
+
+
+<!--Begin Search for Biosample Form-->
+<!--End Search for Biosample Form-->
+<hr>
+
+<!--Begin Add Experimental Data-->
+<div class="row">
+  <div class="col-md-12">
+    <form #expDataForm="ngForm">
+      <div class="x_panel">
+        <div class="x_title">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Add Experimental Data</h2>
+            </div>
+          </div>
+        </div>
+        <div class="x_content">
+
+          <!--Begin Set Temperature-->
+          <div class="row">
+            <div class="col-md-4">
+              <label for="temp">Temperature</label>
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="text" required [(ngModel)]="expDataModel.temperature" name="temp" id="temp">
+            </div>
+          </div>
+          <!--End Set Temperature-->
+
+          <br>
+
+          <!--Begin Prepared By-->
+          <div class="row">
+            <div class="col-md-4">
+              <label for="preparedBy">Prepared By</label>
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="text" required [(ngModel)]="expDataModel.preparedBy" id="preparedBy" name="preparedBy">
+            </div>
+          </div>
+          <!--End Prepared By-->
+
+          <br>
+
+          <!--Begin Set Assay Dates-->
+          <div class="row">
+            <!--Begin FormGroup AssayDates-->
+            <div class="form-group">
+              <!--Begin Loop to Modify Dates-->
+              <div id="all-assay_dates" *ngFor="let date of expDataModel.assayDates;  let i = index"
+                   [attr.data-index]="i">
+                <div class="col-md-4">
+                  <label for="all-assay_dates">Select Assay Date(s)</label>
+                </div>
+                <div class="col-md-4">
+                  <input name="date-{{i}}"
+                         type="text"
+                         placeholder="Datepicker"
+                         class="form-control"
+                         [(ngModel)]="expDataModel.assayDates[i]"
+                         bsDatepicker>
+                </div>
+                <!-- !Begin Loop to Modify Dates-->
+
+                <!--Remove Assay Dates-->
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-danger" (click)="expDataModel.removeDate(i)">Remove</button>
+                </div>
+                <!-- !Remove Assay Dates-->
+                <br>
+                <br>
+              </div>
+              <!--End Loop to Modify Dates-->
+            </div>
+            <!-- !Begin FormGroup AssayDates-->
+          </div>
+          <!--Begin add new imaging date to list-->
+          <div class="row">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-primary" (click)="expDataModel.addEmptyDate()">Add Assay Date
+              </button>
+            </div>
+          </div>
+          <!--End add new imaging date to list-->
+          <!--End Set Temperature-->
+          <br>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--End Add Experimental Data-->
+

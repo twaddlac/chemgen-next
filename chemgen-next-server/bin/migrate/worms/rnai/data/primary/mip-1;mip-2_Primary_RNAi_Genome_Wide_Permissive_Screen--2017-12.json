@@ -1,0 +1,3199 @@
+[
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 1 Q A1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9140,
+        9138,
+        9185,
+        9183
+      ],
+      "2": [
+        9141,
+        9139,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9140,
+            "id": "cx5-pc171211150003",
+            "name": "RNAiI.1A1E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211150003\\",
+            "platebarcode": "RNAII.1A1E_M"
+          },
+          {
+            "csPlateid": 9141,
+            "id": "cx5-pc171211160001",
+            "name": "RNAiI.1A1E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160001\\",
+            "platebarcode": "RNAII.1A1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9138,
+            "id": "cx5-pc171211150001",
+            "name": "RNAiI.1A1E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211150001\\",
+            "platebarcode": "RNAII.1A1E"
+          },
+          {
+            "csPlateid": 9139,
+            "id": "cx5-pc171211150002",
+            "name": "RNAiI.1A1E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211150002\\",
+            "platebarcode": "RNAII.1A1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "1",
+        "quadrant": "A1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 1 Q A2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9144,
+        9142,
+        9185,
+        9183
+      ],
+      "2": [
+        9145,
+        9143,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9144,
+            "id": "cx5-pc171211160004",
+            "name": "RNAiI.1A2E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160004\\",
+            "platebarcode": "RNAII.1A2E_M"
+          },
+          {
+            "csPlateid": 9145,
+            "id": "cx5-pc171211160005",
+            "name": "RNAiI.1A2E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160005\\",
+            "platebarcode": "RNAII.1A2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9142,
+            "id": "cx5-pc171211160002",
+            "name": "RNAiI.1A2E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160002\\",
+            "platebarcode": "RNAII.1A2E"
+          },
+          {
+            "csPlateid": 9143,
+            "id": "cx5-pc171211160003",
+            "name": "RNAiI.1A2E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160003\\",
+            "platebarcode": "RNAII.1A2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "1",
+        "quadrant": "A2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 1 Q B1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9148,
+        9146,
+        9185,
+        9183
+      ],
+      "2": [
+        9149,
+        9147,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9148,
+            "id": "cx5-pc171211160008",
+            "name": "RNAiI.1B1E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160008\\",
+            "platebarcode": "RNAII.1B1E_M"
+          },
+          {
+            "csPlateid": 9149,
+            "id": "cx5-pc171211160009",
+            "name": "RNAiI.1B1E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160009\\",
+            "platebarcode": "RNAII.1B1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9146,
+            "id": "cx5-pc171211160006",
+            "name": "RNAiI.1B1E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160006\\",
+            "platebarcode": "RNAII.1B1E"
+          },
+          {
+            "csPlateid": 9147,
+            "id": "cx5-pc171211160007",
+            "name": "RNAiI.1B1E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160007\\",
+            "platebarcode": "RNAII.1B1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "1",
+        "quadrant": "B1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 1 Q B2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9152,
+        9150,
+        9185,
+        9183
+      ],
+      "2": [
+        9153,
+        9151,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9152,
+            "id": "cx5-pc171211170001",
+            "name": "RNAiI.1B2E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170001\\",
+            "platebarcode": "RNAII.1B2E_M"
+          },
+          {
+            "csPlateid": 9153,
+            "id": "cx5-pc171211170002",
+            "name": "RNAiI.1B2E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170002\\",
+            "platebarcode": "RNAII.1B2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9150,
+            "id": "cx5-pc171211160010",
+            "name": "RNAiI.1B2E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160010\\",
+            "platebarcode": "RNAII.1B2E"
+          },
+          {
+            "csPlateid": 9151,
+            "id": "cx5-pc171211160011",
+            "name": "RNAiI.1B2E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211160011\\",
+            "platebarcode": "RNAII.1B2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "1",
+        "quadrant": "B2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 2 Q A1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9156,
+        9154,
+        9185,
+        9183
+      ],
+      "2": [
+        9157,
+        9155,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9156,
+            "id": "cx5-pc171211170005",
+            "name": "RNAiI.2A1E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170005\\",
+            "platebarcode": "RNAII.2A1E_M"
+          },
+          {
+            "csPlateid": 9157,
+            "id": "cx5-pc171211170006",
+            "name": "RNAiI.2A1E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170006\\",
+            "platebarcode": "RNAII.2A1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9154,
+            "id": "cx5-pc171211170003",
+            "name": "RNAiI.2A1E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170003\\",
+            "platebarcode": "RNAII.2A1E"
+          },
+          {
+            "csPlateid": 9155,
+            "id": "cx5-pc171211170004",
+            "name": "RNAiI.2A1E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170004\\",
+            "platebarcode": "RNAII.2A1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "2",
+        "quadrant": "A1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 2 Q A2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9160,
+        9158,
+        9185,
+        9183
+      ],
+      "2": [
+        9161,
+        9159,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9160,
+            "id": "cx5-pc171211170009",
+            "name": "RNAiI.2A2E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170009\\",
+            "platebarcode": "RNAII.2A2E_M"
+          },
+          {
+            "csPlateid": 9161,
+            "id": "cx5-pc171211170010",
+            "name": "RNAiI.2A2E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170010\\",
+            "platebarcode": "RNAII.2A2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9158,
+            "id": "cx5-pc171211170007",
+            "name": "RNAiI.2A2E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170007\\",
+            "platebarcode": "RNAII.2A2E"
+          },
+          {
+            "csPlateid": 9159,
+            "id": "cx5-pc171211170008",
+            "name": "RNAiI.2A2E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170008\\",
+            "platebarcode": "RNAII.2A2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "2",
+        "quadrant": "A2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 2 Q B1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9165,
+        9162,
+        9185,
+        9183
+      ],
+      "2": [
+        9166,
+        9163,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9165,
+            "id": "cx5-pc171211180002",
+            "name": "RNAiI.2B1E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180002\\",
+            "platebarcode": "RNAII.2B1E_M"
+          },
+          {
+            "csPlateid": 9166,
+            "id": "cx5-pc171211180003",
+            "name": "RNAiI.2B1E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180003\\",
+            "platebarcode": "RNAII.2B1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9162,
+            "id": "cx5-pc171211170011",
+            "name": "RNAiI.2B1E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211170011\\",
+            "platebarcode": "RNAII.2B1E"
+          },
+          {
+            "csPlateid": 9163,
+            "id": "cx5-pc171211180001",
+            "name": "RNAiI.2B1E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180001\\",
+            "platebarcode": "RNAII.2B1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "2",
+        "quadrant": "B1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2017-12-06 mip-1;mip-2 N2 permissive Chr I Plate 2 Q B2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2017-12-06",
+    "assayDates": [
+      "2017-12-06"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9169,
+        9167,
+        9185,
+        9183
+      ],
+      "2": [
+        9170,
+        9168,
+        9186,
+        9184
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9169,
+            "id": "cx5-pc171211180006",
+            "name": "RNAiI.2B2E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180006\\",
+            "platebarcode": "RNAII.2B2E_M"
+          },
+          {
+            "csPlateid": 9170,
+            "id": "cx5-pc171211180007",
+            "name": "RNAiI.2B2E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180007\\",
+            "platebarcode": "RNAII.2B2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9167,
+            "id": "cx5-pc171211180004",
+            "name": "RNAiI.2B2E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180004\\",
+            "platebarcode": "RNAII.2B2E"
+          },
+          {
+            "csPlateid": 9168,
+            "id": "cx5-pc171211180005",
+            "name": "RNAiI.2B2E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211180005\\",
+            "platebarcode": "RNAII.2B2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9185,
+            "id": "cx5-pc171211200001",
+            "name": "L4440E_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200001\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9186,
+            "id": "cx5-pc171211200002",
+            "name": "L4440E_D_M",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211200002\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9183,
+            "id": "cx5-pc171211190010",
+            "name": "L4440E",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190010\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9184,
+            "id": "cx5-pc171211190011",
+            "name": "L4440E_D",
+            "creationdate": "2017-12-11T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec11\\cx5-pc171211190011\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "2",
+        "quadrant": "B2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 9 Q A1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9518,
+        9516,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9519,
+        9517,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9518,
+            "id": "cx5-pc180129170007",
+            "name": "RNAiI.9A1E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170007\\",
+            "platebarcode": "RNAII.9A1E_M"
+          },
+          {
+            "csPlateid": 9519,
+            "id": "cx5-pc180129170008",
+            "name": "RNAiI.9A1E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170008\\",
+            "platebarcode": "RNAII.9A1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9516,
+            "id": "cx5-pc180129170005",
+            "name": "RNAiI.9A1E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170005\\",
+            "platebarcode": "RNAII.9A1E"
+          },
+          {
+            "csPlateid": 9517,
+            "id": "cx5-pc180129170006",
+            "name": "RNAiI.9A1E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170006\\",
+            "platebarcode": "RNAII.9A1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "9",
+        "quadrant": "A1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 9 Q A2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9522,
+        9520,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9523,
+        9521,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9522,
+            "id": "cx5-pc180129170011",
+            "name": "RNAiI.9A2E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170011\\",
+            "platebarcode": "RNAII.9A2E_M"
+          },
+          {
+            "csPlateid": 9523,
+            "id": "cx5-pc180129180001",
+            "name": "RNAiI.9A2E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180001\\",
+            "platebarcode": "RNAII.9A2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9520,
+            "id": "cx5-pc180129170009",
+            "name": "RNAiI.9A2E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170009\\",
+            "platebarcode": "RNAII.9A2E"
+          },
+          {
+            "csPlateid": 9521,
+            "id": "cx5-pc180129170010",
+            "name": "RNAiI.9A2E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170010\\",
+            "platebarcode": "RNAII.9A2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "9",
+        "quadrant": "A2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 9 Q B1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9526,
+        9524,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9527,
+        9525,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9526,
+            "id": "cx5-pc180129180004",
+            "name": "RNAiI.9B1E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180004\\",
+            "platebarcode": "RNAII.9B1E_M"
+          },
+          {
+            "csPlateid": 9527,
+            "id": "cx5-pc180129180005",
+            "name": "RNAiI.9B1E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180005\\",
+            "platebarcode": "RNAII.9B1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9524,
+            "id": "cx5-pc180129180002",
+            "name": "RNAiI.9B1E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180002\\",
+            "platebarcode": "RNAII.9B1E"
+          },
+          {
+            "csPlateid": 9525,
+            "id": "cx5-pc180129180003",
+            "name": "RNAiI.9B1E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180003\\",
+            "platebarcode": "RNAII.9B1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "9",
+        "quadrant": "B1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 9 Q B2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9530,
+        9528,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9531,
+        9529,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9530,
+            "id": "cx5-pc180129180008",
+            "name": "RNAiI.9B2E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180008\\",
+            "platebarcode": "RNAII.9B2E_M"
+          },
+          {
+            "csPlateid": 9531,
+            "id": "cx5-pc180129180009",
+            "name": "RNAiI.9B2E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180009\\",
+            "platebarcode": "RNAII.9B2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9528,
+            "id": "cx5-pc180129180006",
+            "name": "RNAiI.9B2E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180006\\",
+            "platebarcode": "RNAII.9B2E"
+          },
+          {
+            "csPlateid": 9529,
+            "id": "cx5-pc180129180007",
+            "name": "RNAiI.9B2E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180007\\",
+            "platebarcode": "RNAII.9B2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "9",
+        "quadrant": "B2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 10 Q A1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9534,
+        9532,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9535,
+        9533,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9534,
+            "id": "cx5-pc180129190002",
+            "name": "RNAiI.10A1E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190002\\",
+            "platebarcode": "RNAII.10A1E_M"
+          },
+          {
+            "csPlateid": 9535,
+            "id": "cx5-pc180129190003",
+            "name": "RNAiI.10A1E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190003\\",
+            "platebarcode": "RNAII.10A1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9532,
+            "id": "cx5-pc180129180010",
+            "name": "RNAiI.10A1E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129180010\\",
+            "platebarcode": "RNAII.10A1E"
+          },
+          {
+            "csPlateid": 9533,
+            "id": "cx5-pc180129190001",
+            "name": "RNAiI.10A1E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190001\\",
+            "platebarcode": "RNAII.10A1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "10",
+        "quadrant": "A1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 10 Q A2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9539,
+        9536,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9540,
+        9538,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9539,
+            "id": "cx5-pc180129190006",
+            "name": "RNAiI.10A2E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190006\\",
+            "platebarcode": "RNAII.10A2E_M"
+          },
+          {
+            "csPlateid": 9540,
+            "id": "cx5-pc180129190007",
+            "name": "RNAiI.10A2E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190007\\",
+            "platebarcode": "RNAII.10A2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9536,
+            "id": "cx5-pc180129190004",
+            "name": "RNAiI.10A2E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190004\\",
+            "platebarcode": "RNAII.10A2E"
+          },
+          {
+            "csPlateid": 9538,
+            "id": "cx5-pc180129190005",
+            "name": "RNAiI.10A2E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190005\\",
+            "platebarcode": "RNAII.10A2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "10",
+        "quadrant": "A2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 10 Q B1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9543,
+        9541,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9544,
+        9542,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9543,
+            "id": "cx5-pc180129190010",
+            "name": "RNAiI.10B1E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190010\\",
+            "platebarcode": "RNAII.10B1E_M"
+          },
+          {
+            "csPlateid": 9544,
+            "id": "cx5-pc180129190011",
+            "name": "RNAiI.10B1E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190011\\",
+            "platebarcode": "RNAII.10B1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9541,
+            "id": "cx5-pc180129190008",
+            "name": "RNAiI.10B1E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190008\\",
+            "platebarcode": "RNAII.10B1E"
+          },
+          {
+            "csPlateid": 9542,
+            "id": "cx5-pc180129190009",
+            "name": "RNAiI.10B1E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129190009\\",
+            "platebarcode": "RNAII.10B1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "10",
+        "quadrant": "B1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 10 Q B2",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9547,
+        9500,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9548,
+        9546,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9547,
+            "id": "cx5-pc180129200003",
+            "name": "RNAiI.10B2E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200003\\",
+            "platebarcode": "RNAII.10B2E_M"
+          },
+          {
+            "csPlateid": 9548,
+            "id": "cx5-pc180129200004",
+            "name": "RNAiI.10B2E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200004\\",
+            "platebarcode": "RNAII.10B2E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9500,
+            "id": "cx5-pc180128210003",
+            "name": "RNAiI.10B2E",
+            "creationdate": "2018-01-28T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan22\\cx5-pc180128210003\\",
+            "platebarcode": "RNAII.10B2E"
+          },
+          {
+            "csPlateid": 9546,
+            "id": "cx5-pc180129200002",
+            "name": "RNAiI.10B2E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200002\\",
+            "platebarcode": "RNAII.10B2E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "10",
+        "quadrant": "B2",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  },
+  {
+    "libraryModel": "RnaiLibrary",
+    "libraryStockModel": "RnaiLibraryStock",
+    "librarycode": "ahringer2",
+    "biosampleType": "worm",
+    "reagentLookUp": "rnaiId",
+    "instrumentPlateIdLookup": "csPlateid",
+    "assayViewType": "exp_assay_ahringer2",
+    "plateViewType": "exp_plate_ahringer2",
+    "instrumentId": 1,
+    "instrumentLookUp": "arrayScan",
+    "conditions": [
+      "treat_rnai",
+      "ctrl_rnai",
+      "ctrl_null",
+      "ctrl_strain"
+    ],
+    "controlConditions": [
+      "ctrl_strain",
+      "ctrl_null"
+    ],
+    "experimentConditions": [
+      "treat_rnai",
+      "ctrl_rnai"
+    ],
+    "experimentMatchConditions": {
+      "treat_rnai": "ctrl_rnai"
+    },
+    "biosampleMatchConditions": {
+      "treat_rnai": "ctrl_strain",
+      "ctrl_rnai": "ctrl_null"
+    },
+    "experimentDesign": {
+      "treat_rnai": [
+        "ctrl_rnai",
+        "ctrl_strain",
+        "ctrl_null"
+      ]
+    },
+    "name": "AHR2 2018-01-24 mip-1;mip-2 N2 permissive Chr I Plate 6 Q A1",
+    "comment": "migration upload",
+    "screenId": 4,
+    "screenType": "permissive",
+    "libraryId": 1,
+    "stockPrepDate": "2018-01-24",
+    "assayDates": [
+      "2018-01-24"
+    ],
+    "biosamples": {
+      "experimentBiosample": {
+        "id": 6,
+        "name": "mip-1;mip-2"
+      },
+      "ctrlBiosample": {
+        "id": 4,
+        "name": "N2"
+      }
+    },
+    "temperature": "20",
+    "replicates": {
+      "1": [
+        9514,
+        9512,
+        9510,
+        9551,
+        9508,
+        9549
+      ],
+      "2": [
+        9515,
+        9513,
+        9511,
+        9552,
+        9509,
+        9550
+      ]
+    },
+    "experimentGroups": {
+      "treat_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9514,
+            "id": "cx5-pc180129170003",
+            "name": "RNAiI.6A1E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170003\\",
+            "platebarcode": "RNAII.6A1E_M"
+          },
+          {
+            "csPlateid": 9515,
+            "id": "cx5-pc180129170004",
+            "name": "RNAiI.6A1E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170004\\",
+            "platebarcode": "RNAII.6A1E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_rnai": {
+        "plates": [
+          {
+            "csPlateid": 9512,
+            "id": "cx5-pc180129170001",
+            "name": "RNAiI.6A1E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170001\\",
+            "platebarcode": "RNAII.6A1E"
+          },
+          {
+            "csPlateid": 9513,
+            "id": "cx5-pc180129170002",
+            "name": "RNAiI.6A1E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129170002\\",
+            "platebarcode": "RNAII.6A1E_D"
+          }
+        ],
+        "biosampleId": 4
+      },
+      "ctrl_strain": {
+        "plates": [
+          {
+            "csPlateid": 9510,
+            "id": "cx5-pc180129160003",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160003\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9551,
+            "id": "cx5-pc180129200007",
+            "name": "L4440E_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200007\\",
+            "platebarcode": "L4440E_M"
+          },
+          {
+            "csPlateid": 9511,
+            "id": "cx5-pc180129160004",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160004\\",
+            "platebarcode": "L4440E_D_M"
+          },
+          {
+            "csPlateid": 9552,
+            "id": "cx5-pc180129200008",
+            "name": "L4440E_D_M",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200008\\",
+            "platebarcode": "L4440E_D_M"
+          }
+        ],
+        "biosampleId": 6
+      },
+      "ctrl_null": {
+        "plates": [
+          {
+            "csPlateid": 9508,
+            "id": "cx5-pc180129160001",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160001\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9549,
+            "id": "cx5-pc180129200005",
+            "name": "L4440E",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200005\\",
+            "platebarcode": "L4440E"
+          },
+          {
+            "csPlateid": 9509,
+            "id": "cx5-pc180129160002",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129160002\\",
+            "platebarcode": "L4440E_D"
+          },
+          {
+            "csPlateid": 9550,
+            "id": "cx5-pc180129200006",
+            "name": "L4440E_D",
+            "creationdate": "2018-01-29T00:00:00.000Z",
+            "imagepath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2018Jan29\\cx5-pc180129200006\\",
+            "platebarcode": "L4440E_D"
+          }
+        ],
+        "biosampleId": 4
+      }
+    },
+    "search": {
+      "rnaiLibrary": {
+        "plate": "6",
+        "quadrant": "A1",
+        "chrom": "I"
+      }
+    },
+    "screenStage": "primary",
+    "screenName": "mip-1;mip-2 Primary RNAi Permissive Screen"
+  }
+]

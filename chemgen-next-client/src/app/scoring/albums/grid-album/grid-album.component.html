@@ -1,0 +1,94 @@
+<div class="row">
+  <div *ngFor="let image of album; let i=index">
+    <div class="col-md-3">
+      <!--[ngClass]="{'interesting': scoreThis(image), 'not_interesting': !scoreThis(image) }"-->
+      <div class="{{scoreThis(image)}}">
+        <!--<div>-->
+        <div tabindex="0" class="form-check">
+
+          <div class="row">
+            <div class="col-md-4">
+              <!--Begin Score This Checkbox - only available for treat_reagent and ctrl_regeant-->
+              <div *ngIf="score">
+                <input class="form-check-input " type="checkbox"
+                       [(ngModel)]="contactSheetResults.interesting[image.treatmentGroupId]"
+                       (ngModelChange)="parseInterestingWatcher('changed')"
+                       id="select_{{image.assayId}}">
+                <label class="form-check-label" for="select_{{image.assayId}}">
+                  <strong style="color: darkblue">Score This</strong>
+                </label>
+              </div>
+              <!--End Score This Checkbox - only available for treat_reagent and ctrl_regaent-->
+            </div>
+            <div class="col-md-4">
+
+              <!--Begin Remove image from view (possibly from analysis) ?-->
+              <button (click)="remove(album, i)" type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+              <!--End Remove image from view (possibly from analysis) ?-->
+            </div>
+
+            <div class="col-md-4">
+              <app-expset-album-dialog [score]="score"
+                                       [albums]="albums"
+                                       [modelPredictedCounts]="image.counts"
+                                       [expSet]="image.expSet">
+              </app-expset-album-dialog>
+
+            </div>
+          </div>
+
+          <img tabindex="0" class="img-thumbnail" [src]="image.thumb" (click)="open(album, i)"/>
+          <!--Begin Phenotype Table-->
+          <div *ngIf="displayCounts">
+            <table class="table table-striped table-hover">
+              <tbody>
+              <tr>
+                <td>Emb Leth</td>
+                <td>{{image.percEmbLeth}}</td>
+                <td [ngStyle]="{'background-color':image.percEmbLethColor}"></td>
+              </tr>
+              <tr>
+                <td>Survival</td>
+                <td>{{image.percSter}}</td>
+                <td [ngStyle]="{'background-color':image.percSurvivalColor}"></td>
+              </tr>
+              <tr>
+                <td>Brood Size</td>
+                <td>{{image.broodSize}}</td>
+                <td [ngStyle]="{'background-color':image.percSurvivalColor}"></td>
+              </tr>
+              <tr>
+                <td>Worms Count</td>
+                <td>{{image.wormCount}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Larvae Count</td>
+                <td>{{image.larvaCount}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Eggs Count</td>
+                <td>{{image.eggCount}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>TreatmentGroupId</td>
+                <td>{{image.treatmentGroupId}}</td>
+                <td></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--End Phenotype Table-->
+          <br>
+          <br>
+
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="screenInfo">
+        <h2>Screen Information</h2>
+        <p><strong>Screen</strong> {{{workflowData.screenName}}}</p>
+        <p><strong>Chemical</strong> {{{wellData.parentLibraryData.compoundLibraryid}}}</p>
+        <p><strong>Upload Name</strong> {{{workflowData.name}}}</p>
+        <p><strong>Assay Date</strong>{{{workflowData.assayDate}}}</p>
+        <P><strong>Imaging Date</strong>{{{expPlate.plateImageDate}}}</P>
+        <h3>Plate View</h3>
+        <!--TODO Make sure plateURL is correct Format-->
+        <a href="{{{expPlate.plateWpPost}}}">{{expPlate.barcode}}</a>
+      </div>
+      <div id="libraryInfo">
+        {{#wellData.parentLibraryData.chemicalId}}
+          <h3> Parent Library Info </h3>
+          <table class="table responsive">
+            <tbody>
+            <tr>
+              <td>Compound Library Id</td>
+              <td>{{wellData.parentLibraryData.compoundLibraryId}}</td>
+            </tr>
+            <tr>
+              <td>Plate</td>
+              <td>{{wellData.parentLibraryData.plate}}</td>
+            </tr>
+            <tr>
+              <td>Well</td>
+              <td>{{wellData.parentLibraryData.well}}</td>
+            </tr>
+            <tr>
+              <td>Compound Systematic Name</td>
+              <td>{{wellData.parentLibraryData.compoundSystematicName}}</td>
+            </tr>
+            <tr>
+              <td>Compound Formula</td>
+              <td>{{wellData.parentLibraryData.compoundFormula}}</td>
+            </tr>
+            <tr>
+              <td>Compound Molecular Weight</td>
+              <td>{{wellData.parentLibraryData.compoundMw}}</td>
+            </tr>
+            </tbody>
+          </table>
+        {{/wellData.parentLibraryData.chemicalId}}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="taxTerms">
+        <table class="table responsive">
+          <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{{table}}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <section id="screenGeneGallery">
+        <div>
+          <!--Tax Term Header-->
+          {{#hasTaxTerm}}
+            <h2>{{{taxTerm}}}</h2>
+          {{/hasTaxTerm}}
+          <!-- !Tax Term Header-->
+
+          <h3> {{{screenType}}} {{{workflowData.temperature}}}C Gene: {{{wellData.annotationData.taxTerm}}} {{{libraryData.cosmid_id}}} </h3>
+
+          <!-- Permissive Mutant Strain (mel-28)+ DMSO  ctrl_strain-->
+          {{#annotationData.ctrl_strain}}
+            <div id="enviraCPM">
+              <h3>{{{screenType}}} {{{workflowData.temperature}}}C WS {{{ workflowData.biosamples.experimentBiosample.name }}} + DMSO </h3>
+              <p>
+                <!--This should always be on 1 line!-->
+                [envira-gallery-dynamic id="tags-EGI-{{{annotationData.ctrl_strain.expGroupId}}}" columns="4" limit="4" sort="random"]
+              </p>
+            </div>
+          {{/annotationData.ctrl_strain}}
+          <!-- !Permissive Mutant Strain + DMSO-->
+
+          <!-- Permissive Mutant Strain (mel-28) + Chemical treat_chemical-->
+          {{#hasTaxTerm}}
+            <div id="enviraEM">
+              <h3>{{{screenType}}} {{{workflowData.temperature}}}C WS {{{ workflowData.biosamples.experimentBiosample.name }}} + {{{libraryData.cosmid_id}}} {{{wellData.annotationData.taxTerm}}} Chemical </h3>
+              <p>
+                [envira-gallery-dynamic id="tags-EGI-{{{annotationData.treat_chemical.expGroupId}}}" columns="2"]
+              </p>
+            </div>
+          {{/hasTaxTerm}}
+          <!-- !Permissive Mutant Strain + Chemical-->
+
+          <!-- Permissive WildType Strain (N2) + DMSO ctrl_null-->
+          {{#annotationData.ctrl_null}}
+            <div id="enviraCPN">
+              <h3>{{{screenType}}} {{{workflowData.temperature}}}C WS {{{ workflowData.biosamples.ctrlBiosample.name }}} + DMSO</h3>
+              <p>
+                <!--This should always be on 1 line!-->
+                [envira-gallery-dynamic id="tags-EGI-{{annotationData.ctrl_null.expGroupId}}" columns="4" limit="4" sort="random"]
+              </p>
+            </div>
+          {{/annotationData.ctrl_null}}
+          <!-- !! Permissive WildType Strain + DMSO-->
+
+          <!--Permissive WildType Strain (N2) + Chemical ctrl_chemical-->
+          {{#hasTaxTerm}}
+            <div id="enviraEN">
+              <h3>{{{screenType}}} {{{workflowData.temperature}}}C WS {{{ workflowData.biosamples.ctrlBiosample.name }}} + {{{libraryData.cosmid_id}}} {{{wellData.annotationData.taxTerm}}} Chemical</h3>
+              <p>
+                [envira-gallery-dynamic id="tags-EGI-{{{annotationData.ctrl_chemical.expGroupId}}}" columns="2"]
+              </p>
+            </div>
+          {{/hasTaxTerm}}
+          <!-- !! Permissive WildType Strain + Chemical-->
+
+          <br><br>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
