@@ -9,6 +9,7 @@ var ExpSetSearch = /** @class */ (function () {
         this.includeAlbums = true;
         this.includeManualScores = false;
         this.filterManualScores = false;
+        this.cleanUp = true;
         data.includeCounts = true;
         data.includeAlbums = true;
         //Allow for searching either using pagination or skip
@@ -45,12 +46,14 @@ var ExpSetSearchResults = /** @class */ (function () {
         this.expPlates = [];
         this.expScreens = [];
         this.expWorkflows = [];
-        // expSets?: any = [];
+        this.expManualScores = [];
         this.currentPage = 1;
         this.skip = 0;
         this.totalPages = 0;
         this.pageSize = 20;
         this.albums = [];
+        this.expGroupTypeAlbums = [];
+        this.fetchedFromCache = false;
         Object.assign(this, data);
     }
     return ExpSetSearchResults;

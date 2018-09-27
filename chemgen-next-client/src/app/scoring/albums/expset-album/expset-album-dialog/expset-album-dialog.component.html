@@ -23,7 +23,7 @@
 
         <div *ngIf="expSet">
           <app-expset-album [score]="score"
-                            [albums]="albums"
+                            [albums]="expSet.albums"
                             [expSetAlbums]="expSetAlbums"
                             [modelPredictedCounts]="modelPredictedCounts"
                             [expSet]="expSet">

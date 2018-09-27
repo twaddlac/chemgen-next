@@ -4,29 +4,30 @@ import {
   ExpGroupResultSet, ExpPlateResultSet,
   ExpScreenResultSet, ExpScreenUploadWorkflowResultSet,
   RnaiLibraryResultSet,
-  ModelPredictedCountsResultSet,
+  ModelPredictedCountsResultSet, ExpManualScoreCodeResultSet, ExpManualScoresResultSet,
 } from "../../../types/sdk/models/index";
 import {isNull, isUndefined, isArray, isObject} from 'lodash';
 
 declare var Object: any;
 
 export interface ExpSetSearchInterface {
-  chemicalSearch ?: Array<string>;
-  rnaiSearch ?: Array<string>;
-  assaySearch ?: Array<number>;
-  librarySearch ?: Array<any>;
-  screenSearch ?: Array<any>;
-  expWorkflowSearch ?: Array<any>;
-  plateSearch ?: Array<number>;
-  currentPage ?: number;
-  skip ?: number;
-  pageSize ?: number;
-  ctrlLimit ?: number;
-  expGroupSearch ?: Array<number>;
-  includeCounts ?: Boolean;
-  includeAlbums ?: Boolean;
-  includeManualScores ?: Boolean;
-  filterManualScores ?: Boolean;
+  chemicalSearch?: Array<string>;
+  rnaiSearch?: Array<string>;
+  assaySearch?: Array<number>;
+  librarySearch?: Array<any>;
+  screenSearch?: Array<any>;
+  expWorkflowSearch?: Array<any>;
+  plateSearch?: Array<number>;
+  currentPage?: number;
+  skip?: number;
+  pageSize?: number;
+  ctrlLimit?: number;
+  expGroupSearch?: Array<number>;
+  includeCounts?: Boolean;
+  includeAlbums?: Boolean;
+  includeManualScores?: Boolean;
+  filterManualScores?: Boolean;
+  cleanUp ?: Boolean;
 }
 
 export class ExpSetSearch {
@@ -46,6 +47,7 @@ export class ExpSetSearch {
   includeAlbums ?: Boolean = true;
   includeManualScores ?: Boolean = false;
   filterManualScores ?: Boolean = false;
+  cleanUp ?: Boolean = true;
 
   constructor(data?: ExpSetSearchInterface) {
     data.includeCounts = true;
@@ -63,7 +65,7 @@ export class ExpSetSearch {
     ['arraySearch', 'rnaiSearch', 'chemicalSearch', 'librarySearch', 'screenSearch', 'expWorkflowSearch', 'expGroupSearch'].map((searchKey) => {
       if (isUndefined(data[searchKey]) || isNull(data[searchKey] || !data[searchKey])) {
         data[searchKey] = [];
-      } else if (!isArray(data[searchKey] )) {
+      } else if (!isArray(data[searchKey])) {
         data[searchKey] = [data[searchKey]];
       }
     });
@@ -80,12 +82,16 @@ export interface ExpSetSearchResultsInterface {
   expPlates?: ExpPlateResultSet[];
   expScreens?: ExpScreenResultSet[];
   expWorkflows?: ExpScreenUploadWorkflowResultSet[];
+  expManualScores?: ExpManualScoresResultSet[];
   expSets?: Array<ExpDesignResultSet[]>;
-  currentPage ?: number;
-  skip ?: number;
-  totalPages ?: number;
-  pageSize ?: number;
-  albums ?: Array<any>;
+  currentPage?: number;
+  skip?: number;
+  totalPages?: number;
+  pageSize?: number;
+  albums?: Array<any>;
+  expGroupTypeAlbums?: any;
+  albumToScore?: any;
+  fetchedFromCache?: boolean;
 }
 
 export class ExpSetSearchResults {
@@ -97,13 +103,16 @@ export class ExpSetSearchResults {
   expPlates?: ExpPlateResultSet[] = [];
   expScreens?: ExpScreenResultSet[] = [];
   expWorkflows?: ExpScreenUploadWorkflowResultSet[] = [];
+  expManualScores?: ExpManualScoresResultSet[] = [];
   expSets?: Array<ExpDesignResultSet[]>;
-  // expSets?: any = [];
   currentPage ?: number = 1;
   skip ?: number = 0;
   totalPages ?: number = 0;
   pageSize ?: number = 20;
   albums ?: Array<any> = [];
+  expGroupTypeAlbums?: any = [];
+  albumToScore?: any;
+  fetchedFromCache ?: boolean = false;
 
   constructor(data?: ExpSetSearchResultsInterface) {
     Object.assign(this, data);
@@ -116,22 +125,22 @@ export class ExpSetSearchResults {
  */
 
 export interface ExpSetSearchByCountsInterface {
-  assaySearch ?: Array<number>;
-  modelSearch ?: Array<number>;
-  screenSearch ?: Array<any>;
-  expWorkflowSearch ?: Array<any>;
-  plateSearch ?: Array<number>;
-  currentPage ?: number;
-  skip ?: number;
-  pageSize ?: number;
-  ctrlLimit ?: number;
-  expGroupSearch ?: Array<number>;
-  includeCounts ?: Boolean;
-  includeAlbums ?: Boolean;
-  includeManualScores ?: Boolean;
-  filterManualScores ?: Boolean;
-  orderBy ?: string;
-  order ?: string;
+  assaySearch?: Array<number>;
+  modelSearch?: Array<number>;
+  screenSearch?: Array<any>;
+  expWorkflowSearch?: Array<any>;
+  plateSearch?: Array<number>;
+  currentPage?: number;
+  skip?: number;
+  pageSize?: number;
+  ctrlLimit?: number;
+  expGroupSearch?: Array<number>;
+  includeCounts?: Boolean;
+  includeAlbums?: Boolean;
+  includeManualScores?: Boolean;
+  filterManualScores?: Boolean;
+  orderBy?: string;
+  order?: string;
 }
 
 export class ExpSetSearchByCounts {
@@ -153,7 +162,7 @@ export class ExpSetSearchByCounts {
   order ?: string = 'DESC';
 
   constructor(data?: ExpSetSearchByCountsInterface) {
-    if(!isObject(data)){
+    if (!isObject(data)) {
       data = {};
     }
     data.includeCounts = true;
@@ -171,10 +180,11 @@ export class ExpSetSearchByCounts {
     ['arraySearch', 'modelSearch', 'screenSearch', 'expWorkflowSearch', 'expGroupSearch'].map((searchKey) => {
       if (isUndefined(data[searchKey]) || isNull(data[searchKey] || !data[searchKey])) {
         data[searchKey] = [];
-      } else if (!isArray(data[searchKey]  )) {
+      } else if (!isArray(data[searchKey])) {
         data[searchKey] = [data[searchKey]];
       }
     });
     Object.assign(this, data);
   }
 }
+

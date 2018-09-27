@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-8">
         <h2>{{expSet.expScreen.screenName}}</h2>
-        <h4>{{expSet.expWorkflow.name}}</h4>
+        <!--<h4>{{expSet.expWorkflow.name}}</h4>-->
         <div class="row">
           <!--Begin Exp Workflow Data-->
           <div class="col-md-4">
@@ -45,13 +45,13 @@
     <!--Begin CtrlStrain Row - 4 images per row-->
     <div class="row" id="ctrl_strain">
       <div class="col-md-12">
-        <h3>L4440 (ts)</h3>
+        <h3>Control Strain (ts)</h3>
         <div class="row">
-          <div *ngFor="let image of expSetAlbums.ctrlStrainImages; let i=index">
+          <div *ngFor="let image of expSet.albums.ctrlStrainImages; let i=index">
             <div *ngIf="image">
               <div class="col-md-3">
                 <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSetAlbums.ctrlStrainImages, i)"/>
+                     (click)="open(expSet.albums.ctrlStrainImages, i)"/>
               </div>
             </div>
           </div>
@@ -64,13 +64,13 @@
     <div class="row" id="treat">
       <div class="col-md-12">
         <!--<h3>{{expSetAlbum.expWorkflow.biosamples.experimentBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
-        <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + reagent</h3>
+        <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + Reagent</h3>
         <div class="row">
-          <div *ngFor="let image of expSetAlbums.treatmentReagentImages; let i=index">
+          <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
             <div *ngIf="image">
               <div class="col-md-6">
                 <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSetAlbums.treatmentReagentImages, i)"/>
+                     (click)="open(expSet.albums.treatmentReagentImages, i)"/>
               </div>
             </div>
           </div>
@@ -82,13 +82,13 @@
     <!--Begin CtrlNull Row - 4 images per row-->
     <div class="row" id="ctrl_null">
       <div class="col-md-12">
-        <h3>Control Null / L4440</h3>
+        <h3>Control Null </h3>
         <div class="row">
-          <div *ngFor="let image of expSetAlbums.ctrlNullImages; let i=index">
+          <div *ngFor="let image of expSet.albums.ctrlNullImages; let i=index">
             <div *ngIf="image">
               <div class="col-md-3">
                 <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSetAlbums.ctrlNullImages, i)"/>
+                     (click)="open(expSet.albums.ctrlNullImages, i)"/>
               </div>
             </div>
           </div>
@@ -101,13 +101,13 @@
     <div class="row" id="ctrl_reagent">
       <div class="col-md-12">
         <!--<h3>{{expSetAlbum.results.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
-        <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + reagent </h3>
+        <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + Reagent </h3>
         <div class="row">
-          <div *ngFor="let image of expSetAlbums.ctrlReagentImages; let i=index">
+          <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
             <div *ngIf="image">
               <div class="col-md-6">
                 <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSetAlbums.ctrlReagentImages, i)"/>
+                     (click)="open(expSet.albums.ctrlReagentImages, i)"/>
               </div>
             </div>
           </div>

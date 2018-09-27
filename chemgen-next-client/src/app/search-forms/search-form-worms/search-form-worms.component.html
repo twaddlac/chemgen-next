@@ -83,8 +83,11 @@
       </div>
       <!--Begin Content-->
       <div *ngIf="expSets">
+        <div *ngIf="contactSheetPlateView">
+          <app-contact-sheet [expSets]="expSets" [byPlate]="true" (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
+        </div>
         <div *ngIf="contactSheetView">
-          <app-contact-sheet [expSets]="expSets" (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
+          <app-contact-sheet [expSets]="expSets" [byPlate]="false" (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
         </div>
         <div *ngIf="expSetView">
           <app-expset-sheet [expSets]="expSets"></app-expset-sheet>

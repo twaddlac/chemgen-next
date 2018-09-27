@@ -50,61 +50,63 @@ import {SearchFormWormsComponent} from './search-forms/search-form-worms/search-
 import {ExpsetSheetComponent} from './scoring/expset-sheet/expset-sheet.component';
 // import {NgxToggleModule} from 'ngx-toggle';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EmptyComponent} from './empty/empty.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PagesModule,
-    HttpClientModule,
-    FormsModule,
-    BsDatepickerModule.forRoot(),
-    DndModule.forRoot(),
-    SDKBrowserModule.forRoot(),
-    ModalModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    NgProgressModule.forRoot({
-    }),
-    LightboxModule,
-    NouisliderModule,
-    LoadingModule,
-  ],
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    RnaiPrimaryComponent,
-    RnaiSecondaryComponent,
-    ExpScreenInfoComponent,
-    PlateImagingDatesComponent,
-    RnaiPlatePlanComponent,
-    ChemicalSecondaryComponent,
-    ChemicalPrimaryComponent,
-    GeneComponent,
-    GeneExpsetAlbumComponent,
-    GridAlbumComponent,
-    ExpsetAlbumComponent,
-    SearchFormExpScreenComponent,
-    SearchFormRnaiComponent,
-    SearchFormChemicalComponent,
-    ContactSheetComponent,
-    SearchFormViewOptionsComponent,
-    ExpsetAlbumDialogComponent,
-    SearchFormWormsComponent,
-    ExpsetSheetComponent,
-  ],
-  entryComponents: [
-    // ExpsetAlbumComponent,
-  ],
-  providers: [],
-  // exports: [ExpsetAlbumComponent],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        PagesModule,
+        HttpClientModule,
+        FormsModule,
+        BsDatepickerModule.forRoot(),
+        DndModule.forRoot(),
+        SDKBrowserModule.forRoot(),
+        ModalModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        TooltipModule.forRoot(),
+        TypeaheadModule.forRoot(),
+        NgProgressModule.forRoot({}),
+        LightboxModule,
+        NouisliderModule,
+        LoadingModule,
+    ],
+    declarations: [
+        AppComponent,
+        PageNotFoundComponent,
+        RnaiPrimaryComponent,
+        RnaiSecondaryComponent,
+        ExpScreenInfoComponent,
+        PlateImagingDatesComponent,
+        RnaiPlatePlanComponent,
+        ChemicalSecondaryComponent,
+        ChemicalPrimaryComponent,
+        GeneComponent,
+        GeneExpsetAlbumComponent,
+        GridAlbumComponent,
+        ExpsetAlbumComponent,
+        SearchFormExpScreenComponent,
+        SearchFormRnaiComponent,
+        SearchFormChemicalComponent,
+        ContactSheetComponent,
+        SearchFormViewOptionsComponent,
+        ExpsetAlbumDialogComponent,
+        SearchFormWormsComponent,
+        ExpsetSheetComponent,
+        EmptyComponent,
+    ],
+    entryComponents: [
+        // ExpsetAlbumComponent,
+    ],
+    providers: [],
+    // exports: [ExpsetAlbumComponent],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {
-    // TODO Need to add this to an environmental variables
-    LoopBackConfig.setBaseURL('http://localhost:3000');
-    LoopBackConfig.setApiVersion('api');
-  }
+    constructor() {
+        // TODO Need to add this to an environmental variables
+        LoopBackConfig.setBaseURL('http://10.230.9.227:3000');
+        // LoopBackConfig.setBaseURL('http://localhost:3000');
+        LoopBackConfig.setApiVersion('api');
+    }
 }

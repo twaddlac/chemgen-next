@@ -1,173 +1,196 @@
 <div class="row">
-  <div class="col-md-12">
-    <!--Begin View Options-->
-    <fieldset class="form-group">
+    <div class="col-md-12">
+        <!--Begin View Options-->
+        <fieldset class="form-group">
 
-      <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">View Options</legend>
-        <div class="col-md-10">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="contactSheetView" id="contactSheetView"
-                   [(ngModel)]="formResults.viewOptions" value="contactSheetView">
-            <label class="form-check-label" for="contactSheetView">
-              Contact Sheet
-            </label>
-            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
-                  tooltip="Prioritize wells for further scoring"></span>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="expSetView"
-                   [(ngModel)]="formResults.viewOptions"
-                   id="expSetView" value="expSetView"
-                   checked>
-            <label class="form-check-label" for="expSetView">
-              Exp Set
-            </label>
-            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
-                  tooltip="View Exp Sets (treatment, control reagent, control strain, control null)"></span>
-          </div>
-        </div>
-      </div>
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">View Options</legend>
+                <div class="col-md-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="contactSheetPlateView"
+                               id="contactSheetPlateView"
+                               [(ngModel)]="formResults.viewOptions" value="contactSheetPlateView">
+                        <label class="form-check-label" for="contactSheetPlateView">
+                            Contact Sheet - By Plate
+                        </label>
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                              tooltip="Prioritize wells for further scoring, each view has a single plate across conditions"></span>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="contactSheetView" id="contactSheetView"
+                               [(ngModel)]="formResults.viewOptions" value="contactSheetView">
+                        <label class="form-check-label" for="contactSheetView">
+                            Contact Sheet - By Exp Set
+                        </label>
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                              tooltip="Prioritize wells for further scoring, each view has a well plus its replicates"></span>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="expSetView"
+                               [(ngModel)]="formResults.viewOptions"
+                               id="expSetView" value="expSetView"
+                               checked>
+                        <label class="form-check-label" for="expSetView">
+                            Exp Set
+                        </label>
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                              tooltip="View Exp Sets (treatment, control reagent, control strain, control null)"></span>
+                    </div>
+                </div>
+            </div>
 
-    </fieldset>
-    <!--End View Options-->
+        </fieldset>
+        <!--End View Options-->
 
-    <!--Begin Ranking Options-->
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">Ranking Options</legend>
-        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
-              tooltip="Sort the entire database by counts"></span>
-        <div class="col-md-10">
-          <!--Begin Plate-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="plateId" [(ngModel)]="formResults.rankOrder"
-                   id="plateId" value="plateId"
-                   checked>
-            <label class="form-check-label" for="plateId">
-              Plate
-            </label>
-          </div>
-          <!--End Plate-->
+        <!--Begin Ranking Options-->
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Ranking Options</legend>
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                      tooltip="Sort the entire database by counts"></span>
+                <div class="col-md-10">
+                    <!--Begin None-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="none" [(ngModel)]="formResults.rankOrder"
+                               id="none" value="none"
+                               checked>
+                        <label class="form-check-label" for="none">
+                            None
+                        </label>
+                    </div>
+                    <!--End None-->
+
+                    <!--Begin Plate-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="plateId" [(ngModel)]="formResults.rankOrder"
+                               id="plateId" value="plateId"
+                               checked>
+                        <label class="form-check-label" for="plateId">
+                            Plate
+                        </label>
+                    </div>
+                    <!--End Plate-->
 
 
-          <!--Begin % Embryonic Lethality-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="percEmbLeth-desc" [(ngModel)]="formResults.rankOrder"
-                   id="percEmbLeth-desc" value="percEmbLeth-desc"
-            >
-            <label class="form-check-label" for="percEmbLeth-desc">
-              % Embryonic Lethality -desc (high -> low)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="percEmbLeth-asc" [(ngModel)]="formResults.rankOrder"
-                   id="percEmbLeth-asc" value="percEmbLeth-asc"
-            >
-            <label class="form-check-label" for="percEmbLeth-asc">
-              % Embryonic Lethality -asc (low -> high)
-            </label>
-          </div>
-          <!--End % Embryonic Lethality-->
+                    <!--Begin % Embryonic Lethality-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="percEmbLeth-desc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="percEmbLeth-desc" value="percEmbLeth-desc"
+                        >
+                        <label class="form-check-label" for="percEmbLeth-desc">
+                            % Embryonic Lethality -desc (high -> low)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="percEmbLeth-asc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="percEmbLeth-asc" value="percEmbLeth-asc"
+                        >
+                        <label class="form-check-label" for="percEmbLeth-asc">
+                            % Embryonic Lethality -asc (low -> high)
+                        </label>
+                    </div>
+                    <!--End % Embryonic Lethality-->
 
-          <!--Begin % Sterility-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="percSter-desc" [(ngModel)]="formResults.rankOrder"
-                   id="percSter-desc" value="percSter-desc">
-            <label class="form-check-label" for="percSter-desc">
-              % Sterility -desc (high -> low)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="percSter-asc" [(ngModel)]="formResults.rankOrder"
-                   id="percSter-asc" value="percSter-asc">
-            <label class="form-check-label" for="percSter-asc">
-              % Sterility -asc (low -> high)
-            </label>
-          </div>
-          <!--End % Sterility-->
+                    <!--Begin % Sterility-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="percSter-desc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="percSter-desc" value="percSter-desc">
+                        <label class="form-check-label" for="percSter-desc">
+                            % Sterility -desc (high -> low)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="percSter-asc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="percSter-asc" value="percSter-asc">
+                        <label class="form-check-label" for="percSter-asc">
+                            % Sterility -asc (low -> high)
+                        </label>
+                    </div>
+                    <!--End % Sterility-->
 
-          <!--Begin  Brood Size-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="broodSize-desc" [(ngModel)]="formResults.rankOrder"
-                   id="broodSize-desc" value="broodSize-desc">
-            <label class="form-check-label" for="broodSize-desc">
-              Brood Size -desc (high -> low)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="broodSize-asc" [(ngModel)]="formResults.rankOrder"
-                   id="broodSize-asc" value="broodSize-asc">
-            <label class="form-check-label" for="broodSize-asc">
-              Brood Size -asc (low -> high)
-            </label>
-          </div>
-          <!--End  Brood Size-->
+                    <!--Begin  Brood Size-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="broodSize-desc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="broodSize-desc" value="broodSize-desc">
+                        <label class="form-check-label" for="broodSize-desc">
+                            Brood Size -desc (high -> low)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="broodSize-asc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="broodSize-asc" value="broodSize-asc">
+                        <label class="form-check-label" for="broodSize-asc">
+                            Brood Size -asc (low -> high)
+                        </label>
+                    </div>
+                    <!--End  Brood Size-->
 
-          <!--Begin  Worm Count-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wormCount-desc" [(ngModel)]="formResults.rankOrder"
-                   id="wormCount-desc" value="wormCount-desc">
-            <label class="form-check-label" for="wormCount-desc">
-              Worm Count -desc (high -> low)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="wormCount-asc" [(ngModel)]="formResults.rankOrder"
-                   id="wormCount-asc" value="wormCount-asc">
-            <label class="form-check-label" for="wormCount-asc">
-              Worm Count -asc (low -> high)
-            </label>
-          </div>
-          <!--End  Worm Count-->
+                    <!--Begin  Worm Count-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="wormCount-desc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="wormCount-desc" value="wormCount-desc">
+                        <label class="form-check-label" for="wormCount-desc">
+                            Worm Count -desc (high -> low)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="wormCount-asc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="wormCount-asc" value="wormCount-asc">
+                        <label class="form-check-label" for="wormCount-asc">
+                            Worm Count -asc (low -> high)
+                        </label>
+                    </div>
+                    <!--End  Worm Count-->
 
-          <!--Begin  Larvae Count-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="larvaCount-desc" [(ngModel)]="formResults.rankOrder"
-                   id="larvaCount-desc" value="larvaCount-desc">
-            <label class="form-check-label" for="larvaCount-desc">
-              Larvae Count -desc (high -> low)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="larvaCount-asc" [(ngModel)]="formResults.rankOrder"
-                   id="larvaCount-asc" value="larvaCount-asc">
-            <label class="form-check-label" for="larvaCount-asc">
-              Larvae Count -asc (low -> high)
-            </label>
-          </div>
-          <!--End  Larvae Count-->
+                    <!--Begin  Larvae Count-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="larvaCount-desc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="larvaCount-desc" value="larvaCount-desc">
+                        <label class="form-check-label" for="larvaCount-desc">
+                            Larvae Count -desc (high -> low)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="larvaCount-asc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="larvaCount-asc" value="larvaCount-asc">
+                        <label class="form-check-label" for="larvaCount-asc">
+                            Larvae Count -asc (low -> high)
+                        </label>
+                    </div>
+                    <!--End  Larvae Count-->
 
-          <!--Begin  Egg Count-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="eggCount-desc" [(ngModel)]="formResults.rankOrder"
-                   id="eggCount-desc" value="eggCount-desc">
-            <label class="form-check-label" for="eggCount-desc">
-              Egg Count -desc (high -> low)
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="eggCount-asc" [(ngModel)]="formResults.rankOrder"
-                   id="eggCount-asc" value="eggCount-asc">
-            <label class="form-check-label" for="eggCount-asc">
-              Egg Count -asc (low -> high)
-            </label>
-          </div>
-          <!--End  Egg Count-->
+                    <!--Begin  Egg Count-->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="eggCount-desc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="eggCount-desc" value="eggCount-desc">
+                        <label class="form-check-label" for="eggCount-desc">
+                            Egg Count -desc (high -> low)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="eggCount-asc"
+                               [(ngModel)]="formResults.rankOrder"
+                               id="eggCount-asc" value="eggCount-asc">
+                        <label class="form-check-label" for="eggCount-asc">
+                            Egg Count -asc (low -> high)
+                        </label>
+                    </div>
+                    <!--End  Egg Count-->
 
-          <!--Begin None-->
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="none" [(ngModel)]="formResults.rankOrder"
-                   id="none" value="none">
-            <label class="form-check-label" for="none">
-              None
-            </label>
-          </div>
-          <!--End None-->
-
-        </div>
-      </div>
-    </fieldset>
-    <!--End Ranking Options-->
-  </div>
+                </div>
+            </div>
+        </fieldset>
+        <!--End Ranking Options-->
+    </div>
 </div>

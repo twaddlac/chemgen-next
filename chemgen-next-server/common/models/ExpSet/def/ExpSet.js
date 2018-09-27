@@ -13,8 +13,8 @@ module.exports = function(ExpSet) {
     require('../extract/ExpSetExtract')
     require('../extract/scoring/ExpSetScoringExtract')
     require('../extract/scoring/ExpSetScoringExtractByCounts')
-    // require('../transform/ExpSet')
-    // require('../extract/RnaiExpSet')
+    require('../extract/scoring/ExpSetScoringExtractByPlate')
+    require('../extract/scoring/ExpSetResults')
   })
 
   ExpSet.getUnScoredExpSets = function (search, cb) {
@@ -41,6 +41,18 @@ module.exports = function(ExpSet) {
     })
   }
 
+  ExpSet.getUnScoredExpSetsByPlate = function (search, cb) {
+    return new Promise((resolve, reject) => {
+      ExpSet.extract.workflows.getUnscoredExpSetsByPlate(search)
+        .then((results) => {
+          resolve(results)
+        })
+        .catch((error) => {
+          reject(new Error(error))
+        })
+    })
+  }
+
   ExpSet.remoteMethod(
     'getUnScoredExpSets', {
       http: {path: '/getUnScoredExpSets', verb: 'post'},
@@ -51,6 +63,13 @@ module.exports = function(ExpSet) {
   ExpSet.remoteMethod(
     'getUnScoredExpSetsByCounts', {
       http: {path: '/getUnScoredExpSetsByCounts', verb: 'post'},
+      accepts: {arg: 'search', type: 'any', http: {source: 'query'}},
+      returns: {arg: 'results', type: 'any'}
+    }
+  )
+  ExpSet.remoteMethod(
+    'getUnScoredExpSetsByPlate', {
+      http: {path: '/getUnScoredExpSetsByPlate', verb: 'post'},
       accepts: {arg: 'search', type: 'any', http: {source: 'query'}},
       returns: {arg: 'results', type: 'any'}
     }

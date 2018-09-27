@@ -1,4 +1,4 @@
-import app  = require('../../../../server/server.js');
+import app = require('../../../../server/server.js');
 
 import {
   ExpPlateResultSet, ExpScreenUploadWorkflowResultSet,
@@ -9,6 +9,7 @@ import Promise = require('bluebird');
 
 import {PlateCollection, WellCollection} from "../../../types/wellData";
 import * as _ from "lodash";
+import {isEmpty, isNull} from 'lodash';
 
 const RnaiLibrary = app.models['RnaiLibrary'] as (typeof WorkflowModel);
 
@@ -17,6 +18,7 @@ const RnaiLibrary = app.models['RnaiLibrary'] as (typeof WorkflowModel);
 
 RnaiLibrary.load.workflows.processExpPlates = function (workflowData: any, expPlates: ExpPlateResultSet[]) {
   return new Promise(function (resolve, reject) {
+    // @ts-ignore
     Promise.map(expPlates, function (plateInfo) {
       return RnaiLibrary.load.workflows.processExpPlate(workflowData, plateInfo);
     })
@@ -41,7 +43,7 @@ RnaiLibrary.load.workflows.processExpPlate = function (workflowData: any, expPla
         resolve(plateData);
       })
       .catch(function (error) {
-        // app.winston.warn(error.stack);
+        app.winston.warn(error);
         reject(new Error(error));
       });
   });
@@ -156,10 +158,10 @@ RnaiLibrary.load.secondary.genTaxTerms = function (workflowData) {
 RnaiLibrary.load.genLibraryViewData = function (workflowData: ExpScreenUploadWorkflowResultSet, wellData: WellCollection) {
 
   let dbXRefs = wellData.annotationData.dbXRefs;
-  if (!_.isEmpty(dbXRefs) || _.isNull(dbXRefs)) {
+  if (!isEmpty(dbXRefs) || isNull(dbXRefs)) {
     try {
       let row: RnaiWormbaseXrefsResultSet = _.find(dbXRefs, (xref: RnaiWormbaseXrefsResultSet) => {
-        return !_.isNull(xref) && !_.isEmpty(xref) && !_.isEmpty(xref.wbGeneCgcName) && !_.isNull(xref.wbGeneCgcName);
+        return !isNull(xref) && !isEmpty(xref) && !isEmpty(xref.wbGeneCgcName) && !isNull(xref.wbGeneCgcName);
       });
       let cosmid_id = row.wbGeneCgcName;
       return {cosmid_id: cosmid_id, row: row};

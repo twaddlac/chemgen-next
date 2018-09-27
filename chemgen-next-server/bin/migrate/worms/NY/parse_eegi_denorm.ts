@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
 import app = require('../../../../server/server.js');
-import {groupBy, isEqual, find, uniq} from 'lodash';
+import {groupBy, uniqBy, isEqual, find, get, uniq} from 'lodash';
 import Promise = require('bluebird');
 import Papa = require('papaparse');
 import deepcopy = require('deepcopy');
 import {
+  ExpBiosampleResultSet, ExpScreenResultSet,
   PlatePlan96ResultSet,
   RnaiLibraryResultSet,
   RnaiWormbaseXrefsResultSet
 } from "../../../../common/types/sdk/models";
+import {ExpScreenUploadWorkflowResultSet} from "../../../../../chemgen-next-client/src/sdk/models";
 
 const path = require('path');
 const fs = require('fs');
@@ -27,8 +29,33 @@ parseCSVFile(eegi)
     const groupedResults: any = createExpGroups(eegiResults);
     return extractPlates(groupedResults)
       .then((platePlans: PlatePlan96ResultSet[]) => {
-        console.log('finished');
-        process.exit(0);
+        return createScreens(groupedResults)
+          .then((screens: ExpScreenResultSet[]) =>{
+            screens = uniqBy(screens, 'screenName');
+            return createBiosamples(groupedResults)
+              .then((biosamples: ExpBiosampleResultSet[]) =>{
+                return createExpScreenWorkflows(groupedResults, screens, biosamples, platePlans);
+              })
+              .then((results: ExpScreenUploadWorkflowResultSet[]) =>{
+                return app.models.ExpScreenUploadWorkflow.load.workflows.worms.doWork(results[0])
+                  .then(() => {
+                    return;
+                  })
+                  .catch((error) => {
+                    return(new Error(error));
+                  });
+
+              })
+              .catch((error) =>{
+                return(new Error(error));
+              })
+          })
+          .catch((error) =>{
+            return new Error(error);
+          })
+
+        // console.log('finished');
+        // process.exit(0);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);
@@ -65,13 +92,15 @@ function createExpGroups(eegiResults: EegiResults[]) {
     const group = `RNAi--${eegiResult['experimentplate.date']}--${eegiResult['experimentplate.temperature']}--${libraryStock}`;
     if (!isEqual(eegiResult["experiment.worm_strain_id"], 'N2')) {
       if (isEqual(eegiResult["experimentplate.temperature"], eegiResult['wormstrain.permissive_temperature'])) {
-        eegiResult.screenStage = 'permissive';
-        eegiResult.screenName = `RNAi Ahringer Secondary ${eegiResult["wormstrain.genotype"]} Permissive Screen`;
+        eegiResult.screenType = 'permissive';
+        eegiResult.screenStage = 'secondary';
+        eegiResult.screenName = `NY RNAi Ahringer Secondary ${eegiResult["wormstrain.genotype"]} Permissive Screen`;
         name = `${name} Permissive Screen`;
         eegiResult.name = name;
       } else {
-        eegiResult.screenStage = 'restrictive';
-        eegiResult.screenName = `RNAi Ahringer Secondary ${eegiResult["wormstrain.genotype"]} Restrictive Screen`;
+        eegiResult.screenType = 'restrictive';
+        eegiResult.screenStage = 'secondary';
+        eegiResult.screenName = `NY RNAi Ahringer Secondary ${eegiResult["wormstrain.genotype"]} Restrictive Screen`;
         name = `${name} Permissive Screen`;
         eegiResult.name = name;
       }
@@ -116,8 +145,274 @@ function createExpGroups(eegiResults: EegiResults[]) {
   return groupedResults;
 }
 
+/**
+ * Create the screens
+ *   {
+    "screenId": 0,
+    "screenName": "string",
+    "screenType": "string",
+    "screenStage": "string",
+    "screenDescription": "string",
+    "screenProtocol": "string",
+    "screenParentId": 0,
+    "screenPerformedBy": "string",
+    "screenMeta": "string"
+  }
+ * @param groupedResults
+ */
+function createScreens(groupedResults: any) {
+  let createScreens: ExpScreenResultSet[] = [];
+  return new Promise((resolve, reject) => {
+
+    Object.keys(groupedResults).map((group) => {
+      Object.keys(groupedResults[group]).map((wormStrain) => {
+        let plateR1Key = Object.keys(groupedResults[group][wormStrain])[0];
+        let plateR1: EegiResults = groupedResults[group][wormStrain][plateR1Key][0];
+        if (!find(createScreens, {screeName: plateR1['screenName']})) {
+          let screen: ExpScreenResultSet = new ExpScreenResultSet({
+            screenName: plateR1.screenName,
+            screenStage: plateR1.screenStage,
+            screenType: plateR1.screenType,
+          });
+          createScreens.push(screen);
+        }
+      });
+    });
+
+    // @ts-ignore
+    Promise.map(createScreens, (screen: ExpScreenResultSet) => {
+      return app.models.ExpScreen
+        .findOrCreate({where: app.etlWorkflow.helpers.findOrCreateObj(screen)}, screen)
+        .then((results) => {
+          return results[0];
+        })
+        .catch((error) => {
+          return new Error(error);
+        })
+    })
+      .then((results: ExpScreenResultSet[]) => {
+        resolve(results);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      });
+
+  });
+}
+
+
+/**
+ * Create the biosamples
+ * {
+    "biosampleId": 0,
+    "biosampleName": "string",
+    "biosampleType": "string",
+    "biosampleSpecies": "string",
+    "biosampleStrain": "string",
+    "biosampleGene": "string",
+    "biosampleAllele": "string",
+    "biosampleMeta": "string"
+  }
+ * @param groupedResults
+ */
+function createBiosamples(groupedResults: any) {
+  let createThese: ExpBiosampleResultSet[] = [];
+
+  Object.keys(groupedResults).map((group) => {
+    Object.keys(groupedResults[group]).map((wormStrain) => {
+      let plateR1Key = Object.keys(groupedResults[group][wormStrain])[0];
+      let plateR1 = groupedResults[group][wormStrain][plateR1Key][0];
+      if (!find(createThese, {biosampleGene: plateR1['wormstrain.gene']})) {
+        let biosample: ExpBiosampleResultSet = new ExpBiosampleResultSet({
+          biosampleType: 'worm',
+          biosampleAllele: plateR1['wormstrain.allele'],
+          biosampleGene: plateR1['wormstrain.gene'],
+          biosampleStrain: plateR1['wormstrain.id'],
+          biosampleName: plateR1['wormstrain.allele'] || 'N2',
+          biosampleMeta: JSON.stringify({
+            allele: plateR1['wormstrain.allele'],
+            gene: plateR1['wormstrain.gene'],
+            id: plateR1['wormstrain.id'],
+            permissiveTemp: plateR1['wormstrain.permissive_temperature'],
+            restrictiveTemp: plateR1['wormstrain.restrictive_temperature'],
+            genotype: plateR1['wormstrain.genotype'],
+          }),
+        });
+        createThese.push(biosample);
+      }
+    });
+  });
+
+  return new Promise((resolve, reject) => {
+    // @ts-ignore
+    Promise.map(createThese, (biosample: ExpBiosampleResultSet) => {
+      return app.models.ExpBiosample
+        .findOrCreate({where: app.etlWorkflow.helpers.findOrCreateObj(biosample)}, biosample)
+        .then((results) => {
+          return results[0];
+        })
+        .catch((error) => {
+          return new Error(error);
+        });
+    })
+      .then((results: ExpBiosampleResultSet[]) => {
+        resolve(results);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      });
+  });
+}
+
+/**
+ * {
+ *     RNAi--2012-01-18--22.5--universal-F2: {
+ *         AR1: {
+ *             Replicate1: [wells],
+ *             Replicate2: [wells]
+ *             Replicate3: [wells],
+ *             Replicate4: [wells]
+ *         },
+ *         EU856: {
+ *             Replicate1: [wells],
+ *             Replicate2: [wells]
+ *             Replicate3: [wells],
+ *             Replicate4: [wells]
+ *         },
+ *         N2: {
+ *             Replicate1: [wells],
+ *             Replicate2: [wells]
+ *         }
+ *     }
+ * }
+ * @param groupedResults
+ * @param screens
+ * @param biosamples
+ */
+function createExpScreenWorkflows(groupedResults: any, screens: ExpScreenResultSet[], biosamples: ExpBiosampleResultSet[], platePlans: PlatePlan96ResultSet[]) {
+  let workflows: ExpScreenUploadWorkflowResultSet[] = [];
+  Object.keys(groupedResults).map((group: string) => {
+    //Top Level is the Experiment Group Key
+    let N2: any = null;
+    if (get(groupedResults[group], 'N2')) {
+      N2 = deepcopy(groupedResults[group].N2);
+      delete groupedResults[group].N2;
+    }
+
+    Object.keys(groupedResults[group]).map((mutantWormStrain: string) => {
+      let plateR1 = Object.keys(groupedResults[group][mutantWormStrain])[0];
+      let firstWell: EegiResults = groupedResults[group][mutantWormStrain][plateR1][0];
+      let wormRecord = find(biosamples, {biosampleGene: firstWell['wormstrain.gene']});
+      let screenRecord = find(screens, {screenName: firstWell.screenName});
+      let platePlan = find(platePlans, {platePlanName: `NY ${group}`});
+
+      let thisWorkflow: ExpScreenUploadWorkflowResultSet = deepcopy(minimalWorkflow);
+      thisWorkflow['site'] = 'NY';
+      thisWorkflow.name = firstWell.name;
+      thisWorkflow.screenName = firstWell.screenName;
+      thisWorkflow.screenStage = firstWell.screenStage;
+      thisWorkflow.screenType = firstWell.screenType;
+      thisWorkflow.temperature = firstWell['experimentplate.temperature'];
+      thisWorkflow.screenId = screenRecord.screenId;
+      thisWorkflow.instrumentId = 3;
+      thisWorkflow.libraryId = 1;
+      thisWorkflow.librarycode = 'ahringer2';
+      thisWorkflow.assayViewType = "exp_assay_ahringer2";
+      thisWorkflow.plateViewType = "exp_plate_ahringer2";
+      thisWorkflow.biosamples = {
+        "experimentBiosample": {
+          "id": wormRecord.biosampleId,
+          "name": wormRecord.biosampleGene
+        }, "ctrlBiosample": {"id": "4", "name": "N2"}
+      };
+
+
+      // Add Plates
+      thisWorkflow.experimentGroups = {};
+      thisWorkflow.experimentGroups.treat_rnai = {};
+      thisWorkflow.experimentGroups.treat_rnai.plates = [];
+      thisWorkflow.experimentGroups.treat_rnai.biosampleId = wormRecord.biosampleId;
+
+      Object.keys(groupedResults[group][mutantWormStrain]).map((plateId: number) => {
+        let plate: EegiResults = groupedResults[group][mutantWormStrain][plateId][0];
+        let plateRecord: any = {
+          "csPlateid": plate["experiment.plate_id"],
+          "id": plate["experiment.plate_id"],
+          "name": plate.barcode,
+          "creationdate": plate["experimentplate.date"],
+          imagepath: plate['experiment.plate_id'],
+          "platebarcode": plate.barcode,
+          "instrumentPlateId": plate['experiment.plate_id']
+        };
+        thisWorkflow.experimentGroups.treat_rnai.plates.push(plateRecord);
+      });
+
+      thisWorkflow.experimentGroups.ctrl_rnai = {};
+      thisWorkflow.experimentGroups.ctrl_rnai.plates = [];
+      thisWorkflow.experimentGroups.ctrl_rnai.biosampleId = 4;
+
+      if(N2){
+        Object.keys(N2).map((plateId: number) =>{
+          let plate : EegiResults = N2[plateId][0];
+          let plateRecord: any = {
+            "csPlateid": plate["experiment.plate_id"],
+            "id": plate["experiment.plate_id"],
+            "name": plate.barcode,
+            "creationdate": plate["experimentplate.date"],
+            imagepath: plate['experiment.plate_id'],
+            "platebarcode": plate.barcode,
+            "instrumentPlateId": plate['experiment.plate_id']
+          };
+          thisWorkflow.experimentGroups.ctrl_rnai.plates.push(plateRecord);
+        });
+      }
+
+      thisWorkflow.replicates = [];
+      thisWorkflow.experimentGroups.treat_rnai.plates.map((plate) =>{
+        thisWorkflow.replicates.push([plate.id]);
+      });
+      thisWorkflow.experimentGroups.ctrl_rnai.plates.map((plate, index) =>{
+        if(index < thisWorkflow.experimentGroups.treat_rnai.plates.length){
+          thisWorkflow.replicates[index].push(plate.id);
+        }else{
+          thisWorkflow.replicates[this.workflow.replicates.length - 1].push(plate.id);
+        }
+      });
+      thisWorkflow.platePlanId = String(platePlan.id);
+      thisWorkflow.platePlan = platePlan;
+      thisWorkflow.instrumentLookUp = 'nyMicroscope';
+
+      workflows.push(thisWorkflow);
+
+    });
+  });
+  return new Promise((resolve, reject) =>{
+    //@ts-ignore
+    Promise.map(workflows,(workflow: ExpScreenUploadWorkflowResultSet) =>{
+      return app.models.ExpScreenUploadWorkflow
+        .findOrCreate({where: {name: workflow.name}}, workflow)
+        .then((results) =>{
+          results[0].platePlanId = workflow.platePlanId;
+          results[0].instrumentLookUp = workflow.instrumentLookUp;
+          return app.models.ExpScreenUploadWorkflow.upsert(results[0]);
+          // return results[0];
+        })
+        .catch((error) =>{
+          return new Error(error);
+        })
+    })
+      .then((results: ExpScreenUploadWorkflowResultSet[]) =>{
+        resolve(results);
+      })
+      .catch((error) =>{
+        reject(new Error(error));
+      })
+  });
+}
+
 function extractPlates(groupedResults: any) {
   return new Promise((resolve, reject) => {
+    // @ts-ignore
     Promise.map(Object.keys(groupedResults), (group: string) => {
       let wormStrain = Object.keys(groupedResults[group])[0];
       let plates = Object.keys(groupedResults[group][wormStrain]);
@@ -125,6 +420,9 @@ function extractPlates(groupedResults: any) {
       return createPlatePlan(plate, group)
     })
       .then((platePlans: PlatePlan96ResultSet[]) => {
+        return createPlatePlans(platePlans);
+      })
+      .then((platePlans: PlatePlan96ResultSet[]) =>{
         resolve(platePlans);
       })
       .catch((error) => {
@@ -135,7 +433,7 @@ function extractPlates(groupedResults: any) {
 
 function createPlatePlan(plate: Array<EegiResults>, group: string) {
   let geneNames = plate.map((well) => {
-    return  well['clone.id'].replace('sjj_', '');
+    return well['clone.id'].replace('sjj_', '');
   });
   let platePlan: PlatePlan96ResultSet = new PlatePlan96ResultSet();
   return new Promise((resolve, reject) => {
@@ -207,7 +505,8 @@ function createPlatePlan(plate: Array<EegiResults>, group: string) {
             });
             // @ts-ignore
             platePlan.platePlanUploadDate = new Date();
-            platePlan.platePlanName = group;
+            platePlan.platePlanName = `NY ${group}`;
+            platePlan.site = 'NY';
             return platePlan;
           })
           .catch((error) => {
@@ -218,6 +517,28 @@ function createPlatePlan(plate: Array<EegiResults>, group: string) {
         resolve(platePlan);
       })
       .catch((error) => {
+        reject(new Error(error));
+      });
+  });
+}
+
+function createPlatePlans(platePlans: PlatePlan96ResultSet[]){
+  return new Promise((resolve, reject) =>{
+    //@ts-ignore
+    Promise.map(platePlans, (platePlan) =>{
+      return app.models.PlatePlan96
+        .findOrCreate({where: {platePlanName: platePlan.platePlanName}}, platePlan)
+        .then((results) =>{
+          return results[0];
+        })
+        .catch((error) =>{
+          return new Error(error);
+        })
+    })
+      .then((results: PlatePlan96ResultSet[]) =>{
+        resolve(results);
+      })
+      .catch((error) =>{
         reject(new Error(error));
       });
   });
@@ -256,6 +577,7 @@ export interface EegiResultsInterface {
   barcode?: string;
   group?: string;
   screenStage?: string;
+  screenType?: string;
   screenName?: string;
   'wormstrain.allele'?: string;
   'wormstrain.gene'?: string;
@@ -277,6 +599,7 @@ export class EegiResults implements EegiResultsInterface {
   barcode ?: string;
   group ?: string;
   screenStage ?: string;
+  screenType?: string;
   screenName ?: string;
   name ?: string;
   'wormstrain.allele'?: string;
@@ -292,7 +615,6 @@ export class EegiResults implements EegiResultsInterface {
 }
 
 let minimalWorkflow = {
-  "_id": "5af2d6b191f1d80107d9689d",
   "name": "AHR2 2018-04 mip-1;mip-2 Restrictive 25",
   "comment": "reupload",
   platePlan: {},

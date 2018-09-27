@@ -163,7 +163,5 @@ ExpSet.extract.buildNativeQueryCounts = function (data: ExpSetSearchResults, sea
           .whereRaw('model_predicted_counts.treatment_group_id = exp_manual_scores.treatment_group_id');
       });
   }
-
-
   return query;
 };

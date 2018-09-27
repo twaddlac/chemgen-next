@@ -10,7 +10,6 @@ import {isEmpty} from 'lodash';
   templateUrl: './expset-album.component.html',
   styleUrls: ['./expset-album.component.css'],
   providers: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ExpsetAlbumComponent implements OnInit {

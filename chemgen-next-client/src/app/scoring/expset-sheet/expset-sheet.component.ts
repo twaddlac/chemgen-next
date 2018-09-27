@@ -28,8 +28,8 @@ export class ExpsetSheetComponent implements OnInit {
   parseExpSets() {
     this.expSetModule = new ExpsetModule(this.expSets);
 
-    this.parsedExpSets = this.expSets.results.modelPredictedCounts.map((wellCounts: ModelPredictedCountsResultSet) => {
-      return this.expSetModule.getExpSet(wellCounts, this.expSets);
+    this.parsedExpSets = this.expSets.modelPredictedCounts.map((wellCounts: ModelPredictedCountsResultSet) => {
+      return this.expSetModule.getExpSet(wellCounts);
     });
 
     // this.expSet = this.parsedExpSets[0];

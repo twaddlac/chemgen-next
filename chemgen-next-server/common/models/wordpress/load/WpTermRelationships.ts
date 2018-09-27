@@ -10,11 +10,12 @@ const WpTermRelationships = app.models['WpTermRelationships'] as (typeof Workflo
 /**
  * Given a postId and a list of WpTermTaxonomyResultSets, relate each post back its taxonomies
  * @param postId
- * @param {WpTermTaxonomyResult} taxTermObj
+ * @param taxTermObjList
  */
 WpTermRelationships.load.createRelationships = function (postId, taxTermObjList: WpTermTaxonomyResultSet[]) {
   taxTermObjList = shuffle(taxTermObjList);
   return new Promise((resolve, reject) => {
+    // @ts-ignore
     Promise.map(taxTermObjList, (taxTermObj) => {
       let createObj = {
         termTaxonomyId: taxTermObj.termTaxonomyId,

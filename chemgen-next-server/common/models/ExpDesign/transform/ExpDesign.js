@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var models_1 = require("../../../types/sdk/models");
-var _ = require("lodash");
 var lodash_1 = require("lodash");
 var ExpDesign = app.models.ExpDesign;
 /**
@@ -38,8 +37,8 @@ ExpDesign.transform.workflows.screenDataToExpSets = function (workflowData, plat
  */
 ExpDesign.transform.groupExpConditions = function (workflowData, plateDataList) {
     var groupsData = {};
-    _.map(plateDataList, function (plateData) {
-        return _.map(plateData.wellDataList, function (wellData) {
+    lodash_1.map(plateDataList, function (plateData) {
+        return lodash_1.map(plateData.wellDataList, function (wellData) {
             if (!lodash_1.isEmpty(wellData.expGroup.expGroupType)) {
                 if (!lodash_1.has(groupsData, wellData.expGroup.expGroupType)) {
                     groupsData[wellData.expGroup.expGroupType] = [];
@@ -48,7 +47,7 @@ ExpDesign.transform.groupExpConditions = function (workflowData, plateDataList) 
             }
         });
     });
-    _.map(Object.keys(groupsData), function (expGroupType) {
+    lodash_1.map(Object.keys(groupsData), function (expGroupType) {
         groupsData[expGroupType] = lodash_1.uniqWith(groupsData[expGroupType], lodash_1.isEqual);
     });
     return groupsData;
@@ -85,16 +84,23 @@ ExpDesign.transform.createExpSets = function (workflowData, groupsData) {
 ExpDesign.transform.prepareExpDesign = function (workflowData, groups, matchedExpGroups) {
     // TODO Get the controlGroupReagentType
     var expDesignRows = [];
-    _.map(matchedExpGroups, function (matchedExpGroup) {
-        expDesignRows.push(new models_1.ExpDesignResultSet({
-            treatmentGroupId: matchedExpGroup.expGroup.expGroupId,
-            controlGroupId: matchedExpGroup.controlGroup.expGroupId,
-            expWorkflowId: workflowData.id,
-            screenId: workflowData.screenId,
-            controlGroupReagentType: matchedExpGroup.controlGroup.expGroupType,
-        }));
-        _.map(workflowData.controlConditions, function (condition) {
-            _.map(groups[condition], function (group) {
+    lodash_1.map(matchedExpGroups, function (matchedExpGroup) {
+        //Some of the very early screens do not have matched N2s. I do not know whyyyyyyy
+        if (lodash_1.get(matchedExpGroup, 'controlGroup')) {
+            var controlGroupExpId = matchedExpGroup.controlGroup.expGroupId;
+            var controlGroupReagentType = matchedExpGroup.controlGroup.expGroupType;
+            if (controlGroupReagentType && controlGroupReagentType) {
+                expDesignRows.push(new models_1.ExpDesignResultSet({
+                    treatmentGroupId: matchedExpGroup.expGroup.expGroupId,
+                    controlGroupId: controlGroupExpId,
+                    expWorkflowId: workflowData.id,
+                    screenId: workflowData.screenId,
+                    controlGroupReagentType: controlGroupReagentType,
+                }));
+            }
+        }
+        lodash_1.map(workflowData.controlConditions, function (condition) {
+            lodash_1.map(groups[condition], function (group) {
                 expDesignRows.push(new models_1.ExpDesignResultSet({
                     treatmentGroupId: matchedExpGroup.expGroup.expGroupId,
                     screenId: workflowData.screenId,

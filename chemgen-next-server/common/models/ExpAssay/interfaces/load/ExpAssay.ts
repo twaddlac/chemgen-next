@@ -13,6 +13,7 @@ import {
 } from "../../../../types/sdk/models";
 import * as _ from "lodash";
 
+// @ts-ignore
 const readFile = Promise.promisify(require('fs').readFile);
 
 const ExpAssay = app.models['ExpAssay'] as (typeof WorkflowModel);
@@ -31,6 +32,7 @@ const ExpAssay = app.models['ExpAssay'] as (typeof WorkflowModel);
  */
 ExpAssay.load.workflows.createExpAssayInterfaces = function (workflowData: any, screenData: ScreenCollection, plateData: PlateCollection) {
   return new Promise((resolve, reject) => {
+    // @ts-ignore
     Promise.map(plateData.wellDataList, (wellData) => {
       return ExpAssay.load.workflows.getAssayRelations(workflowData, screenData, plateData, wellData)
         .then((expSet: ExpSet) => {
@@ -164,6 +166,7 @@ ExpAssay.load.workflows.createWpPosts = function (workflowData: ExpScreenUploadW
       title: title,
       titleSlug: slug(title),
       postContent: postContent,
+      postExcerpt: '',
       imagePath: `${assayImagePath}-autolevel.jpeg`,
     };
 
@@ -194,7 +197,7 @@ ExpAssay.load.workflows.createWpPosts = function (workflowData: ExpScreenUploadW
 ExpAssay.load.updateExpAssay = function (wellData: WellCollection, postData: any) {
   return new Promise((resolve, reject) => {
     wellData.expAssay.assayWpAssayPostId = postData.postData.id;
-    ExpAssay.upsert(wellData.expAssay)
+    app.models.ExpAssay.upsert(wellData.expAssay)
       .then((results) => {
         wellData.expAssay = results;
         resolve(postData);
@@ -254,6 +257,7 @@ ExpAssay.load.workflows.createPostTaxRels = function (workflowData: ExpScreenUpl
   return new Promise((resolve, reject) => {
     let taxTerms = ExpAssay.load.relateTaxToPost(workflowData, screenData, wellData);
     taxTerms = _.uniqWith(taxTerms, _.isEqual);
+    // @ts-ignore
     Promise.map(Object.keys(postData), (postType: string) => {
       return app.models.WpTermRelationships.load
         .createRelationships(postData[postType].id, taxTerms);

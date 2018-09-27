@@ -4,11 +4,13 @@ var app = require("../../../../server/server.js");
 var Promise = require("bluebird");
 var wellData_1 = require("../../../types/wellData");
 var _ = require("lodash");
+var lodash_1 = require("lodash");
 var RnaiLibrary = app.models['RnaiLibrary'];
 //TODO This should be moved ot the stock - I am not actually creating anything in the rnai_library table
 // Or Put this in 'extract'
 RnaiLibrary.load.workflows.processExpPlates = function (workflowData, expPlates) {
     return new Promise(function (resolve, reject) {
+        // @ts-ignore
         Promise.map(expPlates, function (plateInfo) {
             return RnaiLibrary.load.workflows.processExpPlate(workflowData, plateInfo);
         })
@@ -32,7 +34,7 @@ RnaiLibrary.load.workflows.processExpPlate = function (workflowData, expPlate) {
             resolve(plateData);
         })
             .catch(function (error) {
-            // app.winston.warn(error.stack);
+            app.winston.warn(error);
             reject(new Error(error));
         });
     });
@@ -137,10 +139,10 @@ RnaiLibrary.load.secondary.genTaxTerms = function (workflowData) {
 };
 RnaiLibrary.load.genLibraryViewData = function (workflowData, wellData) {
     var dbXRefs = wellData.annotationData.dbXRefs;
-    if (!_.isEmpty(dbXRefs) || _.isNull(dbXRefs)) {
+    if (!lodash_1.isEmpty(dbXRefs) || lodash_1.isNull(dbXRefs)) {
         try {
             var row = _.find(dbXRefs, function (xref) {
-                return !_.isNull(xref) && !_.isEmpty(xref) && !_.isEmpty(xref.wbGeneCgcName) && !_.isNull(xref.wbGeneCgcName);
+                return !lodash_1.isNull(xref) && !lodash_1.isEmpty(xref) && !lodash_1.isEmpty(xref.wbGeneCgcName) && !lodash_1.isNull(xref.wbGeneCgcName);
             });
             var cosmid_id = row.wbGeneCgcName;
             return { cosmid_id: cosmid_id, row: row };

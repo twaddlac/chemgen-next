@@ -38,18 +38,7 @@ RnaiLibrary.extract.secondary.getLibraryInfo = function (workflowData, barcode) 
                 //TODO Add hook for multiple library entries per well
                 var wells = initialize96Wells();
                 var libraryInfoList_1 = [];
-                // Object.keys(workflowData.platePlan).map((well) =>{
-                //   if(workflowData.platePlan.well instanceof Array){
-                //     workflowData.platePlan.well.map((wellData) =>{
-                //       libraryInfoList = getPlatePlanWell(wellData, well, libraryInfoList);
-                //     });
-                //   }else if (workflowData.platePlan.well instanceof Object){
-                //     libraryInfoList = getPlatePlanWell(workflowData.platePlan.well, well, libraryInfoList);
-                //
-                //   }else{
-                //     reject(new Error('PlatePlan format is invalid'));
-                //   }
-                // });
+                //TODO Check if its a well or not
                 wells.map(function (well) {
                     if (!lodash_1.get(workflowData.platePlan, [well, 'lookUp'])) {
                         return;
