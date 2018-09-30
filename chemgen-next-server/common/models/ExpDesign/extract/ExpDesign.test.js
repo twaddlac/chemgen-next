@@ -8,6 +8,7 @@ var ExpDesign = app.models.ExpDesign;
 var instrumentPlates = require('../../../../test/data/rnai_instrument_plate_data_list.json');
 var workflowData = require('../../../../test/data/rnai_workflow_data.json');
 workflowData.id = 1;
+//@ts-ignore
 var expDesignResults = [
     {
         "expDesignId": 1,
@@ -105,11 +106,10 @@ describe('ExpDesign.extract', function () {
         })
             .then(function (results) {
             assert.equal(results.expGroupList.length, 8);
-            assert.equal(results.expGroupList[0].expGroupType, 'ctrl_null');
             var sortedResults = _.sortBy(results.expGroupList, 'expGroupId');
-            assert.equal(sortedResults[0].expGroupType, 'ctrl_null');
+            assert.equal(sortedResults[0].expGroupType, 'treat_rnai');
             assert.equal(sortedResults[0].expGroupId, 1);
-            assert.equal(sortedResults[0].biosampleId, 2);
+            assert.equal(sortedResults[0].biosampleId, 1);
             done();
         })
             .catch(function (error) {

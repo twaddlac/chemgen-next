@@ -75,6 +75,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow = function (workflo
       })
       // .then((screenData: ScreenCollection) => {
       //   app.winston.info('RETURNING Scores');
+      // TODO Add in counts here
       //   return app.models.ModelPredictedPheno.load.workflows.parseScreen(workflowData, screenData)
       // })
       .then(() => {

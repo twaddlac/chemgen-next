@@ -2,8 +2,16 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {isEqual, find, get, shuffle} from 'lodash';
 import {
-    ModelPredictedCountsResultSet, ExpScreenUploadWorkflowResultSet, ExpDesignResultSet, ExpScreenResultSet,
-    RnaiLibraryResultSet, ChemicalLibraryResultSet, ExpAssayResultSet, ExpAssay2reagentResultSet, ExpPlateResultSet
+    ModelPredictedCountsResultSet,
+    ExpScreenUploadWorkflowResultSet,
+    ExpDesignResultSet,
+    ExpScreenResultSet,
+    RnaiLibraryResultSet,
+    ChemicalLibraryResultSet,
+    ExpAssayResultSet,
+    ExpAssay2reagentResultSet,
+    ExpPlateResultSet,
+    ExpManualScoresResultSet
 } from '../../../sdk/models';
 import {Memoize} from 'lodash-decorators';
 
@@ -127,7 +135,9 @@ export interface ExpSetSearchResultsInterface {
     expPlates?: ExpPlateResultSet[];
     expScreens?: ExpScreenResultSet[];
     expWorkflows?: ExpScreenUploadWorkflowResultSet[];
+    expManualScores?: ExpManualScoresResultSet[];
     expSets?: Array<ExpDesignResultSet[]>;
+    fetchedFromCache: boolean;
     currentPage?: number;
     skip?: number;
     totalPages?: number;
@@ -145,6 +155,8 @@ export class ExpSetSearchResults {
     expPlates?: ExpPlateResultSet[] = [];
     expScreens?: ExpScreenResultSet[] = [];
     expWorkflows?: ExpScreenUploadWorkflowResultSet[] = [];
+    expManualScores?: ExpManualScoresResultSet[] = [];
+    fetchedFromCache: boolean = false;
     expSets?: Array<ExpDesignResultSet[]>;
     currentPage ?: number = 1;
     skip ?: number = 0;

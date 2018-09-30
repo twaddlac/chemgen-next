@@ -1,5 +1,5 @@
 <!--Begin FormGroup CreationDates-->
-<div class="row">
+<div *ngIf="plateModel" class="row">
   <div class="form-group">
     <!--Begin Loop to Modify Dates-->
     <div id="all-imaging-dates"
@@ -28,7 +28,7 @@
   </div>
 </div>
 <!--Begin add new imaging date to list-->
-<div class="row">
+<div *ngIf="plateModel" class="row">
   <div class="col-md-12">
     <button type="button" class="btn btn-primary" (click)="plateModel.addEmptyDate()">Add Imaging Date
     </button>

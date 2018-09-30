@@ -18,32 +18,32 @@ import {NgProgress, NgProgressModule} from '@ngx-progressbar/core';
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import {SocketConnection} from '../../../sdk/sockets/socket.connections';
 import {SocketDriver} from '../../../sdk/sockets/socket.driver';
-import {LoopBackAuth} from '../../../sdk/services/core';
+import {ErrorHandler, LoopBackAuth} from '../../../sdk/services/core';
 import {InternalStorage} from '../../../sdk';
 
 describe('SearchFormWormsComponent', () => {
-  let component: SearchFormWormsComponent;
-  let fixture: ComponentFixture<SearchFormWormsComponent>;
+    let component: SearchFormWormsComponent;
+    let fixture: ComponentFixture<SearchFormWormsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [LoadingModule, FormsModule, NouisliderModule, ModalModule, NgProgressModule],
-      declarations: [SearchFormWormsComponent, SearchFormExpScreenComponent,
-        SearchFormRnaiComponent, SearchFormViewOptionsComponent, ContactSheetComponent,
-        ExpsetSheetComponent, GridAlbumComponent, ExpsetAlbumComponent, ExpsetAlbumDialogComponent],
-      providers: [ExpSetApi, ExpScreenApi, ExpScreenUploadWorkflowApi,
-        HttpClient, HttpHandler, SocketConnection, SocketDriver, SDKModels, LoopBackAuth, InternalStorage]
-    })
-      .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [LoadingModule, FormsModule, NouisliderModule, ModalModule, NgProgressModule],
+            declarations: [SearchFormWormsComponent, SearchFormExpScreenComponent,
+                SearchFormRnaiComponent, SearchFormViewOptionsComponent, ContactSheetComponent,
+                ExpsetSheetComponent, GridAlbumComponent, ExpsetAlbumComponent, ExpsetAlbumDialogComponent],
+            providers: [ExpSetApi, ExpScreenApi, ExpScreenUploadWorkflowApi,
+                HttpClient, HttpHandler, SocketConnection, SocketDriver, SDKModels, LoopBackAuth, InternalStorage, ErrorHandler]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SearchFormWormsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(SearchFormWormsComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

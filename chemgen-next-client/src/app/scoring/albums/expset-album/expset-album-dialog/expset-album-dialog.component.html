@@ -1,6 +1,6 @@
 <!--Begin Display ExpSet Album-->
 <div *ngIf="score">
-  <button (click)="getExpSets(modelPredictedCounts)" type="button" class="btn btn-default btn-lg">
+  <button (click)="getExpSets()" type="button" class="btn btn-default btn-lg">
     <span class="fa fa-picture-o" aria-hidden="true"></span>
   </button>
 </div>
@@ -25,7 +25,6 @@
           <app-expset-album [score]="score"
                             [albums]="expSet.albums"
                             [expSetAlbums]="expSetAlbums"
-                            [modelPredictedCounts]="modelPredictedCounts"
                             [expSet]="expSet">
           </app-expset-album>
         </div>

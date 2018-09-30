@@ -10,6 +10,7 @@ var shared = require("../../../../test/shared");
 shared.makeMemoryDb();
 var rnaiLibraries = require('../../../../test/data/rnai_library.json');
 //TODO This is not a great ExpPlates set
+//@ts-ignore
 var expPlates = [
     {
         "plateId": 1,
@@ -19,6 +20,7 @@ var expPlates = [
         "instrumentId": 1,
         "instrumentPlateId": 9281,
         "plateImageDate": "2017-12-18T15:56:26.000Z",
+        //@ts-ignore
         "plateStartTime": "2017-12-18T15:56:26.000Z",
         "plateCreationDate": "2017-12-18T00:00:00.000Z",
         "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150005\\",
@@ -128,7 +130,6 @@ describe('ExpAssay.load', function () {
             .then(function (results) {
             assert.equal(results.wellDataList[0].expGroup.biosampleId, 1);
             assert.equal(results.wellDataList[0].expGroup.expGroupType, 'ctrl_rnai');
-            assert.equal(results.wellDataList[0].expGroup.reagentId, 701);
             assert.equal(results.wellDataList[0].expAssay.assayReplicateNum, 1);
             done();
         })
@@ -141,7 +142,6 @@ describe('ExpAssay.load', function () {
             .then(function (results) {
             assert.equal(results.wellDataList[0].expGroup.biosampleId, 1);
             assert.equal(results.wellDataList[0].expGroup.expGroupType, 'ctrl_rnai');
-            assert.equal(results.wellDataList[0].expGroup.reagentId, 701);
             assert.equal(results.wellDataList[0].expAssay.assayReplicateNum, 2);
             done();
         })
@@ -155,7 +155,7 @@ describe('ExpAssay.load', function () {
             return ExpAssay.load.prepareAnnotationData(workflowData, results);
         })
             .then(function (plateData) {
-            assert.equal(plateData.wellDataList[0].annotationData.taxTerms.length, 12);
+            assert.equal(plateData.wellDataList[0].annotationData.taxTerms.length, 13);
             done();
         })
             .catch(function (error) {

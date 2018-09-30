@@ -22,8 +22,6 @@ import {RnaiPlatePlanComponent} from './exp-screen/upload-screen/rnai/rnai-secon
 
 import {ChemicalSecondaryComponent} from './exp-screen/upload-screen/chemical/chemical-secondary/chemical-secondary.component';
 import {ChemicalPrimaryComponent} from './exp-screen/upload-screen/chemical/chemical-primary/chemical-primary.component';
-import {GeneComponent} from './saved-analysis/exp-set/gene/gene.component';
-import {GeneExpsetAlbumComponent} from './saved-analysis/exp-set/gene-expset-album/gene-expset-album.component';
 import {GridAlbumComponent} from './scoring/albums/grid-album/grid-album.component';
 import {ExpsetAlbumComponent} from './scoring/albums/expset-album/expset-album.component';
 
@@ -81,8 +79,6 @@ import {EmptyComponent} from './empty/empty.component';
         RnaiPlatePlanComponent,
         ChemicalSecondaryComponent,
         ChemicalPrimaryComponent,
-        GeneComponent,
-        GeneExpsetAlbumComponent,
         GridAlbumComponent,
         ExpsetAlbumComponent,
         SearchFormExpScreenComponent,

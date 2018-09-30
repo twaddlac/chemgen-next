@@ -12,6 +12,7 @@ const Plate = app.models.Plate as (typeof WorkflowModel);
 import shared = require('../../../../test/shared');
 shared.makeMemoryDb();
 
+//@ts-ignore
 let instrumentPlates: PlateResultSet = [
   {
     'csPlateid': 9281,
@@ -58,6 +59,7 @@ describe('ExpPlate.load', function () {
   before(function (done) {
     app.dataSources.db.automigrate('ExpPlate')
       .then(() => {
+        //@ts-ignore
         return Promise.map(instrumentPlates, function (row) {
           return Plate.findOrCreate({where: app.etlWorkflow.helpers.findOrCreateObj(row)}, row);
         })

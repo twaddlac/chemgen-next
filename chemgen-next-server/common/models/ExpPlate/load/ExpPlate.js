@@ -75,9 +75,8 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData, instrumentPlate
     var creationdate = instrumentPlate.creationdate;
     var imagePath = imagepath;
     var plateImagePath = "" + imagePath;
-    if (lodash_1.get(workflowData, 'site') && !lodash_1.isEqual(workflowData.site, 'NY')) {
-        //path.normalize does not work the same on osx as on linux
-        //because of course it doesn't
+    //TODO Add in site specific parsers for the plate Path
+    if (!lodash_1.get(workflowData, 'site') || (lodash_1.get(workflowData, 'site') && lodash_1.isEqual(workflowData.site, 'AD'))) {
         var imagePath_1 = imagepath.split('\\');
         imagePath_1 = _.compact(imagePath_1);
         if (!imagePath_1[2] || _.isNull(imagePath_1[2])) {
@@ -85,6 +84,9 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData, instrumentPlate
             throw new Error('Plate Path is invalid');
         }
         plateImagePath = imagePath_1[2] + "/" + csPlateid;
+    }
+    else if (lodash_1.get(workflowData, 'site') && lodash_1.isEqual(workflowData.site, 'NY')) {
+        plateImagePath = "" + imagePath;
     }
     /*
     For some reason if I searched on the whole plate object it was always returning not found

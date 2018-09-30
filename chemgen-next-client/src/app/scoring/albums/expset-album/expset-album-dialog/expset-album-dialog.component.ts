@@ -1,9 +1,8 @@
 import {Component, OnInit, Input, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {ModelPredictedCountsResultSet} from '../../../../../sdk/models';
-import {RnaiExpSetApi} from '../../../../../sdk/services/custom';
+import {ExpSetApi} from '../../../../../sdk/services/custom';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Lightbox} from 'angular2-lightbox';
-
 import {get} from 'lodash';
 
 @Component({
@@ -14,7 +13,7 @@ import {get} from 'lodash';
 export class ExpsetAlbumDialogComponent implements OnInit {
 
     @Input('expSet') expSet: any;
-    @Input('modelPredictedCounts') modelPredictedCounts: ModelPredictedCountsResultSet;
+    // @Input('modelPredictedCounts') modelPredictedCounts: ModelPredictedCountsResultSet;
     @Input('albums') albums: any;
     @Input('score') score: boolean;
 
@@ -23,15 +22,10 @@ export class ExpsetAlbumDialogComponent implements OnInit {
     expSetAlbums: any = {treatmentReagentImages: [], ctrlReagentImages: [], ctrlNullImages: [], ctrlStrainImages: []};
     public showProgress = false;
 
-    constructor(private rnaiExpSetApi: RnaiExpSetApi, public _lightbox: Lightbox) {
+    constructor(private expSetApi: ExpSetApi, public _lightbox: Lightbox) {
     }
 
     ngOnInit() {
-        // ['treatmentReagentImages', 'ctrlReagentImages', 'ctrlStrainImages', 'ctrlNullImages'].map((albumName) => {
-        //     if (get(this.expSet, 'albums') && get(this.expSet.albums, albumName)) {
-        //         this.createAlbum(albumName, this.expSet.albums[albumName]);
-        //     }
-        // });
     }
 
     getExpSets(counts: ModelPredictedCountsResultSet) {

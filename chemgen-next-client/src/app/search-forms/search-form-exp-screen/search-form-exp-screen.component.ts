@@ -12,14 +12,17 @@ import {uniq, orderBy} from 'lodash';
 })
 export class SearchFormExpScreenComponent implements OnInit {
 
-  expScreens: ExpScreenResultSet[] = [];
-  expScreenWorkflows: ExpScreenUploadWorkflowResultSet[] = [];
-  temperatures: Array<number> = [];
+  expScreens: ExpScreenResultSet[];
+  expScreenWorkflows: ExpScreenUploadWorkflowResultSet[];
+  temperatures: Array<number>;
   // expScreenFormResults: SearchFormExpScreenFormResults = new SearchFormExpScreenFormResults();
 
   @Input('formResults') formResults: SearchFormExpScreenFormResults;
 
   constructor(private expScreenApi: ExpScreenApi, private expScreenUploadWorkflowApi: ExpScreenUploadWorkflowApi) {
+      this.expScreens = [];
+      this.expScreenWorkflows = [];
+      this.temperatures = [];
   }
 
   ngOnInit() {
@@ -30,14 +33,23 @@ export class SearchFormExpScreenComponent implements OnInit {
   getExpScreens() {
     this.expScreenApi
       .find()
-      .subscribe((results: ExpScreenResultSet[]) => {
-        console.log('finished find expScreens!');
-        this.expScreens = results;
-        return;
-      }, (error) => {
-        console.log(error);
-        return new Error(error);
-      });
+        .toPromise()
+        .then((results: ExpScreenResultSet[]) =>{
+            console.log('finished find expScreens!');
+            this.expScreens = results;
+        })
+        .catch((error) =>{
+            console.log(error);
+            return new Error(error);
+        });
+      // .subscribe((results: ExpScreenResultSet[]) => {
+      //   console.log('finished find expScreens!');
+      //   this.expScreens = results;
+      //   return;
+      // }, (error) => {
+      //   console.log(error);
+      //   return new Error(error);
+      // });
   }
 
   getExpScreenWorkflows() {
@@ -46,7 +58,6 @@ export class SearchFormExpScreenComponent implements OnInit {
     const where: any = {
       screenName: this.formResults.expScreen.screenName
     };
-    console.log(JSON.stringify(where, null, 2));
     this.expScreenUploadWorkflowApi
       .find({
         where: where,

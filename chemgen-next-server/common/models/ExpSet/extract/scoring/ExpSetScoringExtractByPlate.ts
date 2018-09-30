@@ -17,7 +17,6 @@ import {
 import decamelize = require('decamelize');
 
 import config = require('config');
-
 let knex = config.get('knex');
 
 import redis = require('redis');

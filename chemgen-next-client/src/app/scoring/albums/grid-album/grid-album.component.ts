@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {isEqual} from 'lodash';
-import {Lightbox} from 'angular2-lightbox';
+import {Lightbox, LightboxConfig} from 'angular2-lightbox';
 
 @Component({
     selector: 'app-grid-album',
@@ -20,7 +20,9 @@ export class GridAlbumComponent implements OnInit {
     @Output() parseInterestingEvent = new EventEmitter<string>();
     @Output() getExpSetsEvent = new EventEmitter<any>();
 
-    constructor(public _lightbox: Lightbox) {
+    constructor(public _lightbox: Lightbox, private _lightboxConfig: LightboxConfig) {
+        _lightboxConfig.fadeDuration = 0;
+        _lightboxConfig.resizeDuration = 0;
     }
 
     ngOnInit() {

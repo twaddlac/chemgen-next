@@ -40,15 +40,18 @@ export class ContactSheetComponent implements OnInit {
     @Input() byPlate: Boolean = true;
     @Output() expSetsScored = new EventEmitter<boolean>();
 
-    public didScore = false;
-
-    public errorMessage = '';
-    public contactSheetResults: ContactSheetFormResults = new ContactSheetFormResults();
-    public contactSheetUiOptions = new ContactSheetUIOptions();
+    public didScore: boolean;
+    public errorMessage: string;
+    public contactSheetResults: ContactSheetFormResults;
+    public contactSheetUiOptions: ContactSheetUIOptions;
 
     constructor(private expSetApi: ExpSetApi,
                 private expManualScoresApi: ExpManualScoresApi,
                 public _lightbox: Lightbox) {
+        this.didScore = false;
+        this.errorMessage = '';
+        this.contactSheetResults = new ContactSheetFormResults();
+        this.contactSheetUiOptions = new ContactSheetUIOptions();
     }
 
     ngOnInit() {
@@ -102,7 +105,7 @@ export class ContactSheetComponent implements OnInit {
 
     createManualScore(manualScoreValue: number, treatmentGroupId: number) {
         const expAssay: Array<any> = filter(this.expSets.expGroupTypeAlbums.treatReagent, {treatmentGroupId: Number(treatmentGroupId)});
-        if(isArray(expAssay) && expAssay.length){
+        if (isArray(expAssay) && expAssay.length) {
             const expScreen: any = find(this.expSets.expScreens, {screenId: Number(expAssay[0].screenId)});
             return expAssay.map((imageMeta: any) => {
                 return {
@@ -115,11 +118,10 @@ export class ContactSheetComponent implements OnInit {
                     'treatmentGroupId': treatmentGroupId,
                     'scoreCodeId': 66,
                     'scorerId': 1,
-                    // 'timestamp': Date.now(),
                     'expWorkflowId': String(imageMeta.expWorkflowId),
                 };
             })
-        }else{
+        } else {
             return null;
         }
     }
@@ -177,12 +179,12 @@ export class ContactSheetComponent implements OnInit {
         this.contactSheetUiOptions.phenoTypeUiOptions = find(this.contactSheetUiOptions.filterPhenotypeOptions, {'code': this.contactSheetUiOptions.phenotype});
         if (isEqual(this.contactSheetUiOptions.phenoTypeUiOptions.displaySlider, false)) {
             ['treatReagent', 'ctrlReagent'].map((albumName) => {
-                if (get(this.expSets.expGroupTypeAlbums, albumName)) {
+                if (get(this.expSets, 'expGroupTypeAlbums') && get(this.expSets.expGroupTypeAlbums, albumName)) {
                     this.expSets.expGroupTypeAlbums[albumName] = orderBy(this.expSets.expGroupTypeAlbums[albumName], ['plateId', 'imagePath'], ['asc', 'asc']);
                 }
             });
         } else {
-            if (get(this.expSets.expGroupTypeAlbums, 'treatReagent') && get(this.expSets.expGroupTypeAlbums, 'ctrlReagent')) {
+            if (get(this.expSets, 'expGroupTypeAlbums') && get(this.expSets.expGroupTypeAlbums, 'treatReagent') && get(this.expSets.expGroupTypeAlbums, 'ctrlReagent')) {
                 let minTreat = 0;
                 let maxTreat = 100;
                 let minCtrl = 0;
@@ -211,7 +213,7 @@ export class ContactSheetComponent implements OnInit {
                 this.contactSheetUiOptions.sliderConfig.start[1] = this.contactSheetUiOptions.sliderConfig.range.max;
             }
             ['treatReagent', 'ctrlReagent'].map((albumName) => {
-                if (get(this.expSets.expGroupTypeAlbums, albumName)) {
+                if (get(this.expSets, 'expGroupTypeAlbums') && get(this.expSets.expGroupTypeAlbums, albumName)) {
                     this.expSets.expGroupTypeAlbums[albumName] = orderBy(this.expSets.expGroupTypeAlbums[albumName], this.contactSheetUiOptions.phenotype, this.contactSheetUiOptions.sortOrder);
                 }
             });
@@ -221,9 +223,8 @@ export class ContactSheetComponent implements OnInit {
     //TODO Moving most of this code to the server side
 
     parseExpSetsToAlbums() {
-
         ['treatReagent', 'ctrlReagent', 'ctrlNull', 'ctrlStrain'].map((expGroupType) => {
-            if (get(this.expSets.expGroupTypeAlbums, expGroupType)) {
+            if (get(this.expSets, 'expGroupTypeAlbums') && get(this.expSets.expGroupTypeAlbums, expGroupType)) {
                 this.expSets.expGroupTypeAlbums[expGroupType].map((imageMeta: any) => {
                     if (imageMeta.expSet.treatmentGroupId) {
                         this.contactSheetResults.interesting[imageMeta.treatmentGroupId] = false;

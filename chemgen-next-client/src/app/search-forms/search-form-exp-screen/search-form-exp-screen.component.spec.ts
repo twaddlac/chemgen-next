@@ -7,16 +7,15 @@ import {ExpScreenResultSet, ExpScreenUploadWorkflowResultSet, LoopBackFilter} fr
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import {SocketConnection} from '../../../sdk/sockets/socket.connections';
 import {SocketDriver} from '../../../sdk/sockets/socket.driver';
-import {LoopBackAuth} from '../../../sdk/services/core';
+import {ErrorHandler, LoopBackAuth} from '../../../sdk/services/core';
 import {InternalStorage} from '../../../sdk';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/internal/observable/of';
+import {SearchFormExpScreenFormResults} from "./search-form-exp-screen.component";
 
 describe('SearchFormExpScreenComponent', () => {
   let component: SearchFormExpScreenComponent;
   let fixture: ComponentFixture<SearchFormExpScreenComponent>;
-  // let expScreenApiStub: Partial<ExpScreenApi>;
-  // let expScreenUploadWorkflowApiStub: Partial<ExpScreenUploadWorkflowApi>;
 
   beforeEach(async(() => {
 
@@ -24,7 +23,7 @@ describe('SearchFormExpScreenComponent', () => {
       imports: [FormsModule],
       declarations: [SearchFormExpScreenComponent],
       providers: [ExpScreenApi, ExpScreenUploadWorkflowApi, HttpClient,
-        HttpHandler, SocketConnection, SocketDriver, SDKModels, LoopBackAuth, InternalStorage],
+        HttpHandler, SocketConnection, SocketDriver, SDKModels, LoopBackAuth, InternalStorage, ErrorHandler],
     })
       .compileComponents();
   }));
@@ -32,6 +31,7 @@ describe('SearchFormExpScreenComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchFormExpScreenComponent);
     component = fixture.componentInstance;
+    component.formResults = new SearchFormExpScreenFormResults();
     fixture.detectChanges();
   });
 

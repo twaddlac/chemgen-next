@@ -86,9 +86,8 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData: ExpScreenUpload
   let imagePath = imagepath;
 
   let plateImagePath =`${imagePath}`;
-  if (get(workflowData, 'site') && !isEqual(workflowData.site, 'NY')) {
-    //path.normalize does not work the same on osx as on linux
-    //because of course it doesn't
+  //TODO Add in site specific parsers for the plate Path
+  if (! get(workflowData, 'site') || (get(workflowData, 'site') && isEqual(workflowData.site, 'AD'))){
     let imagePath = imagepath.split('\\');
     imagePath = _.compact(imagePath);
     if (!imagePath[2] || _.isNull(imagePath[2])) {
@@ -96,7 +95,10 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData: ExpScreenUpload
       throw new Error('Plate Path is invalid');
     }
     plateImagePath = `${imagePath[2]}/${csPlateid}`;
+  } else if (get(workflowData, 'site') && isEqual(workflowData.site, 'NY')){
+    plateImagePath =`${imagePath}`;
   }
+
 
   /*
   For some reason if I searched on the whole plate object it was always returning not found

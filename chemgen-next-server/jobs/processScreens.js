@@ -7,12 +7,13 @@ var Promise = require("bluebird");
 app.models.ExpScreenUploadWorkflow
     .find({
     where: {
-        name: /CHEM Pr/,
+        name: /CHEM/,
     },
-    limit: 10
+    limit: 5
 })
     .then(function (results) {
     results.map(function (workflow) {
+        app.winston.info("Queuing: " + workflow.name);
         workflow.screenName = "Pristionchus pacificus + N2 Primary Chembridge Whole Library Screen";
         workflow.screenId = 9;
     });
@@ -21,10 +22,15 @@ app.models.ExpScreenUploadWorkflow
         return app.models.ExpScreenUploadWorkflow.upsert(workflow);
     })
         .then(function (results) {
-        jobQueues.workflowQueue.add({ workflowData: results });
+        //@ts-ignore
+        Promise.map(results, function (result) {
+            jobQueues.workflowQueue.add({ workflowData: result });
+        })
+            .then(function () {
+            process.exit(0);
+        });
     })
         .catch(function (error) {
-        // reject(new Error(error));
         console.error(error);
     });
 })

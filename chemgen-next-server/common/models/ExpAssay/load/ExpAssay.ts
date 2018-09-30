@@ -484,7 +484,6 @@ ExpAssay.load.prepareAnnotationData = function (workflowData, plateData: PlateCo
  */
 ExpAssay.load.workflows.imageConversionPipeline.all = function (workflowData: any, plateData: PlateCollection) {
   return new Promise((resolve, reject) => {
-    app.winston.info(`ImageConversion for : ${workflowData.instrumentLookUp}`);
     ExpAssay.load.workflows.imageConversionPipeline[workflowData.instrumentLookUp](workflowData, plateData)
       .then(() => {
         resolve(plateData);
