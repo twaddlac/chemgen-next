@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var lodash_1 = require("lodash");
 var Promise = require("bluebird");
+var config = require("config");
 var ExpSet = app.models.ExpSet;
 /**
  *  ExpSetSearch the expAssay2reagents table given the search results
@@ -127,16 +128,16 @@ ExpSet.extract.buildExpSets = function (data, search) {
         //TODO Ensure there are expAssayIds!
         if (lodash_1.isEmpty(data.expAssay2reagents)) {
             app.winston.error(JSON.stringify(data, null, 2));
-            reject(new Error('invalid data - no expAssay2reagents'));
+            resolve(data);
+            // reject(new Error('invalid data - no expAssay2reagents'));
         }
-        var expAssayIds = data.expAssay2reagents.map(function (expAssay2reagent) {
-            return { assayId: expAssay2reagent.assayId };
-        });
+        // let expAssayIds = data.expAssay2reagents.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
+        //   return {assayId: expAssay2reagent.assayId};
+        // });
         // This ONLY returns the treat_rnai and ctrl_rnai  expGroups
         // ctrl_null and ctrl_strain are L4440s and don't have a reagentId
         app.models.ExpAssay
             .find({
-            // where: {or: expAssayIds},
             where: {
                 assayId: {
                     inq: data.expAssay2reagents.map(function (expAssay2reagent) {
@@ -173,7 +174,10 @@ ExpSet.extract.buildExpSets = function (data, search) {
             return ExpSet.extract.getExpData(results, search);
         })
             .then(function (data) {
-            data = ExpSet.extract.genAlbums(data, search);
+            data = ExpSet.extract.genExpSetAlbums(data, search);
+            data = ExpSet.extract.genExpGroupTypeAlbums(data, search);
+            data = ExpSet.extract.insertCountsDataImageMeta(data);
+            data = ExpSet.extract.insertExpManualScoresImageMeta(data);
             resolve(data);
         })
             .catch(function (error) {
@@ -194,23 +198,17 @@ ExpSet.extract.buildExpSets = function (data, search) {
  */
 ExpSet.extract.sanityChecks = function (data, search) {
     return new Promise(function (resolve, reject) {
-        // This gets the treat_rnai and ctrl_rnai includeCounts
-        // let expAssayIds = data.expAssays.map((expAssay: ExpAssayResultSet) => {
-        //   return {assayId: expAssay.assayId};
-        // });
         // This gets the ctrl_null and ctrl_strain includeCounts
         var ctrlExpGroupIds = [];
+        var treatExpGroupIds = [];
         data.expSets.map(function (expSet) {
             expSet.map(function (expDesign) {
                 ctrlExpGroupIds.push({ expGroupId: expDesign.controlGroupId });
-                // ctrlExpGroupIds.push(expDesign.controlGroupId);
-                // ctrlExpGroupIds.push({expGroupId: expDesign.treatmentGroupId});
+                treatExpGroupIds.push({ expGroupId: expDesign.treatmentGroupId });
             });
         });
         ctrlExpGroupIds = lodash_1.uniqBy(ctrlExpGroupIds, 'expGroupId');
-        // ctrlExpGroupIds = uniq(ctrlExpGroupIds);
-        // TODO There was some import error somewhere
-        app.winston.info("" + JSON.stringify(data.expAssays, null, 2));
+        // @ts-ignore
         Promise.map(ctrlExpGroupIds, function (ctrlExpGroupId) {
             return app.models.ExpAssay
                 .find({
@@ -226,21 +224,35 @@ ExpSet.extract.sanityChecks = function (data, search) {
                 },
             })
                 .then(function (results) {
-                app.winston.info("CtrlGroup: " + JSON.stringify(ctrlExpGroupId));
-                app.winston.info("Results: " + JSON.stringify(results, null, 2));
                 results = lodash_1.shuffle(results);
                 results = lodash_1.slice(results, 0, search.ctrlLimit);
                 results.map(function (result) {
                     data.expAssays.push(result);
                 });
-                data.expAssays = lodash_1.uniqBy(data.expAssays, 'assayId');
-                // app.winston.info(`ExpAssays Now: ${JSON.stringify(data.expAssays, null, 2)}`);
                 return;
             })
                 .catch(function (error) {
                 app.winston.error(error);
                 return new Error(error);
             });
+        })
+            .then(function () {
+            return app.models.ExpAssay
+                .find({
+                where: {
+                    expGroupId: {
+                        inq: treatExpGroupIds.map(function (expGroup) {
+                            return expGroup.expGroupId;
+                        }),
+                    }
+                }
+            });
+        })
+            .then(function (expAssays) {
+            expAssays.map(function (expAssay) {
+                data.expAssays.push(expAssay);
+            });
+            data.expAssays = lodash_1.uniqBy(data.expAssays, 'assayId');
         })
             .then(function () {
             return app.models.ExpAssay2reagent
@@ -377,7 +389,7 @@ ExpSet.extract.getCounts = function (data, search) {
         }
     });
 };
-ExpSet.extract.genAlbums = function (data, search) {
+ExpSet.extract.genExpSetAlbums = function (data, search) {
     if (!search.includeAlbums) {
         return data;
     }
@@ -415,9 +427,14 @@ ExpSet.extract.genAlbums = function (data, search) {
                 album[expGroupType + "Images"] = data.expAssays.filter(function (expAssay) {
                     return lodash_1.isEqual(expAssay.expGroupId, album[expGroupType + "Id"]);
                 }).map(function (expAssay) {
-                    return expAssay.assayImagePath;
+                    return {
+                        assayImagePath: expAssay.assayImagePath,
+                        src: config.get('imageUrl') + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+                        caption: "Image " + expAssay.assayImagePath + " caption here",
+                        thumb: config.get('imageUrl') + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+                    };
                 });
-                album[expGroupType + "Images"] = lodash_1.uniq(album[expGroupType + "Images"]);
+                album[expGroupType + "Images"] = lodash_1.uniqBy(album[expGroupType + "Images"], 'assayImagePath');
             });
             data.albums.push(album);
         });

@@ -2,9 +2,10 @@ const loopback = require('loopback')
 const boot = require('loopback-boot')
 
 const app = module.exports = loopback()
-app.agenda = require('../agenda/agenda')
-
 const compression = require('compression');
+
+console.log(`NODE_ENV: ? ${JSON.stringify(process.env.NODE_ENV)}`);
+console.log(`CHEMGEN_HOST: ? ${JSON.stringify(process.env.CHEMGEN_HOST)}`);
 
 app.start = function () {
   // start the web server

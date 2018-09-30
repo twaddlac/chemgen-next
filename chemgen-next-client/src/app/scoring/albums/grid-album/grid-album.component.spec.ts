@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {ExpsetAlbumDialogComponent} from '../expset-album/expset-album-dialog/expset-album-dialog.component';
 import {ExpsetAlbumComponent} from '../expset-album/expset-album.component';
 import {ModalModule} from 'ngx-bootstrap';
-import {Lightbox} from 'angular2-lightbox';
+import {Lightbox, LightboxConfig, LightboxModule} from 'angular2-lightbox';
 
 describe('GridAlbumComponent', () => {
   let component: GridAlbumComponent;
@@ -13,9 +13,8 @@ describe('GridAlbumComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ModalModule.forRoot()],
+      imports: [FormsModule, ModalModule.forRoot(), LightboxModule],
       declarations: [GridAlbumComponent, ExpsetAlbumDialogComponent, ExpsetAlbumComponent],
-      providers: [{provide: Lightbox}]
     })
       .compileComponents();
   }));

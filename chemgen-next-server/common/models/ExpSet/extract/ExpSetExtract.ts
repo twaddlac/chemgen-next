@@ -18,6 +18,7 @@ import {
 import Promise = require('bluebird');
 import {ExpSetSearch, ExpSetSearchResults} from "../types";
 
+import config = require('config');
 const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
 
 /**
@@ -152,17 +153,17 @@ ExpSet.extract.buildExpSets = function (data: ExpSetSearchResults, search: ExpSe
     //TODO Ensure there are expAssayIds!
     if (isEmpty(data.expAssay2reagents)) {
       app.winston.error(JSON.stringify(data, null, 2));
-      reject(new Error('invalid data - no expAssay2reagents'));
+      resolve(data);
+      // reject(new Error('invalid data - no expAssay2reagents'));
     }
 
-    let expAssayIds = data.expAssay2reagents.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
-      return {assayId: expAssay2reagent.assayId};
-    });
+    // let expAssayIds = data.expAssay2reagents.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
+    //   return {assayId: expAssay2reagent.assayId};
+    // });
     // This ONLY returns the treat_rnai and ctrl_rnai  expGroups
     // ctrl_null and ctrl_strain are L4440s and don't have a reagentId
     app.models.ExpAssay
       .find({
-        // where: {or: expAssayIds},
         where: {
           assayId: {
             inq: data.expAssay2reagents.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
@@ -199,7 +200,10 @@ ExpSet.extract.buildExpSets = function (data: ExpSetSearchResults, search: ExpSe
         return ExpSet.extract.getExpData(results, search);
       })
       .then((data: ExpSetSearchResults) => {
-        data = ExpSet.extract.genAlbums(data, search);
+        data = ExpSet.extract.genExpSetAlbums(data, search);
+        data = ExpSet.extract.genExpGroupTypeAlbums(data, search);
+        data = ExpSet.extract.insertCountsDataImageMeta(data);
+        data = ExpSet.extract.insertExpManualScoresImageMeta(data);
         resolve(data);
       })
       .catch((error) => {
@@ -221,26 +225,19 @@ ExpSet.extract.buildExpSets = function (data: ExpSetSearchResults, search: ExpSe
  */
 ExpSet.extract.sanityChecks = function (data: ExpSetSearchResults, search ?: ExpSetSearch) {
   return new Promise((resolve, reject) => {
-    // This gets the treat_rnai and ctrl_rnai includeCounts
-    // let expAssayIds = data.expAssays.map((expAssay: ExpAssayResultSet) => {
-    //   return {assayId: expAssay.assayId};
-    // });
-
     // This gets the ctrl_null and ctrl_strain includeCounts
     let ctrlExpGroupIds = [];
+    let treatExpGroupIds = [];
     data.expSets.map((expSet) => {
       expSet.map((expDesign: ExpDesignResultSet) => {
         ctrlExpGroupIds.push({expGroupId: expDesign.controlGroupId});
-        // ctrlExpGroupIds.push(expDesign.controlGroupId);
-        // ctrlExpGroupIds.push({expGroupId: expDesign.treatmentGroupId});
+        treatExpGroupIds.push({expGroupId: expDesign.treatmentGroupId});
       });
     });
 
     ctrlExpGroupIds = uniqBy(ctrlExpGroupIds, 'expGroupId');
-    // ctrlExpGroupIds = uniq(ctrlExpGroupIds);
 
-    // TODO There was some import error somewhere
-    app.winston.info(`${JSON.stringify(data.expAssays, null, 2)}`);
+    // @ts-ignore
     Promise.map(ctrlExpGroupIds, (ctrlExpGroupId) => {
       return app.models.ExpAssay
         .find({
@@ -256,15 +253,11 @@ ExpSet.extract.sanityChecks = function (data: ExpSetSearchResults, search ?: Exp
           },
         })
         .then((results: ExpAssayResultSet[]) => {
-          app.winston.info(`CtrlGroup: ${JSON.stringify(ctrlExpGroupId)}`);
-          app.winston.info(`Results: ${JSON.stringify(results, null, 2)}`);
           results = shuffle(results);
           results = slice(results, 0, search.ctrlLimit);
           results.map((result) => {
             data.expAssays.push(result);
           });
-          data.expAssays = uniqBy(data.expAssays, 'assayId');
-          // app.winston.info(`ExpAssays Now: ${JSON.stringify(data.expAssays, null, 2)}`);
           return;
         })
         .catch((error) => {
@@ -272,6 +265,24 @@ ExpSet.extract.sanityChecks = function (data: ExpSetSearchResults, search ?: Exp
           return new Error(error);
         })
     })
+      .then(() =>{
+        return app.models.ExpAssay
+          .find({
+            where: {
+              expGroupId: {
+                inq: treatExpGroupIds.map((expGroup : any) =>{
+                  return expGroup.expGroupId;
+                }),
+              }
+            }
+          });
+      })
+      .then((expAssays: ExpAssayResultSet[]) =>{
+        expAssays.map((expAssay) =>{
+          data.expAssays.push(expAssay);
+        });
+        data.expAssays = uniqBy(data.expAssays, 'assayId');
+      })
       .then(() => {
         return app.models.ExpAssay2reagent
           .find({
@@ -413,7 +424,7 @@ ExpSet.extract.getCounts = function (data: ExpSetSearchResults, search?: ExpSetS
   });
 };
 
-ExpSet.extract.genAlbums = function (data?: ExpSetSearchResults, search?: ExpSetSearch) {
+ExpSet.extract.genExpSetAlbums = function (data?: ExpSetSearchResults, search?: ExpSetSearch) {
   if (!search.includeAlbums) {
     return data;
   } else {
@@ -448,9 +459,14 @@ ExpSet.extract.genAlbums = function (data?: ExpSetSearchResults, search?: ExpSet
         album[`${expGroupType}Images`] = data.expAssays.filter((expAssay: ExpAssayResultSet) => {
           return isEqual(expAssay.expGroupId, album[`${expGroupType}Id`]);
         }).map((expAssay: ExpAssayResultSet) => {
-          return expAssay.assayImagePath;
+          return  {
+            assayImagePath: expAssay.assayImagePath,
+            src: `${config.get('imageUrl')}/${expAssay.assayImagePath}-autolevel.jpeg`,
+            caption: `Image ${expAssay.assayImagePath} caption here`,
+            thumb: `${config.get('imageUrl')}/${expAssay.assayImagePath}-autolevel.jpeg`,
+          };
         });
-        album[`${expGroupType}Images`] = uniq(album[`${expGroupType}Images`]);
+        album[`${expGroupType}Images`] = uniqBy(album[`${expGroupType}Images`], 'assayImagePath');
       });
 
       data.albums.push(album);

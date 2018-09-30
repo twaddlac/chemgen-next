@@ -1,4 +1,4 @@
-import app  = require('../../../../server/server.js');
+import app = require('../../../../server/server.js');
 import {ExpPlateResultSet, PlateResultSet} from "../../../types/sdk/models";
 import {WorkflowModel} from "../../index";
 import Promise = require('bluebird');
@@ -8,7 +8,9 @@ import {ScreenCollection} from "../../../types/wellData";
 import Mustache = require('mustache');
 // import deepclone = require('deepclone');
 import * as _ from "lodash";
+import {get, isEqual, compact} from 'lodash';
 
+//@ts-ignore
 const readFile = Promise.promisify(require('fs').readFile);
 
 const ExpPlate = app.models.ExpPlate as (typeof WorkflowModel);
@@ -22,6 +24,7 @@ const ExpPlate = app.models.ExpPlate as (typeof WorkflowModel);
  */
 ExpPlate.load.workflows.processInstrumentPlates = function (workflowData, instrumentPlates: PlateResultSet[]) {
   return new Promise(function (resolve, reject) {
+    // @ts-ignore
     Promise.map(instrumentPlates, function (plate) {
       return ExpPlate.load.createExperimentPlate(workflowData, plate);
     }, {
@@ -80,28 +83,36 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData: ExpScreenUpload
   let barcode = instrumentPlate.name;
   let creationdate = instrumentPlate.creationdate;
 
-  //path.normalize does not work the same on osx as on linux
-  //because of course it doesn't
-  let imagePath = imagepath.split('\\');
-  imagePath = _.compact(imagePath);
-  if (! imagePath[2] || _.isNull(imagePath[2])) {
-    app.winston.error('Image Path is Null!!');
-    throw new Error('Plate Path is invalid');
+  let imagePath = imagepath;
+
+  let plateImagePath =`${imagePath}`;
+  //TODO Add in site specific parsers for the plate Path
+  if (! get(workflowData, 'site') || (get(workflowData, 'site') && isEqual(workflowData.site, 'AD'))){
+    let imagePath = imagepath.split('\\');
+    imagePath = _.compact(imagePath);
+    if (!imagePath[2] || _.isNull(imagePath[2])) {
+      app.winston.error('Image Path is Null!!');
+      throw new Error('Plate Path is invalid');
+    }
+    plateImagePath = `${imagePath[2]}/${csPlateid}`;
+  } else if (get(workflowData, 'site') && isEqual(workflowData.site, 'NY')){
+    plateImagePath =`${imagePath}`;
   }
+
 
   /*
   For some reason if I searched on the whole plate object it was always returning not found
   So I just search for a subset of the plate object
    */
-  let lookUpPlateObj: ExpPlateResultSet = {
+  let lookUpPlateObj: ExpPlateResultSet = new ExpPlateResultSet({
     //Screen Info
     screenId: workflowData.screenId,
     expWorkflowId: workflowData.id,
     //Instrument Plate Things
     instrumentId: workflowData.instrumentId,
     instrumentPlateId: csPlateid,
-  };
-  let plateObj: ExpPlateResultSet = {
+  });
+  let plateObj: ExpPlateResultSet = new ExpPlateResultSet({
     //Screen Info
     screenId: workflowData.screenId,
     screenStage: workflowData.screenStage,
@@ -112,12 +123,12 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData: ExpScreenUpload
     instrumentPlateId: csPlateid,
     instrumentPlateImagePath: imagepath,
     //Plate Data
-    plateImagePath: `${imagePath[2]}/${csPlateid}`,
+    plateImagePath: plateImagePath,
     barcode: barcode,
     plateAssayDate: workflowData.stockPrepDate,
     plateImageDate: creationdate,
     plateTemperature: workflowData.temperature,
-  };
+  });
   return [plateObj, lookUpPlateObj];
 };
 

@@ -4,6 +4,7 @@
 declare var Object: any;
 export interface PlatePlan96ResultSetInterface {
   "platePlanName"?: string;
+  "site"?: string;
   "platePlanUploadDate"?: Date;
   "libraryId"?: number;
   "A01"?: any;
@@ -107,6 +108,7 @@ export interface PlatePlan96ResultSetInterface {
 
 export class PlatePlan96ResultSet implements PlatePlan96ResultSetInterface {
   "platePlanName": string;
+  "site": string;
   "platePlanUploadDate": Date;
   "libraryId": number;
   "A01": any;

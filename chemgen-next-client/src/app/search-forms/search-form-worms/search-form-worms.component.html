@@ -67,24 +67,22 @@
 <!--Start Content-->
 <div class="row">
   <div class="col-md-12">
+
     <div *ngIf="formSubmitted">
       <div id="loader" class="container">
         <div *ngIf="showProgress">
           <div style="text-align: center; text-align:-moz-center; font-size:large">
             Loading...
           </div>
-          <!--<ng-progress-->
-            <!--#progressBar-->
-            <!--[thick]="true"-->
-            <!--[meteor]="true"-->
-          <!--&gt;-->
-          <!--</ng-progress>-->
         </div>
       </div>
       <!--Begin Content-->
-      <div *ngIf="expSets">
+      <div *ngIf="expSets" class="expSets">
+        <div *ngIf="contactSheetPlateView">
+          <app-contact-sheet [expSets]="expSets" [byPlate]="true" (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
+        </div>
         <div *ngIf="contactSheetView">
-          <app-contact-sheet [expSets]="expSets" (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
+          <app-contact-sheet [expSets]="expSets" [byPlate]="false" (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
         </div>
         <div *ngIf="expSetView">
           <app-expset-sheet [expSets]="expSets"></app-expset-sheet>

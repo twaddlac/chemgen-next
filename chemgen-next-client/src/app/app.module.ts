@@ -22,8 +22,6 @@ import {RnaiPlatePlanComponent} from './exp-screen/upload-screen/rnai/rnai-secon
 
 import {ChemicalSecondaryComponent} from './exp-screen/upload-screen/chemical/chemical-secondary/chemical-secondary.component';
 import {ChemicalPrimaryComponent} from './exp-screen/upload-screen/chemical/chemical-primary/chemical-primary.component';
-import {GeneComponent} from './saved-analysis/exp-set/gene/gene.component';
-import {GeneExpsetAlbumComponent} from './saved-analysis/exp-set/gene-expset-album/gene-expset-album.component';
 import {GridAlbumComponent} from './scoring/albums/grid-album/grid-album.component';
 import {ExpsetAlbumComponent} from './scoring/albums/expset-album/expset-album.component';
 
@@ -50,61 +48,61 @@ import {SearchFormWormsComponent} from './search-forms/search-form-worms/search-
 import {ExpsetSheetComponent} from './scoring/expset-sheet/expset-sheet.component';
 // import {NgxToggleModule} from 'ngx-toggle';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EmptyComponent} from './empty/empty.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PagesModule,
-    HttpClientModule,
-    FormsModule,
-    BsDatepickerModule.forRoot(),
-    DndModule.forRoot(),
-    SDKBrowserModule.forRoot(),
-    ModalModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    NgProgressModule.forRoot({
-    }),
-    LightboxModule,
-    NouisliderModule,
-    LoadingModule,
-  ],
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    RnaiPrimaryComponent,
-    RnaiSecondaryComponent,
-    ExpScreenInfoComponent,
-    PlateImagingDatesComponent,
-    RnaiPlatePlanComponent,
-    ChemicalSecondaryComponent,
-    ChemicalPrimaryComponent,
-    GeneComponent,
-    GeneExpsetAlbumComponent,
-    GridAlbumComponent,
-    ExpsetAlbumComponent,
-    SearchFormExpScreenComponent,
-    SearchFormRnaiComponent,
-    SearchFormChemicalComponent,
-    ContactSheetComponent,
-    SearchFormViewOptionsComponent,
-    ExpsetAlbumDialogComponent,
-    SearchFormWormsComponent,
-    ExpsetSheetComponent,
-  ],
-  entryComponents: [
-    // ExpsetAlbumComponent,
-  ],
-  providers: [],
-  // exports: [ExpsetAlbumComponent],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        PagesModule,
+        HttpClientModule,
+        FormsModule,
+        BsDatepickerModule.forRoot(),
+        DndModule.forRoot(),
+        SDKBrowserModule.forRoot(),
+        ModalModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        TooltipModule.forRoot(),
+        TypeaheadModule.forRoot(),
+        NgProgressModule.forRoot({}),
+        LightboxModule,
+        NouisliderModule,
+        LoadingModule,
+    ],
+    declarations: [
+        AppComponent,
+        PageNotFoundComponent,
+        RnaiPrimaryComponent,
+        RnaiSecondaryComponent,
+        ExpScreenInfoComponent,
+        PlateImagingDatesComponent,
+        RnaiPlatePlanComponent,
+        ChemicalSecondaryComponent,
+        ChemicalPrimaryComponent,
+        GridAlbumComponent,
+        ExpsetAlbumComponent,
+        SearchFormExpScreenComponent,
+        SearchFormRnaiComponent,
+        SearchFormChemicalComponent,
+        ContactSheetComponent,
+        SearchFormViewOptionsComponent,
+        ExpsetAlbumDialogComponent,
+        SearchFormWormsComponent,
+        ExpsetSheetComponent,
+        EmptyComponent,
+    ],
+    entryComponents: [
+        // ExpsetAlbumComponent,
+    ],
+    providers: [],
+    // exports: [ExpsetAlbumComponent],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {
-    // TODO Need to add this to an environmental variables
-    LoopBackConfig.setBaseURL('http://localhost:3000');
-    LoopBackConfig.setApiVersion('api');
-  }
+    constructor() {
+        // TODO Need to add this to an environmental variables
+        LoopBackConfig.setBaseURL('http://10.230.9.227:3000');
+        // LoopBackConfig.setBaseURL('http://localhost:3000');
+        LoopBackConfig.setApiVersion('api');
+    }
 }

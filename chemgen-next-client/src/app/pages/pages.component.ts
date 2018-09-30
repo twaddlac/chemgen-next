@@ -18,8 +18,6 @@ export class PagesComponent implements OnInit {
   public message: String = '';
 
   constructor(private expBiosampleApi: ExpBiosampleApi) {
-    LoopBackConfig.setBaseURL('http://127.0.0.1:3000');
-    LoopBackConfig.setApiVersion('api');
   }
 
   getExpBiosampleResultSet(id: any): void {

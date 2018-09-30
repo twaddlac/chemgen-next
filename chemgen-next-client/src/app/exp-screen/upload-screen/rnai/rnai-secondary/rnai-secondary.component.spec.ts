@@ -1,25 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RnaiSecondaryComponent } from './rnai-secondary.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {RnaiSecondaryComponent} from './rnai-secondary.component';
+import {FormsModule} from "@angular/forms";
+import {SDKBrowserModule} from "../../../../../sdk";
+import {DndModule} from "ng2-dnd";
+import {MockPlateImagingDatesComponent, MockExpScreenInfoComponent} from "../../../../../../test/MockComponents";
 
 describe('RnaiSecondaryComponent', () => {
-  let component: RnaiSecondaryComponent;
-  let fixture: ComponentFixture<RnaiSecondaryComponent>;
+    let component: RnaiSecondaryComponent;
+    let fixture: ComponentFixture<RnaiSecondaryComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RnaiSecondaryComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule, DndModule.forRoot(), SDKBrowserModule.forRoot()],
+            declarations: [RnaiSecondaryComponent, MockExpScreenInfoComponent, MockPlateImagingDatesComponent]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RnaiSecondaryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(RnaiSecondaryComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

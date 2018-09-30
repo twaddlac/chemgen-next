@@ -1,5 +1,5 @@
 <!--Begin Add Screen Data-->
-<div class="row">
+<div *ngIf="expDataModel" class="row">
   <div class="col-md-12">
     <div class="x_panel">
       <div class="x_title">
@@ -145,7 +145,7 @@
 <hr>
 
 <!--Begin Add Experimental Data-->
-<div class="row">
+<div *ngIf="expDataModel" class="row">
   <div class="col-md-12">
     <form #expDataForm="ngForm">
       <div class="x_panel">

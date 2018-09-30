@@ -9,7 +9,7 @@ import {WpTermTaxonomyResultSet} from "../../../types/sdk/models";
 import slug = require('slug');
 import Promise = require('bluebird');
 import * as _ from "lodash";
-import {uniq, shuffle} from 'lodash';
+import {uniq, shuffle, find, isEqual} from 'lodash';
 
 const WpTerms = app.models['WpTerms'] as (typeof WorkflowModel);
 
@@ -54,7 +54,8 @@ WpTerms.load.prepareAnnotationData = function (workflowData, screenData: ScreenC
   return new Promise((resolve) => {
     let taxTermsTotal = [];
     screenData.plateDataList.map((plateData: PlateCollection) => {
-      plateData.wellDataList.map(function (wellData) {
+      plateData.wellDataList.map(function (wellData: WellCollection) {
+        //@ts-ignore
         wellData.annotationData.taxTerms.map(function (taxTerm) {
           taxTermsTotal.push(taxTerm);
         });
@@ -67,14 +68,14 @@ WpTerms.load.prepareAnnotationData = function (workflowData, screenData: ScreenC
 
 WpTerms.load.getBiosampleName = function (workflowData: ExpScreenUploadWorkflowResultSet, expPlate: ExpPlateResultSet) {
 
-  let treatGroup = _.find(Object.keys(workflowData.experimentGroups), (group) => {
-    return _.find(workflowData.experimentGroups[group].plates, (plate: ExpPlateResultSet) => {
-      return _.isEqual(plate.instrumentPlateId, expPlate.instrumentPlateId);
+  let treatGroup = find(Object.keys(workflowData.experimentGroups), (group) => {
+    return find(workflowData.experimentGroups[group].plates, (plate: ExpPlateResultSet) => {
+      return isEqual(Number(plate.instrumentPlateId), Number(expPlate.instrumentPlateId));
     });
   });
   let biosampleId = workflowData.experimentGroups[treatGroup].biosampleId;
-  let biosampleType = _.find(Object.keys(workflowData.biosamples), (biosampleTypeKey) => {
-    return _.isEqual(workflowData.biosamples[biosampleTypeKey].id, biosampleId);
+  let biosampleType = find(Object.keys(workflowData.biosamples), (biosampleTypeKey) => {
+    return isEqual(workflowData.biosamples[biosampleTypeKey].id, biosampleId);
   });
   let biosampleName = workflowData.biosamples[biosampleType].name;
   return biosampleName;
@@ -152,7 +153,12 @@ WpTerms.load.genWellTaxTerms = function (workflowData: any, expPlate: ExpPlateRe
   //TODO Upto barcode are for the plate
   let regexp = /([a-zA-Z]+)(\d+)/g;
   let groups = regexp.exec(wellData.stockLibraryData.well);
-  let plateTaxTerms = WpTerms.load.genPlateTaxTerms(workflowData, expPlate);
+  let plateTaxTerms = null;
+  try{
+    plateTaxTerms = WpTerms.load.genPlateTaxTerms(workflowData, expPlate);
+  }catch(error){
+    throw new Error('Unable to generatore plateTaxTerms!');
+  }
   let wellTaxTerms = [
     {
       taxonomy: 'envira-tag',
@@ -178,6 +184,7 @@ WpTerms.load.createTerms = function (taxTermsList: Array<Object>) {
     // Shuffle added to ensure we aren't creating multiples of the same thing
     // We do this so that if we process multiple screens at a time
     //We don't end up with duplicated wpTerms
+    // @ts-ignore
     Promise.map(shuffle(taxTermsList), (createTermObj) => {
       //This is just a sanity check, but probably shouldn't ever happen
       if (_.isEmpty(createTermObj) || !_.get(createTermObj, 'taxTerm')) {

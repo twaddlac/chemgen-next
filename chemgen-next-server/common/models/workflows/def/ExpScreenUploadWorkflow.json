@@ -12,6 +12,9 @@
     "comment": {
       "type": "string"
     },
+    "site": {
+      "type": "string"
+    },
     "platePlan": {
       "type": "any"
     },

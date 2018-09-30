@@ -1,4 +1,4 @@
-import {ExpAssayResultSet, ExpPlateResultSet, ExpPlateResultSet} from "../../../types/sdk/models/index";
+import {ExpAssayResultSet, ExpPlateResultSet} from "../../../types/sdk/models/index";
 import {PlateCollection} from "../../../types/wellData";
 import {WorkflowModel} from "../../index";
 
@@ -18,6 +18,7 @@ shared.makeMemoryDb();
 const rnaiLibraries = require('../../../../test/data/rnai_library.json');
 
 //TODO This is not a great ExpPlates set
+//@ts-ignore
 const expPlates: ExpPlateResultSet[] = [
   {
     "plateId": 1,
@@ -27,6 +28,7 @@ const expPlates: ExpPlateResultSet[] = [
     "instrumentId": 1,
     "instrumentPlateId": 9281,
     "plateImageDate": "2017-12-18T15:56:26.000Z",
+    //@ts-ignore
     "plateStartTime": "2017-12-18T15:56:26.000Z",
     "plateCreationDate": "2017-12-18T00:00:00.000Z",
     "instrumentPlateImagePath": "\\\\aduae120-wap\\CS_DATA_SHARE\\2017Dec18\\cx5-pc171218150005\\",
@@ -140,7 +142,6 @@ describe('ExpAssay.load', function () {
       .then((results: PlateCollection) => {
         assert.equal(results.wellDataList[0].expGroup.biosampleId, 1);
         assert.equal(results.wellDataList[0].expGroup.expGroupType, 'ctrl_rnai');
-        assert.equal(results.wellDataList[0].expGroup.reagentId, 701);
         assert.equal(results.wellDataList[0].expAssay.assayReplicateNum, 1);
         done();
       })
@@ -153,7 +154,6 @@ describe('ExpAssay.load', function () {
       .then((results: PlateCollection) => {
         assert.equal(results.wellDataList[0].expGroup.biosampleId, 1);
         assert.equal(results.wellDataList[0].expGroup.expGroupType, 'ctrl_rnai');
-        assert.equal(results.wellDataList[0].expGroup.reagentId, 701);
         assert.equal(results.wellDataList[0].expAssay.assayReplicateNum, 2);
         done();
       })
@@ -167,7 +167,7 @@ describe('ExpAssay.load', function () {
         return ExpAssay.load.prepareAnnotationData(workflowData, results);
       })
       .then((plateData: PlateCollection) => {
-        assert.equal(plateData.wellDataList[0].annotationData.taxTerms.length, 12);
+        assert.equal(plateData.wellDataList[0].annotationData.taxTerms.length, 13);
         done();
       })
       .catch((error) => {

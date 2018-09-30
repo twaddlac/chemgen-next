@@ -7,6 +7,7 @@ var slug = require("slug");
 var Promise = require("bluebird");
 var Mustache = require("mustache");
 var _ = require("lodash");
+// @ts-ignore
 var readFile = Promise.promisify(require('fs').readFile);
 var ExpAssay = app.models['ExpAssay'];
 /**
@@ -22,6 +23,7 @@ var ExpAssay = app.models['ExpAssay'];
  */
 ExpAssay.load.workflows.createExpAssayInterfaces = function (workflowData, screenData, plateData) {
     return new Promise(function (resolve, reject) {
+        // @ts-ignore
         Promise.map(plateData.wellDataList, function (wellData) {
             return ExpAssay.load.workflows.getAssayRelations(workflowData, screenData, plateData, wellData)
                 .then(function (expSet) {
@@ -150,6 +152,7 @@ ExpAssay.load.workflows.createWpPosts = function (workflowData, plateData, wellD
             title: title,
             titleSlug: slug(title),
             postContent: postContent,
+            postExcerpt: '',
             imagePath: assayImagePath + "-autolevel.jpeg",
         };
         app.models.WpPosts.load.workflows.createPost(workflowData, postData)
@@ -178,7 +181,7 @@ ExpAssay.load.workflows.createWpPosts = function (workflowData, plateData, wellD
 ExpAssay.load.updateExpAssay = function (wellData, postData) {
     return new Promise(function (resolve, reject) {
         wellData.expAssay.assayWpAssayPostId = postData.postData.id;
-        ExpAssay.upsert(wellData.expAssay)
+        app.models.ExpAssay.upsert(wellData.expAssay)
             .then(function (results) {
             wellData.expAssay = results;
             resolve(postData);
@@ -236,6 +239,7 @@ ExpAssay.load.workflows.createPostTaxRels = function (workflowData, screenData, 
     return new Promise(function (resolve, reject) {
         var taxTerms = ExpAssay.load.relateTaxToPost(workflowData, screenData, wellData);
         taxTerms = _.uniqWith(taxTerms, _.isEqual);
+        // @ts-ignore
         Promise.map(Object.keys(postData), function (postType) {
             return app.models.WpTermRelationships.load
                 .createRelationships(postData[postType].id, taxTerms);

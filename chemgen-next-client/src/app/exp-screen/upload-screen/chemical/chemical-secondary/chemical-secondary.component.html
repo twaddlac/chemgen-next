@@ -12,7 +12,9 @@
 
   <hr>
 
-  <app-exp-screen-info [expDataModel]="expDataModel" [expBiosampleModel]="expBiosampleModel"></app-exp-screen-info>
+  <div *ngIf="expDataModel">
+    <app-exp-screen-info [expDataModel]="expDataModel" [expBiosampleModel]="expBiosampleModel"></app-exp-screen-info>
+  </div>
 
   <hr>
 

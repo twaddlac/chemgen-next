@@ -1,7 +1,10 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ExpsetModule} from '../expset/expset.module';
 import {ModelPredictedCountsResultSet} from '../../../sdk/models';
-import {parseErrorsFromMarkup} from 'tslint/lib/verify/parse';
+
+/**
+ * WIP
+ */
 
 @Component({
   selector: 'app-expset-sheet',
@@ -9,7 +12,7 @@ import {parseErrorsFromMarkup} from 'tslint/lib/verify/parse';
   styleUrls: ['./expset-sheet.component.css']
 })
 export class ExpsetSheetComponent implements OnInit {
-  @Input('expSets') expSets: any;
+  @Input() expSets: any;
   expSetModule: ExpsetModule;
   albumData: Array<any> = [];
   albumsContainer: Array<any> = [];
@@ -22,14 +25,14 @@ export class ExpsetSheetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parseExpSets();
+    // this.parseExpSets();
   }
 
   parseExpSets() {
     this.expSetModule = new ExpsetModule(this.expSets);
 
-    this.parsedExpSets = this.expSets.results.modelPredictedCounts.map((wellCounts: ModelPredictedCountsResultSet) => {
-      return this.expSetModule.getExpSet(wellCounts, this.expSets);
+    this.parsedExpSets = this.expSets.modelPredictedCounts.map((wellCounts: ModelPredictedCountsResultSet) => {
+      return this.expSetModule.getExpSet(wellCounts);
     });
 
     // this.expSet = this.parsedExpSets[0];

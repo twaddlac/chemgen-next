@@ -9,17 +9,17 @@ const ExpManualScores = app.models.ExpManualScores as (typeof WorkflowModel);
 
 ExpManualScores.load.submitScores = function (scores) {
   console.log(JSON.stringify(scores));
+  let dateNow = new Date(Date.now());
   return new Promise((resolve, reject) => {
     if (isArray(scores)) {
+      //@ts-ignore
       Promise.map(scores, (score: ExpManualScoresResultSet) => {
         if (get(score, 'timestamp')) {
           delete score.timestamp;
         }
         let createObj = app.etlWorkflow.helpers.findOrCreateObj(score);
-
-        let dateNow = new Date();
+        app.winston.info(JSON.stringify(createObj));
         score.timestamp = dateNow;
-
         return ExpManualScores
           .findOrCreate({where: createObj}, score)
           .then((results) => {
@@ -42,6 +42,7 @@ ExpManualScores.load.submitScores = function (scores) {
         delete scores.timestamp;
       }
       let createObj = app.etlWorkflow.helpers.findOrCreateObj(scores);
+      scores.timestamp = dateNow;
       ExpManualScores
         .findOrCreate({where: createObj}, scores)
         .then((results) => {

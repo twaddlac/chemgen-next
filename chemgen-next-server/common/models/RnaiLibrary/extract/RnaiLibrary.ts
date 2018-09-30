@@ -9,7 +9,8 @@ import {
 import {WorkflowModel} from "../../index";
 import Promise = require('bluebird');
 import {get, isNull, isEmpty, find, isEqual} from 'lodash';
-import {ExpSetSearch} from "../../RnaiExpSet/load/RnaiExpSet";
+// import {ExpSetSearch} from "../../RnaiExpSet/load/RnaiExpSet";
+import {ExpSetSearch} from "../../ExpSet/types";
 
 const RnaiLibrary = app.models['RnaiLibrary'] as (typeof WorkflowModel);
 
@@ -24,21 +25,25 @@ RnaiLibrary.extract.parseLibraryResults = function (workflowData, expPlate: ExpP
     let barcode = expPlate.barcode;
     let plateId = expPlate.plateId;
 
-
     let platedbXrefSearch = [];
     allWells.map((well) => {
       let libraryResult: RnaiLibraryResultSet = RnaiLibrary.helpers.genLibraryResult(barcode, libraryResults, well);
-      if (get(libraryResult, 'compoundLibraryId')) {
+      //WTF IS THIS
+      if (get(libraryResult, 'geneName')) {
         let where = {
           wbGeneSequenceId: libraryResult.geneName,
         };
-        platedbXrefSearch.push(where);
+        platedbXrefSearch.push({
+          wbGeneSequenceId: libraryResult.geneName,
+        });
       }
     });
 
     //TODO Need to incorporate multiple wells
-    app.models.RnaiWormbaseXrefs.find({where: {or: platedbXrefSearch}})
+    //TODO add check for plateDbXref < - if its empty this will get the whole table!!
+    app.models.RnaiWormbaseXrefs.find({where: {or: platedbXrefSearch}, limit: 1000})
       .then((dbXrefs) => {
+        //@ts-ignore
         return Promise.map(allWells, function (well) {
           let createStocks = [];
           let parentLibraryResults = [];

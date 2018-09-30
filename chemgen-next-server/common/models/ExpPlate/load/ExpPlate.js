@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
+var models_1 = require("../../../types/sdk/models");
 var Promise = require("bluebird");
 var path = require("path");
 var Mustache = require("mustache");
 // import deepclone = require('deepclone');
 var _ = require("lodash");
+var lodash_1 = require("lodash");
+//@ts-ignore
 var readFile = Promise.promisify(require('fs').readFile);
 var ExpPlate = app.models.ExpPlate;
 //TODO Consider moving these to worm/cell specific logic
@@ -16,6 +19,7 @@ var ExpPlate = app.models.ExpPlate;
  */
 ExpPlate.load.workflows.processInstrumentPlates = function (workflowData, instrumentPlates) {
     return new Promise(function (resolve, reject) {
+        // @ts-ignore
         Promise.map(instrumentPlates, function (plate) {
             return ExpPlate.load.createExperimentPlate(workflowData, plate);
         }, {
@@ -69,27 +73,34 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData, instrumentPlate
     var imagepath = instrumentPlate.imagepath;
     var barcode = instrumentPlate.name;
     var creationdate = instrumentPlate.creationdate;
-    //path.normalize does not work the same on osx as on linux
-    //because of course it doesn't
-    var imagePath = imagepath.split('\\');
-    imagePath = _.compact(imagePath);
-    if (!imagePath[2] || _.isNull(imagePath[2])) {
-        app.winston.error('Image Path is Null!!');
-        throw new Error('Plate Path is invalid');
+    var imagePath = imagepath;
+    var plateImagePath = "" + imagePath;
+    //TODO Add in site specific parsers for the plate Path
+    if (!lodash_1.get(workflowData, 'site') || (lodash_1.get(workflowData, 'site') && lodash_1.isEqual(workflowData.site, 'AD'))) {
+        var imagePath_1 = imagepath.split('\\');
+        imagePath_1 = _.compact(imagePath_1);
+        if (!imagePath_1[2] || _.isNull(imagePath_1[2])) {
+            app.winston.error('Image Path is Null!!');
+            throw new Error('Plate Path is invalid');
+        }
+        plateImagePath = imagePath_1[2] + "/" + csPlateid;
+    }
+    else if (lodash_1.get(workflowData, 'site') && lodash_1.isEqual(workflowData.site, 'NY')) {
+        plateImagePath = "" + imagePath;
     }
     /*
     For some reason if I searched on the whole plate object it was always returning not found
     So I just search for a subset of the plate object
      */
-    var lookUpPlateObj = {
+    var lookUpPlateObj = new models_1.ExpPlateResultSet({
         //Screen Info
         screenId: workflowData.screenId,
         expWorkflowId: workflowData.id,
         //Instrument Plate Things
         instrumentId: workflowData.instrumentId,
         instrumentPlateId: csPlateid,
-    };
-    var plateObj = {
+    });
+    var plateObj = new models_1.ExpPlateResultSet({
         //Screen Info
         screenId: workflowData.screenId,
         screenStage: workflowData.screenStage,
@@ -100,12 +111,12 @@ ExpPlate.load.transformInstrumentPlate = function (workflowData, instrumentPlate
         instrumentPlateId: csPlateid,
         instrumentPlateImagePath: imagepath,
         //Plate Data
-        plateImagePath: imagePath[2] + "/" + csPlateid,
+        plateImagePath: plateImagePath,
         barcode: barcode,
         plateAssayDate: workflowData.stockPrepDate,
         plateImageDate: creationdate,
         plateTemperature: workflowData.temperature,
-    };
+    });
     return [plateObj, lookUpPlateObj];
 };
 /**

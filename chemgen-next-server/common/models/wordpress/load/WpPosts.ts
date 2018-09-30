@@ -1,4 +1,4 @@
-import app  = require('../../../../server/server.js');
+import app = require('../../../../server/server.js');
 import config = require('config');
 
 import {WorkflowModel} from "../../index";
@@ -12,7 +12,7 @@ import * as _ from "lodash";
 const WpPosts = app.models['WpPosts'] as (typeof WorkflowModel);
 
 WpPosts.load.workflows.createPost = function (workflowData, postData: any) {
-  let postObj = {
+  let postObj: WpPostsResultSet = new WpPostsResultSet({
     postAuthor: 1,
     postType: postData.viewType,
     commentCount: 0,
@@ -20,17 +20,23 @@ WpPosts.load.workflows.createPost = function (workflowData, postData: any) {
     postStatus: 'publish',
     postTitle: postData.title,
     postName: postData.titleSlug,
+    postExcerpt: '',
+    toPing: '',
+    pinged: '',
+    postContentFiltered: '',
     postParent: 0,
     pingStatus: 'open',
     commentStatus: 'open',
-    guid: config.get('wpUrl')  + postData.titleSlug,
-  };
+    guid: config.get('wpUrl') + postData.titleSlug,
+  });
 
-  let dateNow = new Date().toISOString();
+  let dateNow = new Date(Date.now());
   let postObjWithDate = deepcopy(postObj);
   postObjWithDate.postDate = dateNow;
   postObjWithDate.postDateGmt = dateNow;
   postObjWithDate.postContent = '';
+  postObjWithDate.postModified = dateNow;
+  postObjWithDate.postModifiedGmt = dateNow;
 
   return new Promise(function (resolve, reject) {
     WpPosts.findOrCreate({
@@ -43,7 +49,7 @@ WpPosts.load.workflows.createPost = function (workflowData, postData: any) {
         resolve(results);
       })
       .catch(function (error) {
-        app.winston.error(error.stack);
+        app.winston.error(`${__filename} WpPosts ${error}`);
         reject(new Error(error));
       });
   });
@@ -52,7 +58,8 @@ WpPosts.load.workflows.createPost = function (workflowData, postData: any) {
 WpPosts.load.updatePost = function (workflowData, postData: any, postResult: WpPostsResultSet) {
   return new Promise(function (resolve, reject) {
     postResult.postContent = postData.postContent;
-    const dateNow = new Date().toISOString();
+    const dateNow = new Date(Date.now());
+    // const dateNow = Date.now();
     postResult.postModified = dateNow;
     postResult.postModifiedGmt = dateNow;
     // This was nuts - the in memory model I used for testing could deal with any of these
@@ -67,7 +74,7 @@ WpPosts.load.updatePost = function (workflowData, postData: any, postResult: WpP
         resolve(results);
       })
       .catch(function (error) {
-        app.winston.error(error.stack);
+        app.winston.error(`${__filename} WpPosts ${error}`);
         reject(new Error(error));
       });
   });
@@ -80,8 +87,12 @@ WpPosts.load.workflows.genImagePost = function (postData: WpPostsResultSet, imag
     postMimeType: 'image/jpeg',
     commentCount: 0,
     menuOrder: 0,
+    postContentFiltered: '',
+    pinged: '',
     postContent: '',
     postStatus: 'inherit',
+    postExcerpt: '',
+    toPing: '',
     postTitle: imagePostData.title,
     postName: imagePostData.title,
     postParent: 0,
@@ -90,10 +101,13 @@ WpPosts.load.workflows.genImagePost = function (postData: WpPostsResultSet, imag
     guid: config.get('wpUrl') + '/wp-content/uploads/assays/' + imagePostData.imagePath,
   };
 
-  let dateNow = new Date().toISOString();
+  // let dateNow = new Date().toISOString();
+  const dateNow = new Date(Date.now());
   let postObjWithDate = deepcopy(postObj);
   postObjWithDate.postDate = dateNow;
   postObjWithDate.postDateGmt = dateNow;
+  postObjWithDate.postModified = dateNow;
+  postObjWithDate.postModifiedGmt = dateNow;
 
   return new Promise(function (resolve, reject) {
     WpPosts
@@ -106,6 +120,7 @@ WpPosts.load.workflows.genImagePost = function (postData: WpPostsResultSet, imag
           guid: results[0]['guid'],
           postTitle: results[0]['postTitle'],
           imagePath: imagePostData.imagePath,
+          postExcerpt: '',
         };
         //TODO Change this structure - create all assay posts, then image posts, then do metadata/taxonomies
         return WpPosts.load.createImageMetaData(postData, imagePostResult);
@@ -114,6 +129,7 @@ WpPosts.load.workflows.genImagePost = function (postData: WpPostsResultSet, imag
         resolve(results);
       })
       .catch(function (error) {
+        app.winston.error(`${__filename} WpPosts ${error}`);
         reject(new Error(error));
       });
   });
@@ -126,6 +142,7 @@ WpPosts.load.workflows.genImagePost = function (postData: WpPostsResultSet, imag
  * @param {WpPostsResultSet} assayImagePostData
  */
 WpPosts.load.createImageMetaData = function (postData: WpPostsResultSet, imagePostData: WpPostsResultSet) {
+  // @ts-ignore
   let baseImage = deepcopy(imagePostData.imagePath);
   baseImage = baseImage.replace('.jpeg', '');
 
@@ -139,6 +156,7 @@ WpPosts.load.createImageMetaData = function (postData: WpPostsResultSet, imagePo
       {
         postId: imagePostData.id,
         metaKey: '_wp_attached_file',
+        // @ts-ignore
         metaValue: 'assays/' + imagePostData.imagePath,
       },
       {
@@ -148,6 +166,7 @@ WpPosts.load.createImageMetaData = function (postData: WpPostsResultSet, imagePo
       },
     ];
 
+    // @ts-ignore
     Promise.map(createObjs, (createObj) => {
       return app.models.WpPostmeta
         .findOrCreate({
@@ -158,6 +177,7 @@ WpPosts.load.createImageMetaData = function (postData: WpPostsResultSet, imagePo
         resolve({postData: postData, imagePostData: imagePostData});
       })
       .catch((error) => {
+        app.winston.error(`${__filename} WpPosts ${error}`);
         reject(new Error(error));
       });
   });
