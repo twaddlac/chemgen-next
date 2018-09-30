@@ -10,12 +10,11 @@ import {isEmpty} from 'lodash';
   templateUrl: './expset-album.component.html',
   styleUrls: ['./expset-album.component.css'],
   providers: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ExpsetAlbumComponent implements OnInit {
   @Input('expSet') expSet: any;
-  @Input('modelPredictedCounts') modelPredictedCounts: ModelPredictedCountsResultSet;
+  // @Input('modelPredictedCounts') modelPredictedCounts: ModelPredictedCountsResultSet;
   @Input('albums') albums: any;
   @Input('score') score: boolean;
   @Input('expSetAlbums') expSetAlbums: any;
@@ -25,7 +24,6 @@ export class ExpsetAlbumComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
   open(album, index: number): void {
     // open lightbox

@@ -9,6 +9,9 @@
     "platePlanName": {
       "type": "string"
     },
+    "site": {
+      "type": "string"
+    },
     "platePlanUploadDate": {
       "type": "date"
     },

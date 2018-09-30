@@ -3,6 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ExpsetAlbumComponent} from './expset-album.component';
 import {FormsModule} from '@angular/forms';
 import {Lightbox} from 'angular2-lightbox';
+import {ModalModule} from "ngx-bootstrap";
 
 describe('ExpsetAlbumComponent', () => {
   let component: ExpsetAlbumComponent;

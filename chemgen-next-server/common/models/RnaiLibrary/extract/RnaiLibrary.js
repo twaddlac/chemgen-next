@@ -19,16 +19,21 @@ RnaiLibrary.extract.parseLibraryResults = function (workflowData, expPlate, libr
         var platedbXrefSearch = [];
         allWells.map(function (well) {
             var libraryResult = RnaiLibrary.helpers.genLibraryResult(barcode, libraryResults, well);
-            if (lodash_1.get(libraryResult, 'compoundLibraryId')) {
+            //WTF IS THIS
+            if (lodash_1.get(libraryResult, 'geneName')) {
                 var where = {
                     wbGeneSequenceId: libraryResult.geneName,
                 };
-                platedbXrefSearch.push(where);
+                platedbXrefSearch.push({
+                    wbGeneSequenceId: libraryResult.geneName,
+                });
             }
         });
         //TODO Need to incorporate multiple wells
-        app.models.RnaiWormbaseXrefs.find({ where: { or: platedbXrefSearch } })
+        //TODO add check for plateDbXref < - if its empty this will get the whole table!!
+        app.models.RnaiWormbaseXrefs.find({ where: { or: platedbXrefSearch }, limit: 1000 })
             .then(function (dbXrefs) {
+            //@ts-ignore
             return Promise.map(allWells, function (well) {
                 var createStocks = [];
                 var parentLibraryResults = [];

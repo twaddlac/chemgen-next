@@ -48,6 +48,7 @@ WpTerms.load.prepareAnnotationData = function (workflowData, screenData) {
         var taxTermsTotal = [];
         screenData.plateDataList.map(function (plateData) {
             plateData.wellDataList.map(function (wellData) {
+                //@ts-ignore
                 wellData.annotationData.taxTerms.map(function (taxTerm) {
                     taxTermsTotal.push(taxTerm);
                 });
@@ -57,14 +58,14 @@ WpTerms.load.prepareAnnotationData = function (workflowData, screenData) {
     });
 };
 WpTerms.load.getBiosampleName = function (workflowData, expPlate) {
-    var treatGroup = _.find(Object.keys(workflowData.experimentGroups), function (group) {
-        return _.find(workflowData.experimentGroups[group].plates, function (plate) {
-            return _.isEqual(plate.instrumentPlateId, expPlate.instrumentPlateId);
+    var treatGroup = lodash_1.find(Object.keys(workflowData.experimentGroups), function (group) {
+        return lodash_1.find(workflowData.experimentGroups[group].plates, function (plate) {
+            return lodash_1.isEqual(Number(plate.instrumentPlateId), Number(expPlate.instrumentPlateId));
         });
     });
     var biosampleId = workflowData.experimentGroups[treatGroup].biosampleId;
-    var biosampleType = _.find(Object.keys(workflowData.biosamples), function (biosampleTypeKey) {
-        return _.isEqual(workflowData.biosamples[biosampleTypeKey].id, biosampleId);
+    var biosampleType = lodash_1.find(Object.keys(workflowData.biosamples), function (biosampleTypeKey) {
+        return lodash_1.isEqual(workflowData.biosamples[biosampleTypeKey].id, biosampleId);
     });
     var biosampleName = workflowData.biosamples[biosampleType].name;
     return biosampleName;
@@ -139,7 +140,13 @@ WpTerms.load.genWellTaxTerms = function (workflowData, expPlate, wellData) {
     //TODO Upto barcode are for the plate
     var regexp = /([a-zA-Z]+)(\d+)/g;
     var groups = regexp.exec(wellData.stockLibraryData.well);
-    var plateTaxTerms = WpTerms.load.genPlateTaxTerms(workflowData, expPlate);
+    var plateTaxTerms = null;
+    try {
+        plateTaxTerms = WpTerms.load.genPlateTaxTerms(workflowData, expPlate);
+    }
+    catch (error) {
+        throw new Error('Unable to generatore plateTaxTerms!');
+    }
     var wellTaxTerms = [
         {
             taxonomy: 'envira-tag',
@@ -163,6 +170,7 @@ WpTerms.load.createTerms = function (taxTermsList) {
         // Shuffle added to ensure we aren't creating multiples of the same thing
         // We do this so that if we process multiple screens at a time
         //We don't end up with duplicated wpTerms
+        // @ts-ignore
         Promise.map(lodash_1.shuffle(taxTermsList), function (createTermObj) {
             //This is just a sanity check, but probably shouldn't ever happen
             if (_.isEmpty(createTermObj) || !_.get(createTermObj, 'taxTerm')) {

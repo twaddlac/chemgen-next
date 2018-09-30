@@ -5,7 +5,7 @@ import {
   ExpScreenResultSet,
   ExpAssayResultSet,
   ModelsResultSet
-} from './index';
+} from '../index';
 
 /* Jillian */
 declare var Object: any;

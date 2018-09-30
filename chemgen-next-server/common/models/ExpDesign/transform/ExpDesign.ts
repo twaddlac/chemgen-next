@@ -1,11 +1,11 @@
-import app  = require('../../../../server/server.js');
+import app = require('../../../../server/server.js');
 import {WorkflowModel} from "../../index";
 import {ExpDesignResultSet, ExpGroupResultSet, ExpScreenUploadWorkflowResultSet} from "../../../types/sdk/models";
 import {PlateCollection, WellCollection} from "../../../types/wellData";
 
 import Promise = require('bluebird');
 import * as _ from "lodash";
-import {find, uniqBy, get, isEqual, uniqWith, isEmpty, has} from 'lodash';
+import {find, uniqBy, get, isEqual, uniqWith, isEmpty, has, map} from 'lodash';
 
 const ExpDesign = app.models.ExpDesign as (typeof WorkflowModel);
 
@@ -44,8 +44,8 @@ ExpDesign.transform.workflows.screenDataToExpSets = function (workflowData: ExpS
  */
 ExpDesign.transform.groupExpConditions = function (workflowData: ExpScreenUploadWorkflowResultSet, plateDataList: PlateCollection[]) {
   let groupsData = {};
-  _.map(plateDataList, (plateData: PlateCollection) => {
-    return _.map(plateData.wellDataList, (wellData) => {
+  map(plateDataList, (plateData: PlateCollection) => {
+    return map(plateData.wellDataList, (wellData) => {
       if (!isEmpty(wellData.expGroup.expGroupType)) {
         if (!has(groupsData, wellData.expGroup.expGroupType)) {
           groupsData[wellData.expGroup.expGroupType] = [];
@@ -55,7 +55,7 @@ ExpDesign.transform.groupExpConditions = function (workflowData: ExpScreenUpload
     });
   });
 
-  _.map(Object.keys(groupsData), (expGroupType) => {
+  map(Object.keys(groupsData), (expGroupType) => {
     groupsData[expGroupType] = uniqWith(groupsData[expGroupType], isEqual);
   });
   return groupsData;
@@ -96,16 +96,23 @@ ExpDesign.transform.prepareExpDesign = function (workflowData: ExpScreenUploadWo
 
   // TODO Get the controlGroupReagentType
   let expDesignRows: ExpDesignResultSet[] = [];
-  _.map(matchedExpGroups, (matchedExpGroup) => {
-    expDesignRows.push(new ExpDesignResultSet({
-      treatmentGroupId: matchedExpGroup.expGroup.expGroupId,
-      controlGroupId: matchedExpGroup.controlGroup.expGroupId,
-      expWorkflowId: workflowData.id,
-      screenId: workflowData.screenId,
-      controlGroupReagentType: matchedExpGroup.controlGroup.expGroupType,
-    }));
-    _.map(workflowData.controlConditions, (condition) => {
-      _.map(groups[condition], (group: ExpGroupResultSet) => {
+  map(matchedExpGroups, (matchedExpGroup) => {
+    //Some of the very early screens do not have matched N2s. I do not know whyyyyyyy
+    if(get(matchedExpGroup, 'controlGroup')){
+      const controlGroupExpId = matchedExpGroup.controlGroup.expGroupId;
+      const controlGroupReagentType = matchedExpGroup.controlGroup.expGroupType;
+      if(controlGroupReagentType && controlGroupReagentType){
+        expDesignRows.push(new ExpDesignResultSet({
+          treatmentGroupId: matchedExpGroup.expGroup.expGroupId,
+          controlGroupId: controlGroupExpId,
+          expWorkflowId: workflowData.id,
+          screenId: workflowData.screenId,
+          controlGroupReagentType: controlGroupReagentType,
+        }));
+      }
+    }
+    map(workflowData.controlConditions, (condition) => {
+      map(groups[condition], (group: ExpGroupResultSet) => {
         expDesignRows.push(new ExpDesignResultSet({
           treatmentGroupId: matchedExpGroup.expGroup.expGroupId,
           screenId: workflowData.screenId,
@@ -113,6 +120,7 @@ ExpDesign.transform.prepareExpDesign = function (workflowData: ExpScreenUploadWo
           controlGroupId: group.expGroupId,
           controlGroupReagentType: group.expGroupType,
         }));
+
       });
     });
   });

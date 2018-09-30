@@ -15,6 +15,7 @@ var ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow;
 ExpScreenUploadWorkflow.load.workflows.worms.doWork = function (workflowData) {
     return new Promise(function (resolve, reject) {
         if (workflowData instanceof Array) {
+            // @ts-ignore
             Promise.map(workflowData, function (data) {
                 return ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow(data);
             }, { concurrency: 1 })
@@ -51,6 +52,7 @@ ExpScreenUploadWorkflow.load.getInstrumentPlates = function (workflowData) {
 };
 ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow = function (workflowData) {
     return new Promise(function (resolve, reject) {
+        // @ts-ignore
         console.log(chalk.magenta("ExpScreenUploadWorkflow.doWork " + workflowData.name));
         console.time("ExpScreenUploadWorkflow.doWork " + workflowData.name);
         var instrumentPlates = ExpScreenUploadWorkflow.load.getInstrumentPlates(workflowData);
@@ -63,6 +65,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow = function (workflo
             return ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces(workflowData, screenData);
         })
             .then(function () {
+            // @ts-ignore
             console.log(chalk.cyan("Time: ExpScreenUploadWorkflow.doWork " + workflowData.name));
             console.timeEnd("ExpScreenUploadWorkflow.doWork " + workflowData.name);
             resolve();
@@ -153,7 +156,14 @@ ExpScreenUploadWorkflow.load.secondary.createWorkflowInstance = function (workfl
             app.models.PlatePlan96.findOne({ where: { 'id': workflowData.platePlanId } })
                 .then(function (platePlan) {
                 workflowData.platePlan = platePlan;
-                return ExpScreenUploadWorkflow.load.createWorkflowInstance(workflowData);
+                return ExpScreenUploadWorkflow.load.createWorkflowInstance(workflowData)
+                    .then(function (results) {
+                    results.platePlan = platePlan;
+                    return results;
+                })
+                    .catch(function (error) {
+                    return new Error(error);
+                });
             })
                 .then(function (results) {
                 resolve(results);
@@ -167,10 +177,12 @@ ExpScreenUploadWorkflow.load.secondary.createWorkflowInstance = function (workfl
 ExpScreenUploadWorkflow.load.createWorkflowInstance = function (workflowData) {
     return new Promise(function (resolve, reject) {
         workflowData = ExpScreenUploadWorkflow.load.fixPlates(workflowData);
+        workflowData = JSON.parse(JSON.stringify(workflowData));
+        delete workflowData.id;
         var search = app.models[workflowData.libraryModel].load[workflowData.screenStage].createWorkflowSearchObj(workflowData);
-        ExpScreenUploadWorkflow
+        app.models.ExpScreenUploadWorkflow
             .findOne({
-            where: search,
+            where: { name: workflowData.name },
         })
             .then(function (results) {
             //TODO Update the results with the current workflow
@@ -244,7 +256,16 @@ ExpScreenUploadWorkflow.load.workflows.worms.populateExpDesignData = function (w
         app.models.ExpDesign.load.workflows.createExpDesigns(workflowData, expDesignRows)
             .then(function (results) {
             var screenData = new wellData_1.ScreenCollection({ plateDataList: plateDataList, expDesignList: results });
-            resolve(screenData);
+            app.winston.info('Begin: Updating ExpAssay2reagent treatmentGroupId');
+            return app.models.ExpAssay2reagent.load.workflows.updateTreatmentGroupId(workflowData, screenData)
+                .then(function () {
+                app.winston.info('End: Updating ExpAssay2reagent treatmentGroupId');
+                resolve(screenData);
+            })
+                .catch(function (error) {
+                app.winston.error(error.stack);
+                reject(new Error(error));
+            });
         })
             .catch(function (error) {
             app.winston.error(error.stack);
@@ -265,9 +286,10 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
     app.winston.info("Creating Experiment Interfaces: " + workflowData.name);
     return new Promise(function (resolve, reject) {
         //TODO Add in create exp terms here
-        return app.models.WpTerms.load.workflows.createAnnotationData(workflowData, screenData)
+        app.models.WpTerms.load.workflows.createAnnotationData(workflowData, screenData)
             .then(function (screenData) {
-            Promise.map(screenData.plateDataList, function (plateData) {
+            //@ts-ignore
+            return Promise.map(screenData.plateDataList, function (plateData) {
                 app.winston.info("Begin Exp Plate: " + plateData.expPlate.barcode + " create interfaces");
                 return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
                     .then(function () {
@@ -275,10 +297,16 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
                     return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
                 })
                     .catch(function (error) {
-                    app.winston.error(error.stack);
+                    app.winston.error(error);
                     return (new Error(error));
                 });
-            }, { concurrency: 1 });
+            }, { concurrency: 1 })
+                .then(function () {
+                return;
+            })
+                .catch(function (error) {
+                return new Error(error);
+            });
         })
             .then(function () {
             app.winston.info("Complete Experiment Interfaces! " + workflowData.name);

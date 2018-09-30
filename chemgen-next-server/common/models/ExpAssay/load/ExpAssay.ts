@@ -1,4 +1,4 @@
-import app  = require('../../../../server/server.js');
+import app = require('../../../../server/server.js');
 import config = require('config');
 
 import {
@@ -48,6 +48,7 @@ let expGroups: ExpGroupResultSet[] = [];
  */
 ExpAssay.load.workflows.processExpPlates = function (workflowData: any, expPlates: ExpPlateResultSet[]) {
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(shuffle(expPlates), (expPlate: ExpPlateResultSet) => {
       app.winston.info(`Begin Exp Plate: ${expPlate.barcode} load experiment data`);
       return ExpAssay.load.workflows.processExpPlate(workflowData, expPlate)
@@ -138,6 +139,7 @@ ExpAssay.load.createExpGroups = function (workflowData: any, expPlateData: Plate
       app.winston.warn(error);
       reject(new Error(error));
     }
+    //@ts-ignore
     Promise.map(shuffle(expPlateData.wellDataList), function (wellData: WellCollection) {
       /*
       Check status of well
@@ -261,6 +263,7 @@ ExpAssay.load.addExpGroupAnnotation = function (wellData: WellCollection, expGro
  */
 ExpAssay.load.createExpAssays = function (workflowData: any, expPlateData: PlateCollection) {
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(expPlateData.wellDataList, function (wellData: WellCollection) {
       let createObj: ExpAssayResultSet;
       let assayCodeName = `${expPlateData.expPlate.barcode}_${wellData.stockLibraryData.well}`;
@@ -330,8 +333,11 @@ ExpAssay.load.resolveImagePath.arrayScan = function (workflowData: any, expPlate
  * @param {ExpPlateResultSet} expPlate
  * @param {WellCollection} wellData
  */
-ExpAssay.load.resolveImagePath.nyu = function (workflowData: any, expPlate: ExpPlateResultSet, wellData: WellCollection) {
-  return ExpAssay.load.resolveImagePath.default(workflowData, expPlate, wellData);
+ExpAssay.load.resolveImagePath.nyMicroscope = function (workflowData: any, expPlate: ExpPlateResultSet, wellData: WellCollection) {
+  // app.etlWorkflow.helpers.nyWellToTile = {
+  // return ExpAssay.load.resolveImagePath.default(workflowData, expPlate, wellData);
+  let tile = app.etlWorkflow.helpers.nyWellToTile[wellData.stockLibraryData.well];
+  return `${expPlate.plateImagePath}/${tile}`;
 };
 
 /**
@@ -350,7 +356,7 @@ ExpAssay.load.getExpGroup = function (workflowData: any, expPlate: ExpPlateResul
   let expGroupType: any;
   try {
     expGroupType = Object.keys(workflowData.experimentGroups).filter(function (condition: string) {
-      return _.find(workflowData.experimentGroups[condition]['plates'], ['instrumentPlateId', String(expPlate.instrumentPlateId)]) || _.find(workflowData.experimentGroups[condition]['plates'], ['instrumentPlateId', expPlate.instrumentPlateId]);
+      return find(workflowData.experimentGroups[condition]['plates'], ['instrumentPlateId', String(expPlate.instrumentPlateId)]) || find(workflowData.experimentGroups[condition]['plates'], ['instrumentPlateId', expPlate.instrumentPlateId]);
     })[0];
   }
   catch (error) {
@@ -360,8 +366,8 @@ ExpAssay.load.getExpGroup = function (workflowData: any, expPlate: ExpPlateResul
 
   if (!expGroupType) {
     app.winston.error('Unable to get expGroupType');
-    app.winston.error(JSON.stringify(workflowData, null, 2));
     app.winston.error(JSON.stringify(expPlate, null, 2));
+    app.winston.error(`WorkflowID: ${JSON.stringify(workflowData.id)}`);
     throw new Error('unable to get expGroupType WTF');
   }
   let biosample: any;
@@ -489,6 +495,11 @@ ExpAssay.load.workflows.imageConversionPipeline.all = function (workflowData: an
   });
 };
 
+ExpAssay.load.workflows.imageConversionPipeline.nyMicroscope = function (workflowData: any, plateData: PlateCollection) {
+  return new Promise((resolve, reject) => {
+    resolve();
+  });
+};
 /**
  * This workflow converts the image from the arrayscan properiary format to tiff, bmp, png, and jpeg
  * Jpegs are for wordpress/web interfaces, pngs and bmps are for machine learning / stats models
@@ -500,6 +511,7 @@ ExpAssay.load.workflows.imageConversionPipeline.all = function (workflowData: an
  */
 ExpAssay.load.workflows.imageConversionPipeline.arrayScan = function (workflowData: any, plateData: PlateCollection) {
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(plateData.wellDataList, (wellData: WellCollection) => {
       let images: any = ExpAssay.helpers.genImageFileNames(plateData.expPlate, wellData.stockLibraryData.well);
       return ExpAssay.helpers.genConvertImageCommands(images)

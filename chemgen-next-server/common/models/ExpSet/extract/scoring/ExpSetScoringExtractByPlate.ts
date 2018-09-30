@@ -1,23 +1,28 @@
 import app = require('../../../../../server/server.js');
 import {WorkflowModel} from "../../../index";
 import Promise = require('bluebird');
-import {groupBy, shuffle, uniq, divide, isNull, isUndefined, isEmpty, camelCase} from 'lodash';
+import {groupBy, shuffle, isEqual, find, get, filter, memoize, orderBy, round, isObject} from 'lodash';
+import {interpolateYlOrBr, interpolateViridis} from 'd3';
 import {ExpSetSearch, ExpSetSearchResults} from "../../types";
-import {ChemicalLibraryResultSet, ExpAssay2reagentResultSet, RnaiLibraryResultSet} from "../../../../types/sdk/models";
+import {
+  ChemicalLibraryResultSet,
+  ExpAssay2reagentResultSet,
+  ExpAssayResultSet, ExpDesignResultSet, ExpManualScoreCodeResultSet, ExpManualScoresResultSet,
+  ExpPlateResultSet,
+  ExpScreenResultSet,
+  ExpScreenUploadWorkflowResultSet,
+  ModelPredictedCountsResultSet,
+  RnaiLibraryResultSet
+} from "../../../../types/sdk/models";
 import decamelize = require('decamelize');
 
-import * as client from "knex";
+import config = require('config');
+let knex = config.get('knex');
 
-let knex: client = client({
-  client: 'mysql',
-  connection: {
-    host: process.env.CHEMGEN_HOST,
-    user: process.env.CHEMGEN_USER,
-    password: process.env.CHEMGEN_PASS,
-    database: process.env.CHEMGEN_DB,
-  },
-  debug: true,
-});
+import redis = require('redis');
+// @ts-ignore
+Promise.promisifyAll(redis);
+const redisClient = redis.createClient(config.get('redisUrl'));
 
 const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
 
@@ -43,14 +48,70 @@ ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search: ExpSetSea
 
     ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
       .then((data: ExpSetSearchResults) => {
-        //Get the plate - and then get all plates in that expSet
-        // return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
-        return ExpSet.extract.getExpAssay2reagentsByExpWorkflowId(data, search);
+        return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
       })
       .then((data: ExpSetSearchResults) => {
-        return app.models.ExpSet.extract.buildExpSets(data, search);
+        return ExpSet.extract.fetchFromCache(data, search);
+      })
+      .then((data: ExpSetSearchResults) => {
+        // Check to see if it was fetched from the cache
+        if (!data.fetchedFromCache) {
+          return ExpSet.extract.getExpDataByExpWorkflowId(data, search);
+        } else {
+          return data;
+        }
+
+      })
+      .then((data: ExpSetSearchResults) => {
+        //ExpManualScores and ModelPredictedCounts do NOT go in the cache
+        return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
+      })
+      .then((data: ExpSetSearchResults) => {
+        // TODO Could probably cache the counts,
+        // just have to make sure there is one count record per AssayId
+        return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
       })
       .then((data) => {
+        data = ExpSet.extract.insertCountsDataImageMeta(data);
+        data = ExpSet.extract.insertExpManualScoresImageMeta(data);
+        data = ExpSet.extract.genAlbumsByPlate(data, search);
+        data = ExpSet.extract.cleanUp(data, search);
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      })
+  });
+};
+
+ExpSet.extract.getModelPredictedCountsByExpWorkflowId = function (data: ExpSetSearchResults, search) {
+  return new Promise((resolve, reject) => {
+    app.models.ModelPredictedCounts
+      .find({
+        where: {
+          expWorkflowId: data.expWorkflows[0].id,
+        }
+      })
+      .then((modelPredictedCounts: ModelPredictedCountsResultSet[]) => {
+        data.modelPredictedCounts = modelPredictedCounts;
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      })
+  });
+};
+
+ExpSet.extract.getExpManualScoresByExpWorkflowId = function (data: ExpSetSearchResults, search) {
+  return new Promise((resolve, reject) => {
+    app.models.ExpManualScores
+      .find({
+        where: {
+          expWorkflowId: data.expWorkflows[0].id,
+        }
+      })
+      .then((expManualScores: ExpManualScoresResultSet[]) => {
+        data.expManualScores = expManualScores;
         resolve(data);
       })
       .catch((error) => {
@@ -67,11 +128,21 @@ ExpSet.extract.getExpAssay2reagentsByExpWorkflowId = function (data: ExpSetSearc
           and: [{expWorkflowId: data.expAssay2reagents[0].expWorkflowId},
             {reagentId: {neq: null}},
           ]
-        }
+        },
+        fields: {
+          treatmentGroupId: true,
+          assay2reagentId: true,
+          expGroupId: true,
+          plateId: true,
+          assayId: true,
+          reagentId: true,
+          libraryId: true,
+          reagentType: true,
+        },
       })
       .then((expAssay2reagents: ExpAssay2reagentResultSet[]) => {
         let groups = groupBy(expAssay2reagents, 'reagent_type');
-        ['ctrl_null', 'ctrl_strain'].map((expGroupType: string) =>{
+        ['ctrl_null', 'ctrl_strain'].map((expGroupType: string) => {
           groups[expGroupType] = shuffle(groups[expGroupType]);
           groups[expGroupType] = groups[expGroupType].slice(0, search.ctrlLimit);
         });
@@ -89,3 +160,297 @@ ExpSet.extract.getExpAssay2reagentsByExpWorkflowId = function (data: ExpSetSearc
       });
   });
 };
+
+/**
+ * This is the main workflow to get the Data
+ * It includes ExpPlates, ExpScreens, ExpScreenWorkflows
+ * Counts and Scores are separate
+ * @param data
+ * @param search
+ */
+ExpSet.extract.getExpDataByExpWorkflowId = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    app.models.ExpAssay2reagent
+      .find({
+        where: {
+          and: [{expWorkflowId: data.expAssay2reagents[0].expWorkflowId},
+            {expGroupId: {neq: null}},
+          ]
+        },
+        fields: {
+          treatmentGroupId: true,
+          assay2reagentId: true,
+          expGroupId: true,
+          plateId: true,
+          assayId: true,
+          reagentId: true,
+          libraryId: true,
+          reagentType: true,
+        },
+      })
+      .then((expAssay2reagents: ExpAssay2reagentResultSet[]) => {
+        data.expAssay2reagents = expAssay2reagents;
+        return data;
+      })
+      .then((data: ExpSetSearchResults) => {
+        return app.models.ExpAssay
+          .find({
+            where: {
+              assayId: {
+                inq: data.expAssay2reagents.map((expAssay2reagent) => {
+                  return expAssay2reagent.assayId;
+                })
+              }
+            },
+            fields: {
+              assayWell: true,
+              assayId: true,
+              assayImagePath: true,
+              expGroupId: true,
+              plateId: true,
+              screenId: true,
+              expWorkflowId: true,
+            },
+          })
+      })
+      .then((expAssays: ExpAssayResultSet[]) => {
+        data.expAssays = expAssays;
+        return data;
+      })
+      .then((data: ExpSetSearchResults) => {
+        return app.models.ExpPlate
+          .find({
+            where: {
+              expWorkflowId: data.expAssays[0].expWorkflowId
+            }
+          })
+      })
+      .then((expPlates: ExpPlateResultSet[]) => {
+        data.expPlates = expPlates;
+        return data;
+      })
+      .then((data: ExpSetSearchResults) => {
+        return app.models.ModelPredictedCounts
+          .find({
+            where: {
+              expWorkflowId: data.expAssays[0].expWorkflowId
+            }
+          })
+      })
+      .then((modelPredictedCounts: ModelPredictedCountsResultSet[]) => {
+        data.modelPredictedCounts = modelPredictedCounts;
+        return data;
+      })
+      .then((data: ExpSetSearchResults) => {
+        return app.models.ExpScreen
+          .findOne({
+            where: {screenId: data.expAssays[0].screenId},
+            fields: {
+              screenId: true,
+              screenName: true,
+              screenType: true,
+              screenStage: true,
+            }
+          })
+      })
+      .then((expScreens: ExpScreenResultSet) => {
+        data.expScreens = [expScreens];
+        return data;
+      })
+      .then((data: ExpSetSearchResults) => {
+        return app.models.ExpScreenUploadWorkflow
+          .findOne({
+            where: {id: data.expAssays[0].expWorkflowId},
+            fields: {
+              id: true,
+              name: true,
+              screenId: true,
+              biosamples: true,
+              assayDates: true,
+              temperature: true,
+              screenType: true,
+              screenStage: true
+            }
+          })
+      })
+      .then((expScreenWorkflow: ExpScreenUploadWorkflowResultSet) => {
+        data.expWorkflows = [expScreenWorkflow];
+        return ExpSet.extract.getExpDesignsByExpWorkflowId(data, search);
+      })
+      .then((data: ExpSetSearchResults) => {
+        return ExpSet.extract.genExpSetAlbums(data, search);
+      })
+      .then((data: ExpSetSearchResults) => {
+        data = ExpSet.extract.genExpGroupTypeAlbums(data, search);
+        return ExpSet.extract.saveToCache(data, search);
+      })
+      .then((data: ExpSetSearchResults) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      });
+  });
+};
+
+ExpSet.extract.fetchFromCache = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    let key = `contact-sheet-byPlate-${data.expAssay2reagents[0].expWorkflowId}`;
+
+    redisClient.getAsync(key)
+      .then((obj) => {
+        if (obj) {
+          // data = JSON.parse(obj);
+          // data.fetchedFromCache = true;
+          data.fetchedFromCache = false;
+          resolve(data);
+        } else {
+          data.fetchedFromCache = false;
+          resolve(data);
+        }
+      })
+      .catch((error) => {
+        app.winston.error(error);
+        reject(new Error(error));
+      });
+  });
+};
+
+ExpSet.extract.saveToCache = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    let key = `contact-sheet-byPlate-${data.expWorkflows[0].id}`;
+    redisClient.set(key, JSON.stringify(data), 'EX', 60 * 60 * 24, function (err, reply) {
+      resolve(data);
+    });
+  });
+};
+
+ExpSet.extract.getExpDesignsByExpWorkflowId = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    app.models.ExpDesign
+      .find({where: {expWorkflowId: data.expAssays[0].expWorkflowId}})
+      .then((expDesigns: ExpDesignResultSet[]) => {
+        let groups = groupBy(expDesigns, 'treatmentGroupId');
+        data.expSets = Object.keys(groups).map((treatmentGroupId) => {
+          return groups[treatmentGroupId];
+        });
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      });
+  });
+};
+
+/**
+ * Counts goes in its own separate corner,
+ * because counts can be updated
+ * @param data
+ * @param search
+ */
+ExpSet.extract.getCountsByExpWorkflowId = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    if (!search.includeCounts) {
+      resolve(data);
+    } else {
+      app.models.ModelPredictedCounts
+        .find(
+          {
+            where: {
+              expWorkflowId: data.expAssays[0].expWorkflowId,
+            }
+          }
+        )
+        .then((results: ModelPredictedCountsResultSet[]) => {
+          data.modelPredictedCounts = results;
+          resolve(data);
+        })
+        .catch((error) => {
+          app.winston.error(error);
+          reject(new Error(error));
+        });
+    }
+  });
+};
+
+//TODO Add this to main ExpSetModule
+ExpSet.extract.genExpGroupTypeAlbums = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  //For the expSet albums limit to 4
+  data.albums.map((album) => {
+    ['ctrlNullImages', 'ctrlStrainImages'].map((albumType) => {
+      album[albumType] = shuffle(album[albumType].slice(0, search.ctrlLimit));
+    });
+  });
+
+  let expGroupTypes: any = groupBy(data.expAssay2reagents, 'reagentType');
+  Object.keys(expGroupTypes).map((expGroup: string) => {
+    let mappedExpGroup = ExpSet.extract.mapExpGroupTypes(expGroup);
+    expGroupTypes[mappedExpGroup] = expGroupTypes[expGroup];
+    expGroupTypes[mappedExpGroup] = ExpSet.extract.genImageMeta(data, expGroupTypes[mappedExpGroup]);
+    if (isEqual(mappedExpGroup, 'ctrlNull') || isEqual(mappedExpGroup, 'ctrlStrain')) {
+      expGroupTypes[mappedExpGroup].map((imageMeta: any) => {
+        imageMeta.treatmentGroupId = null;
+      });
+    }
+    delete expGroupTypes[expGroup];
+  });
+  data.expGroupTypeAlbums = expGroupTypes;
+  //End Cache here
+  return data;
+};
+
+ExpSet.extract.genAlbumsByPlate = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  ['treatReagent', 'ctrlReagent'].map((mappedExpGroup) => {
+    data.expGroupTypeAlbums[mappedExpGroup] = groupBy(data.expGroupTypeAlbums[mappedExpGroup], 'plateId');
+  });
+
+  data = ExpSet.extract.extractPlatesNoScore(data, search);
+  return data;
+};
+
+/**
+ * Find the first set of plates that has no score
+ * This seems like a stupidly complex way of doing this
+ * TODO Think of a better way to do this
+ * @param data
+ * @param search
+ */
+ExpSet.extract.extractPlatesNoScore = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  let scoredPlateIds = [];
+  let unScoredPlateIds = [];
+  Object.keys(data.expGroupTypeAlbums.treatReagent).map((tplateId) => {
+    let foundAssay = find(data.expGroupTypeAlbums.treatReagent[tplateId], {manualScoreByAssay: null});
+    // This plate was already scored!
+    if (!foundAssay) {
+      scoredPlateIds.push(tplateId);
+    } else {
+      unScoredPlateIds.push(tplateId);
+    }
+  });
+
+  // let treatReagentPlateIds = Object.keys(data.expGroupTypeAlbums.treatReagent);
+  let ctrlReagentPlateIds = Object.keys(data.expGroupTypeAlbums.ctrlReagent);
+
+  // TODO Add condition for all plates scores (which shouldn't happen)
+  // Get a single plate to score
+  let scoreThisPlate = unScoredPlateIds.shift();
+  const treatI = Object.keys(data.expGroupTypeAlbums.treatReagent).indexOf(scoreThisPlate);
+
+  // Most of the time N2s have the same number of replicates as the mel-28
+  // But sometimes they don't
+  // If they don't just get the last n2 plate and call it a day
+  let ctrlPlateId = null;
+  if (treatI < ctrlReagentPlateIds.length) {
+    ctrlPlateId = ctrlReagentPlateIds[treatI];
+  } else {
+    ctrlPlateId = ctrlReagentPlateIds.pop();
+  }
+
+  data.expGroupTypeAlbums.treatReagent = data.expGroupTypeAlbums.treatReagent[scoreThisPlate];
+  data.expGroupTypeAlbums.ctrlReagent = data.expGroupTypeAlbums.ctrlReagent[ctrlPlateId];
+  data.expGroupTypeAlbums.treatReagent = orderBy(data.expGroupTypeAlbums.treatReagent, 'well');
+  data.expGroupTypeAlbums.ctrlReagent = orderBy(data.expGroupTypeAlbums.ctrlReagent, 'well');
+
+  return data;
+};
+

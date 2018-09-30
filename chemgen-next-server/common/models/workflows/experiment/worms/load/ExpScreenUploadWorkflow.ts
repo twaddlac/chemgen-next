@@ -21,6 +21,7 @@ const ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow as (typeof Wo
 ExpScreenUploadWorkflow.load.workflows.worms.doWork = function (workflowData: ExpScreenUploadWorkflowResultSet | ExpScreenUploadWorkflowResultSet[]) {
   return new Promise((resolve, reject) => {
     if (workflowData instanceof Array) {
+      // @ts-ignore
       Promise.map(workflowData, (data: ExpScreenUploadWorkflowResultSet) => {
         return ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow(data);
       }, {concurrency: 1})
@@ -59,6 +60,7 @@ ExpScreenUploadWorkflow.load.getInstrumentPlates = function (workflowData: ExpSc
 
 ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow = function (workflowData: ExpScreenUploadWorkflowResultSet) {
   return new Promise((resolve, reject) => {
+    // @ts-ignore
     console.log(chalk.magenta(`ExpScreenUploadWorkflow.doWork ${workflowData.name}`));
     console.time(`ExpScreenUploadWorkflow.doWork ${workflowData.name}`);
 
@@ -73,9 +75,11 @@ ExpScreenUploadWorkflow.load.workflows.worms.processWorkflow = function (workflo
       })
       // .then((screenData: ScreenCollection) => {
       //   app.winston.info('RETURNING Scores');
+      // TODO Add in counts here
       //   return app.models.ModelPredictedPheno.load.workflows.parseScreen(workflowData, screenData)
       // })
       .then(() => {
+        // @ts-ignore
         console.log(chalk.cyan(`Time: ExpScreenUploadWorkflow.doWork ${workflowData.name}`));
         console.timeEnd(`ExpScreenUploadWorkflow.doWork ${workflowData.name}`);
         resolve();
@@ -171,7 +175,14 @@ ExpScreenUploadWorkflow.load.secondary.createWorkflowInstance = function (workfl
       app.models.PlatePlan96.findOne({where: {'id': workflowData.platePlanId}})
         .then((platePlan: PlatePlan96ResultSet) => {
           workflowData.platePlan = platePlan;
-          return ExpScreenUploadWorkflow.load.createWorkflowInstance(workflowData);
+          return ExpScreenUploadWorkflow.load.createWorkflowInstance(workflowData)
+            .then((results: ExpScreenUploadWorkflowResultSet) => {
+              results.platePlan = platePlan;
+              return results;
+            })
+            .catch((error) => {
+              return new Error(error);
+            })
         })
         .then((results: ExpScreenUploadWorkflowResultSet) => {
           resolve(results);
@@ -186,10 +197,13 @@ ExpScreenUploadWorkflow.load.secondary.createWorkflowInstance = function (workfl
 ExpScreenUploadWorkflow.load.createWorkflowInstance = function (workflowData: ExpScreenUploadWorkflowResultSet) {
   return new Promise((resolve, reject) => {
     workflowData = ExpScreenUploadWorkflow.load.fixPlates(workflowData);
+    workflowData = JSON.parse(JSON.stringify(workflowData));
+    delete workflowData.id;
     let search = app.models[workflowData.libraryModel].load[workflowData.screenStage].createWorkflowSearchObj(workflowData);
-    ExpScreenUploadWorkflow
+    app.models.ExpScreenUploadWorkflow
       .findOne({
-        where: search,
+        where: {name: workflowData.name},
+        // where: search,
       })
       .then((results) => {
         //TODO Update the results with the current workflow
@@ -264,7 +278,16 @@ ExpScreenUploadWorkflow.load.workflows.worms.populateExpDesignData = function (w
     app.models.ExpDesign.load.workflows.createExpDesigns(workflowData, expDesignRows)
       .then((results) => {
         let screenData = new ScreenCollection({plateDataList: plateDataList, expDesignList: results});
-        resolve(screenData);
+        app.winston.info('Begin: Updating ExpAssay2reagent treatmentGroupId');
+        return app.models.ExpAssay2reagent.load.workflows.updateTreatmentGroupId(workflowData, screenData)
+          .then(() => {
+            app.winston.info('End: Updating ExpAssay2reagent treatmentGroupId');
+            resolve(screenData);
+          })
+          .catch((error) => {
+            app.winston.error(error.stack);
+            reject(new Error(error));
+          });
       })
       .catch((error) => {
         app.winston.error(error.stack);
@@ -286,9 +309,10 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
   app.winston.info(`Creating Experiment Interfaces: ${workflowData.name}`);
   return new Promise((resolve, reject) => {
     //TODO Add in create exp terms here
-    return app.models.WpTerms.load.workflows.createAnnotationData(workflowData, screenData)
+    app.models.WpTerms.load.workflows.createAnnotationData(workflowData, screenData)
       .then((screenData: ScreenCollection) => {
-        Promise.map(screenData.plateDataList, (plateData: PlateCollection) => {
+        //@ts-ignore
+        return Promise.map(screenData.plateDataList, (plateData: PlateCollection) => {
           app.winston.info(`Begin Exp Plate: ${plateData.expPlate.barcode} create interfaces`);
           return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
             .then(() => {
@@ -296,10 +320,16 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
               return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
             })
             .catch((error) => {
-              app.winston.error(error.stack);
+              app.winston.error(error);
               return (new Error(error));
             });
         }, {concurrency: 1})
+          .then(() => {
+            return;
+          })
+          .catch((error) => {
+            return new Error(error);
+          })
       })
       .then(() => {
         app.winston.info(`Complete Experiment Interfaces! ${workflowData.name}`);

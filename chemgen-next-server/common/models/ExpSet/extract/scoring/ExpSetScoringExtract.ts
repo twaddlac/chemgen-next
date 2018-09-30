@@ -74,6 +74,7 @@ ExpSet.extract.workflows.getExpAssay2reagentsByScores = function (data: ExpSetSe
       .offset(data.skip);
 
     let ds = app.datasources.chemgenDS;
+    app.winston.info(JSON.stringify(sqlQuery.toString()));
     ds.connector.execute(sqlQuery.toString(), [], function (error, rows) {
       if (error) {
         app.winston.error(error);
@@ -157,14 +158,14 @@ ExpSet.extract.buildNativeQuery = function (data: ExpSetSearchResults, search: E
       .whereExists(function () {
         this.select(1)
           .from('exp_manual_scores')
-          .whereRaw('exp_assay2reagent.treatment_group_id = exp_manual_scores.treatment_group_id');
+          .whereRaw('exp_assay2reagent.assay_id = exp_manual_scores.assay_id');
       });
   } else {
     query = query
       .whereNotExists(function () {
         this.select(1)
           .from('exp_manual_scores')
-          .whereRaw('exp_assay2reagent.treatment_group_id = exp_manual_scores.treatment_group_id');
+          .whereRaw('exp_assay2reagent.assay_id = exp_manual_scores.assay_id');
       });
 
   }

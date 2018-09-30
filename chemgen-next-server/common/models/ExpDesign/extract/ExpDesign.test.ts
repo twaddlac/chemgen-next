@@ -15,6 +15,7 @@ const instrumentPlates: PlateResultSet[] = require('../../../../test/data/rnai_i
 const workflowData: ExpScreenUploadWorkflowResultSet = require('../../../../test/data/rnai_workflow_data.json');
 workflowData.id = 1;
 
+//@ts-ignore
 const expDesignResults: ExpDesignResultSet[] = [
   {
     "expDesignId": 1,
@@ -79,7 +80,7 @@ describe('ExpDesign.extract', function () {
       .then(() => {
         return ExpDesign.extract.workflows.getExpSetByExpGroupId(1);
       })
-      .then((results: ExpDesignResultSet) => {
+      .then((results: ExpDesignResultSet[]) => {
         assert.equal(results.length, 3);
         done();
       })
@@ -90,7 +91,7 @@ describe('ExpDesign.extract', function () {
   it('ExpDesign.extract.workflows.getExpSetByExpGroupIdMem', function (done) {
     this.timeout(5000);
     ExpDesign.extract.workflows.getExpSetByExpGroupId(6, expDesignResults)
-      .then((results: ExpDesignResultSet) => {
+      .then((results: ExpDesignResultSet[]) => {
         assert.equal(results.length, 3);
         assert.deepEqual(shared.convertToJSON(results[0]), {
           "expDesignId": 1,
@@ -116,11 +117,10 @@ describe('ExpDesign.extract', function () {
       })
       .then((results: any) => {
         assert.equal(results.expGroupList.length, 8);
-        assert.equal(results.expGroupList[0].expGroupType, 'ctrl_null');
         let sortedResults = _.sortBy(results.expGroupList, 'expGroupId');
-        assert.equal(sortedResults[0].expGroupType, 'ctrl_null');
+        assert.equal(sortedResults[0].expGroupType, 'treat_rnai');
         assert.equal(sortedResults[0].expGroupId, 1);
-        assert.equal(sortedResults[0].biosampleId, 2);
+        assert.equal(sortedResults[0].biosampleId, 1);
         done();
       })
       .catch((error) => {

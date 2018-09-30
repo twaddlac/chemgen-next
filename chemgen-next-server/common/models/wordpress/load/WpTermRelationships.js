@@ -7,11 +7,12 @@ var WpTermRelationships = app.models['WpTermRelationships'];
 /**
  * Given a postId and a list of WpTermTaxonomyResultSets, relate each post back its taxonomies
  * @param postId
- * @param {WpTermTaxonomyResult} taxTermObj
+ * @param taxTermObjList
  */
 WpTermRelationships.load.createRelationships = function (postId, taxTermObjList) {
     taxTermObjList = lodash_1.shuffle(taxTermObjList);
     return new Promise(function (resolve, reject) {
+        // @ts-ignore
         Promise.map(taxTermObjList, function (taxTermObj) {
             var createObj = {
                 termTaxonomyId: taxTermObj.termTaxonomyId,

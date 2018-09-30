@@ -15,17 +15,9 @@ describe('ExpGroup.extract', function () {
         delete workflowData.id;
         ExpScreenUploadWorkflow.load.workflows.worms.primary.populateExperimentData(workflowData, instrumentPlates)
             .then(function (screenData) {
-            var results = ExpGroup.extract.getExpGroupFromScreenData(6, screenData);
-            assert.deepEqual(shared.convertToJSON(results), {
-                "expGroupId": 6,
-                "expGroupType": "ctrl_rnai",
-                "screenId": 1,
-                "libraryId": 1,
-                "reagentId": 703,
-                "biosampleId": 1,
-                "well": "A03",
-                "expWorkflowId": 1,
-            });
+            var expGroup = screenData.plateDataList[0].wellDataList[0].expGroup;
+            var results = ExpGroup.extract.getExpGroupFromScreenData(expGroup.expGroupId, screenData);
+            assert.deepEqual(shared.convertToJSON(results), shared.convertToJSON(expGroup));
             done();
         })
             .catch(function (error) {

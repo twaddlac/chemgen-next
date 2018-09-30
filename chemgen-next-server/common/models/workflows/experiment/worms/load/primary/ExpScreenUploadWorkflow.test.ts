@@ -1,9 +1,10 @@
-import {PlateResultSet} from "../../../../../../types/sdk/models";
+import {ExpPlateResultSet, PlateResultSet} from "../../../../../../types/sdk/models";
 import app = require('../../../../../../../server/server.js');
 import Promise = require('bluebird');
 import {PlateCollection, ScreenCollection} from "../../../../../../types/wellData";
 import {WorkflowModel} from "../../../../../index";
 import jsonfile = require('jsonfile');
+import {orderBy, find, filter, isEqual} from 'lodash';
 
 import assert = require('assert');
 
@@ -26,11 +27,17 @@ describe('ExpScreenUploadWorkflow.worms.primary', function () {
     ExpScreenUploadWorkflow.load.workflows.worms.primary.populatePlateData(workflowData, instrumentPlates)
       .then((results: PlateCollection[]) => {
         assert.equal(results.length, 8);
+        // results = orderBy(results, 'instrumentPlateId');
+        let expPlates: ExpPlateResultSet[] = results.map((result) => {
+          return result.expPlate;
+        });
+        expPlates = orderBy(expPlates, 'instrumentPlateId');
+        assert.equal(expPlates[0].barcode, 'L4440E');
+        assert.equal(expPlates[0].instrumentPlateId, 9277);
+        assert.equal(expPlates[0].plateId, 1);
+
         assert.equal(results[0].hasOwnProperty('wellDataList'), true);
         assert.equal(results[0].hasOwnProperty('expPlate'), true);
-        assert.equal(results[0].expPlate.barcode, 'L4440E');
-        assert.equal(results[0].expPlate.instrumentPlateId, 9277);
-        assert.equal(results[0].expPlate.plateId, 1);
         assert.equal(results[0].wellDataList[0].hasOwnProperty('annotationData'), true);
         assert.equal(results[0].wellDataList[0].hasOwnProperty('expAssay'), true);
         assert.equal(results[0].wellDataList[0].hasOwnProperty('parentLibraryData'), true);
@@ -51,10 +58,9 @@ describe('ExpScreenUploadWorkflow.worms.primary', function () {
         assert.equal(results.expDesignList.length, 9);
         assert.equal(results.plateDataList.length, 8);
         let treatmentId = results.expDesignList[0].treatmentGroupId;
-        let countTreatment = _.filter(results.expDesignList, (expDesign) => {
-          return _.isEqual(expDesign.treatmentGroupId, treatmentId)
+        let countTreatment = filter(results.expDesignList, (expDesign) => {
+          return isEqual(expDesign.treatmentGroupId, treatmentId)
         }).length;
-        jsonfile.writeFileSync('rnai_primary_new_screen.json', results);
         assert.equal(countTreatment, 3);
         done();
       })
@@ -70,8 +76,9 @@ describe('ExpScreenUploadWorkflow.worms.primary', function () {
       .then((results) => {
         assert.equal(workflowData.biosamples.ctrlBiosample.name, 'N2');
         assert.equal(workflowData.biosamples.experimentBiosample.name, 'mel-28');
-        assert.equal(results.length, 8);
-        assert.equal(results[0].length, 4);
+        assert.equal(results.hasOwnProperty('annotationData'), true);
+        assert.equal(results.hasOwnProperty('expDesignList'), true);
+        assert.equal(results.hasOwnProperty('plateDataList'), true);
         done();
       })
       .catch((error) => {

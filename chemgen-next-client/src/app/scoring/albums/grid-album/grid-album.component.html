@@ -1,7 +1,6 @@
 <div class="row">
   <div *ngFor="let image of album; let i=index">
     <div class="col-md-3">
-      <!--[ngClass]="{'interesting': scoreThis(image), 'not_interesting': !scoreThis(image) }"-->
       <div class="{{scoreThis(image)}}">
         <!--<div>-->
         <div tabindex="0" class="form-check">
@@ -32,10 +31,8 @@
             <div class="col-md-4">
               <app-expset-album-dialog [score]="score"
                                        [albums]="albums"
-                                       [modelPredictedCounts]="image.counts"
                                        [expSet]="image.expSet">
               </app-expset-album-dialog>
-
             </div>
           </div>
 

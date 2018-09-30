@@ -20,6 +20,6 @@ export class SearchFormViewOptionsComponent implements OnInit {
 
 
 export class SearchFormViewOptionsResults {
-  viewOptions: any = 'contactSheetView';
-  rankOrder: any = 'plateId';
+  viewOptions: any = 'contactSheetPlateView';
+  rankOrder: any = 'none';
 }

@@ -173,6 +173,21 @@
         "dataScale": null,
         "nullable": "N"
       }
+    },
+    "expWorkflowId": {
+      "type": "String",
+      "required": false,
+      "length": 250,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "exp_workflow_id",
+        "dataType": "varchar",
+        "dataLength": 250,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
     }
   },
   "relations": {}

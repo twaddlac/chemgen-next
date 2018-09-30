@@ -7,6 +7,7 @@ var ExpPlate = app.models.ExpPlate;
 var Plate = app.models.Plate;
 var shared = require("../../../../test/shared");
 shared.makeMemoryDb();
+//@ts-ignore
 var instrumentPlates = [
     {
         'csPlateid': 9281,
@@ -52,6 +53,7 @@ describe('ExpPlate.load', function () {
     before(function (done) {
         app.dataSources.db.automigrate('ExpPlate')
             .then(function () {
+            //@ts-ignore
             return Promise.map(instrumentPlates, function (row) {
                 return Plate.findOrCreate({ where: app.etlWorkflow.helpers.findOrCreateObj(row) }, row);
             });
