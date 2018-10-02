@@ -5,17 +5,8 @@ var Promise = require("bluebird");
 var lodash_1 = require("lodash");
 var types_1 = require("../../types");
 var decamelize = require("decamelize");
-var client = require("knex");
-var knex = client({
-    client: 'mysql',
-    connection: {
-        host: process.env.CHEMGEN_HOST,
-        user: process.env.CHEMGEN_USER,
-        password: process.env.CHEMGEN_PASS,
-        database: process.env.CHEMGEN_DB,
-    },
-    debug: true,
-});
+var config = require("config");
+var knex = config.get('knex');
 /**
  * ExpSetExtractScoring* are a list of apis to get ExpSets for scoring
  */
@@ -25,6 +16,34 @@ var knex = client({
  * For this reason we use knex, to generate the sql, and then execute it with the loopback native sql executor
  */
 var ExpSet = app.models.ExpSet;
+/**
+ * TODO Grab all experiment sets matching a given set of criteria
+ * This is just a placeholder
+ * @param {ExpSetSearch} search
+ */
+ExpSet.extract.workflows.getExpSets = function (search) {
+    return new Promise(function (resolve, reject) {
+        search = new types_1.ExpSetSearch(search);
+        var data = new types_1.ExpSetSearchResults({});
+        var sqlQuery = ExpSet.extract.buildNativeQuery(data, search, false);
+        sqlQuery = sqlQuery.count();
+        app.winston.info("Search Obj: " + JSON.stringify(search));
+        app.winston.info("Sql: " + sqlQuery.toString());
+        ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
+            .then(function (data) {
+            return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
+        })
+            .then(function (data) {
+            return app.models.ExpSet.extract.buildExpSets(data, search);
+        })
+            .then(function (data) {
+            resolve(data);
+        })
+            .catch(function (error) {
+            reject(new Error(error));
+        });
+    });
+};
 /**
  * Grab ExpSets that do not have a manual score
  * @param {ExpSetSearch} search

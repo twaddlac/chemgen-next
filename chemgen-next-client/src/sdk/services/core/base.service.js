@@ -684,7 +684,7 @@ var BaseLoopBackApi = /** @class */ (function () {
         __param(1, core_1.Inject(socket_connections_1.SocketConnection)),
         __param(2, core_1.Inject(SDKModels_1.SDKModels)),
         __param(3, core_1.Inject(auth_service_1.LoopBackAuth)),
-        __param(4, core_1.Inject(error_service_1.ErrorHandler))
+        __param(4, core_1.Optional()), __param(4, core_1.Inject(error_service_1.ErrorHandler))
     ], BaseLoopBackApi);
     return BaseLoopBackApi;
 }());

@@ -12,8 +12,10 @@ export interface ExpManualScoresResultSetInterface {
   "assayId"?: number;
   "treatmentGroupId"?: number;
   "scoreCodeId": number;
-  "scorerId": number;
+  "userId": number;
+  "userName": string;
   "timestamp": Date;
+  "expWorkflowId"?: string;
 }
 
 export class ExpManualScoresResultSet implements ExpManualScoresResultSetInterface {
@@ -26,8 +28,10 @@ export class ExpManualScoresResultSet implements ExpManualScoresResultSetInterfa
   "assayId": number;
   "treatmentGroupId": number;
   "scoreCodeId": number;
-  "scorerId": number;
+  "userId": number;
+  "userName": string;
   "timestamp": Date;
+  "expWorkflowId": string;
   constructor(data?: ExpManualScoresResultSetInterface) {
     Object.assign(this, data);
   }
@@ -97,13 +101,21 @@ export class ExpManualScoresResultSet implements ExpManualScoresResultSetInterfa
           name: 'scoreCodeId',
           type: 'number'
         },
-        "scorerId": {
-          name: 'scorerId',
+        "userId": {
+          name: 'userId',
           type: 'number'
+        },
+        "userName": {
+          name: 'userName',
+          type: 'string'
         },
         "timestamp": {
           name: 'timestamp',
           type: 'Date'
+        },
+        "expWorkflowId": {
+          name: 'expWorkflowId',
+          type: 'string'
         },
       },
       relations: {

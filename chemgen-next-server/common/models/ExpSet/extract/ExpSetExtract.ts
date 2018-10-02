@@ -19,7 +19,9 @@ import Promise = require('bluebird');
 import {ExpSetSearch, ExpSetSearchResults} from "../types";
 
 import config = require('config');
+
 const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
+
 
 /**
  *  ExpSetSearch the expAssay2reagents table given the search results
@@ -265,20 +267,20 @@ ExpSet.extract.sanityChecks = function (data: ExpSetSearchResults, search ?: Exp
           return new Error(error);
         })
     })
-      .then(() =>{
+      .then(() => {
         return app.models.ExpAssay
           .find({
             where: {
               expGroupId: {
-                inq: treatExpGroupIds.map((expGroup : any) =>{
+                inq: treatExpGroupIds.map((expGroup: any) => {
                   return expGroup.expGroupId;
                 }),
               }
             }
           });
       })
-      .then((expAssays: ExpAssayResultSet[]) =>{
-        expAssays.map((expAssay) =>{
+      .then((expAssays: ExpAssayResultSet[]) => {
+        expAssays.map((expAssay) => {
           data.expAssays.push(expAssay);
         });
         data.expAssays = uniqBy(data.expAssays, 'assayId');
@@ -454,17 +456,13 @@ ExpSet.extract.genExpSetAlbums = function (data?: ExpSetSearchResults, search?: 
       } catch (error) {
         app.winston.error('There is no ctrl null');
       }
+      app.winston.info(`Site is : ${config.get('site')}`);
 
       ['treatmentReagent', 'ctrlReagent', 'ctrlStrain', 'ctrlNull'].map((expGroupType) => {
         album[`${expGroupType}Images`] = data.expAssays.filter((expAssay: ExpAssayResultSet) => {
           return isEqual(expAssay.expGroupId, album[`${expGroupType}Id`]);
         }).map((expAssay: ExpAssayResultSet) => {
-          return  {
-            assayImagePath: expAssay.assayImagePath,
-            src: `${config.get('imageUrl')}/${expAssay.assayImagePath}-autolevel.jpeg`,
-            caption: `Image ${expAssay.assayImagePath} caption here`,
-            thumb: `${config.get('imageUrl')}/${expAssay.assayImagePath}-autolevel.jpeg`,
-          };
+          return ExpSet.extract[`buildImageObj${config.get('site')}`](expAssay);
         });
         album[`${expGroupType}Images`] = uniqBy(album[`${expGroupType}Images`], 'assayImagePath');
       });
@@ -474,5 +472,80 @@ ExpSet.extract.genExpSetAlbums = function (data?: ExpSetSearchResults, search?: 
 
     return data;
   }
+};
+
+/**
+ * Grab ExpSets that do not have a manual score and organize by plate
+ * This one is a little different from the other ExpSet function, which assume that the user wants to see all the replicates together
+ * Instead the user independently scores each plate
+ * So we can just use the expWorkflowId to do all the lookups
+ * This is not same as the others - where we may be searching for a gene/chemical across all the screens
+ * @param {ExpSetSearch} search
+ */
+ExpSet.extract.workflows.getExpSetByWorkflowId = function (search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    search = new ExpSetSearch(search);
+    let data = new ExpSetSearchResults({});
+    data.pageSize = 1;
+
+    app.models.ExpAssay2Reagent.findOne({where: {expWorkflowId: search.expGroupSearch[0]}})
+      .then((expAssay2eagent: ExpAssay2reagentResultSet) => {
+        data.expAssay2reagents = [expAssay2eagent];
+        if (!data.expAssay2reagents || !data.expAssay2reagents.length) {
+          resolve();
+        } else {
+          return ExpSet.extract.fetchFromCache(data, search);
+        }
+      })
+      .then((data: ExpSetSearchResults) => {
+        // Check to see if it was fetched from the cache
+        if (!data.fetchedFromCache) {
+          return ExpSet.extract.getExpDataByExpWorkflowId(data, search);
+        } else {
+          return data;
+        }
+
+      })
+      .then((data: ExpSetSearchResults) => {
+        //ExpManualScores and ModelPredictedCounts do NOT go in the cache
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      })
+  });
+};
+
+
+/**
+ * Build the image URLS based on the site
+ * By default the
+ * @param expAssay
+ */
+ExpSet.extract.buildImageObjDEV = function (expAssay: ExpAssayResultSet) {
+  return {
+    assayImagePath: expAssay.assayImagePath,
+    src: `${config.get('sites')['DEV']['imageUrl']}/${expAssay.assayImagePath}-autolevel.jpeg`,
+    caption: `Image ${expAssay.assayImagePath} caption here`,
+    thumb: `${config.get('sites')['DEV']['imageUrl']}/${expAssay.assayImagePath}-autolevel.jpeg`,
+  };
+};
+
+ExpSet.extract.buildImageObjAD = function (expAssay: ExpAssayResultSet) {
+  return {
+    assayImagePath: expAssay.assayImagePath,
+    src: `${config.get('sites')['AD']['imageUrl']}/${expAssay.assayImagePath}-autolevel.jpeg`,
+    caption: `Image ${expAssay.assayImagePath} caption here`,
+    thumb: `${config.get('sites')['AD']['imageUrl']}/${expAssay.assayImagePath}-autolevel.jpeg`,
+  };
+};
+
+ExpSet.extract.buildImageObjNY = function (expAssay: ExpAssayResultSet) {
+  return {
+    assayImagePath: expAssay.assayImagePath,
+    src: `${config.get('sites')['NY']['imageUrl']}/${expAssay.assayImagePath}.bmp`,
+    caption: `Image ${expAssay.assayImagePath} caption here`,
+    thumb: `${config.get('sites')['NY']['imageUrl']}/${expAssay.assayImagePath}.bmp`,
+  };
 };
 

@@ -1,4 +1,11 @@
-import {Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {
+    Component,
+    Input,
+    OnInit,
+    Output,
+    EventEmitter,
+    Renderer2
+} from '@angular/core';
 import {ExpSetApi} from '../../../sdk/services/custom';
 import {Lightbox} from 'angular2-lightbox';
 import {NouisliderModule} from 'ng2-nouislider';
@@ -10,9 +17,7 @@ import {
     filter,
     isObject,
     isUndefined,
-    shuffle,
     isEqual,
-    round,
     find,
     orderBy,
     minBy,
@@ -21,19 +26,15 @@ import {
 } from 'lodash';
 import {interpolateYlOrBr, interpolateViridis} from 'd3';
 import {
-    ExpAssayResultSet,
-    ExpDesignResultSet, ExpManualScoresResultSet, ExpScreenResultSet, ExpScreenUploadWorkflowResultSet,
-    ModelPredictedCountsResultSet
+    ExpManualScoresResultSet
 } from '../../../sdk/models';
 import {ExpManualScoresApi} from '../../../sdk/services/custom';
 import {ExpSetSearchResults} from '../expset/expset.module';
-
 
 @Component({
     selector: 'app-contact-sheet',
     templateUrl: './contact-sheet.component.html',
     styleUrls: ['./contact-sheet.component.css'],
-    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactSheetComponent implements OnInit {
     @Input() expSets: ExpSetSearchResults;
@@ -44,15 +45,23 @@ export class ContactSheetComponent implements OnInit {
     public errorMessage: string;
     public contactSheetResults: ContactSheetFormResults;
     public contactSheetUiOptions: ContactSheetUIOptions;
+    public userName: string;
+    public userId: string | number;
 
     constructor(private expSetApi: ExpSetApi,
                 private expManualScoresApi: ExpManualScoresApi,
-                public _lightbox: Lightbox) {
+                public _lightbox: Lightbox,
+                private renderer: Renderer2) {
         this.didScore = false;
         this.errorMessage = '';
         this.contactSheetResults = new ContactSheetFormResults();
         this.contactSheetUiOptions = new ContactSheetUIOptions();
+        const userName = document.getElementById('userName');
+        const userId = document.getElementById('userId');
+        this.userName = userName.innerText || 'dummyUser';
+        this.userId = userId.innerText || 0;
     }
+
 
     ngOnInit() {
         this.parseExpSetsToAlbums();
@@ -117,7 +126,8 @@ export class ContactSheetComponent implements OnInit {
                     'assayId': imageMeta.assayId,
                     'treatmentGroupId': treatmentGroupId,
                     'scoreCodeId': 66,
-                    'scorerId': 1,
+                    'userId': this.userId,
+                    'userName': this.userName,
                     'expWorkflowId': String(imageMeta.expWorkflowId),
                 };
             })

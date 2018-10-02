@@ -174,6 +174,10 @@ var RnaiScreenUploadWorkflowResultSet = /** @class */ (function () {
                     name: 'librarycode',
                     type: 'string'
                 },
+                "site": {
+                    name: 'site',
+                    type: 'string'
+                },
                 "instrumentPlateIdLookup": {
                     name: 'instrumentPlateIdLookup',
                     type: 'string'

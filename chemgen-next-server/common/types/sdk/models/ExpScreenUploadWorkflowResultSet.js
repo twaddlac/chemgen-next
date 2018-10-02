@@ -43,6 +43,10 @@ var ExpScreenUploadWorkflowResultSet = /** @class */ (function () {
                     name: 'comment',
                     type: 'string'
                 },
+                "site": {
+                    name: 'site',
+                    type: 'string'
+                },
                 "platePlan": {
                     name: 'platePlan',
                     type: 'any'

@@ -66,3 +66,6 @@ chemgen-next-analysis-docker/classify_image/emb_leth_ad_ny_1_inception_v3_defaul
 # chemgen-vars
 # This is just a place holder, these are all private keys that don't go in the github repo
 chemgen-vars/*
+
+## plugins
+wordpress_plugins

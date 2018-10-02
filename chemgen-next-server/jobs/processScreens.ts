@@ -27,7 +27,7 @@ app.models.ExpScreenUploadWorkflow
           jobQueues.workflowQueue.add({workflowData: result});
         })
           .then(() => {
-            process.exit(0);
+            // process.exit(0);
           })
 
       })

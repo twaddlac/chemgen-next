@@ -9,32 +9,34 @@ import {RnaiSecondaryComponent} from './exp-screen/upload-screen/rnai/rnai-secon
 import {ChemicalPrimaryComponent} from './exp-screen/upload-screen/chemical/chemical-primary/chemical-primary.component';
 import {ChemicalSecondaryComponent} from './exp-screen/upload-screen/chemical/chemical-secondary/chemical-secondary.component';
 import {SearchFormWormsComponent} from './search-forms/search-form-worms/search-form-worms.component';
+import {EmptyComponent} from "./empty/empty.component";
 
 // TODO Make Routing Modules
 
 const appRoutes: Routes = [
-  {path: 'pages', component: PagesComponent},
-  {path: 'rnai-primary', component: RnaiPrimaryComponent},
-  {path: 'rnai-secondary', component: RnaiSecondaryComponent},
-  {path: 'rnai-plate-plan', component: RnaiPlatePlanComponent},
-  {path: 'chemical-primary', component: ChemicalPrimaryComponent},
-  {path: 'chemical-secondary', component: ChemicalSecondaryComponent},
-  {path: 'search-worms', component: SearchFormWormsComponent},
-  {path: '', redirectTo: '/pages', pathMatch: 'full'},
-  {path: '**', component: PageNotFoundComponent},
+    {path: 'pages', component: PagesComponent},
+    {path: 'empty', component: EmptyComponent},
+    {path: 'rnai-primary', component: RnaiPrimaryComponent},
+    {path: 'rnai-secondary', component: RnaiSecondaryComponent},
+    {path: 'rnai-plate-plan', component: RnaiPlatePlanComponent},
+    {path: 'chemical-primary', component: ChemicalPrimaryComponent},
+    {path: 'chemical-secondary', component: ChemicalSecondaryComponent},
+    {path: 'search-worms', component: SearchFormWormsComponent},
+    {path: '', redirectTo: '/empty', pathMatch: 'full'},
+    {path: '**', component: PageNotFoundComponent},
 ];
 
 const config: ExtraOptions = {
-  enableTracing: false,
-  useHash: true,
+    enableTracing: false,
+    useHash: true,
 };
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes, config),
-  ],
-  exports: [RouterModule],
-  declarations: []
+    imports: [
+        RouterModule.forRoot(appRoutes, config),
+    ],
+    exports: [RouterModule],
+    declarations: []
 })
 
 export class AppRoutingModule {

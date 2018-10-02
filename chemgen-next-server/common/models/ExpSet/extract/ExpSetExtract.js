@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var lodash_1 = require("lodash");
 var Promise = require("bluebird");
+var types_1 = require("../types");
 var config = require("config");
 var ExpSet = app.models.ExpSet;
 /**
@@ -423,16 +424,12 @@ ExpSet.extract.genExpSetAlbums = function (data, search) {
             catch (error) {
                 app.winston.error('There is no ctrl null');
             }
+            app.winston.info("Site is : " + config.get('site'));
             ['treatmentReagent', 'ctrlReagent', 'ctrlStrain', 'ctrlNull'].map(function (expGroupType) {
                 album[expGroupType + "Images"] = data.expAssays.filter(function (expAssay) {
                     return lodash_1.isEqual(expAssay.expGroupId, album[expGroupType + "Id"]);
                 }).map(function (expAssay) {
-                    return {
-                        assayImagePath: expAssay.assayImagePath,
-                        src: config.get('imageUrl') + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
-                        caption: "Image " + expAssay.assayImagePath + " caption here",
-                        thumb: config.get('imageUrl') + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
-                    };
+                    return ExpSet.extract["buildImageObj" + config.get('site')](expAssay);
                 });
                 album[expGroupType + "Images"] = lodash_1.uniqBy(album[expGroupType + "Images"], 'assayImagePath');
             });
@@ -440,5 +437,75 @@ ExpSet.extract.genExpSetAlbums = function (data, search) {
         });
         return data;
     }
+};
+/**
+ * Grab ExpSets that do not have a manual score and organize by plate
+ * This one is a little different from the other ExpSet function, which assume that the user wants to see all the replicates together
+ * Instead the user independently scores each plate
+ * So we can just use the expWorkflowId to do all the lookups
+ * This is not same as the others - where we may be searching for a gene/chemical across all the screens
+ * @param {ExpSetSearch} search
+ */
+ExpSet.extract.workflows.getExpSetByWorkflowId = function (search) {
+    return new Promise(function (resolve, reject) {
+        search = new types_1.ExpSetSearch(search);
+        var data = new types_1.ExpSetSearchResults({});
+        data.pageSize = 1;
+        app.models.ExpAssay2Reagent.findOne({ where: { expWorkflowId: search.expGroupSearch[0] } })
+            .then(function (expAssay2eagent) {
+            data.expAssay2reagents = [expAssay2eagent];
+            if (!data.expAssay2reagents || !data.expAssay2reagents.length) {
+                resolve();
+            }
+            else {
+                return ExpSet.extract.fetchFromCache(data, search);
+            }
+        })
+            .then(function (data) {
+            // Check to see if it was fetched from the cache
+            if (!data.fetchedFromCache) {
+                return ExpSet.extract.getExpDataByExpWorkflowId(data, search);
+            }
+            else {
+                return data;
+            }
+        })
+            .then(function (data) {
+            //ExpManualScores and ModelPredictedCounts do NOT go in the cache
+            resolve(data);
+        })
+            .catch(function (error) {
+            reject(new Error(error));
+        });
+    });
+};
+/**
+ * Build the image URLS based on the site
+ * By default the
+ * @param expAssay
+ */
+ExpSet.extract.buildImageObjDEV = function (expAssay) {
+    return {
+        assayImagePath: expAssay.assayImagePath,
+        src: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+        caption: "Image " + expAssay.assayImagePath + " caption here",
+        thumb: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+    };
+};
+ExpSet.extract.buildImageObjAD = function (expAssay) {
+    return {
+        assayImagePath: expAssay.assayImagePath,
+        src: config.get('sites')['AD']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+        caption: "Image " + expAssay.assayImagePath + " caption here",
+        thumb: config.get('sites')['AD']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+    };
+};
+ExpSet.extract.buildImageObjNY = function (expAssay) {
+    return {
+        assayImagePath: expAssay.assayImagePath,
+        src: config.get('sites')['NY']['imageUrl'] + "/" + expAssay.assayImagePath + ".bmp",
+        caption: "Image " + expAssay.assayImagePath + " caption here",
+        thumb: config.get('sites')['NY']['imageUrl'] + "/" + expAssay.assayImagePath + ".bmp",
+    };
 };
 //# sourceMappingURL=ExpSetExtract.js.map

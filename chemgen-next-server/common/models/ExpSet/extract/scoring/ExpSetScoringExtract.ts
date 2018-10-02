@@ -8,17 +8,8 @@ import decamelize = require('decamelize');
 
 import * as client from "knex";
 
-let knex: client = client({
-  client: 'mysql',
-  connection: {
-    host: process.env.CHEMGEN_HOST,
-    user: process.env.CHEMGEN_USER,
-    password: process.env.CHEMGEN_PASS,
-    database: process.env.CHEMGEN_DB,
-  },
-  debug: true,
-});
-
+import config = require('config');
+const knex = config.get('knex');
 
 /**
  * ExpSetExtractScoring* are a list of apis to get ExpSets for scoring
@@ -31,6 +22,38 @@ let knex: client = client({
  */
 
 const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
+
+/**
+ * TODO Grab all experiment sets matching a given set of criteria
+ * This is just a placeholder
+ * @param {ExpSetSearch} search
+ */
+ExpSet.extract.workflows.getExpSets = function (search: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    search = new ExpSetSearch(search);
+    let data = new ExpSetSearchResults({});
+
+    let sqlQuery = ExpSet.extract.buildNativeQuery(data, search, false);
+    sqlQuery = sqlQuery.count();
+
+    app.winston.info(`Search Obj: ${JSON.stringify(search)}`);
+    app.winston.info(`Sql: ${sqlQuery.toString()}`);
+
+    ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
+      .then((data: ExpSetSearchResults) => {
+        return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
+      })
+      .then((data: ExpSetSearchResults) => {
+        return app.models.ExpSet.extract.buildExpSets(data, search);
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(new Error(error));
+      })
+  });
+};
 
 /**
  * Grab ExpSets that do not have a manual score

@@ -71,13 +71,21 @@ var ExpManualScoresResultSet = /** @class */ (function () {
                     name: 'scoreCodeId',
                     type: 'number'
                 },
-                "scorerId": {
-                    name: 'scorerId',
+                "userId": {
+                    name: 'userId',
                     type: 'number'
+                },
+                "userName": {
+                    name: 'userName',
+                    type: 'string'
                 },
                 "timestamp": {
                     name: 'timestamp',
                     type: 'Date'
+                },
+                "expWorkflowId": {
+                    name: 'expWorkflowId',
+                    type: 'string'
                 },
             },
             relations: {}

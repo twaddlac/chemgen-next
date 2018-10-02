@@ -27,7 +27,7 @@ app.models.ExpScreenUploadWorkflow
             jobQueues.workflowQueue.add({ workflowData: result });
         })
             .then(function () {
-            process.exit(0);
+            // process.exit(0);
         });
     })
         .catch(function (error) {

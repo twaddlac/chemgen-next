@@ -21,8 +21,8 @@ export class GridAlbumComponent implements OnInit {
     @Output() getExpSetsEvent = new EventEmitter<any>();
 
     constructor(public _lightbox: Lightbox, private _lightboxConfig: LightboxConfig) {
-        _lightboxConfig.fadeDuration = 0;
-        _lightboxConfig.resizeDuration = 0;
+        _lightboxConfig.fadeDuration = 0.1;
+        _lightboxConfig.resizeDuration = 0.1;
     }
 
     ngOnInit() {

@@ -51,8 +51,7 @@ get_header();
 
             endif;
             ?>
-            <app-empty></app-empty>
-
+            <app-root></app-root>
         </div><!-- #main -->
     </div><!-- #primary -->
 
