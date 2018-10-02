@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.1",
     "gentelella": "^1.4.0"
   }
 }

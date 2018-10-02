@@ -51,7 +51,7 @@ export abstract class BaseLoopBackApi {
     @Inject(SocketConnection) protected connection: SocketConnection,
     @Inject(SDKModels) protected models: SDKModels,
     @Inject(LoopBackAuth) protected auth: LoopBackAuth,
-    @Inject(ErrorHandler) protected errorHandler: ErrorHandler
+    @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
     this.model = this.models.get(this.getModelName());
   }

@@ -5,6 +5,7 @@ declare var Object: any;
 export interface ExpScreenUploadWorkflowResultSetInterface {
   "name"?: string;
   "comment"?: string;
+  "site"?: string;
   "platePlan"?: any;
   "platePlanId"?: any;
   "assayViewType"?: string;
@@ -42,6 +43,7 @@ export interface ExpScreenUploadWorkflowResultSetInterface {
 export class ExpScreenUploadWorkflowResultSet implements ExpScreenUploadWorkflowResultSetInterface {
   "name": string;
   "comment": string;
+  "site": string;
   "platePlan": any;
   "platePlanId": any;
   "assayViewType": string;
@@ -113,6 +115,10 @@ export class ExpScreenUploadWorkflowResultSet implements ExpScreenUploadWorkflow
         },
         "comment": {
           name: 'comment',
+          type: 'string'
+        },
+        "site": {
+          name: 'site',
           type: 'string'
         },
         "platePlan": {

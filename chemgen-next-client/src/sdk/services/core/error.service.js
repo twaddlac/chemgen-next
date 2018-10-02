@@ -16,8 +16,7 @@ var ErrorHandler = /** @class */ (function () {
     function ErrorHandler() {
     }
     ErrorHandler.prototype.handleError = function (errorResponse) {
-        // return throwError(errorResponse.error.error || 'Server error');
-        return rxjs_1.throwError(errorResponse.error || 'Server error');
+        return rxjs_1.throwError(errorResponse.error.error || 'Server error');
     };
     ErrorHandler = __decorate([
         core_1.Injectable()

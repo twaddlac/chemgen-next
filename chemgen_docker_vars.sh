@@ -41,3 +41,4 @@ export MONGO_PASS="password"
 ## Redis Caching
 export REDIS_HOST="${HOST}"
 export REDIS_PORT=6380
+export REDIS_URL="redis://${REDIS_HOST}:${REDIS_PORT}"

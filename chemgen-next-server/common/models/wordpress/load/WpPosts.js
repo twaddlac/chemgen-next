@@ -33,7 +33,7 @@ WpPosts.load.workflows.createPost = function (workflowData, postData) {
     postObjWithDate.postModifiedGmt = dateNow;
     return new Promise(function (resolve, reject) {
         WpPosts.findOrCreate({
-            where: app.etlWorkflow.helpers.findOrCreateObj(postObj),
+            where: { postTitle: postObj.postTitle },
         }, postObjWithDate)
             .then(function (results) {
             return WpPosts.load.updatePost(workflowData, postData, results[0]);

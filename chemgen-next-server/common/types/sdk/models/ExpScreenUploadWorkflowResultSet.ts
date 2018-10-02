@@ -117,6 +117,10 @@ export class ExpScreenUploadWorkflowResultSet implements ExpScreenUploadWorkflow
           name: 'comment',
           type: 'string'
         },
+        "site": {
+          name: 'site',
+          type: 'string'
+        },
         "platePlan": {
           name: 'platePlan',
           type: 'any'

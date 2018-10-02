@@ -40,21 +40,12 @@
 
 <?php wp_footer(); ?>
 
-<!-- jQuery -->
-<!--<script src="--><?php //echo(bloginfo('template_directory')) ?><!--/node_modules/gentelella/vendors/jquery/dist/jquery.min.js"></script>-->
-<!--<!-- Bootstrap -->-->
-<!--<script src="--><?php //echo(bloginfo('template_directory')) ?><!--/node_modules/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>-->
-<!--<!-- FastClick -->-->
-<!--<script src="--><?php //echo(bloginfo('template_directory')) ?><!--/node_modules/gentelella/vendors/fastclick/lib/fastclick.js"></script>-->
-<!--<!-- NProgress -->-->
-<!--<script src="--><?php //echo(bloginfo('template_directory')) ?><!--/node_modules/gentelella/vendors/nprogress/nprogress.js"></script>-->
-<!--<!-- Custom Theme Scripts -->-->
-<!--<script src="--><?php //echo(bloginfo('template_directory')) ?><!--/node_modules/gentelella/build/js/custom.min.js"></script>-->
-
+<script src="<?php echo(bloginfo('template_directory')) ?>/node_modules/gentelella/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo(bloginfo('template_directory')) ?>/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js"
 <script type="text/javascript" src="<?php echo(bloginfo('template_directory')) ?>/js/ng/runtime.js"></script>
 <script type="text/javascript" src="<?php echo(bloginfo('template_directory')) ?>/js/ng/polyfills.js"></script>
 <script type="text/javascript" src="<?php echo(bloginfo('template_directory')) ?>/js/ng/scripts.js"></script>
-<!--<script type="text/javascript" src="--><?php //echo(bloginfo('template_directory')) ?><!--/js/ng/main.js"></script>-->
+<script type="text/javascript" src="<?php echo(bloginfo('template_directory')) ?>/js/ng/main.js"></script>
 
 </body>
 </html>

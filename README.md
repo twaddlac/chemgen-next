@@ -43,6 +43,25 @@ If for some reason you want to empty the wordpress database and startup info:
 docker volume rm chemgen-next-web-docker_wordpress_db_data
 ```
 
+### Important Environmental Variables
+
+Make sure to set the site as appropriate, NY, AD, or DEV. The default is dev.
+
+### Important API EndPoints
+
+#### Unscored ExpSets
+
+This is the most optimized query - if you are not searching across the entire database for a gene or chemical list use this
+
+```
+http://localhost:3000/api/ExpSets/getUnscoredExpSetsByPlate?search={"pageSize" : 1 }
+```
+
+```
+http://localhost:3000/api/ExpSets/getUnscoredExpSets?search={"pageSize" : 1 }
+```
+
+
 ### One time startup instructions
 
 #### Bring up the node server

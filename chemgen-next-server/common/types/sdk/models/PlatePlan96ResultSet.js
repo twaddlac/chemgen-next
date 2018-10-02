@@ -39,6 +39,10 @@ var PlatePlan96ResultSet = /** @class */ (function () {
                     name: 'platePlanName',
                     type: 'string'
                 },
+                "site": {
+                    name: 'site',
+                    type: 'string'
+                },
                 "platePlanUploadDate": {
                     name: 'platePlanUploadDate',
                     type: 'Date'

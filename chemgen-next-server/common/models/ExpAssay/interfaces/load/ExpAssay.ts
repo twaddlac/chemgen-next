@@ -12,6 +12,7 @@ import {
   ExpScreenUploadWorkflowResultSet, WpPostsResultSet
 } from "../../../../types/sdk/models";
 import * as _ from "lodash";
+import {map, uniqWith, flatten, filter, isNull, keyBy, isEqual, isEmpty} from 'lodash';
 
 // @ts-ignore
 const readFile = Promise.promisify(require('fs').readFile);
@@ -20,6 +21,7 @@ const ExpAssay = app.models['ExpAssay'] as (typeof WorkflowModel);
 
 /**
  * Workflows for creating web interfaces for the ExpAssays (Assays are a single well)
+ * TODO Update the wordpress posts to just use a regular html gallery instead of the envira gallery
  */
 
 /**
@@ -66,21 +68,23 @@ ExpAssay.load.workflows.createExpAssayInterfaces = function (workflowData: any, 
  * For each Assay we need to oet the associated Experiment Data with it (Called the ExpSet)
  * 1. Get Exp Design
  * @param {ExpScreenUploadWorkflowResultSet} workflowData
+ * @param {ScreenCollection} screenData
  * @param {PlateCollection} plateData
+ * @param {WellCollection} wellData
  */
 ExpAssay.load.workflows.getAssayRelations = function (workflowData: ExpScreenUploadWorkflowResultSet, screenData: ScreenCollection, plateData: PlateCollection, wellData: WellCollection) {
   return new Promise((resolve, reject) => {
     app.models.ExpDesign.extract.workflows.getExpSetByExpGroupId(wellData.expGroup.expGroupId, screenData.expDesignList)
       .then((expDesignList: ExpDesignResultSet[]) => {
         let expGroups = [];
-        if (_.isEmpty(expDesignList)) {
+        if (isEmpty(expDesignList)) {
           //Its an empty well
           resolve(null);
         }
         else {
           //The treatmentGroupIds are always the same
           expGroups.push(app.models.ExpGroup.extract.getExpGroupFromScreenData(expDesignList[0].treatmentGroupId, screenData));
-          _.map(expDesignList, (expDesign) => {
+          map(expDesignList, (expDesign) => {
             expGroups.push(app.models.ExpGroup.extract.getExpGroupFromScreenData(expDesign.controlGroupId, screenData));
           });
           let expSet = new ExpSet({expDesignList: expDesignList, expGroupList: expGroups});
@@ -100,12 +104,11 @@ ExpAssay.load.workflows.getAssayRelations = function (workflowData: ExpScreenUpl
  * @param {ExpSet} expSet
  */
 ExpAssay.load.mapAssayRelations = function (workflowData: ExpScreenUploadWorkflowResultSet, expSet: ExpSet) {
-  if (_.isEmpty(expSet) || _.isNull(expSet)) {
+  if (isEmpty(expSet) || isNull(expSet)) {
     return {};
   }
   else {
-    let annotationData = _.keyBy(expSet.expGroupList, 'expGroupType');
-    return annotationData;
+    return keyBy(expSet.expGroupList, 'expGroupType');
   }
 };
 
@@ -158,7 +161,10 @@ ExpAssay.load.genHtmlView = function (workflowData: ExpScreenUploadWorkflowResul
 ExpAssay.load.workflows.createWpPosts = function (workflowData: ExpScreenUploadWorkflowResultSet, plateData: PlateCollection, wellData: WellCollection, postContent: string) {
   return new Promise((resolve, reject) => {
     let plateId = plateData.expPlate.plateId;
+    //TODO Update this
+    // It should Be Barcode Date Replicate#
     let title = `${plateId}-${wellData.expAssay.assayCodeName}`;
+    //TODO Make this site Specific
     let assayImagePath = wellData.expAssay.assayImagePath || `${plateData.expPlate.plateImagePath}/${plateData.expPlate.barcode}_${wellData.stockLibraryData.well}`;
 
     let postData = {
@@ -167,6 +173,7 @@ ExpAssay.load.workflows.createWpPosts = function (workflowData: ExpScreenUploadW
       titleSlug: slug(title),
       postContent: postContent,
       postExcerpt: '',
+      //TODO Make this site Specific
       imagePath: `${assayImagePath}-autolevel.jpeg`,
     };
 
@@ -230,25 +237,25 @@ ExpAssay.load.updateExpAssay = function (wellData: WellCollection, postData: any
      objectId: termTax.postId,
  };
  * @param {ExpScreenUploadWorkflowResultSet} workflowData
- * @param {PlateCollection} plateData
+ * @param {ScreenCollection} screenData
  * @param {WellCollection} wellData
- * @param postsResults
  */
 ExpAssay.load.relateTaxToPost = function (workflowData: ExpScreenUploadWorkflowResultSet, screenData: ScreenCollection, wellData: WellCollection) {
-  let results = _.map(wellData.annotationData.taxTerms, (taxTerm) => {
-    return _.filter(screenData.annotationData.taxTerms, (taxTermResultSet) => {
-      return _.isEqual(String(taxTermResultSet.term), String(taxTerm.taxTerm)) && _.isEqual(String(taxTermResultSet.taxonomy), String(taxTerm.taxonomy));
+  let results = map(wellData.annotationData.taxTerms, (taxTerm) => {
+    return filter(screenData.annotationData.taxTerms, (taxTermResultSet) => {
+      return isEqual(String(taxTermResultSet.term), String(taxTerm.taxTerm)) && isEqual(String(taxTermResultSet.taxonomy), String(taxTerm.taxonomy));
     });
   });
-  let flat = _.flatten(results);
-  return _.filter(flat, (res) => {
-    return !_.isEmpty(res);
+  let flat = flatten(results);
+  return filter(flat, (res) => {
+    return !isEmpty(res);
   });
 };
 
 /**
  * This associates the post to the taxonomy terms
  * @param {ExpScreenUploadWorkflowResultSet} workflowData
+ * @param {ScreenCollection} screenData
  * @param {PlateCollection} plateData
  * @param {WellCollection} wellData
  * @param postData
@@ -256,7 +263,7 @@ ExpAssay.load.relateTaxToPost = function (workflowData: ExpScreenUploadWorkflowR
 ExpAssay.load.workflows.createPostTaxRels = function (workflowData: ExpScreenUploadWorkflowResultSet, screenData: ScreenCollection, wellData: WellCollection, postData: any) {
   return new Promise((resolve, reject) => {
     let taxTerms = ExpAssay.load.relateTaxToPost(workflowData, screenData, wellData);
-    taxTerms = _.uniqWith(taxTerms, _.isEqual);
+    taxTerms = uniqWith(taxTerms, isEqual);
     // @ts-ignore
     Promise.map(Object.keys(postData), (postType: string) => {
       return app.models.WpTermRelationships.load

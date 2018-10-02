@@ -245,6 +245,10 @@ export class PlatePlan96ResultSet implements PlatePlan96ResultSetInterface {
           name: 'platePlanName',
           type: 'string'
         },
+        "site": {
+          name: 'site',
+          type: 'string'
+        },
         "platePlanUploadDate": {
           name: 'platePlanUploadDate',
           type: 'Date'

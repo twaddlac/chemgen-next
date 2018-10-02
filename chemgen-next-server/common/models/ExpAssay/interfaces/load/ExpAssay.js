@@ -7,11 +7,13 @@ var slug = require("slug");
 var Promise = require("bluebird");
 var Mustache = require("mustache");
 var _ = require("lodash");
+var lodash_1 = require("lodash");
 // @ts-ignore
 var readFile = Promise.promisify(require('fs').readFile);
 var ExpAssay = app.models['ExpAssay'];
 /**
  * Workflows for creating web interfaces for the ExpAssays (Assays are a single well)
+ * TODO Update the wordpress posts to just use a regular html gallery instead of the envira gallery
  */
 /**
  *
@@ -56,21 +58,23 @@ ExpAssay.load.workflows.createExpAssayInterfaces = function (workflowData, scree
  * For each Assay we need to oet the associated Experiment Data with it (Called the ExpSet)
  * 1. Get Exp Design
  * @param {ExpScreenUploadWorkflowResultSet} workflowData
+ * @param {ScreenCollection} screenData
  * @param {PlateCollection} plateData
+ * @param {WellCollection} wellData
  */
 ExpAssay.load.workflows.getAssayRelations = function (workflowData, screenData, plateData, wellData) {
     return new Promise(function (resolve, reject) {
         app.models.ExpDesign.extract.workflows.getExpSetByExpGroupId(wellData.expGroup.expGroupId, screenData.expDesignList)
             .then(function (expDesignList) {
             var expGroups = [];
-            if (_.isEmpty(expDesignList)) {
+            if (lodash_1.isEmpty(expDesignList)) {
                 //Its an empty well
                 resolve(null);
             }
             else {
                 //The treatmentGroupIds are always the same
                 expGroups.push(app.models.ExpGroup.extract.getExpGroupFromScreenData(expDesignList[0].treatmentGroupId, screenData));
-                _.map(expDesignList, function (expDesign) {
+                lodash_1.map(expDesignList, function (expDesign) {
                     expGroups.push(app.models.ExpGroup.extract.getExpGroupFromScreenData(expDesign.controlGroupId, screenData));
                 });
                 var expSet = new wellData_1.ExpSet({ expDesignList: expDesignList, expGroupList: expGroups });
@@ -89,12 +93,11 @@ ExpAssay.load.workflows.getAssayRelations = function (workflowData, screenData, 
  * @param {ExpSet} expSet
  */
 ExpAssay.load.mapAssayRelations = function (workflowData, expSet) {
-    if (_.isEmpty(expSet) || _.isNull(expSet)) {
+    if (lodash_1.isEmpty(expSet) || lodash_1.isNull(expSet)) {
         return {};
     }
     else {
-        var annotationData = _.keyBy(expSet.expGroupList, 'expGroupType');
-        return annotationData;
+        return lodash_1.keyBy(expSet.expGroupList, 'expGroupType');
     }
 };
 /**
@@ -145,7 +148,10 @@ ExpAssay.load.genHtmlView = function (workflowData, screenData, plateData, wellD
 ExpAssay.load.workflows.createWpPosts = function (workflowData, plateData, wellData, postContent) {
     return new Promise(function (resolve, reject) {
         var plateId = plateData.expPlate.plateId;
+        //TODO Update this
+        // It should Be Barcode Date Replicate#
         var title = plateId + "-" + wellData.expAssay.assayCodeName;
+        //TODO Make this site Specific
         var assayImagePath = wellData.expAssay.assayImagePath || plateData.expPlate.plateImagePath + "/" + plateData.expPlate.barcode + "_" + wellData.stockLibraryData.well;
         var postData = {
             viewType: workflowData.assayViewType,
@@ -153,6 +159,7 @@ ExpAssay.load.workflows.createWpPosts = function (workflowData, plateData, wellD
             titleSlug: slug(title),
             postContent: postContent,
             postExcerpt: '',
+            //TODO Make this site Specific
             imagePath: assayImagePath + "-autolevel.jpeg",
         };
         app.models.WpPosts.load.workflows.createPost(workflowData, postData)
@@ -213,24 +220,24 @@ ExpAssay.load.updateExpAssay = function (wellData, postData) {
      objectId: termTax.postId,
  };
  * @param {ExpScreenUploadWorkflowResultSet} workflowData
- * @param {PlateCollection} plateData
+ * @param {ScreenCollection} screenData
  * @param {WellCollection} wellData
- * @param postsResults
  */
 ExpAssay.load.relateTaxToPost = function (workflowData, screenData, wellData) {
-    var results = _.map(wellData.annotationData.taxTerms, function (taxTerm) {
-        return _.filter(screenData.annotationData.taxTerms, function (taxTermResultSet) {
-            return _.isEqual(String(taxTermResultSet.term), String(taxTerm.taxTerm)) && _.isEqual(String(taxTermResultSet.taxonomy), String(taxTerm.taxonomy));
+    var results = lodash_1.map(wellData.annotationData.taxTerms, function (taxTerm) {
+        return lodash_1.filter(screenData.annotationData.taxTerms, function (taxTermResultSet) {
+            return lodash_1.isEqual(String(taxTermResultSet.term), String(taxTerm.taxTerm)) && lodash_1.isEqual(String(taxTermResultSet.taxonomy), String(taxTerm.taxonomy));
         });
     });
-    var flat = _.flatten(results);
-    return _.filter(flat, function (res) {
-        return !_.isEmpty(res);
+    var flat = lodash_1.flatten(results);
+    return lodash_1.filter(flat, function (res) {
+        return !lodash_1.isEmpty(res);
     });
 };
 /**
  * This associates the post to the taxonomy terms
  * @param {ExpScreenUploadWorkflowResultSet} workflowData
+ * @param {ScreenCollection} screenData
  * @param {PlateCollection} plateData
  * @param {WellCollection} wellData
  * @param postData
@@ -238,7 +245,7 @@ ExpAssay.load.relateTaxToPost = function (workflowData, screenData, wellData) {
 ExpAssay.load.workflows.createPostTaxRels = function (workflowData, screenData, wellData, postData) {
     return new Promise(function (resolve, reject) {
         var taxTerms = ExpAssay.load.relateTaxToPost(workflowData, screenData, wellData);
-        taxTerms = _.uniqWith(taxTerms, _.isEqual);
+        taxTerms = lodash_1.uniqWith(taxTerms, lodash_1.isEqual);
         // @ts-ignore
         Promise.map(Object.keys(postData), function (postType) {
             return app.models.WpTermRelationships.load
