@@ -106,3 +106,8 @@ The docker configuration in chemgen-next-analysis-docker requires some data file
 #### Devstar Counts
 
 The configuration is all here, but since devstar is a private github repo you will need to go and download the repo as a zip and put it in the chemgen-next-analysis-docker/counts/devstar folder.
+
+
+## CI Services
+
+Tests are run using travis. Please open a PR to contribute code.
