@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node server/server.js",
-    "test": "find ./ -name '*.test.js' | grep -v node_modules | xargs mocha",
+    "test": "mocha \"./{,!(node_modules)/**/}*.test.js\" --exit",
     "posttest": "echo 'npm run lint && nsp check'"
   },
   "dependencies": {
