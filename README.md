@@ -69,7 +69,7 @@ http://localhost:3000/api/ExpSets/getUnscoredExpSets?search={"pageSize" : 1 }
 I am having trouble getting these working as docker containers, so for now you have to do it the hard way. First ensure you have node.js>=9.
 
 ```
-npm install -g pm2 @angular/cli nodemon
+npm install -g pm2 @angular/cli nodemon karma mocha
 ```
 
 To start the loopback server

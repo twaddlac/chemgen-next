@@ -1,0 +1,18 @@
+sudo: required
+
+language: node_js
+node_js:
+- "9"
+
+services:
+- docker
+
+before_install:
+- npm i -g @angular/cli@6.1.1 mocha karma
+- ./run_chemgen_server.sh
+
+install:
+- source chemgen_docker_var.sh && cd chemgen-next-server && mocha "./{,!(node_modules)/**/}*.test.js" --exit && cd ..
+- cd chemgen-next-client && npm test ng test --watch=false
+
+

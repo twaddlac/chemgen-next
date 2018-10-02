@@ -29,49 +29,5 @@ shared.makeMemoryDb();
 describe('ModelPredictedPheno.load.workflows.parseScreen', function () {
   shared.prepareRnai();
 
-  it('ModelPredictedPheno.load.getPhenos', function (done) {
-    this.timeout(30000);
-    let wellData = {expAssay: {assayImagePath: '2016Aug22/6813/RNAiI.3A1E_M_H12'}, expAssay2reagent: {reagentId: 1}};
-    ModelPredictedPheno.load.getPhenos(workflowData, wellData)
-      .then((results) => {
-        console.log(JSON.stringify(results, null, 2));
-        let response = JSON.parse(results.screenMeta);
-        assert.equal(response.hasOwnProperty('top_hits'), true);
-        assert.equal(response.hasOwnProperty('request'), true);
-        done();
-      })
-      .catch((error) => {
-        done(new Error(error));
-      });
-  });
-
-  it('ModelPredictedPheno.load.workflows.parseScreens with L4440 Plate', function (done) {
-    this.timeout(1000000);
-    //Have to reduce this otherwise it will time out
-    let smallData = new ScreenCollection({plateDataList: [screenData.plateDataList[3]]});
-
-    ModelPredictedPheno.load.workflows.parseScreen(workflowData, smallData)
-      .then((results) => {
-        done();
-      })
-      .catch((error) => {
-        done(new Error(error));
-      });
-  });
-
-  it('ModelPredictedPheno.load.workflows.parseScreens with Rnai Plate', function (done) {
-    this.timeout(1000000);
-    //Have to reduce this otherwise it will time out
-    let smallData = new ScreenCollection({plateDataList: [screenData.plateDataList[4]]});
-
-    ModelPredictedPheno.load.workflows.parseScreen(workflowData, smallData)
-      .then((results) => {
-        done();
-      })
-      .catch((error) => {
-        done(new Error(error));
-      });
-  });
-
   shared.sharedAfter();
 });
