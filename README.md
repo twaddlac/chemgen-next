@@ -111,3 +111,5 @@ The configuration is all here, but since devstar is a private github repo you wi
 ## CI Services
 
 Tests are run using travis. Please open a PR to contribute code.
+
+CI Builds are available at: https://travis-ci.org/chemgen-ny-ad/chemgen-next
