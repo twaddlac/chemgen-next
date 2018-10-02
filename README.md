@@ -24,6 +24,7 @@ The dev servers do not have any experimental data, only the configurations. In o
 source chemgen_docker_vars.sh
 cd chemgen-next-server
 ## See the one time setup to install pm2
+pm2 server/server/.js --name chemgen-next-server --watch
 pm2 jobs/defineQueues.js --name chemgen-next-define-queues
 ## TODO Add in a dev script just to load some data
 node jobs/processQueues.js
