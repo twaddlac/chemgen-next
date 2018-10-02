@@ -24,6 +24,7 @@ The dev servers do not have any experimental data, only the configurations. In o
 source chemgen_docker_vars.sh
 cd chemgen-next-server
 ## See the one time setup to install pm2
+pm2 server/server/.js --name chemgen-next-server --watch
 pm2 jobs/defineQueues.js --name chemgen-next-define-queues
 ## TODO Add in a dev script just to load some data
 node jobs/processQueues.js
@@ -106,3 +107,10 @@ The docker configuration in chemgen-next-analysis-docker requires some data file
 #### Devstar Counts
 
 The configuration is all here, but since devstar is a private github repo you will need to go and download the repo as a zip and put it in the chemgen-next-analysis-docker/counts/devstar folder.
+
+
+## CI Services
+
+Tests are run using travis. Please open a PR to contribute code.
+
+CI Builds are available at: https://travis-ci.org/chemgen-ny-ad/chemgen-next
