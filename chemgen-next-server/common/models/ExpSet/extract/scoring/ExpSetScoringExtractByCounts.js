@@ -5,17 +5,8 @@ var Promise = require("bluebird");
 var lodash_1 = require("lodash");
 var types_1 = require("../../types");
 var decamelize = require("decamelize");
-var client = require("knex");
-var knex = client({
-    client: 'mysql',
-    connection: {
-        host: process.env.CHEMGEN_HOST,
-        user: process.env.CHEMGEN_USER,
-        password: process.env.CHEMGEN_PASS,
-        database: process.env.CHEMGEN_DB,
-    },
-    debug: true,
-});
+var config = require("config");
+var knex = config.get('knex');
 /**
  * ExpSetExtractScoring* are a list of apis to get ExpSets for scoring
  */
@@ -31,10 +22,8 @@ var ExpSet = app.models.ExpSet;
  */
 ExpSet.extract.workflows.getUnscoredExpSetsByCounts = function (search) {
     return new Promise(function (resolve, reject) {
-        console.log("Before: " + JSON.stringify(search));
         search = new types_1.ExpSetSearchByCounts(search);
         var data = new types_1.ExpSetSearchResults({});
-        console.log("After: " + JSON.stringify(search));
         var sqlQuery = ExpSet.extract.buildNativeQueryCounts(data, search, false);
         sqlQuery = sqlQuery.count();
         ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
@@ -104,9 +93,6 @@ ExpSet.extract.workflows.getCountsByScores = function (data, search, scoresExist
                 });
                 data.skip = data.skip + data.pageSize;
                 data.modelPredictedCounts = rowData;
-                // data.modelPredictedCounts.map((count) => {
-                //   app.winston.info(`PercEmbLeth: ${count.percEmbLeth} WormCount: ${count.wormCount}`);
-                // });
                 return resolve(data);
             }
         });

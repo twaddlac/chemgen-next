@@ -4,7 +4,7 @@ import {
   ExpGroupResultSet, ExpPlateResultSet,
   ExpScreenResultSet, ExpScreenUploadWorkflowResultSet,
   RnaiLibraryResultSet,
-  ModelPredictedCountsResultSet, ExpManualScoreCodeResultSet, ExpManualScoresResultSet,
+  ModelPredictedCountsResultSet, ExpManualScoreCodeResultSet, ExpManualScoresResultSet, RnaiWormbaseXrefsResultSet,
 } from "../../../types/sdk/models/index";
 import {isNull, isUndefined, isArray, isObject} from 'lodash';
 
@@ -47,7 +47,7 @@ export class ExpSetSearch {
   includeAlbums ?: Boolean = true;
   includeManualScores ?: Boolean = false;
   filterManualScores ?: Boolean = false;
-  cleanUp ?: Boolean = true;
+  cleanUp ?: Boolean = false;
 
   constructor(data?: ExpSetSearchInterface) {
     data.includeCounts = true;
@@ -75,7 +75,10 @@ export class ExpSetSearch {
 
 export interface ExpSetSearchResultsInterface {
   rnaisList?: RnaiLibraryResultSet[];
+  rnaisXrefs?: RnaiWormbaseXrefsResultSet[];
   compoundsList?: ChemicalLibraryResultSet[];
+  //This is a placeholder until we get some actual chemical xrefs
+  compoundsXRefs?: ChemicalLibraryResultSet[];
   expAssays?: ExpAssayResultSet[];
   expAssay2reagents?: ExpAssay2reagentResultSet[];
   modelPredictedCounts?: ModelPredictedCountsResultSet[];
@@ -96,6 +99,7 @@ export interface ExpSetSearchResultsInterface {
 
 export class ExpSetSearchResults {
   rnaisList?: RnaiLibraryResultSet[] = [];
+  rnaisXrefs?: RnaiWormbaseXrefsResultSet[] = [];
   compoundsList?: ChemicalLibraryResultSet[] = [];
   expAssays?: ExpAssayResultSet[] = [];
   expAssay2reagents?: ExpAssay2reagentResultSet[] = [];

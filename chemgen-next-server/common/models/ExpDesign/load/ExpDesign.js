@@ -7,6 +7,7 @@ var ExpDesign = app.models.ExpDesign;
 ExpDesign.load.workflows.createExpDesigns = function (workflowData, expDesignRows) {
     expDesignRows = lodash_1.uniqWith(expDesignRows, lodash_1.isEqual);
     return new Promise(function (resolve, reject) {
+        //@ts-ignore
         Promise.map(lodash_1.shuffle(expDesignRows), function (expDesignRow) {
             return ExpDesign
                 .findOrCreate({ where: app.etlWorkflow.helpers.findOrCreateObj(expDesignRow) }, expDesignRow)

@@ -9,7 +9,7 @@ var ExpSetSearch = /** @class */ (function () {
         this.includeAlbums = true;
         this.includeManualScores = false;
         this.filterManualScores = false;
-        this.cleanUp = true;
+        this.cleanUp = false;
         data.includeCounts = true;
         data.includeAlbums = true;
         //Allow for searching either using pagination or skip
@@ -39,6 +39,7 @@ exports.ExpSetSearch = ExpSetSearch;
 var ExpSetSearchResults = /** @class */ (function () {
     function ExpSetSearchResults(data) {
         this.rnaisList = [];
+        this.rnaisXrefs = [];
         this.compoundsList = [];
         this.expAssays = [];
         this.expAssay2reagents = [];

@@ -1,122 +1,337 @@
 <div *ngIf="expSet" class="row">
-  <div class="col-md-12">
+    <div class="col-md-12">
+        <!--Begin Tab Definitions-->
+        <div role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#images-{{expSet.albums.treatmentGroupId}}"
+                                                          id="images-tab" role="tab"
+                                                          data-toggle="tab"
+                                                          aria-expanded="true">Images</a>
+                </li>
+                <li role="presentation" class=""><a href="#reagent-data-{{expSet.albums.treatmentGroupId}}" role="tab"
+                                                    id="reagent-data-tab"
+                                                    data-toggle="tab"
+                                                    aria-expanded="false">Reagent Data</a>
+                </li>
+                <li role="presentation" class=""><a href="#manualscores-data-{{expSet.albums.treatmentGroupId}}"
+                                                    role="tab"
+                                                    id="manualscores-data-tab"
+                                                    data-toggle="tab"
+                                                    aria-expanded="false">Exp Manual Scores</a>
+                </li>
+                <li role="presentation" class=""><a href="#plate-data-{{expSet.albums.treatmentGroupId}}" role="tab"
+                                                    id="plate-data-tab"
+                                                    data-toggle="tab"
+                                                    aria-expanded="false">Exp Plates</a>
+                </li>
+            </ul>
+            <!--End Tab Definitions-->
 
-    <!--Begin ExpSet Data-->
-    <div class="row">
-      <div class="col-md-8">
-        <h2>{{expSet.expScreen.screenName}}</h2>
-        <!--<h4>{{expSet.expWorkflow.name}}</h4>-->
-        <div class="row">
-          <!--Begin Exp Workflow Data-->
-          <div class="col-md-4">
-            <table class="table table-striped table-hover">
-              <tbody>
-              <tr>
-                <td>Temperature</td>
-                <td>{{expSet.expWorkflow.temperature}}</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Screen Stage</td>
-                <td>{{expSet.expWorkflow.screenStage}}</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Screen Type</td>
-                <td>{{expSet.expWorkflow.screenType}}</td>
-                <td></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <!--End Exp Workflow Data-->
+            <!--Begin Page Content-->
+            <div class="tab-content">
+                <!--Begin Images Tab-->
+                <div role="tabpanel" class="tab-pane active in" id="images-{{expSet.albums.treatmentGroupId}}"
+                     aria-labelledby="images-tab">
+                    <!--Begin ExpSet Data-->
+                    <div class="row">
+                        <!--Begin Screen Data-->
+                        <div class="col-md-8">
+                            <h2>{{expSet.expScreen.screenName}}</h2>
+                            <div class="row">
+                                <!--Begin Exp Workflow Data-->
+                                <div class="col-md-4">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <td>Temperature</td>
+                                            <td>{{expSet.expWorkflow.temperature}}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Screen Stage</td>
+                                            <td>{{expSet.expWorkflow.screenStage}}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Screen Type</td>
+                                            <td>{{expSet.expWorkflow.screenType}}</td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--End Exp Workflow Data-->
 
-          <!--Begin Gene Info-->
-          <div class="col-md-6">
+                                <!--Begin Gene Info-->
+                                <div class="col-md-6">
 
-          </div>
-          <!--End Gene Info-->
-        </div>
-      </div>
+                                </div>
+                                <!--End Gene Info-->
+                            </div>
+                        </div>
+                        <!--End Screen Data-->
 
-    </div>
-    <!--Begin ExpSet Data-->
+                        <!--Begin ExpSet Toggle-->
+                        <div class="col-md-4">
+                            <app-expset-toggle [treatmentGroupId]="expSet.albums.treatmentGroupId"
+                                               [expScreen]="expSet.expScreen"
+                                               [expWorkflow]="expSet.expWorkflow"
+                                               [expManualScores]="expSet.expManualScores"
+                                               [submit]="true"
+                            ></app-expset-toggle>
 
-    <!--Begin CtrlStrain Row - 4 images per row-->
-    <div class="row" id="ctrl_strain">
-      <div class="col-md-12">
-        <h3>Control Strain (ts)</h3>
-        <div class="row">
-          <div *ngFor="let image of expSet.albums.ctrlStrainImages; let i=index">
-            <div *ngIf="image">
-              <div class="col-md-3">
-                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSet.albums.ctrlStrainImages, i)"/>
-              </div>
+                        </div>
+                        <!--End ExpSet Toggle-->
+
+                    </div>
+                    <!--Begin ExpSet Data-->
+
+                    <!--Begin CtrlStrain Row - 4 images per row-->
+                    <div class="row" id="ctrl_strain">
+                        <div class="col-md-12">
+                            <h3>Control Strain (ts)</h3>
+                            <div class="row">
+                                <div *ngFor="let image of expSet.albums.ctrlStrainImages; let i=index">
+                                    <div *ngIf="image">
+                                        <div class="col-md-3">
+                                            <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                 (click)="open(expSet.albums.ctrlStrainImages, i)"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End CtrlStrain Row - 4 images per row-->
+
+                    <!--Begin TreatReagent Row - 4 images per row-->
+                    <div class="row" id="treat">
+                        <div class="col-md-12">
+                            <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + Reagent</h3>
+                            <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">
+                                <div class="row">
+                                    <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
+                                        <div *ngIf="image">
+                                            <div class="col-md-3">
+                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                     (click)="open(expSet.albums.treatmentReagentImages, i)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="expSet.expWorkflow.screenStage == 'primary'">
+                                <div class="row">
+                                    <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
+                                        <div *ngIf="image">
+                                            <div class="col-md-6">
+                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                     (click)="open(expSet.albums.treatmentReagentImages, i)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End TreatReagent Row - 4 images per row-->
+
+                    <!--Begin CtrlNull Row - 4 images per row-->
+                    <div class="row" id="ctrl_null">
+                        <div class="col-md-12">
+                            <h3>Control Null </h3>
+                            <div class="row">
+                                <div *ngFor="let image of expSet.albums.ctrlNullImages; let i=index">
+                                    <div *ngIf="image">
+                                        <div class="col-md-3">
+                                            <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                 (click)="open(expSet.albums.ctrlNullImages, i)"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End CtrlNull Row - 4 images per row-->
+
+                    <!--Begin TreatReagent Row - 4 images per row-->
+                    <div class="row" id="ctrl_reagent">
+                        <div class="col-md-12">
+                            <!--<h3>{{expSetAlbum.results.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
+                            <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + Reagent </h3>
+
+                            <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">
+                                <div class="row">
+                                    <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
+                                        <div *ngIf="image">
+                                            <div class="col-md-3">
+                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                     (click)="open(expSet.albums.ctrlReagentImages, i)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="expSet.expWorkflow.screenStage == 'primary'">
+                                <div class="row">
+                                    <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
+                                        <div *ngIf="image">
+                                            <div class="col-md-6">
+                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                     (click)="open(expSet.albums.ctrlReagentImages, i)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End TreatReagent Row - 4 images per row-->
+                </div>
+                <!--End Images Tab-->
+
+                <!--Begin Reagent Data Tab-->
+                <div role="tabpanel" class="tab-pane fade" id="reagent-data-{{expSet.albums.treatmentGroupId}}"
+                     aria-labelledby="reagent-data-tab">
+                    <div *ngIf="expSet.rnaisList">
+                        <h2>RNAi Data</h2>
+                        <div class="table-responsive" *ngFor="let rnai of expSet.rnaisList">
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <td>Gene</td>
+                                    <td>{{rnai.geneName}}</td>
+                                </tr>
+                                <tr *ngIf="rnai.xrefs?.length > 0">
+                                    <td>Cosmid ID</td>
+                                    <td>{{rnai.xrefs[0].wbGeneCgcName}}</td>
+                                </tr>
+                                <tr *ngIf="rnai.xrefs?.length > 0">
+                                    <td>Wormbase ID</td>
+                                    <td>
+                                        <a href="https://www.wormbase.org/species/c_elegans/gene/{{rnai.xrefs[0].wbGeneAccession}}">
+                                            {{rnai.xrefs[0].wbGeneAccession}} (Click this to go to wormbase)
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Chromo Plate Well</td>
+                                    <td> {{rnai.chrom}} {{rnai.plate}} {{rnai.well}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fwd Primer
+                                    </td>
+                                    <td>{{rnai.fwdPrimer}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Rev Primer
+                                    </td>
+                                    <td>{{rnai.revPrimer}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bio Loc
+                                    </td>
+                                    <td>{{rnai.bioloc}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Stock Loc
+                                    </td>
+                                    <td>{{rnai.stockloc}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Stock Title
+                                    </td>
+                                    <td>{{rnai.stocktitle}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!--Angular does not like this - gives some error about unsafe urls-->
+                            <!--<div *ngIf="rnai.xrefs?.length > 0 && rnai.xrefs[0].wbGeneAccession">-->
+                            <!--<div class="embed-responsive embed-responsive-16by9">-->
+                            <!--<iframe class="embed-responsive-item"-->
+                            <!--src="https://www.wormbase.org/species/c_elegans/gene/{{rnai.xrefs[0].wbGeneAccession}}"></iframe>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                        </div>
+
+                    </div>
+                    <div *ngIf="expSet.compoundsList?.length">
+                        <h2>Compounds Data</h2>
+                        <div *ngFor="let compound of expSet.compoundsList">
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--End Reagent Data Tab-->
+
+                <!--Begin ExpManualScores Data Tab-->
+                <div role="tabpanel" class="tab-pane fade" id="manualscores-data-{{expSet.albums.treatmentGroupId}}"
+                     aria-labelledby="manualscores-data-tab">
+                    <div *ngIf="expSet.expManualScores?.length" class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td>User</td>
+                                        <td>Group</td>
+                                        <td>Code</td>
+                                        <td>Value</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let manualscore of expSet.expManualScores">
+                                        <td>{{manualscore.userName}}</td>
+                                        <td>{{manualscore.manualscoreGroup}}</td>
+                                        <td>{{manualscore.manualscoreCode}}</td>
+                                        <td>{{manualscore.manualscoreValue}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--End Exp Manual Scores Data Tab-->
+
+                <!--Begin Plate Data Tab-->
+                <div role="tabpanel" class="tab-pane fade" id="plate-data-{{expSet.albums.treatmentGroupId}}"
+                     aria-labelledby="plate-data-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Barcode</th>
+                                        <th>Imaging Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let expPlate of expSet.expPlates">
+                                        <td>{{expPlate.barcode}}</td>
+                                        <td>{{expPlate.plateImageDate}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Plate Data Tab-->
+
             </div>
-          </div>
+            <!--End Page Content-->
         </div>
-      </div>
     </div>
-    <!--End CtrlStrain Row - 4 images per row-->
-
-    <!--Begin TreatReagent Row - 4 images per row-->
-    <div class="row" id="treat">
-      <div class="col-md-12">
-        <!--<h3>{{expSetAlbum.expWorkflow.biosamples.experimentBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
-        <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + Reagent</h3>
-        <div class="row">
-          <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
-            <div *ngIf="image">
-              <div class="col-md-6">
-                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSet.albums.treatmentReagentImages, i)"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--End TreatReagent Row - 4 images per row-->
-
-    <!--Begin CtrlNull Row - 4 images per row-->
-    <div class="row" id="ctrl_null">
-      <div class="col-md-12">
-        <h3>Control Null </h3>
-        <div class="row">
-          <div *ngFor="let image of expSet.albums.ctrlNullImages; let i=index">
-            <div *ngIf="image">
-              <div class="col-md-3">
-                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSet.albums.ctrlNullImages, i)"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--End CtrlNull Row - 4 images per row-->
-
-    <!--Begin TreatReagent Row - 4 images per row-->
-    <div class="row" id="ctrl_reagent">
-      <div class="col-md-12">
-        <!--<h3>{{expSetAlbum.results.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
-        <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + Reagent </h3>
-        <div class="row">
-          <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
-            <div *ngIf="image">
-              <div class="col-md-6">
-                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                     (click)="open(expSet.albums.ctrlReagentImages, i)"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--End TreatReagent Row - 4 images per row-->
-
-  </div>
-
-
 </div>

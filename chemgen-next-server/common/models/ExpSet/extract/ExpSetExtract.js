@@ -38,7 +38,7 @@ ExpSet.extract.searchExpAssay2reagents = function (data, search) {
  */
 ExpSet.extract.buildQuery = function (data, search) {
     var or = [];
-    var expOr = ['screen', 'library', 'expWorkflow', 'plate', 'expGroup', 'assay'].map(function (searchType) {
+    var expOr = ['screen', 'expWorkflow', 'plate', 'expGroup', 'assay'].map(function (searchType) {
         if (!lodash_1.isEmpty(search[searchType + "Search"])) {
             var searchObject = {};
             searchObject[searchType + "Id"] = { inq: search[searchType + "Search"] };
@@ -47,6 +47,17 @@ ExpSet.extract.buildQuery = function (data, search) {
     }).filter(function (or) {
         return or;
     });
+    if (!lodash_1.isEmpty(data.rnaisList) && !lodash_1.isEmpty(data.compoundsList)) {
+        var searchType = 'library';
+        if (!lodash_1.isEmpty(search[searchType + "Search"])) {
+            var searchObject = {};
+            searchObject[searchType + "Id"] = { inq: search[searchType + "Search"] };
+            expOr.push(searchObject);
+        }
+    }
+    return ExpSet.extract.buildReagentQuery(data, or, expOr);
+};
+ExpSet.extract.buildReagentQuery = function (data, or, expOr) {
     ['rnai', 'compounds'].map(function (reagentType) {
         if (!lodash_1.isEmpty(data[reagentType + "sList"])) {
             data[reagentType + "sList"].map(function (Row) {
@@ -88,7 +99,8 @@ ExpSet.extract.buildExpAssay2reagentSearch = function (data, search) {
             plateId: true,
             assayId: true,
             reagentId: true,
-            libraryId: true
+            libraryId: true,
+            reagentTable: true,
         },
     };
 };
@@ -132,9 +144,6 @@ ExpSet.extract.buildExpSets = function (data, search) {
             resolve(data);
             // reject(new Error('invalid data - no expAssay2reagents'));
         }
-        // let expAssayIds = data.expAssay2reagents.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
-        //   return {assayId: expAssay2reagent.assayId};
-        // });
         // This ONLY returns the treat_rnai and ctrl_rnai  expGroups
         // ctrl_null and ctrl_strain are L4440s and don't have a reagentId
         app.models.ExpAssay
@@ -406,7 +415,7 @@ ExpSet.extract.genExpSetAlbums = function (data, search) {
                 }).controlGroupId;
             }
             catch (error) {
-                app.winston.error('There is no ctrl for the reagent!');
+                // app.winston.error('There is no ctrl for the reagent!');
             }
             try {
                 album.ctrlStrainId = lodash_1.find(expSet, function (set) {
@@ -414,7 +423,7 @@ ExpSet.extract.genExpSetAlbums = function (data, search) {
                 }).controlGroupId;
             }
             catch (error) {
-                app.winston.error('There is no ctrl strain');
+                // app.winston.error('There is no ctrl strain');
             }
             try {
                 album.ctrlNullId = lodash_1.find(expSet, function (set) {
@@ -422,9 +431,8 @@ ExpSet.extract.genExpSetAlbums = function (data, search) {
                 }).controlGroupId;
             }
             catch (error) {
-                app.winston.error('There is no ctrl null');
+                // app.winston.error('There is no ctrl null');
             }
-            app.winston.info("Site is : " + config.get('site'));
             ['treatmentReagent', 'ctrlReagent', 'ctrlStrain', 'ctrlNull'].map(function (expGroupType) {
                 album[expGroupType + "Images"] = data.expAssays.filter(function (expAssay) {
                     return lodash_1.isEqual(expAssay.expGroupId, album[expGroupType + "Id"]);
@@ -439,39 +447,119 @@ ExpSet.extract.genExpSetAlbums = function (data, search) {
     }
 };
 /**
- * Grab ExpSets that do not have a manual score and organize by plate
- * This one is a little different from the other ExpSet function, which assume that the user wants to see all the replicates together
- * Instead the user independently scores each plate
- * So we can just use the expWorkflowId to do all the lookups
- * This is not same as the others - where we may be searching for a gene/chemical across all the screens
+ * Grab ExpSets by workflowId - this is the the most optimized function if there is no geneList/chemicalList
  * @param {ExpSetSearch} search
  */
-ExpSet.extract.workflows.getExpSetByWorkflowId = function (search) {
+ExpSet.extract.workflows.getExpSetsByWorkflowId = function (search) {
     return new Promise(function (resolve, reject) {
         search = new types_1.ExpSetSearch(search);
         var data = new types_1.ExpSetSearchResults({});
-        data.pageSize = 1;
-        app.models.ExpAssay2Reagent.findOne({ where: { expWorkflowId: search.expGroupSearch[0] } })
-            .then(function (expAssay2eagent) {
-            data.expAssay2reagents = [expAssay2eagent];
+        var or = ExpSet.extract.buildQuery(data, search);
+        app.models.ExpAssay2reagent
+            .findOne({ or: or, reagentId: { 'neq': null } })
+            .then(function (expAssay2reagent) {
+            data.expAssay2reagents = [expAssay2reagent];
             if (!data.expAssay2reagents || !data.expAssay2reagents.length) {
                 resolve();
             }
             else {
-                return ExpSet.extract.fetchFromCache(data, search);
+                return ExpSet.extract.fetchFromCache(data, search, data.expAssay2reagents[0].expWorkflowId);
             }
         })
             .then(function (data) {
             // Check to see if it was fetched from the cache
             if (!data.fetchedFromCache) {
-                return ExpSet.extract.getExpDataByExpWorkflowId(data, search);
+                return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expAssay2reagents[0].expWorkflowId);
             }
             else {
                 return data;
             }
         })
             .then(function (data) {
-            //ExpManualScores and ModelPredictedCounts do NOT go in the cache
+            return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
+        })
+            .then(function (data) {
+            return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
+        })
+            .then(function (data) {
+            data = ExpSet.extract.insertCountsDataImageMeta(data);
+            data = ExpSet.extract.insertExpManualScoresImageMeta(data);
+            resolve(data);
+        })
+            .catch(function (error) {
+            reject(new Error(error));
+        });
+    });
+};
+ExpSet.extract.workflows.getReagentData = function (data, search) {
+    var reagentTypes = lodash_1.groupBy(data.expAssay2reagents, 'reagentTable');
+    delete reagentTypes['undefined'];
+    return new Promise(function (resolve, reject) {
+        //@ts-ignore
+        Promise.map(Object.keys(reagentTypes), function (reagentType) {
+            if (reagentType) {
+                return ExpSet.extract.workflows["getReagentData" + reagentType](data, reagentTypes[reagentType]);
+            }
+            else {
+                return;
+            }
+        })
+            .then(function () {
+            resolve(data);
+        })
+            .catch(function (error) {
+            reject(new Error(error));
+        });
+    });
+};
+ExpSet.extract.workflows.getReagentDataChemicalLibraryStock = function (data, expAssay2reagents) {
+    return new Promise(function (resolve, reject) {
+        var or = [];
+        expAssay2reagents.map(function (expAssay2reagent) {
+            if (expAssay2reagent.reagentId) {
+                //TODO There is a bug in some of these uploads that the libraryId is 1 instead of whatever it should be
+                //But the reagentId is uniqueue anyways
+                or.push({ and: [{ compoundId: expAssay2reagent.reagentId }] });
+            }
+        });
+        app.models.ChemicalLibrary
+            .find({
+            where: { or: or }
+        })
+            .then(function (results) {
+            data.compoundsList = results;
+            resolve(data);
+        })
+            .catch(function (error) {
+            reject(new Error(error));
+        });
+    });
+};
+ExpSet.extract.workflows.getReagentDataRnaiLibraryStock = function (data, expAssay2reagents) {
+    return new Promise(function (resolve, reject) {
+        var or = expAssay2reagents.map(function (expAssay2reagent) {
+            return { and: [{ rnaiId: expAssay2reagent.reagentId }, { libraryId: expAssay2reagent.libraryId }] };
+        });
+        app.models.RnaiLibrary
+            .find({
+            where: { or: or }
+        })
+            .then(function (results) {
+            data.rnaisList = results;
+            return app.models.RnaiWormbaseXrefs
+                .find({
+                where: {
+                    wbGeneSequenceId: {
+                        inq: data.rnaisList.map(function (rnai) {
+                            return rnai.geneName;
+                        })
+                    }
+                },
+                limit: 1000,
+            });
+        })
+            .then(function (results) {
+            data.rnaisXrefs = results;
             resolve(data);
         })
             .catch(function (error) {
@@ -489,7 +577,7 @@ ExpSet.extract.buildImageObjDEV = function (expAssay) {
         assayImagePath: expAssay.assayImagePath,
         src: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
         caption: "Image " + expAssay.assayImagePath + " caption here",
-        thumb: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+        thumb: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel-600x600.jpeg",
     };
 };
 ExpSet.extract.buildImageObjAD = function (expAssay) {
@@ -497,7 +585,7 @@ ExpSet.extract.buildImageObjAD = function (expAssay) {
         assayImagePath: expAssay.assayImagePath,
         src: config.get('sites')['AD']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
         caption: "Image " + expAssay.assayImagePath + " caption here",
-        thumb: config.get('sites')['AD']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
+        thumb: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel-600x600.jpeg",
     };
 };
 ExpSet.extract.buildImageObjNY = function (expAssay) {

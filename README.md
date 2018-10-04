@@ -24,10 +24,25 @@ The dev servers do not have any experimental data, only the configurations. In o
 source chemgen_docker_vars.sh
 cd chemgen-next-server
 ## See the one time setup to install pm2
-pm2 server/server/.js --name chemgen-next-server --watch
-pm2 jobs/defineQueues.js --name chemgen-next-define-queues
+pm2 start server/server/.js --name chemgen-next-server --watch -i 1
+pm2 start jobs/defineQueues.js --name chemgen-next-define-queues --watch -i 1
 ## TODO Add in a dev script just to load some data
-node jobs/processQueues.js
+node jobs/processQueues.js --limit 1 --site AD --search-pattern CHEM
+node jobs/processQueues.js --limit 1 --site AD --search-pattern AHR 
+```
+
+You should some info messages print to the screen: 
+
+```
+info: Starting workflowQueue Wed Oct 03 2018 09:28:49 GMT+0300 (+03)
+info: ExpScreenUploadWorkflow.doWork CHEM Primary 6 2014-12-04
+```
+
+If you don't see these messages your queue is probably stuck, or something went wrong with the docker startup.
+
+```
+pm2 restart chemgen-next-define-queues
+pm2 logs chemgen-next-define-queues
 ```
 
 If you want to ensure you have a clean startup 
@@ -58,10 +73,10 @@ This is the most optimized query - if you are not searching across the entire da
 http://localhost:3000/api/ExpSets/getUnscoredExpSetsByPlate?search={"pageSize" : 1 }
 ```
 
+This is another endpoint that is less optimized, but allows for search across the entire database for rnais/chemicals 
 ```
 http://localhost:3000/api/ExpSets/getUnscoredExpSets?search={"pageSize" : 1 }
 ```
-
 
 ### One time startup instructions
 

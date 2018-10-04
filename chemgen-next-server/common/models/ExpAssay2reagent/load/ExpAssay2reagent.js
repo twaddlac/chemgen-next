@@ -44,7 +44,12 @@ ExpAssay2reagent.load.createAssayStock = function (workflowData, expPlateData) {
         });
     });
 };
-// TODO Get these from the inmemory Results
+/**
+ * Once the expDesign table is populated we can go back and update the ExpAssay2reagent record with the treatmentGroupId
+ * Which is one of many cheap lookup values
+ * @param workflowData
+ * @param screenData
+ */
 ExpAssay2reagent.load.workflows.updateTreatmentGroupId = function (workflowData, screenData) {
     return new Promise(function (resolve, reject) {
         var data = {};
@@ -101,8 +106,8 @@ ExpAssay2reagent.load.updateExpAssay2reagent = function (expAssay, expAssay2reag
                     .getExpSetByExpGroupId(expAssay.expGroupId, screenData.expDesignList)
                     .then(function (results) {
                     if (!lodash_1.isEqual(expAssay2reagent.reagentType, 'ctrl_null') && !lodash_1.isEqual(expAssay2reagent.reagentType, 'ctrl_strain')) {
-                        if (lodash_1.isArray(results.expDesigns) && results.expDesigns.length) {
-                            expAssay2reagent.treatmentGroupId = results.expDesigns[0].treatmentGroupId;
+                        if (lodash_1.isArray(results) && results.length) {
+                            expAssay2reagent.treatmentGroupId = results[0].treatmentGroupId;
                         }
                     }
                     return app.models.ExpAssay2reagent.upsert(expAssay2reagent);

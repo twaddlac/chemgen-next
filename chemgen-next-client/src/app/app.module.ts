@@ -49,6 +49,11 @@ import {ExpsetSheetComponent} from './scoring/expset-sheet/expset-sheet.componen
 // import {NgxToggleModule} from 'ngx-toggle';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EmptyComponent} from './empty/empty.component';
+import {ExpsetToggleComponent} from './scoring/expset-toggle/expset-toggle.component';
+import {UiSwitchModule} from 'ngx-ui-switch';
+import { SearchFormExpsetsComponent } from './search-forms/search-form-expsets/search-form-expsets.component';
+
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
     imports: [
@@ -57,6 +62,8 @@ import {EmptyComponent} from './empty/empty.component';
         PagesModule,
         HttpClientModule,
         FormsModule,
+        InfiniteScrollModule,
+        UiSwitchModule.forRoot({}),
         BsDatepickerModule.forRoot(),
         DndModule.forRoot(),
         SDKBrowserModule.forRoot(),
@@ -90,9 +97,10 @@ import {EmptyComponent} from './empty/empty.component';
         SearchFormWormsComponent,
         ExpsetSheetComponent,
         EmptyComponent,
+        ExpsetToggleComponent,
+        SearchFormExpsetsComponent,
     ],
-    entryComponents: [
-    ],
+    entryComponents: [],
     providers: [],
     bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import app  = require('../../../../../server/server.js');
+import app = require('../../../../../server/server.js');
 import {WorkflowModel} from "../../../index";
 import Promise = require('bluebird');
 import {divide, isNull, isUndefined, isEmpty, camelCase} from 'lodash';
@@ -9,6 +9,7 @@ import decamelize = require('decamelize');
 import * as client from "knex";
 
 import config = require('config');
+
 const knex = config.get('knex');
 
 /**
@@ -67,9 +68,6 @@ ExpSet.extract.workflows.getUnscoredExpSets = function (search: ExpSetSearch) {
     let sqlQuery = ExpSet.extract.buildNativeQuery(data, search, false);
     sqlQuery = sqlQuery.count();
 
-    app.winston.info(`Search Obj: ${JSON.stringify(search)}`);
-    app.winston.info(`Sql: ${sqlQuery.toString()}`);
-
     ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
       .then((data: ExpSetSearchResults) => {
         return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
@@ -91,8 +89,11 @@ ExpSet.extract.workflows.getExpAssay2reagentsByScores = function (data: ExpSetSe
     let sqlQuery = ExpSet.extract.buildNativeQuery(data, search, scoresExist);
 
     //Add Pagination
+    //TODO Orderby RAND() May be making a big performance hit
+    //A much faster way to do this would be to get all the expWorkflowIds that match the query
+    //Then get the ones that haven't been scored
     sqlQuery = sqlQuery
-      .orderBy('assay2reagent_id', 'asc')
+    // .orderByRaw('RAND()')
       .limit(data.pageSize)
       .offset(data.skip);
 
@@ -115,6 +116,7 @@ ExpSet.extract.workflows.getExpAssay2reagentsByScores = function (data: ExpSetSe
         return resolve(data);
       }
     });
+
   });
 };
 
@@ -137,6 +139,52 @@ ExpSet.extract.buildUnscoredPaginationData = function (data: ExpSetSearchResults
   });
 };
 
+/**
+ * The expPlates will have much fewer results, and so it will be faster to query, and more possible to pull a random plate for scoring
+ * @param data
+ * @param search
+ * @param hasManualScores
+ */
+ExpSet.extract.buildNativeQueryExpWorkflowId = function (data: ExpSetSearchResults, search: ExpSetSearch, hasManualScores: Boolean) {
+
+  let query = knex('exp_plate');
+
+  ['screen', 'expWorkflow', 'plate'].map((searchType) => {
+    if (!isEmpty(search[`${searchType}Search`])) {
+      let sql_col = decamelize(`${searchType}Id`);
+      let sql_values = search[`${searchType}Search`];
+      query = query.whereIn(sql_col, sql_values);
+    }
+  });
+
+  //Get if value exists in the manual score table
+  if (hasManualScores) {
+    query = query
+      .whereExists(function () {
+        this.select(1)
+          .from('exp_manual_scores')
+          .whereRaw('exp_plate.exp_workflow_id = exp_manual_scores.exp_workflow_id');
+      });
+  } else {
+    query = query
+      .whereNotExists(function () {
+        this.select(1)
+          .from('exp_manual_scores')
+          .whereRaw('exp_plate.exp_workflow_id = exp_manual_scores.exp_workflow_id');
+      });
+
+  }
+
+  return query;
+};
+
+/**
+ * This query will find a single assay that hasn't been scored
+ * CAUTION - A query will NOT show up here if the entire expSet was toggled instead of the assays individually
+ * @param data
+ * @param search
+ * @param hasManualScores
+ */
 ExpSet.extract.buildNativeQuery = function (data: ExpSetSearchResults, search: ExpSetSearch, hasManualScores: Boolean) {
   let query = knex('exp_assay2reagent');
   query = query
@@ -192,7 +240,6 @@ ExpSet.extract.buildNativeQuery = function (data: ExpSetSearchResults, search: E
       });
 
   }
-
 
   return query;
 };

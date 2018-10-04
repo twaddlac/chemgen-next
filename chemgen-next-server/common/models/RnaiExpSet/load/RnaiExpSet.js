@@ -20,12 +20,11 @@ RnaiExpSet.extract.workflows.getExpSetsByGeneList = function (search) {
     return new Promise(function (resolve, reject) {
         search = new types_1.ExpSetSearch(search);
         var data = new types_1.ExpSetSearchResults({});
-        console.log(JSON.stringify(search));
         app.models.RnaiLibrary.extract.workflows
             .getRnaiLibraryFromUserGeneList(search.rnaiSearch, search)
             .then(function (results) {
             if (lodash_1.isEmpty(results)) {
-                resolve(new types_1.ExpSetSearchResults());
+                resolve(data);
             }
             else {
                 data.rnaisList = results;
@@ -34,11 +33,9 @@ RnaiExpSet.extract.workflows.getExpSetsByGeneList = function (search) {
                     return app.models.ExpSet.extract.searchExpAssay2reagents(data, search);
                 })
                     .then(function (results) {
-                    app.winston.info("ExpAssayCount: " + results.expAssays.length);
-                    app.winston.info("ExpAssay2ReagentCount: " + results.expAssay2reagents.length);
-                    app.winston.info("ModelPredictedPhenoCount: " + results.modelPredictedCounts.length);
-                    app.winston.info("ExpSetsCount: " + results.expSets.length);
-                    app.winston.info("genesListCount: " + results.rnaisList.length);
+                    return app.models.ExpSet.extract.workflows.getReagentData(results, search);
+                })
+                    .then(function (results) {
                     resolve(results);
                 })
                     .catch(function (error) {
@@ -74,15 +71,11 @@ RnaiExpSet.extract.workflows.getExpSets = function (search) {
                 .find(where)
                 .then(function (rnaiResults) {
                 searchResults.rnaisList = rnaiResults;
-                app.winston.info("ExpAssayCount: " + searchResults.expAssays.length);
-                app.winston.info("ExpAssay2ReagentCount: " + searchResults.expAssay2reagents.length);
-                app.winston.info("ModelPredictedPhenoCount: " + searchResults.modelPredictedCounts.length);
-                app.winston.info("ExpSetsCount: " + searchResults.expSets.length);
-                app.winston.info("genesListCount: " + searchResults.rnaisList.length);
-                return searchResults;
+                // return searchResults;
                 // TODO - need to write a new function for getting xrefs from RnaiLibraryResults
                 // Now if an xref is not found it returns an empty result, and ignores the RnaiLibrayr Result, which is no GOOD
                 // return app.models.RnaiLibrary.extract.workflows.getRnaiLibraryFromUserGeneList(rnaisList, search)
+                return app.models.ExpSet.extract.workflows.getReagentData(searchResults, search);
             })
                 .catch(function (error) {
                 return new Error(error);

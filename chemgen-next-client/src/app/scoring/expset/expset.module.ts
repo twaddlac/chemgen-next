@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {isEqual, find, get, shuffle} from 'lodash';
+import {isEqual, find, get, filter, shuffle, uniqBy} from 'lodash';
 import {
     ModelPredictedCountsResultSet,
     ExpScreenUploadWorkflowResultSet,
@@ -11,7 +11,7 @@ import {
     ExpAssayResultSet,
     ExpAssay2reagentResultSet,
     ExpPlateResultSet,
-    ExpManualScoresResultSet
+    ExpManualScoresResultSet, RnaiWormbaseXrefsResultSet
 } from '../../../sdk/models';
 import {Memoize} from 'lodash-decorators';
 
@@ -35,6 +35,20 @@ export class ExpsetModule {
     findExpWorkflow(expWorkflowId: string) {
         return find(this.expSets.expWorkflows, (expWorkflow: ExpScreenUploadWorkflowResultSet) => {
             return isEqual(expWorkflowId, expWorkflow.id);
+        });
+    }
+
+    @Memoize()
+    findExpManualScores(treatmentGroupId: number){
+        return this.expSets.expManualScores.filter((expManualScore: ExpManualScoresResultSet) =>{
+           return isEqual(expManualScore.treatmentGroupId, treatmentGroupId);
+        });
+    }
+
+    @Memoize()
+    findExpPlates(expWorkflowId: string) {
+        return this.expSets.expPlates.filter((expPlate: ExpPlateResultSet) => {
+            return isEqual(expWorkflowId, expPlate.expWorkflowId);
         });
     }
 
@@ -75,6 +89,50 @@ export class ExpsetModule {
         })[0];
     }
 
+    @Memoize()
+    findReagents(treatmentGroupId) {
+        const expAssay2reagents: ExpAssay2reagentResultSet[] = this.expSets.expAssay2reagents.filter((expAssay2reagent) => {
+            return isEqual(Number(expAssay2reagent.treatmentGroupId), Number(treatmentGroupId));
+        });
+        let rnaisList: RnaiLibraryResultSet[] = [];
+        let compoundsList: ChemicalLibraryResultSet[] = [];
+        expAssay2reagents.map((expAssay2reagent) => {
+            if (expAssay2reagent.reagentTable.match('Rnai')) {
+                this.expSets.rnaisList.filter((rnai: RnaiLibraryResultSet) => {
+                    return isEqual(rnai.libraryId, expAssay2reagent.libraryId) && isEqual(rnai.rnaiId, expAssay2reagent.reagentId);
+                }).map((rnai: RnaiLibraryResultSet) => {
+                    rnaisList.push(rnai);
+                });
+
+                if (rnaisList.length) {
+                    rnaisList = uniqBy(rnaisList, 'rnaiId');
+                }
+
+                rnaisList.map((rnai: RnaiLibraryResultSet) => {
+                    rnai['xrefs'] = this.expSets.rnaisXrefs.filter((rnaiXref: RnaiWormbaseXrefsResultSet) => {
+                        return isEqual(rnaiXref.wbGeneSequenceId, rnai.geneName);
+                    });
+                });
+
+            } else if (expAssay2reagent.reagentTable.match('Chem')) {
+                this.expSets.compoundsList.filter((compound: ChemicalLibraryResultSet) => {
+                    return isEqual(compound.compoundId, expAssay2reagent.reagentId);
+                }).map((compound: ChemicalLibraryResultSet) => {
+                    compoundsList.push(compound);
+                });
+
+                if (compoundsList.length) {
+                    compoundsList = uniqBy(compoundsList, 'compoundId');
+                    compoundsList.map((compound: ChemicalLibraryResultSet) => {
+                        //For now we don't have any xrefs - so this is just a placeholder
+                        compound['xref'] = [];
+                    });
+                }
+            }
+        });
+        return {rnaisList: rnaisList, compoundsList: compoundsList};
+    }
+
     // TODO Fix this - it assumes there are counts
     getExpSet(wellCounts: ModelPredictedCountsResultSet) {
         const o: any = {};
@@ -95,6 +153,8 @@ export class ExpsetModule {
             o.modelPredictedCounts = this.findModelPredictedCounts(treatmentGroupId);
             o.expSets = this.findExpSets(treatmentGroupId);
             o.albums = this.findAlbums(treatmentGroupId);
+            o.expPlates = this.findExpPlates(o.expWorkflow.id);
+            o.expManualScores = this.findExpManualScores(treatmentGroupId);
         } else {
             o.modelPredictedCounts = [];
             o.expSets = [];
@@ -128,6 +188,7 @@ export class ExpsetModule {
 
 export interface ExpSetSearchResultsInterface {
     rnaisList?: RnaiLibraryResultSet;
+    rnaisXrefs?: RnaiWormbaseXrefsResultSet[];
     compoundsList?: ChemicalLibraryResultSet[];
     expAssays?: ExpAssayResultSet;
     expAssay2reagents?: ExpAssay2reagentResultSet[];
@@ -148,6 +209,7 @@ export interface ExpSetSearchResultsInterface {
 
 export class ExpSetSearchResults {
     rnaisList?: RnaiLibraryResultSet[] = [];
+    rnaisXrefs?: RnaiWormbaseXrefsResultSet[] = [];
     compoundsList?: ChemicalLibraryResultSet[] = [];
     expAssays?: ExpAssayResultSet[] = [];
     expAssay2reagents?: ExpAssay2reagentResultSet[] = [];

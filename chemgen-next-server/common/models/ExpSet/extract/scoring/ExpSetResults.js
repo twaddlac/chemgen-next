@@ -36,10 +36,6 @@ ExpSet.extract.genImageMeta = function (data, expAssay2reagents) {
         var imageData = {
             screenId: expAssay.screenId,
             well: expAssay.assayWell,
-            // src: `${config.get('sites').DEV.imageUrl}/${expAssay.assayImagePath}-autolevel.jpeg`,
-            // thumb: `${config.get('sites').DEV.imageUrl}/${expAssay.assayImagePath}-autolevel-300x300.jpeg`,
-            // caption: `Image ${expAssay.assayImagePath} caption here`,
-            // imagePath: expAssay.assayImagePath,
             expWorkflowId: expAssay.expWorkflowId,
             expGroupType: expAssay2reagent.reagentType,
             expSet: expSet || {},
@@ -48,7 +44,6 @@ ExpSet.extract.genImageMeta = function (data, expAssay2reagents) {
             assayId: expAssay.assayId,
         };
         var imageSrcData = ExpSet.extract["buildImageObj" + config.get('site')](expAssay);
-        app.winston.info("ImageSRC: " + JSON.stringify(imageSrcData));
         Object.keys(imageSrcData).map(function (key) {
             imageData[key] = imageSrcData[key];
         });

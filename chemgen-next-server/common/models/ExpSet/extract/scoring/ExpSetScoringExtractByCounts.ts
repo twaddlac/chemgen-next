@@ -9,18 +9,8 @@ import {
 } from "../../../../types/sdk/models";
 import decamelize = require('decamelize');
 
-import * as client from "knex";
-
-let knex: client = client({
-  client: 'mysql',
-  connection: {
-    host: process.env.CHEMGEN_HOST,
-    user: process.env.CHEMGEN_USER,
-    password: process.env.CHEMGEN_PASS,
-    database: process.env.CHEMGEN_DB,
-  },
-  debug: true,
-});
+import config = require('config');
+const knex = config.get('knex');
 
 
 /**
@@ -41,12 +31,9 @@ const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
  */
 ExpSet.extract.workflows.getUnscoredExpSetsByCounts = function (search: ExpSetSearchByCounts) {
   return new Promise((resolve, reject) => {
-    console.log(`Before: ${JSON.stringify(search)}`);
 
     search = new ExpSetSearchByCounts(search);
     let data = new ExpSetSearchResults({});
-
-    console.log(`After: ${JSON.stringify(search)}`);
 
     let sqlQuery = ExpSet.extract.buildNativeQueryCounts(data, search, false);
     sqlQuery = sqlQuery.count();
@@ -120,9 +107,6 @@ ExpSet.extract.workflows.getCountsByScores = function (data: ExpSetSearchResults
         });
         data.skip = data.skip + data.pageSize;
         data.modelPredictedCounts = rowData;
-        // data.modelPredictedCounts.map((count) => {
-        //   app.winston.info(`PercEmbLeth: ${count.percEmbLeth} WormCount: ${count.wormCount}`);
-        // });
         return resolve(data);
       }
     });

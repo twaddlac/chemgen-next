@@ -11,12 +11,14 @@ ExpManualScores.load.submitScores = function (scores) {
         if (lodash_1.isArray(scores)) {
             //@ts-ignore
             Promise.map(scores, function (score) {
+                var value = score.manualscoreValue;
+                delete score.manualscoreValue;
                 if (lodash_1.get(score, 'timestamp')) {
                     delete score.timestamp;
                 }
                 var createObj = app.etlWorkflow.helpers.findOrCreateObj(score);
-                app.winston.info(JSON.stringify(createObj));
                 score.timestamp = dateNow;
+                score.manualscoreValue = value;
                 return ExpManualScores
                     .findOrCreate({ where: createObj }, score)
                     .then(function (results) {
@@ -36,11 +38,14 @@ ExpManualScores.load.submitScores = function (scores) {
             });
         }
         else if (lodash_1.isObject(scores)) {
+            var value = scores.manualscoreValue;
+            delete scores.manualscoreValue;
             if (lodash_1.get(scores, 'timestamp')) {
                 delete scores.timestamp;
             }
             var createObj = app.etlWorkflow.helpers.findOrCreateObj(scores);
             scores.timestamp = dateNow;
+            scores.manualscoreValue = value;
             ExpManualScores
                 .findOrCreate({ where: createObj }, scores)
                 .then(function (results) {

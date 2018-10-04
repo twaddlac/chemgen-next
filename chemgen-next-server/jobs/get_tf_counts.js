@@ -2,144 +2,71 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require('../server/server');
+var axios = require('axios');
 var Promise = require("bluebird");
 var index_1 = require("../common/types/sdk/models/index");
 var lodash_1 = require("lodash");
 var lodash_2 = require("lodash");
 var glob = require("glob-promise");
 var Papa = require("papaparse");
-var path = require('path');
 var fs = require('fs');
-var genesFile = path.resolve(__dirname, 'complete_gene_list.csv');
-var ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow;
-// This MUSt be run from a server with access to the file system
-// Head of tfcounts files looks like:
-// egg,egg_clump,image_path,larva,worm
-// 30,1,/mnt/image/2017Apr03/8214/RNAi.N2.S1_A01-autolevel.bmp,94,3
-// 5,0,/mnt/image/2017Apr03/8214/RNAi.N2.S1_A02-autolevel.bmp,80,12
-// 4,0,/mnt/image/2017Apr03/8214/RNAi.N2.S1_A03-autolevel.bmp,99,4
-var globPatterns = [
-    "/mnt/image/2016*/*/*tf*.csv",
-    "/mnt/image/2017*/*/*tf*.csv",
-    "/mnt/image/2018*/*/*tf*.csv",
-    "/mnt/image/2014*/*/*tf*.csv",
-    "/mnt/image/2015*/*/*tf*.csv",
-];
-globPatterns = lodash_1.shuffle(globPatterns);
-globAllTheThings(globPatterns)
-    .then(function () {
-    console.log('Finished no errors!');
-    process.exit(0);
+//TODO This should be paginated
+app.models.ExpPlate
+    .find({ limit: 100 })
+    .then(function (expPlates) {
+    //@ts-ignore
+    return Promise.map(expPlates, function (expPlate) {
+        return getCountsApi(expPlate);
+    });
 })
     .catch(function (error) {
-    console.log('Finished with errors!');
-    console.log(error);
-    process.exit(1);
 });
-function globAllTheThings(globs) {
+function getCountsApi(expPlate) {
     return new Promise(function (resolve, reject) {
+        var imagePath = "/mnt/image/" + expPlate.plateImagePath;
+        var counts = [
+            "/mnt/image/" + expPlate.plateImagePath + "/" + expPlate.instrumentPlateId + "-tf-counts.csv",
+            "/mnt/image/" + expPlate.plateImagePath + "/" + expPlate.instrumentPlateId + "-tfcounts.csv",
+            "/mnt/image/" + expPlate.plateImagePath + "/" + expPlate.instrumentPlateId + "-tf_counts.csv",
+        ];
         //@ts-ignore
-        Promise.map(globs, function (globPattern) {
-            console.log("Glob Pattern: " + globPattern);
-            return globOneThing(globPattern);
-        }, { concurrency: 1 })
-            .then(function () {
-            resolve();
-        })
-            .catch(function (error) {
-            console.log(error);
-            reject(new Error(error));
-        });
-    });
-}
-function globOneThing(globPattern) {
-    return new Promise(function (resolve, reject) {
-        glob(globPattern)
-            .then(function (files) {
-            console.log("Processing " + files.length + " counts");
-            files = lodash_1.shuffle(files);
-            return getCounts(files);
+        Promise.map(counts, function (countsFile) {
+            return axios.post('http://pyrite.abudhabi.nyu.edu:3005/tf_counts/1.0/api/get_counts', {
+                image_path: imagePath,
+                counts: countsFile,
+            })
+                .then(function (results) {
+                console.log(results.data);
+                return getAssays(results.data.counts);
+                // return;
+            })
+                .then(function () {
+                return;
+            })
+                .catch(function (error) {
+                //TODO The TF API throws an internal service error instead of just an empty result - which is stupid
+                return;
+            });
         })
             .then(function () {
             resolve();
         })
             .catch(function (error) {
-            console.log(error);
             reject(new Error(error));
-        });
-    });
-}
-function getCounts(files) {
-    return new Promise(function (resolve, reject) {
-        //@ts-ignore
-        Promise.map(files, function (file) {
-            console.log("Parsing " + file);
-            return parseCountsFile(file);
-        }, { concurrency: 1 })
-            .then(function () {
-            resolve();
-        })
-            .catch(function (error) {
-            console.log(error);
-            reject(new Error(error));
-        });
-    });
-}
-function parseCountsFile(countsFile) {
-    return new Promise(function (resolve, reject) {
-        // let orig = [];
-        var data = [];
-        Papa.parse(fs.createReadStream(countsFile), {
-            header: true,
-            step: function (results, parser) {
-                parser.pause();
-                var imagePath = results.data[0].image_path;
-                imagePath = imagePath.replace('/mnt/image/', '');
-                imagePath = imagePath.replace('-autolevel.bmp', '');
-                imagePath = imagePath.replace('-autolevel.png', '');
-                results.data[0].imagePathModified = imagePath;
-                // orig.push(results.data[0]);
-                data.push(results.data[0]);
-                if (data.length >= 10) {
-                    getAssays([data])
-                        .then(function () {
-                        data = [];
-                        parser.resume();
-                    })
-                        .catch(function (error) {
-                        console.log(error);
-                        parser.abort();
-                    });
-                }
-                else {
-                    parser.resume();
-                }
-            },
-            complete: function () {
-                if (data.length) {
-                    getAssays([data])
-                        .then(function () {
-                        console.log('Finished parsing file!');
-                        resolve();
-                    })
-                        .catch(function (error) {
-                        console.log(error);
-                        reject(new Error(error));
-                    });
-                }
-            },
         });
     });
 }
 function getAssays(counts) {
-    // console.log('In get assays!');
     return new Promise(function (resolve, reject) {
         var or = [];
         counts.map(function (count) {
+            var imagePath = count.image_path;
+            imagePath = imagePath.replace('/mnt/image/', '');
+            imagePath = imagePath.replace('-autolevel.bmp', '');
+            imagePath = imagePath.replace('-autolevel.png', '');
+            count.imagePathModified = imagePath;
             or.push({ assayImagePath: count.imagePathModified });
         });
-        // First check to see if the counts already exist
-        // If they don't put them in the DB
         app.models.ModelPredictedCounts
             .find({
             where: {
@@ -158,7 +85,6 @@ function getAssays(counts) {
                 app.models.ExpAssay
                     .find({ where: { or: or } })
                     .then(function (results) {
-                    // console.log(JSON.stringify(results[0]));
                     return assignCountsToAssay(results, counts);
                 })
                     .then(function () {
@@ -298,6 +224,133 @@ function assignCountsToAssay(assays, counts) {
             .catch(function (error) {
             console.log(error);
             reject(new Error(error));
+        });
+    });
+}
+/**
+ *
+ * Deprecated - Old script got counts file directly from the file system
+ * Now we use the get_counts api from the flask in chemgen-next-analysis-docker/counts/tf_counts
+ *
+ */
+// This MUSt be run from a server with access to the file system
+// Head of tfcounts files looks like:
+// egg,egg_clump,image_path,larva,worm
+// 30,1,/mnt/image/2017Apr03/8214/RNAi.N2.S1_A01-autolevel.bmp,94,3
+// 5,0,/mnt/image/2017Apr03/8214/RNAi.N2.S1_A02-autolevel.bmp,80,12
+// 4,0,/mnt/image/2017Apr03/8214/RNAi.N2.S1_A03-autolevel.bmp,99,4
+// let globPatterns = [
+//   "/mnt/image/2016*/*/*tf*.csv",
+//   "/mnt/image/2017*/*/*tf*.csv",
+//   "/mnt/image/2018*/*/*tf*.csv",
+//   "/mnt/image/2014*/*/*tf*.csv",
+//   "/mnt/image/2015*/*/*tf*.csv",
+// ];
+//
+// globPatterns = shuffle(globPatterns);
+//
+// globAllTheThings(globPatterns)
+//   .then(() => {
+//     console.log('Finished no errors!');
+//     process.exit(0);
+//   })
+//   .catch((error) => {
+//     console.log('Finished with errors!');
+//     console.log(error);
+//     process.exit(1);
+//   });
+function globAllTheThings(globs) {
+    return new Promise(function (resolve, reject) {
+        //@ts-ignore
+        Promise.map(globs, function (globPattern) {
+            console.log("Glob Pattern: " + globPattern);
+            return globOneThing(globPattern);
+        }, { concurrency: 1 })
+            .then(function () {
+            resolve();
+        })
+            .catch(function (error) {
+            console.log(error);
+            reject(new Error(error));
+        });
+    });
+}
+function globOneThing(globPattern) {
+    return new Promise(function (resolve, reject) {
+        glob(globPattern)
+            .then(function (files) {
+            console.log("Processing " + files.length + " counts");
+            files = lodash_1.shuffle(files);
+            return getCounts(files);
+        })
+            .then(function () {
+            resolve();
+        })
+            .catch(function (error) {
+            console.log(error);
+            reject(new Error(error));
+        });
+    });
+}
+function getCounts(files) {
+    return new Promise(function (resolve, reject) {
+        //@ts-ignore
+        Promise.map(files, function (file) {
+            console.log("Parsing " + file);
+            return parseCountsFile(file);
+        }, { concurrency: 1 })
+            .then(function () {
+            resolve();
+        })
+            .catch(function (error) {
+            console.log(error);
+            reject(new Error(error));
+        });
+    });
+}
+function parseCountsFile(countsFile) {
+    return new Promise(function (resolve, reject) {
+        // let orig = [];
+        var data = [];
+        Papa.parse(fs.createReadStream(countsFile), {
+            header: true,
+            step: function (results, parser) {
+                parser.pause();
+                var imagePath = results.data[0].image_path;
+                imagePath = imagePath.replace('/mnt/image/', '');
+                imagePath = imagePath.replace('-autolevel.bmp', '');
+                imagePath = imagePath.replace('-autolevel.png', '');
+                results.data[0].imagePathModified = imagePath;
+                // orig.push(results.data[0]);
+                data.push(results.data[0]);
+                if (data.length >= 10) {
+                    getAssays([data])
+                        .then(function () {
+                        data = [];
+                        parser.resume();
+                    })
+                        .catch(function (error) {
+                        console.log(error);
+                        parser.abort();
+                    });
+                }
+                else {
+                    parser.resume();
+                }
+            },
+            complete: function () {
+                if (data.length) {
+                    getAssays([data])
+                        .then(function () {
+                        console.log('Finished parsing file!');
+                        resolve();
+                    })
+                        .catch(function (error) {
+                        console.log(error);
+                        reject(new Error(error));
+                    });
+                }
+            },
         });
     });
 }

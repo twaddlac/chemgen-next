@@ -10,6 +10,7 @@ import {ChemicalPrimaryComponent} from './exp-screen/upload-screen/chemical/chem
 import {ChemicalSecondaryComponent} from './exp-screen/upload-screen/chemical/chemical-secondary/chemical-secondary.component';
 import {SearchFormWormsComponent} from './search-forms/search-form-worms/search-form-worms.component';
 import {EmptyComponent} from "./empty/empty.component";
+import {SearchFormExpsetsComponent} from "./search-forms/search-form-expsets/search-form-expsets.component";
 
 // TODO Make Routing Modules
 
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     {path: 'chemical-primary', component: ChemicalPrimaryComponent},
     {path: 'chemical-secondary', component: ChemicalSecondaryComponent},
     {path: 'search-worms', component: SearchFormWormsComponent},
+    {path: 'search-expsets-worms', component: SearchFormExpsetsComponent},
     {path: '', redirectTo: '/empty', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent},
 ];
