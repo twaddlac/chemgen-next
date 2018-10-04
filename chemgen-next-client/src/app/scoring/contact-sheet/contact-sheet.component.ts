@@ -136,6 +136,7 @@ export class ContactSheetComponent implements OnInit {
         }
     }
 
+    //TODO Refactor scoring into a module
     submitScores(manualScores) {
         return new Promise((resolve, reject) => {
             this.expManualScoresApi

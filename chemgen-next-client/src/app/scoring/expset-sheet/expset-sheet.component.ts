@@ -1,6 +1,16 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ExpsetModule} from '../expset/expset.module';
-import {ModelPredictedCountsResultSet} from '../../../sdk/models';
+import {ExpsetModule, ExpSetSearchResults} from '../expset/expset.module';
+import {
+    ChemicalLibraryResultSet,
+    ExpAssay2reagentResultSet, ExpPlateResultSet,
+    ExpScreenResultSet,
+    ExpScreenUploadWorkflowResultSet,
+    ModelPredictedCountsResultSet,
+    RnaiLibraryResultSet
+} from '../../../sdk/models';
+
+import {find, isEqual} from 'lodash';
+import {ExpSetSearch} from "../../search-forms/search-form-worms/search-form-worms.component";
 
 /**
  * WIP
@@ -15,37 +25,48 @@ import {ModelPredictedCountsResultSet} from '../../../sdk/models';
 })
 export class ExpsetSheetComponent implements OnInit {
     @Input() expSets: any;
+    @Input() expSetSearch: ExpSetSearch;
+
     expSetModule: ExpsetModule;
     albumData: Array<any> = [];
     albumsContainer: Array<any> = [];
     // expSet: any;
     expSetAlbums: any = {treatmentReagentImages: [], ctrlReagentImages: [], ctrlNullImages: [], ctrlStrainImages: []};
-
     parsedExpSets: any;
+    expSetData: any;
 
     constructor() {
+        this.expSetData = [];
     }
 
     ngOnInit() {
-        // this.parseExpSets();
         this.parseExpSets();
     }
 
     parseExpSets() {
+        // The expSet data structure is a flat data structure that can incorporate many experiment sets across multiple screens and batches
+        // Its flat so that it is somewhat normalized, otherwise it gets really big really fast to send as a JSON object
+        // Here we the joins and denormalize it so we can pass everything to the child component
         this.expSetModule = new ExpsetModule(this.expSets);
-
-        this.parsedExpSets = this.expSets.modelPredictedCounts.map((wellCounts: ModelPredictedCountsResultSet) => {
-            return this.expSetModule.getExpSet(wellCounts);
+        this.expSetData = this.expSetModule.expSets.albums.map((album: any) => {
+            let expWorkflow: ExpScreenUploadWorkflowResultSet = this.expSetModule.findExpWorkflow(album.expWorkflowId);
+            let expScreen: ExpScreenResultSet = this.expSetModule.findExpScreen(expWorkflow.screenId);
+            let expPlates: ExpPlateResultSet[] = this.expSetModule.findExpPlates(album.expWorkflowId);
+            let reagentsList = this.expSetModule.findReagents(album.treatmentGroupId);
+            let expManualScores = this.expSetModule.findExpManualScores(album.treatmentGroupId);
+            album.expWorkflow = expWorkflow;
+            album.expSet = this.expSetModule.findExpSets(album.treatmentGroupId);
+            return {
+                albums: album,
+                expWorkflow: expWorkflow,
+                expSet: album.expSet,
+                expScreen: expScreen,
+                rnaisList: reagentsList.rnaisList,
+                compoundsList: reagentsList.compoundsList,
+                expPlates: expPlates,
+                expManualScores: expManualScores,
+            };
         });
-
-        // this.expSet = this.parsedExpSets[0];
-        this.albumsContainer = this.parsedExpSets.map((parsedExpSet: any) => {
-            const expSetAlbums = ['treatmentReagentImages', 'ctrlReagentImages', 'ctrlStrainImages', 'ctrlNullImages'].map((albumName) => {
-                this.expSetModule.createAlbum(this.parsedExpSets, albumName, parsedExpSet.albums[albumName]);
-            });
-            return {expSet: parsedExpSet, expSetAlbums: expSetAlbums};
-        });
-
     }
 
 

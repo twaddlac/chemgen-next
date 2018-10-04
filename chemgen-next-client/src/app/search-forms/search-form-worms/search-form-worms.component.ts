@@ -6,6 +6,10 @@ import {isEmpty, isEqual} from 'lodash';
 import {ExpSetApi} from '../../../sdk/services/custom';
 import {NgProgress} from '@ngx-progressbar/core';
 
+/**
+ * This form is very much the kitchen sink of all the forms
+ * It has all the options, which is great for dev, but not much else
+ */
 @Component({
     selector: 'app-search-form-worms',
     templateUrl: './search-form-worms.component.html',
@@ -88,7 +92,21 @@ export class SearchFormWormsComponent implements OnInit {
         this.formSubmitted = true;
         this.showProgress = true;
         this.progress.start();
-        if (this.contactSheetPlateView) {
+        if(this.expSetView){
+            this.expSetApi.getUnScoredExpSetsByPlate(this.expSetSearch)
+                .toPromise()
+                .then((results) => {
+                    console.log('got results');
+                    this.expSets = results.results;
+                    this.showProgress = false;
+                    this.progress.complete();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return new Error(error);
+                });
+        }
+        else if (this.contactSheetPlateView) {
             this.expSetApi.getUnScoredExpSetsByPlate(this.expSetSearch)
                 .toPromise()
                 .then((results) => {
@@ -133,6 +151,7 @@ export class SearchFormWormsComponent implements OnInit {
     }
 }
 
+//TODO THIS IS NOT GOOD IT NEEDS TO GO SOMEPLACE ELSE!!!
 declare var Object: any;
 
 export interface ExpSetSearchInterface {

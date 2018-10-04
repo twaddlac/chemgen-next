@@ -14,12 +14,14 @@ ExpManualScores.load.submitScores = function (scores) {
     if (isArray(scores)) {
       //@ts-ignore
       Promise.map(scores, (score: ExpManualScoresResultSet) => {
+        let value = score.manualscoreValue;
+        delete score.manualscoreValue;
         if (get(score, 'timestamp')) {
           delete score.timestamp;
         }
         let createObj = app.etlWorkflow.helpers.findOrCreateObj(score);
-        app.winston.info(JSON.stringify(createObj));
         score.timestamp = dateNow;
+        score.manualscoreValue = value;
         return ExpManualScores
           .findOrCreate({where: createObj}, score)
           .then((results) => {
@@ -38,11 +40,14 @@ ExpManualScores.load.submitScores = function (scores) {
           reject(new Error(error));
         });
     } else if (isObject(scores)) {
+      let value = scores.manualscoreValue;
+      delete scores.manualscoreValue;
       if (get(scores, 'timestamp')) {
         delete scores.timestamp;
       }
       let createObj = app.etlWorkflow.helpers.findOrCreateObj(scores);
       scores.timestamp = dateNow;
+      scores.manualscoreValue = value;
       ExpManualScores
         .findOrCreate({where: createObj}, scores)
         .then((results) => {

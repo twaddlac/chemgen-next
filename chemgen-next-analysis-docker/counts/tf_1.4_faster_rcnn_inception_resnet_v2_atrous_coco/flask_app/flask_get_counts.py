@@ -409,6 +409,7 @@ class GetCounts(Resource):
         args = parser.parse_args()
         print('Processing request: count_worms')
         print(args, file=sys.stderr)
+        sys.stdout.flush()
         if args['counts']:
             df = pd.read_csv(args['counts'])
             counts = df.to_dict('records')

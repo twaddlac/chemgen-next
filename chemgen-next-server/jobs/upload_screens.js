@@ -24,24 +24,21 @@ catch (error) {
     console.log("Could not read file " + workflow);
     process.exit(1);
 }
-app.agenda.on('ready', function () {
-    console.log('agenda ready!');
-    try {
-        console.log('subbmitting....');
-        jobQueues.workflowQueue.add({ workflowData: workflowData });
-    }
-    catch (error) {
-        console.log("Received error: " + error);
-        process.exit(1);
-    }
-    if (lodash_1.isArray(workflowData)) {
-        workflowData.map(function (workflow) {
-            jobQueues.workflowQueue.add({ workflowData: workflow });
-        });
-    }
-    else {
-        jobQueues.workflowQueue.add({ workflowData: workflowData });
-    }
-    process.exit(0);
-});
+try {
+    console.log('submitting....');
+    jobQueues.workflowQueue.add({ workflowData: workflowData });
+}
+catch (error) {
+    console.log("Received error: " + error);
+    process.exit(1);
+}
+if (lodash_1.isArray(workflowData)) {
+    workflowData.map(function (workflow) {
+        jobQueues.workflowQueue.add({ workflowData: workflow });
+    });
+}
+else {
+    jobQueues.workflowQueue.add({ workflowData: workflowData });
+}
+process.exit(0);
 //# sourceMappingURL=upload_screens.js.map

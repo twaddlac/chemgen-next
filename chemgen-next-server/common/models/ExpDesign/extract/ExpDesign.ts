@@ -184,4 +184,4 @@ ExpDesign.extract.workflows.getExpSets = function (expGroups: ExpGroupResultSet[
         reject(new Error(error));
       });
   });
-}
+};

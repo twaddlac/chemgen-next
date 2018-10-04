@@ -11,6 +11,7 @@ const ExpDesign = app.models.ExpDesign as (typeof WorkflowModel);
 ExpDesign.load.workflows.createExpDesigns = function (workflowData: ExpScreenUploadWorkflowResultSet, expDesignRows: ExpDesignResultSet[]) {
   expDesignRows = uniqWith(expDesignRows, isEqual);
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(shuffle(expDesignRows), (expDesignRow) => {
       return ExpDesign
         .findOrCreate({where: app.etlWorkflow.helpers.findOrCreateObj(expDesignRow)}, expDesignRow)

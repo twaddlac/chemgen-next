@@ -6,13 +6,13 @@
         <label for="screenName">Screen</label>
         <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
               tooltip="Optionally, choose a screen. You must choose a screen to choose batch or temperature."></span>
-        <select class="form-control" id="screenName"
-                name="screenName"
-                [(ngModel)]="formResults.expScreen"
-                (ngModelChange)="getExpScreenWorkflows()"
-        >
-          <option *ngFor="let screen of expScreens" [ngValue]="screen">{{screen.screenName}}</option>
-        </select>
+            <select class="form-control" id="screenName"
+                    name="screenName"
+                    [(ngModel)]="formResults.expScreen"
+                    (ngModelChange)="getExpScreenWorkflows()"
+            >
+              <option *ngFor="let screen of expScreens" [ngValue]="screen">{{screen.screenName}}</option>
+            </select>
       </div>
     </div>
 

@@ -21,29 +21,27 @@ var ExpSet = app.models.ExpSet;
  */
 ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search) {
     return new Promise(function (resolve, reject) {
-        console.log("Before: " + JSON.stringify(search));
         search = new types_1.ExpSetSearch(search);
         var data = new types_1.ExpSetSearchResults({});
-        console.log("After: " + JSON.stringify(search));
-        var sqlQuery = ExpSet.extract.buildNativeQuery(data, search, false);
+        // data.pageSize = 1;
+        var sqlQuery = ExpSet.extract.buildNativeQueryExpWorkflowId(data, search, false);
         sqlQuery = sqlQuery.count();
-        data.pageSize = 1;
         ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
             .then(function (data) {
-            return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
+            return ExpSet.extract.workflows.getExpPlatesByScores(data, search, false);
         })
             .then(function (data) {
-            if (!data.expAssay2reagents || !data.expAssay2reagents.length) {
+            if (!data.expPlates || !data.expPlates.length) {
                 resolve();
             }
             else {
-                return ExpSet.extract.fetchFromCache(data, search);
+                return ExpSet.extract.fetchFromCache(data, search, data.expPlates[0].expWorkflowId);
             }
         })
             .then(function (data) {
             // Check to see if it was fetched from the cache
             if (!data.fetchedFromCache) {
-                return ExpSet.extract.getExpDataByExpWorkflowId(data, search);
+                return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expPlates[0].expWorkflowId);
             }
             else {
                 return data;
@@ -62,11 +60,39 @@ ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search) {
             data = ExpSet.extract.insertCountsDataImageMeta(data);
             data = ExpSet.extract.insertExpManualScoresImageMeta(data);
             data = ExpSet.extract.genAlbumsByPlate(data, search);
-            data = ExpSet.extract.cleanUp(data, search);
+            // data = ExpSet.extract.cleanUp(data, search);
             resolve(data);
         })
             .catch(function (error) {
+            app.winston.error(error);
             reject(new Error(error));
+        });
+    });
+};
+ExpSet.extract.workflows.getExpPlatesByScores = function (data, search, scoresExist) {
+    return new Promise(function (resolve, reject) {
+        var sqlQuery = ExpSet.extract.buildNativeQueryExpWorkflowId(data, search, scoresExist);
+        sqlQuery = sqlQuery
+            .limit(1000);
+        var ds = app.datasources.chemgenDS;
+        app.winston.info(JSON.stringify(sqlQuery.toString()));
+        ds.connector.execute(sqlQuery.toString(), [], function (error, rows) {
+            if (error) {
+                app.winston.error(error);
+                return reject(new Error(error));
+            }
+            else {
+                var rowData = rows.map(function (rawRowData) {
+                    Object.keys(rawRowData).map(function (rowKey) {
+                        rawRowData[lodash_1.camelCase(rowKey)] = rawRowData[rowKey];
+                        delete rawRowData[rowKey];
+                    });
+                    return new app.models.ExpPlate(JSON.parse(JSON.stringify(rawRowData)));
+                });
+                data.skip = data.skip + data.pageSize;
+                data.expPlates = [lodash_1.shuffle(rowData)[0]];
+                return resolve(data);
+            }
         });
     });
 };
@@ -83,6 +109,7 @@ ExpSet.extract.getModelPredictedCountsByExpWorkflowId = function (data, search) 
             resolve(data);
         })
             .catch(function (error) {
+            app.winston.error(error);
             reject(new Error(error));
         });
     });
@@ -100,6 +127,7 @@ ExpSet.extract.getExpManualScoresByExpWorkflowId = function (data, search) {
             resolve(data);
         })
             .catch(function (error) {
+            app.winston.error(error);
             reject(new Error(error));
         });
     });
@@ -126,6 +154,7 @@ ExpSet.extract.getExpAssay2reagentsByExpWorkflowId = function (data, search) {
                     reagentId: true,
                     libraryId: true,
                     reagentType: true,
+                    reagentTable: true,
                 },
             })
                 .then(function (expAssay2reagents) {
@@ -142,6 +171,7 @@ ExpSet.extract.getExpAssay2reagentsByExpWorkflowId = function (data, search) {
                 return data;
             })
                 .catch(function (error) {
+                app.winston.error(error);
                 reject(new Error(error));
             });
         }
@@ -154,138 +184,143 @@ ExpSet.extract.getExpAssay2reagentsByExpWorkflowId = function (data, search) {
  * @param data
  * @param search
  */
-ExpSet.extract.getExpDataByExpWorkflowId = function (data, search) {
+ExpSet.extract.getExpDataByExpWorkflowId = function (data, search, expWorkflowId) {
     return new Promise(function (resolve, reject) {
-        if (!data.expAssay2reagents || !data.expAssay2reagents.length) {
-            resolve(data);
-        }
-        else {
-            app.models.ExpAssay2reagent
+        app.models.ExpAssay2reagent
+            .find({
+            where: {
+                and: [
+                    { expWorkflowId: expWorkflowId },
+                    { expGroupId: { neq: null } },
+                ]
+            },
+            fields: {
+                treatmentGroupId: true,
+                assay2reagentId: true,
+                expGroupId: true,
+                plateId: true,
+                assayId: true,
+                reagentId: true,
+                libraryId: true,
+                reagentType: true,
+                reagentTable: true,
+                expWorkflowId: true,
+            },
+        })
+            .then(function (expAssay2reagents) {
+            data.expAssay2reagents = expAssay2reagents;
+            return data;
+        })
+            .then(function (data) {
+            return app.models.ExpAssay
                 .find({
                 where: {
-                    and: [{ expWorkflowId: data.expAssay2reagents[0].expWorkflowId },
-                        { expGroupId: { neq: null } },
-                    ]
+                    assayId: {
+                        inq: data.expAssay2reagents.map(function (expAssay2reagent) {
+                            return expAssay2reagent.assayId;
+                        })
+                    }
                 },
                 fields: {
-                    treatmentGroupId: true,
-                    assay2reagentId: true,
+                    assayWell: true,
+                    assayId: true,
+                    assayImagePath: true,
                     expGroupId: true,
                     plateId: true,
-                    assayId: true,
-                    reagentId: true,
-                    libraryId: true,
-                    reagentType: true,
+                    screenId: true,
+                    expWorkflowId: true,
                 },
-            })
-                .then(function (expAssay2reagents) {
-                data.expAssay2reagents = expAssay2reagents;
-                return data;
-            })
-                .then(function (data) {
-                return app.models.ExpAssay
-                    .find({
-                    where: {
-                        assayId: {
-                            inq: data.expAssay2reagents.map(function (expAssay2reagent) {
-                                return expAssay2reagent.assayId;
-                            })
-                        }
-                    },
-                    fields: {
-                        assayWell: true,
-                        assayId: true,
-                        assayImagePath: true,
-                        expGroupId: true,
-                        plateId: true,
-                        screenId: true,
-                        expWorkflowId: true,
-                    },
-                });
-            })
-                .then(function (expAssays) {
-                data.expAssays = expAssays;
-                return data;
-            })
-                .then(function (data) {
-                return app.models.ExpPlate
-                    .find({
-                    where: {
-                        expWorkflowId: data.expAssays[0].expWorkflowId
-                    }
-                });
-            })
-                .then(function (expPlates) {
-                data.expPlates = expPlates;
-                return data;
-            })
-                .then(function (data) {
-                return app.models.ModelPredictedCounts
-                    .find({
-                    where: {
-                        expWorkflowId: data.expAssays[0].expWorkflowId
-                    }
-                });
-            })
-                .then(function (modelPredictedCounts) {
-                data.modelPredictedCounts = modelPredictedCounts;
-                return data;
-            })
-                .then(function (data) {
-                return app.models.ExpScreen
-                    .findOne({
-                    where: { screenId: data.expAssays[0].screenId },
-                    fields: {
-                        screenId: true,
-                        screenName: true,
-                        screenType: true,
-                        screenStage: true,
-                    }
-                });
-            })
-                .then(function (expScreens) {
-                data.expScreens = [expScreens];
-                return data;
-            })
-                .then(function (data) {
-                return app.models.ExpScreenUploadWorkflow
-                    .findOne({
-                    where: { id: data.expAssays[0].expWorkflowId },
-                    fields: {
-                        id: true,
-                        name: true,
-                        screenId: true,
-                        biosamples: true,
-                        assayDates: true,
-                        temperature: true,
-                        screenType: true,
-                        screenStage: true
-                    }
-                });
-            })
-                .then(function (expScreenWorkflow) {
-                data.expWorkflows = [expScreenWorkflow];
-                return ExpSet.extract.getExpDesignsByExpWorkflowId(data, search);
-            })
-                .then(function (data) {
-                return ExpSet.extract.genExpSetAlbums(data, search);
-            })
-                .then(function (data) {
-                data = ExpSet.extract.genExpGroupTypeAlbums(data, search);
-                return ExpSet.extract.saveToCache(data, search);
-            })
-                .then(function (data) {
-                resolve(data);
-            })
-                .catch(function (error) {
-                reject(new Error(error));
             });
-        }
+        })
+            .then(function (expAssays) {
+            data.expAssays = expAssays;
+            return data;
+        })
+            .then(function (data) {
+            return app.models.ExpPlate
+                .find({
+                where: {
+                    expWorkflowId: expWorkflowId,
+                }
+            });
+        })
+            .then(function (expPlates) {
+            data.expPlates = expPlates;
+            return data;
+        })
+            .then(function (data) {
+            return app.models.ModelPredictedCounts
+                .find({
+                where: {
+                    expWorkflowId: expWorkflowId
+                }
+            });
+        })
+            .then(function (modelPredictedCounts) {
+            data.modelPredictedCounts = modelPredictedCounts;
+            return data;
+        })
+            .then(function (data) {
+            return app.models.ExpScreen
+                .findOne({
+                where: { screenId: data.expPlates[0].screenId },
+                fields: {
+                    screenId: true,
+                    screenName: true,
+                    screenType: true,
+                    screenStage: true,
+                }
+            });
+        })
+            .then(function (expScreens) {
+            data.expScreens = [expScreens];
+            return data;
+        })
+            .then(function (data) {
+            return app.models.ExpScreenUploadWorkflow
+                .findOne({
+                where: { id: expWorkflowId },
+                fields: {
+                    id: true,
+                    name: true,
+                    screenId: true,
+                    biosamples: true,
+                    assayDates: true,
+                    temperature: true,
+                    screenType: true,
+                    screenStage: true
+                }
+            });
+        })
+            .then(function (expScreenWorkflow) {
+            app.winston.info("Got through getExpSetData");
+            data.expWorkflows = [expScreenWorkflow];
+            return ExpSet.extract.getExpDesignsByExpWorkflowId(data, search);
+        })
+            .then(function (data) {
+            return ExpSet.extract.genExpSetAlbums(data, search);
+        })
+            .then(function (data) {
+            return ExpSet.extract.workflows.getReagentData(data, search);
+        })
+            .then(function (data) {
+            data = ExpSet.extract.genExpGroupTypeAlbums(data, search);
+            return ExpSet.extract.saveToCache(data, search);
+        })
+            .then(function (data) {
+            app.winston.info("Got through getExpSetData");
+            resolve(data);
+        })
+            .catch(function (error) {
+            app.winston.error(error);
+            reject(new Error(error));
+        });
     });
 };
-ExpSet.extract.fetchFromCache = function (data, search) {
+ExpSet.extract.fetchFromCache = function (data, search, expWorkflowId) {
     return new Promise(function (resolve, reject) {
-        var key = "contact-sheet-byPlate-" + data.expAssay2reagents[0].expWorkflowId;
+        //TODO Should just pass ine ither the key or the expWorkflowId
+        var key = "expSets-expWorkflowId-" + expWorkflowId;
         redisClient.getAsync(key)
             .then(function (obj) {
             if (obj) {
@@ -307,7 +342,7 @@ ExpSet.extract.fetchFromCache = function (data, search) {
 };
 ExpSet.extract.saveToCache = function (data, search) {
     return new Promise(function (resolve, reject) {
-        var key = "contact-sheet-byPlate-" + data.expWorkflows[0].id;
+        var key = "expSets-expWorkflowId-" + data.expWorkflows[0].id;
         redisClient.set(key, JSON.stringify(data), 'EX', 60 * 60 * 24, function (err, reply) {
             resolve(data);
         });
@@ -316,7 +351,7 @@ ExpSet.extract.saveToCache = function (data, search) {
 ExpSet.extract.getExpDesignsByExpWorkflowId = function (data, search) {
     return new Promise(function (resolve, reject) {
         app.models.ExpDesign
-            .find({ where: { expWorkflowId: data.expAssays[0].expWorkflowId } })
+            .find({ where: { expWorkflowId: data.expPlates[0].expWorkflowId } })
             .then(function (expDesigns) {
             var groups = lodash_1.groupBy(expDesigns, 'treatmentGroupId');
             data.expSets = Object.keys(groups).map(function (treatmentGroupId) {
@@ -344,7 +379,7 @@ ExpSet.extract.getCountsByExpWorkflowId = function (data, search) {
             app.models.ModelPredictedCounts
                 .find({
                 where: {
-                    expWorkflowId: data.expAssays[0].expWorkflowId,
+                    expWorkflowId: data.expPlates[0].expWorkflowId,
                 }
             })
                 .then(function (results) {

@@ -17,9 +17,9 @@ module.exports = function(ExpSet) {
     require('../extract/scoring/ExpSetResults')
   })
 
-  ExpSet.getExpSets = function (search, cb) {
+  ExpSet.getExpSetsByWorkflowId = function (search, cb) {
     return new Promise((resolve, reject) => {
-      ExpSet.extract.workflows.getExpSets(search)
+      ExpSet.extract.workflows.getExpSetsByWorkflowId(search)
         .then((results) => {
           resolve(results)
         })
@@ -66,8 +66,8 @@ module.exports = function(ExpSet) {
   }
 
   ExpSet.remoteMethod(
-    'getExpSets', {
-      http: {path: '/getExpSets', verb: 'post'},
+    'getExpSetsByWorkflowId', {
+      http: {path: '/getExpSetsByWorkflowId', verb: 'post'},
       accepts: {arg: 'search', type: 'any', http: {source: 'query'}},
       returns: {arg: 'results', type: 'any'}
     }

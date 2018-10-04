@@ -14,7 +14,6 @@ import {isEmpty} from 'lodash';
 
 export class ExpsetAlbumComponent implements OnInit {
   @Input('expSet') expSet: any;
-  // @Input('modelPredictedCounts') modelPredictedCounts: ModelPredictedCountsResultSet;
   @Input('albums') albums: any;
   @Input('score') score: boolean;
   @Input('expSetAlbums') expSetAlbums: any;

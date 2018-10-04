@@ -6,16 +6,18 @@
         <div tabindex="0" class="form-check">
 
           <div class="row">
+            <!--TODO Replace this with the expset-toggle-->
             <div class="col-md-4">
               <!--Begin Score This Checkbox - only available for treat_reagent and ctrl_regeant-->
               <div *ngIf="score">
-                <input class="form-check-input " type="checkbox"
-                       [(ngModel)]="contactSheetResults.interesting[image.treatmentGroupId]"
-                       (ngModelChange)="parseInterestingWatcher('changed')"
-                       id="select_{{image.assayId}}">
-                <label class="form-check-label" for="select_{{image.assayId}}">
-                  <strong style="color: darkblue">Score This</strong>
-                </label>
+                <app-expset-toggle [treatmentGroupId]="image.treatmentGroupId"
+                                   [expScreen]="image.expScreen"
+                                   [expWorkflow]="image.expWorkflow"
+                                   [expManualScores]="image.expManualScores"
+                                   [results]="contactSheetResults.interesting"
+                                   [submit]="false"
+                ></app-expset-toggle>
+
               </div>
               <!--End Score This Checkbox - only available for treat_reagent and ctrl_regaent-->
             </div>
