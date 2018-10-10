@@ -12,8 +12,6 @@
     "posttest": "echo 'npm run lint && nsp check'"
   },
   "dependencies": {
-    "agenda": "^1.0.3",
-    "agendash": "^0.4.0",
     "axios": "^0.18.0",
     "bull": "^3.4.8",
     "camelcase": "^4.1.0",
@@ -53,6 +51,7 @@
     "redis": "^2.8.0",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
+    "rxjs": "^6.3.3",
     "serve-favicon": "^2.0.1",
     "slug": "^0.9.1",
     "sql-query": "^0.1.27",

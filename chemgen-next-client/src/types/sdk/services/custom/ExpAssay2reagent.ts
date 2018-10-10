@@ -10,7 +10,6 @@ import { ErrorHandler } from '../core/error.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ExpAssay2reagentResultSet } from '../../models/ExpAssay2reagentResultSet';
-import { SocketConnection } from '../../sockets/socket.connections';
 import { ExpManualScoresResultSet } from '../../models/ExpManualScoresResultSet';
 
 
@@ -22,12 +21,11 @@ export class ExpAssay2reagentApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
-    @Inject(SocketConnection) protected connection: SocketConnection,
     @Inject(SDKModels) protected models: SDKModels,
     @Inject(LoopBackAuth) protected auth: LoopBackAuth,
     @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
-    super(http,  connection,  models, auth, errorHandler);
+    super(http,  models, auth, errorHandler);
   }
 
   /**
