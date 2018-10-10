@@ -7,25 +7,25 @@ import {SDKBrowserModule} from "../../../../types/sdk";
 import {MockExpsetToggleComponent} from "../../../../../test/MockComponents";
 
 describe('ExpsetAlbumComponent', () => {
-  let component: ExpsetAlbumComponent;
-  let fixture: ComponentFixture<ExpsetAlbumComponent>;
+    let component: ExpsetAlbumComponent;
+    let fixture: ComponentFixture<ExpsetAlbumComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [FormsModule, SDKBrowserModule.forRoot(), LightboxModule],
-      declarations: [ExpsetAlbumComponent, MockExpsetToggleComponent],
-      providers: [{provide: Lightbox}]
-    })
-      .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule, SDKBrowserModule.forRoot(), LightboxModule],
+            declarations: [ExpsetAlbumComponent, MockExpsetToggleComponent],
+            providers: [{provide: Lightbox}]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ExpsetAlbumComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ExpsetAlbumComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
