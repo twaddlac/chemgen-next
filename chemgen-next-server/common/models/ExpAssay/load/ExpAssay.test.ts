@@ -140,7 +140,7 @@ describe('ExpAssay.load', function () {
   });
 
   it('ExpAssay.load.createExpPlate expPlates[0] R1', function (done) {
-    this.timeout(5000);
+    this.timeout(10000);
     ExpAssay.load.workflows.processExpPlate(workflowData, expPlates[0])
       .then((results: PlateCollection) => {
         assert.equal(results.wellDataList[0].expGroup.biosampleId, 1);
