@@ -36,7 +36,7 @@ function getPagedExpGroups(paginationResults) {
             })
                 .then(function (results) {
                 console.log("Results Len : " + results.length);
-                // console.log(JSON.stringify(results));
+                // console.log(JSON.stringify(contactSheetResults));
                 return getExpDesign(results);
             })
                 .catch(function (error) {

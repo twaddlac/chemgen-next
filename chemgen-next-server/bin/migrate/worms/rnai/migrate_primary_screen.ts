@@ -141,7 +141,7 @@ function doStuff(tDataList) {
   }, {concurrency: 1})
     .then((results) => {
 
-      //Get the valid results
+      //Get the valid contactSheetResults
       let filteredResults = filter(results, (result) => {
         return !isEmpty(result) && result.VALID;
       });
@@ -153,7 +153,7 @@ function doStuff(tDataList) {
       console.log(`Got # ${workflows.length} workflows!`);
       jsonfile.writeFileSync(path.resolve(__dirname, 'data', 'primary', `${workflowJsonName}.json`), workflows, {spaces: 2});
 
-      //Get the invalid results
+      //Get the invalid contactSheetResults
       let inValid = filter(results, (result) => {
         return !isEmpty(result) && !result.VALID;
       });

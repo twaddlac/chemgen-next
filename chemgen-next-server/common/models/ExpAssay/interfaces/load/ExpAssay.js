@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../../server/server.js");
 var path = require("path");
-var wellData_1 = require("../../../../types/wellData");
+var wellData_1 = require("../../../../types/custom/wellData");
 var slug = require("slug");
 var Promise = require("bluebird");
 var Mustache = require("mustache");

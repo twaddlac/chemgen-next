@@ -7,7 +7,7 @@ import {
 import {WorkflowModel} from "../../index";
 import Promise = require('bluebird');
 
-import {PlateCollection, WellCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection} from "../../../types/custom/wellData";
 import * as _ from "lodash";
 import {isEmpty, isNull} from 'lodash';
 

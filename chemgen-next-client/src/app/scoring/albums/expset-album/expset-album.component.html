@@ -76,6 +76,7 @@
                             <app-expset-toggle [treatmentGroupId]="expSet.albums.treatmentGroupId"
                                                [expScreen]="expSet.expScreen"
                                                [expWorkflow]="expSet.expWorkflow"
+                                               [contactSheetResults]="contactSheetResults"
                                                [expManualScores]="expSet.expManualScores"
                                                [submit]="true"
                             ></app-expset-toggle>
@@ -158,7 +159,7 @@
                     <!--Begin TreatReagent Row - 4 images per row-->
                     <div class="row" id="ctrl_reagent">
                         <div class="col-md-12">
-                            <!--<h3>{{expSetAlbum.results.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.results.genesList[0].wbGeneCgcName}} {{expSetAlbum.results.genesList[0].geneName}}</h3>-->
+                            <!--<h3>{{expSetAlbum.contactSheetResults.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.contactSheetResults.genesList[0].wbGeneCgcName}} {{expSetAlbum.contactSheetResults.genesList[0].geneName}}</h3>-->
                             <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + Reagent </h3>
 
                             <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">

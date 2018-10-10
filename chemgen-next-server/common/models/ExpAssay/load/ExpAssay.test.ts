@@ -1,5 +1,5 @@
 import {ExpAssayResultSet, ExpPlateResultSet} from "../../../types/sdk/models/index";
-import {PlateCollection} from "../../../types/wellData";
+import {PlateCollection} from "../../../types/custom/wellData";
 import {WorkflowModel} from "../../index";
 
 import assert = require('assert');

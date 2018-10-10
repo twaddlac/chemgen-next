@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
-var wellData_1 = require("../../../types/wellData");
+var wellData_1 = require("../../../types/custom/wellData");
 var slug = require("slug");
 var Promise = require("bluebird");
 var _ = require("lodash");
@@ -28,7 +28,7 @@ WpTerms.load.workflows.createAnnotationData = function (workflowData, screenData
             app.winston.info(JSON.stringify(results[0]));
             screenData.annotationData = new wellData_1.annotationData({ taxTerms: results });
             app.winston.info("Complete: WpTerms.load.workflows.createAnnotationData " + workflowData.name);
-            // screenData.annotationData.taxTerms = results;
+            // screenData.annotationData.taxTerms = contactSheetResults;
             resolve(screenData);
         })
             .catch(function (error) {

@@ -11,6 +11,8 @@ import {ChemicalSecondaryComponent} from './exp-screen/upload-screen/chemical/ch
 import {SearchFormWormsComponent} from './search-forms/search-form-worms/search-form-worms.component';
 import {EmptyComponent} from "./empty/empty.component";
 import {SearchFormExpsetsComponent} from "./search-forms/search-form-expsets/search-form-expsets.component";
+import {ScatterplotCountsComponent} from "./viz/scatterplot-counts/scatterplot-counts.component";
+import {SearchFormContactSheetPrimaryComponent} from "./search-forms/search-form-contact-sheet-primary/search-form-contact-sheet-primary.component";
 
 // TODO Make Routing Modules
 
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
     {path: 'chemical-primary', component: ChemicalPrimaryComponent},
     {path: 'chemical-secondary', component: ChemicalSecondaryComponent},
     {path: 'search-worms', component: SearchFormWormsComponent},
+    {path: 'search-form-contact-sheet-plate', component: SearchFormContactSheetPrimaryComponent},
+    {path: 'counts-viz', component: ScatterplotCountsComponent},
     {path: 'search-expsets-worms', component: SearchFormExpsetsComponent},
     {path: '', redirectTo: '/empty', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent},

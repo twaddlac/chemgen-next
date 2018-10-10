@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../../server/server.js");
 var Promise = require("bluebird");
 var lodash_1 = require("lodash");
-var types_1 = require("../../types");
+var index_1 = require("../../../../types/custom/ExpSetTypes/index");
 var decamelize = require("decamelize");
 var config = require("config");
 var knex = config.get('knex');
@@ -22,8 +22,8 @@ var ExpSet = app.models.ExpSet;
  */
 ExpSet.extract.workflows.getUnscoredExpSetsByCounts = function (search) {
     return new Promise(function (resolve, reject) {
-        search = new types_1.ExpSetSearchByCounts(search);
-        var data = new types_1.ExpSetSearchResults({});
+        search = new index_1.ExpSetSearchByCounts(search);
+        var data = new index_1.ExpSetSearchResults({});
         var sqlQuery = ExpSet.extract.buildNativeQueryCounts(data, search, false);
         sqlQuery = sqlQuery.count();
         ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())

@@ -113,12 +113,12 @@ function createPlatePlans(secondaryScreens) {
           results.libraryId = 3;
           jsonfile.writeFileSync(path.resolve(__dirname, 'data', 'secondary', 'fda', `${secondaryScreen.platePlanName}.json`), results, {spaces: 2});
           return app.models.PlatePlan96.findOrCreate({where: {platePlanName: results.platePlanName}}, results);
-          // return results;
+          // return contactSheetResults;
         });
     }, {concurrency: 1})
       .then((results) => {
-        // console.log(JSON.stringify(results));
-        // return app.models.PlatePlan96.create(results);
+        // console.log(JSON.stringify(contactSheetResults));
+        // return app.models.PlatePlan96.create(contactSheetResults);
         process.exit(0);
       })
       .catch((error) => {

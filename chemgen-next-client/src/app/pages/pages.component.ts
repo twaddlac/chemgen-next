@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import {LoopBackConfig} from '../../sdk';
-import {ExpBiosampleResultSet} from '../../sdk/models';
-import {ExpBiosampleApi} from '../../sdk/services/custom';
+import {LoopBackConfig} from '../../types/sdk';
+import {ExpBiosampleResultSet} from '../../types/sdk/models';
+import {ExpBiosampleApi} from '../../types/sdk/services/custom';
 
 @Component({
   // Be sure to get rid of the selector when using the router in the component

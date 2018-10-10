@@ -3,17 +3,17 @@ import {
   PlatePlan96ResultSet,
   ExpScreenUploadWorkflowResultSet,
   RnaiScreenUploadWorkflowResultSet
-} from '../../../sdk/models';
-import {ExpBiosampleApi, PlatePlan96Api} from '../../../sdk/services/custom';
+} from '../../../types/sdk/models';
+import {ExpBiosampleApi, PlatePlan96Api} from '../../../types/sdk/services/custom';
 
-import {PlateResultSet} from '../../../sdk/models';
-import {PlateApi} from '../../../sdk/services/custom';
+import {PlateResultSet} from '../../../types/sdk/models';
+import {PlateApi} from '../../../types/sdk/services/custom';
 
-import {ExpScreenApi} from '../../../sdk/services/custom';
-import {ExpScreenResultSet} from '../../../sdk/models';
+import {ExpScreenApi} from '../../../types/sdk/services/custom';
+import {ExpScreenResultSet} from '../../../types/sdk/models';
 
-import {ReagentLibraryApi} from '../../../sdk/services/custom';
-import {ReagentLibraryResultSet} from '../../../sdk/models';
+import {ReagentLibraryApi} from '../../../types/sdk/services/custom';
+import {ReagentLibraryResultSet} from '../../../types/sdk/models';
 
 import {isNull, isEmpty, orderBy, padStart, chunk} from 'lodash';
 

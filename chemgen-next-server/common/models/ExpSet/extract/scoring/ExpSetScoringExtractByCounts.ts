@@ -2,7 +2,7 @@ import app  = require('../../../../../server/server.js');
 import {WorkflowModel} from "../../../index";
 import Promise = require('bluebird');
 import {divide, isNull, isUndefined, isEmpty, camelCase} from 'lodash';
-import {ExpSetSearch, ExpSetSearchByCounts, ExpSetSearchByCountsInterface, ExpSetSearchResults} from "../../types";
+import {ExpSetSearch, ExpSetSearchByCounts, ExpSetSearchByCountsInterface, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes/index";
 import {
   ChemicalLibraryResultSet, ExpAssay2reagentResultSet, ModelPredictedCountsResultSet,
   RnaiLibraryResultSet

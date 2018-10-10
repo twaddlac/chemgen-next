@@ -1,7 +1,7 @@
 import app  = require('../../../../../server/server.js');
 
 import path = require('path');
-import {PlateCollection, WellCollection, ScreenCollection, ExpSet} from "../../../../types/wellData";
+import {PlateCollection, WellCollection, ScreenCollection, ExpSet} from "../../../../types/custom/wellData";
 import {WorkflowModel} from "../../../index";
 
 import slug = require('slug');

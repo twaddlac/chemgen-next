@@ -7,25 +7,78 @@ import {
   ExpAssayResultSet, ExpGroupResultSet, ExpPlateResultSet,
   ModelPredictedCountsResultSet
 } from "../common/types/sdk/models/index";
-import {isFinite, isNaN, isNull, find, shuffle, isEqual, isUndefined} from 'lodash';
+import {isFinite, isNaN, isNull, find, shuffle, isEqual, range, isUndefined} from 'lodash';
 import {round, add, divide} from 'lodash';
 
 let glob = require("glob-promise");
 import Papa = require('papaparse');
+
 const fs = require('fs');
 
-//TODO This should be paginated
-app.models.ExpPlate
-  .find({limit: 100})
-  .then((expPlates: ExpPlateResultSet[]) => {
-    //@ts-ignore
-    return Promise.map(expPlates, (expPlate) => {
-      return getCountsApi(expPlate);
-    });
+const search = {};
+
+
+countExpPlates()
+  .then((paginationResults) => {
+    return getPagedExpPlates(paginationResults)
+  })
+  .then(() => {
+    console.log('finished!');
+    process.exit(0)
   })
   .catch((error) => {
-
+    console.log(error);
+    process.exit(1);
   });
+
+function getPagedExpPlates(paginationResults) {
+  return new Promise((resolve, reject) => {
+    //@ts-ignore
+    Promise.map(paginationResults.pages, (page) => {
+      let skip = Number(page) * Number(paginationResults.limit);
+      console.log(`Page: ${page} Skip: ${skip}`);
+      let data = {};
+      return app.models.ExpPlate
+        .find({
+          limit: paginationResults.limit,
+          skip: skip,
+          where: search,
+        })
+        .then((results: ExpPlateResultSet[]) => {
+          data['expPlates'] = results;
+          return app.models.ExpAssay
+            .find({
+              where: {
+                plateId: {
+                  inq: results.map((expPlate) => {
+                    return expPlate.plateId;
+                  })
+                }
+              },
+            });
+        }, {concurrency: 1})
+        .then((expPlates: ExpAssayResultSet[]) => {
+          //@ts-ignore
+          return Promise.map(expPlates, (expPlate) => {
+            return getCountsApi(expPlate);
+          });
+        })
+        .then(() => {
+          return;
+        })
+        .catch((error) => {
+          return new Error(error);
+        })
+    })
+      .then(() => {
+        resolve();
+      })
+      .catch((error) => {
+        console.log(error);
+        reject(new Error(error));
+      });
+  });
+}
 
 function getCountsApi(expPlate?: ExpPlateResultSet) {
   return new Promise((resolve, reject) => {
@@ -42,7 +95,7 @@ function getCountsApi(expPlate?: ExpPlateResultSet) {
         counts: countsFile,
       })
         .then((results: any) => {
-          console.log(results.data);
+          // console.log(contactSheetResults.data);
           return getAssays(results.data.counts);
           // return;
         })
@@ -338,7 +391,7 @@ function parseCountsFile(countsFile) {
         imagePath = imagePath.replace('-autolevel.bmp', '');
         imagePath = imagePath.replace('-autolevel.png', '');
         results.data[0].imagePathModified = imagePath;
-        // orig.push(results.data[0]);
+        // orig.push(contactSheetResults.data[0]);
         data.push(results.data[0]);
         if (data.length >= 10) {
           getAssays([data])
@@ -370,3 +423,23 @@ function parseCountsFile(countsFile) {
     });
   });
 }
+
+function countExpPlates() {
+  return new Promise((resolve, reject) => {
+    app.models.ExpPlate
+      .count()
+      .then((count) => {
+        let limit = 50;
+        let numPages = Math.round(count / limit);
+        let pages = range(0, numPages + 2);
+        pages = shuffle(pages);
+        console.log(`count is ${count}`);
+        resolve({count: count, pages: pages, limit: limit});
+      })
+      .catch((error) => {
+        console.log(error);
+        reject(new Error(error));
+      })
+  })
+}
+

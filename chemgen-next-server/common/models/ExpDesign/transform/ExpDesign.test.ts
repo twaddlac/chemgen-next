@@ -4,7 +4,7 @@ import assert = require('assert');
 import loopback = require('loopback');
 import {WorkflowModel} from "../../index";
 import {PlateResultSet} from "../../../types/sdk/models";
-import {PlateCollection} from "../../../types/wellData";
+import {PlateCollection} from "../../../types/custom/wellData";
 
 import * as _ from "lodash";
 

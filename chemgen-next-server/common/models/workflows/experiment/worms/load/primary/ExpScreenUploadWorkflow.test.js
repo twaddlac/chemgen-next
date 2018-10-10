@@ -16,7 +16,7 @@ describe('ExpScreenUploadWorkflow.worms.primary', function () {
         ExpScreenUploadWorkflow.load.workflows.worms.primary.populatePlateData(workflowData, instrumentPlates)
             .then(function (results) {
             assert.equal(results.length, 8);
-            // results = orderBy(results, 'instrumentPlateId');
+            // contactSheetResults = orderBy(contactSheetResults, 'instrumentPlateId');
             var expPlates = results.map(function (result) {
                 return result.expPlate;
             });

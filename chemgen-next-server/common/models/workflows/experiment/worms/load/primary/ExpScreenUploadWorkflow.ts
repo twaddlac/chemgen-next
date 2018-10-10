@@ -2,7 +2,7 @@ import app = require('../../../../../../../server/server.js');
 import Promise = require('bluebird');
 import {ExpPlateResultSet, ExpScreenUploadWorkflowResultSet, PlateResultSet} from "../../../../../../types/sdk/models";
 import {WorkflowModel} from "../../../../../index";
-import {PlateCollection, WellCollection, ScreenCollection} from "../../../../../../types/wellData";
+import {PlateCollection, WellCollection, ScreenCollection} from "../../../../../../types/custom/wellData";
 
 const ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow as (typeof WorkflowModel);
 
@@ -84,7 +84,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.primary.populateExperimentData = fu
         where: search,
       }, workflowData)
       .then((results) => {
-        //TODO Update the results with the current workflow
+        //TODO Update the contactSheetResults with the current workflow
         app.winston.info('Populating Experiment Plate');
         results = JSON.parse(JSON.stringify(results));
         return ExpScreenUploadWorkflow.load.workflows.worms.primary.populatePlateData(results[0], instrumentPlates);
@@ -185,7 +185,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
         });
     }, {concurrency: 1})
       .then(() => {
-        // I don't actually do anything with the results from the interfaces
+        // I don't actually do anything with the contactSheetResults from the interfaces
         // They are just there to look pretty
         resolve(screenData);
       })

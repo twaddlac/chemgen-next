@@ -6,7 +6,7 @@ import {ContactSheetComponent} from './contact-sheet.component';
 import {FormsModule} from '@angular/forms';
 import {NouisliderModule} from 'ng2-nouislider';
 import {ModalModule} from 'ngx-bootstrap';
-import {ExpManualScoresApi, ExpSetApi} from '../../../sdk/services/custom';
+import {ExpManualScoresApi, ExpSetApi} from '../../../types/sdk/services/custom';
 import {Lightbox} from 'angular2-lightbox';
 import {ComponentLoaderFactory} from "ngx-bootstrap";
 import {expSetMockData} from "../../../../test/ExpSet.mock";

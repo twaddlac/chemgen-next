@@ -11,8 +11,8 @@ import {PagesModule} from './pages/pages.module';
 
 import {PageNotFoundComponent} from './pages/not-found.component';
 
-import {SDKBrowserModule} from '../sdk';
-import {LoopBackConfig} from '../sdk';
+import {SDKBrowserModule} from '../types/sdk';
+import {LoopBackConfig} from '../types/sdk';
 
 import {RnaiPrimaryComponent} from './exp-screen/upload-screen/rnai/rnai-primary/rnai-primary.component';
 import {RnaiSecondaryComponent} from './exp-screen/upload-screen/rnai/rnai-secondary/rnai-secondary.component';
@@ -51,12 +51,27 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EmptyComponent} from './empty/empty.component';
 import {ExpsetToggleComponent} from './scoring/expset-toggle/expset-toggle.component';
 import {UiSwitchModule} from 'ngx-ui-switch';
-import { SearchFormExpsetsComponent } from './search-forms/search-form-expsets/search-form-expsets.component';
+import {SearchFormExpsetsComponent} from './search-forms/search-form-expsets/search-form-expsets.component';
 
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {ScatterplotCountsComponent} from './viz/scatterplot-counts/scatterplot-counts.component';
+
+// import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+
+import { HighchartsChartModule } from 'highcharts-angular';
+import * as Highcharts from 'highcharts';
+import exporting from 'highcharts/modules/exporting.src';
+import highcharts3D from 'highcharts/highcharts-3d.src.js';
+import { SearchFormContactSheetPrimaryComponent } from './search-forms/search-form-contact-sheet-primary/search-form-contact-sheet-primary.component';
+
+exporting(Highcharts);
+highcharts3D(Highcharts);
 
 @NgModule({
     imports: [
+        HighchartsChartModule,
+        NgxSpinnerModule,
         BrowserModule,
         AppRoutingModule,
         PagesModule,
@@ -75,6 +90,7 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
         LightboxModule,
         NouisliderModule,
         LoadingModule,
+        // ChartModule,
     ],
     declarations: [
         AppComponent,
@@ -99,6 +115,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
         EmptyComponent,
         ExpsetToggleComponent,
         SearchFormExpsetsComponent,
+        ScatterplotCountsComponent,
+        SearchFormContactSheetPrimaryComponent,
     ],
     entryComponents: [],
     providers: [],
@@ -107,8 +125,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
 export class AppModule {
     constructor() {
         // TODO Need to add this to an environmental variables
-        // LoopBackConfig.setBaseURL('http://10.230.9.227:3000');
-        LoopBackConfig.setBaseURL('http://localhost:3000');
+        LoopBackConfig.setBaseURL('http://10.230.9.227:3000');
+        // LoopBackConfig.setBaseURL('http://localhost:3000');
         LoopBackConfig.setApiVersion('api');
     }
 }

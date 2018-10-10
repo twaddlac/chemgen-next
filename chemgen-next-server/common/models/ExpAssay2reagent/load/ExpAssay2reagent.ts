@@ -3,7 +3,7 @@ import {WorkflowModel} from "../../index";
 import {ExpAssayResultSet, ExpPlateResultSet, ExpScreenUploadWorkflowResultSet} from "../../../types/sdk/models";
 import Promise = require('bluebird');
 
-import {PlateCollection, ScreenCollection, WellCollection} from "../../../types/wellData";
+import {PlateCollection, ScreenCollection, WellCollection} from "../../../types/custom/wellData";
 import {ExpAssay2reagentResultSet} from "../../../types/sdk/models";
 import {isEqual, isArray, orderBy, remove, filter} from 'lodash';
 

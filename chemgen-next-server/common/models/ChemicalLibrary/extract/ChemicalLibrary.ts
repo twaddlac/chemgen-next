@@ -1,5 +1,5 @@
 import app  = require('../../../../server/server.js');
-import {WellCollection} from "../../../types/wellData";
+import {WellCollection} from "../../../types/custom/wellData";
 import {
   ExpPlateResultSet, ChemicalLibraryResultSet, ChemicalLibraryStockResultSet,
   ChemicalXrefsResultSet
@@ -110,7 +110,7 @@ ChemicalLibrary.extract.parseLibraryResults = function (workflowData, expPlate: 
         })
       })
       .then(function (results) {
-        // app.winston.info('returning results...');
+        // app.winston.info('returning contactSheetResults...');
         resolve(results);
       })
       .catch(function (error) {

@@ -2,7 +2,7 @@ import app = require('../../../../server/server.js');
 import config = require('config');
 
 import {WorkflowModel} from "../../index";
-import {WellCollection} from "../../../types/wellData";
+import {WellCollection} from "../../../types/custom/wellData";
 import {ExpPlateResultSet, WpPostsResultSet, WpTermsResultSet} from "../../../types/sdk/models";
 import slug = require('slug');
 import Promise = require('bluebird');

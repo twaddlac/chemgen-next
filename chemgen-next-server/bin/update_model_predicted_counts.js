@@ -105,7 +105,7 @@ function getPagedCounts(paginationResults) {
             })
                 .then(function (results) {
                 console.log("Results Len : " + results.length);
-                // console.log(JSON.stringify(results));
+                // console.log(JSON.stringify(contactSheetResults));
                 return getExpAssays(results);
             })
                 .catch(function (error) {
@@ -180,7 +180,7 @@ function getExpAssays(modelPredictedCounts) {
             })
                 .then(function (results) {
                 // app.winston.info('got to final out');
-                // results = flatten(results);
+                // contactSheetResults = flatten(contactSheetResults);
                 resolve(true);
             })
                 .catch(function (error) {

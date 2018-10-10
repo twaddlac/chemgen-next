@@ -119,7 +119,7 @@ describe('ExpScreenUploadWorkflow.load', function () {
         });
     });
     it('ExpScreenUploadWorkflow.findOrCreate on deeply nested object', function (done) {
-        //This only sort of works. Just flattening the whole thing got me funny results.
+        //This only sort of works. Just flattening the whole thing got me funny contactSheetResults.
         var search = app.models[workflowData.libraryModel].load.createWorkflowSearchObj(workflowData);
         Promise.map([1, 2, 3, 4], function () {
             return ExpScreenUploadWorkflow
@@ -142,7 +142,7 @@ describe('ExpScreenUploadWorkflow.load', function () {
         });
     });
     it('ExpScreenUploadWorkflow.findOrCreate on deeply nested object - secondary', function (done) {
-        //This only sort of works. Just flattening the whole thing got me funny results.
+        //This only sort of works. Just flattening the whole thing got me funny contactSheetResults.
         //TODO Write tests against the mongodb datastore - this is ridiculous
         var search = app.models[workflowData.libraryModel].load.createWorkflowSearchObj(shared.rnaiData.secondaryWorkflowData[0]);
         Promise.map([1, 2, 3, 4], function () {

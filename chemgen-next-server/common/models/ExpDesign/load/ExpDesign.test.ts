@@ -2,7 +2,7 @@ import app = require('../../../../server/server');
 import assert = require('assert');
 import {WorkflowModel} from "../../index";
 import {PlateResultSet} from "../../../types/sdk/models";
-import {PlateCollection} from "../../../types/wellData";
+import {PlateCollection} from "../../../types/custom/wellData";
 
 const ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow as (typeof WorkflowModel);
 const ExpDesign = app.models.ExpDesign as (typeof WorkflowModel);
@@ -51,8 +51,8 @@ describe('ExpDesign.load secondary', function () {
       })
       .then((results) => {
         assert.equal(results.length, 9);
-        // assert.equal(ExpDesign.extract.isTreatmentId(1, results), false);
-        // assert.equal(ExpDesign.extract.isTreatmentId(6, results), true);
+        // assert.equal(ExpDesign.extract.isTreatmentId(1, contactSheetResults), false);
+        // assert.equal(ExpDesign.extract.isTreatmentId(6, contactSheetResults), true);
         done();
       })
       .catch((error) => {

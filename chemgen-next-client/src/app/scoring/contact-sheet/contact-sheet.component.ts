@@ -6,7 +6,7 @@ import {
     EventEmitter,
     Renderer2
 } from '@angular/core';
-import {ExpSetApi} from '../../../sdk/services/custom';
+import {ExpSetApi} from '../../../types/sdk/services/custom';
 import {Lightbox} from 'angular2-lightbox';
 import {NouisliderModule} from 'ng2-nouislider';
 import {
@@ -27,9 +27,10 @@ import {
 import {interpolateYlOrBr, interpolateViridis} from 'd3';
 import {
     ExpManualScoresResultSet
-} from '../../../sdk/models';
-import {ExpManualScoresApi} from '../../../sdk/services/custom';
-import {ExpSetSearchResults} from '../expset/expset.module';
+} from '../../../types/sdk/models';
+import {ExpManualScoresApi} from '../../../types/sdk/services/custom';
+import {ExpsetModule} from '../expset/expset.module';
+import {ExpSetSearchResults, ExpSetSearch} from "../../../types/custom/ExpSetTypes";
 
 @Component({
     selector: 'app-contact-sheet',
@@ -41,6 +42,7 @@ export class ContactSheetComponent implements OnInit {
     @Input() byPlate: Boolean = true;
     @Output() expSetsScored = new EventEmitter<boolean>();
 
+    public expSetModule: ExpsetModule;
     public didScore: boolean;
     public errorMessage: string;
     public contactSheetResults: ContactSheetFormResults;
@@ -234,12 +236,20 @@ export class ContactSheetComponent implements OnInit {
     //TODO Moving most of this code to the server side
 
     parseExpSetsToAlbums() {
+        this.expSetModule = new ExpsetModule(this.expSets);
         ['treatReagent', 'ctrlReagent', 'ctrlNull', 'ctrlStrain'].map((expGroupType) => {
             if (get(this.expSets, 'expGroupTypeAlbums') && get(this.expSets.expGroupTypeAlbums, expGroupType)) {
                 this.expSets.expGroupTypeAlbums[expGroupType].map((imageMeta: any) => {
-                    if (imageMeta.expSet.treatmentGroupId) {
+                    if (imageMeta.treatmentGroupId) {
                         this.contactSheetResults.interesting[imageMeta.treatmentGroupId] = false;
                     }
+                });
+            }
+        });
+        ['treatReagent', 'ctrlReagent'].map((expGroupType) => {
+            if (get(this.expSets, 'expGroupTypeAlbums') && get(this.expSets.expGroupTypeAlbums, expGroupType)) {
+                this.expSets.expGroupTypeAlbums[expGroupType].map((album: any) => {
+                    album.expSet = this.expSetModule.getExpSet(album) || {};
                 });
             }
         });

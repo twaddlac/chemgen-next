@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var Promise = require("bluebird");
-var wellData_1 = require("../../../types/wellData");
+var wellData_1 = require("../../../types/custom/wellData");
 var _ = require("lodash");
 var lodash_1 = require("lodash");
 var RnaiLibrary = app.models['RnaiLibrary'];

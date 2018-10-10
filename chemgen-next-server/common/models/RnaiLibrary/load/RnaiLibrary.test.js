@@ -54,7 +54,7 @@ describe('RnaiLibrary.load', function () {
             },
         })
             .then(function (results) {
-            // assert.deepEqual(results, {xrefs: [], taxTerms: []});
+            // assert.deepEqual(contactSheetResults, {xrefs: [], taxTerms: []});
             done();
         })
             .catch(function (error) {

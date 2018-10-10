@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {isEqual} from 'lodash';
 import {Lightbox, LightboxConfig} from 'angular2-lightbox';
 

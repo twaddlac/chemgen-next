@@ -149,7 +149,7 @@ ExpDesign.extract.workflows.getExpSets = function (expGroups) {
             .find({ where: { or: or } })
             .then(function (results) {
             // resolve(data);
-            // results = uniqBy(results, 'controlGroupId');
+            // contactSheetResults = uniqBy(contactSheetResults, 'controlGroupId');
             var or = [];
             results.map(function (result) {
                 or.push({ treatmentGroupId: result.treatmentGroupId });
@@ -158,7 +158,7 @@ ExpDesign.extract.workflows.getExpSets = function (expGroups) {
                 .find({ where: { or: or } });
         })
             .then(function (results) {
-            // results = uniqBy(results, 'controlGroupId');
+            // contactSheetResults = uniqBy(contactSheetResults, 'controlGroupId');
             var groups = lodash_1.groupBy(results, 'treatmentGroupId');
             var expDesignSets = [];
             Object.keys(groups).map(function (group) {

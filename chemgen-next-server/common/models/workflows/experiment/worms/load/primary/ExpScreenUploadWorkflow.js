@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../../../../server/server.js");
 var Promise = require("bluebird");
-var wellData_1 = require("../../../../../../types/wellData");
+var wellData_1 = require("../../../../../../types/custom/wellData");
 var ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow;
 /**
  * This workflow goes from the upload screenData to building the interfaces
@@ -75,7 +75,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.primary.populateExperimentData = fu
             where: search,
         }, workflowData)
             .then(function (results) {
-            //TODO Update the results with the current workflow
+            //TODO Update the contactSheetResults with the current workflow
             app.winston.info('Populating Experiment Plate');
             results = JSON.parse(JSON.stringify(results));
             return ExpScreenUploadWorkflow.load.workflows.worms.primary.populatePlateData(results[0], instrumentPlates);
@@ -173,7 +173,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
             });
         }, { concurrency: 1 })
             .then(function () {
-            // I don't actually do anything with the results from the interfaces
+            // I don't actually do anything with the contactSheetResults from the interfaces
             // They are just there to look pretty
             resolve(screenData);
         })

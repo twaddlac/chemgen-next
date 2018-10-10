@@ -126,7 +126,7 @@ let submitImageJob = function (imagesList) {
         })
     }, {concurrency: 1})
       .then((results) => {
-        console.log('resolving results!');
+        console.log('resolving contactSheetResults!');
         resolve(results);
       })
       .catch((error) => {

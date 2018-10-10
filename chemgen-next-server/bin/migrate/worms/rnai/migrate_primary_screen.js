@@ -122,7 +122,7 @@ function doStuff(tDataList) {
         });
     }, { concurrency: 1 })
         .then(function (results) {
-        //Get the valid results
+        //Get the valid contactSheetResults
         var filteredResults = lodash_1.filter(results, function (result) {
             return !lodash_1.isEmpty(result) && result.VALID;
         });
@@ -133,7 +133,7 @@ function doStuff(tDataList) {
         workflows = lodash_1.uniqWith(workflows, lodash_1.isEqual);
         console.log("Got # " + workflows.length + " workflows!");
         jsonfile.writeFileSync(path.resolve(__dirname, 'data', 'primary', workflowJsonName + ".json"), workflows, { spaces: 2 });
-        //Get the invalid results
+        //Get the invalid contactSheetResults
         var inValid = lodash_1.filter(results, function (result) {
             return !lodash_1.isEmpty(result) && !result.VALID;
         });

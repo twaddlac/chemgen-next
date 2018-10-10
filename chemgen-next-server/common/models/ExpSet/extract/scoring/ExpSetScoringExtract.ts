@@ -2,7 +2,7 @@ import app = require('../../../../../server/server.js');
 import {WorkflowModel} from "../../../index";
 import Promise = require('bluebird');
 import {divide, isNull, isUndefined, isEmpty, camelCase} from 'lodash';
-import {ExpSetSearch, ExpSetSearchResults} from "../../types";
+import {ExpSetSearch, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes/index";
 import {ChemicalLibraryResultSet, ExpAssay2reagentResultSet, RnaiLibraryResultSet} from "../../../../types/sdk/models";
 import decamelize = require('decamelize');
 
@@ -25,38 +25,6 @@ const knex = config.get('knex');
 const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
 
 /**
- * TODO Grab all experiment sets matching a given set of criteria
- * This is just a placeholder
- * @param {ExpSetSearch} search
- */
-ExpSet.extract.workflows.getExpSets = function (search: ExpSetSearch) {
-  return new Promise((resolve, reject) => {
-    search = new ExpSetSearch(search);
-    let data = new ExpSetSearchResults({});
-
-    let sqlQuery = ExpSet.extract.buildNativeQuery(data, search, false);
-    sqlQuery = sqlQuery.count();
-
-    app.winston.info(`Search Obj: ${JSON.stringify(search)}`);
-    app.winston.info(`Sql: ${sqlQuery.toString()}`);
-
-    ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
-      .then((data: ExpSetSearchResults) => {
-        return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
-      })
-      .then((data: ExpSetSearchResults) => {
-        return app.models.ExpSet.extract.buildExpSets(data, search);
-      })
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((error) => {
-        reject(new Error(error));
-      })
-  });
-};
-
-/**
  * Grab ExpSets that do not have a manual score
  * @param {ExpSetSearch} search
  */
@@ -65,12 +33,16 @@ ExpSet.extract.workflows.getUnscoredExpSets = function (search: ExpSetSearch) {
     search = new ExpSetSearch(search);
     let data = new ExpSetSearchResults({});
 
-    let sqlQuery = ExpSet.extract.buildNativeQuery(data, search, false);
+    if (!search.scoresExist) {
+      search.scoresExist = false;
+    }
+
+    let sqlQuery = ExpSet.extract.buildNativeQuery(data, search, search.scoresExist);
     sqlQuery = sqlQuery.count();
 
     ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
       .then((data: ExpSetSearchResults) => {
-        return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, false);
+        return ExpSet.extract.workflows.getExpAssay2reagentsByScores(data, search, search.scoresExist);
       })
       .then((data: ExpSetSearchResults) => {
         return app.models.ExpSet.extract.buildExpSets(data, search);
@@ -93,7 +65,7 @@ ExpSet.extract.workflows.getExpAssay2reagentsByScores = function (data: ExpSetSe
     //A much faster way to do this would be to get all the expWorkflowIds that match the query
     //Then get the ones that haven't been scored
     sqlQuery = sqlQuery
-    // .orderByRaw('RAND()')
+      .orderByRaw('RAND()')
       .limit(data.pageSize)
       .offset(data.skip);
 
@@ -140,7 +112,7 @@ ExpSet.extract.buildUnscoredPaginationData = function (data: ExpSetSearchResults
 };
 
 /**
- * The expPlates will have much fewer results, and so it will be faster to query, and more possible to pull a random plate for scoring
+ * The expPlates will have much fewer contactSheetResults, and so it will be faster to query, and more possible to pull a random plate for scoring
  * @param data
  * @param search
  * @param hasManualScores

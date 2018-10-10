@@ -1,6 +1,6 @@
 import app = require('../../../../server/server');
 import Promise = require('bluebird');
-import {PlateCollection, ScreenCollection} from "../../../types/wellData";
+import {PlateCollection, ScreenCollection} from "../../../types/custom/wellData";
 import {WorkflowModel} from "../../index";
 import {ExpGroupResultSet, PlateResultSet} from "../../../types/sdk/models";
 

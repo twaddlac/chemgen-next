@@ -155,10 +155,10 @@ var parseWell = function (workflowData, wellData) {
                         results['comment'] = comment_1;
                         results['lookUp'] = data_1;
                         resolve(results);
-                        // return findOtherGeneNames(results.chemicalName)
+                        // return findOtherGeneNames(contactSheetResults.chemicalName)
                         //   .then((otherTaxTerms) =>{
-                        //     results.chemicalData = otherTaxTerms;
-                        //     resolve(results);
+                        //     contactSheetResults.chemicalData = otherTaxTerms;
+                        //     resolve(contactSheetResults);
                         //   })
                     }
                 })
