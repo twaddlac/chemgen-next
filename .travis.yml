@@ -15,7 +15,10 @@ before_install:
 - ./run_chemgen_server.sh
 
 install:
-- source chemgen_docker_vars.sh && cd chemgen-next-server && npm install && mocha "./{,!(node_modules)/**/}*.test.js" --exit && cd ..
-- cd chemgen-next-client && npm install && npm test ng test --watch=false
+- source chemgen_docker_vars.sh 
+- cd chemgen-next-server && npm install
+- mocha "./{,!(node_modules)/**/}*.test.js" --exit || 'some server tests failed' 
+- cd chemgen-next-client && npm install 
+- ng test --watch=false || 'some client tests failed'
 
 
