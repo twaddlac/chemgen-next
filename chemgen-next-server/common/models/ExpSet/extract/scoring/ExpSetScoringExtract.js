@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../../server/server.js");
 var Promise = require("bluebird");
 var lodash_1 = require("lodash");
-var index_1 = require("../../../../types/custom/ExpSetTypes/index");
+var ExpSetTypes_1 = require("../../../../types/custom/ExpSetTypes");
 var decamelize = require("decamelize");
 var config = require("config");
 var knex = config.get('knex');
@@ -22,8 +22,8 @@ var ExpSet = app.models.ExpSet;
  */
 ExpSet.extract.workflows.getUnscoredExpSets = function (search) {
     return new Promise(function (resolve, reject) {
-        search = new index_1.ExpSetSearch(search);
-        var data = new index_1.ExpSetSearchResults({});
+        search = new ExpSetTypes_1.ExpSetSearch(search);
+        var data = new ExpSetTypes_1.ExpSetSearchResults({});
         if (!search.scoresExist) {
             search.scoresExist = false;
         }

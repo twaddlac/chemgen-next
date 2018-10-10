@@ -1,12 +1,11 @@
 import app = require('../../../../server/server.js');
 import {WorkflowModel} from "../../index";
 import {
-  ChemicalLibraryResultSet,
   ExpAssay2reagentResultSet, ExpAssayResultSet, ExpDesignResultSet, ExpManualScoresResultSet,
   ExpPlateResultSet,
   ExpScreenResultSet, ExpScreenUploadWorkflowResultSet,
-  ModelPredictedCountsResultSet, RnaiLibraryResultSet, RnaiWormbaseXrefsResultSet,
-} from "../../../types/sdk/models/index";
+  ModelPredictedCountsResultSet
+} from "../../../types/sdk/";
 import {
   find,
   uniqBy,
@@ -18,7 +17,7 @@ import {
   groupBy,
 } from 'lodash';
 import Promise = require('bluebird');
-import {ExpSetSearch, ExpSetSearchResults} from "../../../types/custom/ExpSetTypes/index";
+import {ExpSetSearch, ExpSetSearchResults} from "../../../types/custom/ExpSetTypes";
 import config = require('config');
 import redis = require('redis');
 // @ts-ignore
