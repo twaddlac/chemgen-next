@@ -123,10 +123,12 @@ var workflowData = {
 describe('ExpAssay.load', function () {
     shared.prepareRnai();
     it('Should return the correct biosampleId and expPlateType', function () {
+        this.timeout(5000);
         var thing = ExpAssay.load.getExpGroup(workflowData, expPlates[0]);
         assert.deepEqual(thing, { expGroupType: 'ctrl_rnai', biosampleId: 1 });
     });
     it('ExpAssay.load.createExpPlate expPlates[0] R1', function (done) {
+        this.timeout(5000);
         ExpAssay.load.workflows.processExpPlate(workflowData, expPlates[0])
             .then(function (results) {
             assert.equal(results.wellDataList[0].expGroup.biosampleId, 1);
@@ -139,6 +141,7 @@ describe('ExpAssay.load', function () {
         });
     });
     it('ExpAssay.load.createExpPlate expPlates[4] R2', function (done) {
+        this.timeout(5000);
         ExpAssay.load.workflows.processExpPlate(workflowData, expPlates[4])
             .then(function (results) {
             results.wellDataList = lodash_1.orderBy(results.wellDataList, 'well');
@@ -152,6 +155,7 @@ describe('ExpAssay.load', function () {
         });
     });
     it('ExpAssay.load.workflows.prepareAnnotationData', function (done) {
+        this.timeout(5000);
         ExpAssay.load.workflows.processExpPlate(workflowData, expPlates[4])
             .then(function (results) {
             return ExpAssay.load.prepareAnnotationData(workflowData, results);
@@ -166,6 +170,7 @@ describe('ExpAssay.load', function () {
         });
     });
     it('ExpAssay.load.workflows.imageConversionPipeline.arrayScan', function (done) {
+        this.timeout(5000);
         ExpAssay.load.workflows.processExpPlate(workflowData, expPlates[4])
             .then(function (results) {
             return ExpAssay.load.workflows.imageConversionPipeline.arrayScan(workflowData, results);
@@ -183,6 +188,7 @@ describe('ExpAssay.load', function () {
         });
     });
     it('ExpAssay.load.workflows.processExpPlates', function (done) {
+        this.timeout(5000);
         ExpAssay.load.workflows.processExpPlates(workflowData, expPlates)
             .then(function (results) {
             assert.equal(results.length, 5);
