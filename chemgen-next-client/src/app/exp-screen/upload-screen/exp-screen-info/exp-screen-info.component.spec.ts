@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ExpScreenInfoComponent} from './exp-screen-info.component';
 import {FormsModule} from "@angular/forms";
+import {SDKBrowserModule} from "../../../../types/sdk";
 
 describe('ExpScreenInfoComponent', () => {
     let component: ExpScreenInfoComponent;
@@ -9,7 +10,7 @@ describe('ExpScreenInfoComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule],
+            imports: [FormsModule, SDKBrowserModule.forRoot()],
             declarations: [ExpScreenInfoComponent]
         })
             .compileComponents();

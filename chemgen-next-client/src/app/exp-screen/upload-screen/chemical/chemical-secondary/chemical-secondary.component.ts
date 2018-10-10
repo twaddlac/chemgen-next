@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ExpScreenApi} from '../../../../../types/sdk/services/custom';
-import {JsonPipe} from '@angular/common';
-import {ExpBiosampleResultSet, ExpScreenResultSet, PlateResultSet, ReagentLibraryResultSet} from '../../../../../types/sdk/models';
 import {PlateApi, ExpBiosampleApi, ExpScreenUploadWorkflowApi, ReagentLibraryApi} from '../../../../../types/sdk/services/custom';
 
 import {isNull, isEmpty} from 'lodash';

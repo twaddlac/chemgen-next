@@ -3,36 +3,9 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from "@angular/core";
 import {RnaiPrimaryComponent} from './rnai-primary.component';
 import {FormsModule} from "@angular/forms";
-import {ExperimentData, ScreenDesign, SearchExpBiosamples} from "../../helpers";
-import {DndModule, DragDropConfig, DragDropService, DragDropSortableService} from "ng2-dnd";
-import {
-    ExpScreenApi,
-    ExpScreenUploadWorkflowApi,
-    ReagentLibraryApi,
-    SDKModels
-} from "../../../../../types/sdk/services/custom";
-import {HttpClient, HttpHandler} from "@angular/common/http";
-import {ErrorHandler, LoopBackAuth} from "../../../../../types/sdk/services/core";
-import {SocketConnection} from "../../../../../types/sdk/sockets/socket.connections";
-import {SocketDriver} from "../../../../../types/sdk/sockets/socket.driver";
-import {InternalStorage, SDKBrowserModule} from "../../../../../types/sdk";
-
-@Component({
-    selector: 'app-exp-screen-info',
-    template: '<p>Mock Plate Imaging Dates Component</p>'
-})
-class MockExpScreenInfoComponent {
-    @Input() expDataModel: ExperimentData;
-    @Input() expBiosampleModel: SearchExpBiosamples;
-}
-
-@Component({
-    selector: 'app-plate-imaging-dates',
-    template: '<p>Mock Plate Imaging Dates Component</p>'
-})
-class MockPlateImagingDatesComponent {
-    @Input() plateModel: ScreenDesign;
-}
+import {DndModule} from "ng2-dnd";
+import {SDKBrowserModule} from "../../../../../types/sdk";
+import {MockExpScreenInfoComponent, MockPlateImagingDatesComponent} from "../../../../../../test/MockComponents";
 
 describe('RnaiPrimaryComponent', () => {
     let component: RnaiPrimaryComponent;

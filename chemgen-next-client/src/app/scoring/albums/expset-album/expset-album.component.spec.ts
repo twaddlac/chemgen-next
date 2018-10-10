@@ -2,8 +2,9 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ExpsetAlbumComponent} from './expset-album.component';
 import {FormsModule} from '@angular/forms';
-import {Lightbox} from 'angular2-lightbox';
-import {ModalModule} from "ngx-bootstrap";
+import {Lightbox, LightboxModule} from 'angular2-lightbox';
+import {SDKBrowserModule} from "../../../../types/sdk";
+import {MockExpsetToggleComponent} from "../../../../../test/MockComponents";
 
 describe('ExpsetAlbumComponent', () => {
   let component: ExpsetAlbumComponent;
@@ -11,8 +12,8 @@ describe('ExpsetAlbumComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [ExpsetAlbumComponent],
+      imports: [FormsModule, SDKBrowserModule.forRoot(), LightboxModule],
+      declarations: [ExpsetAlbumComponent, MockExpsetToggleComponent],
       providers: [{provide: Lightbox}]
     })
       .compileComponents();

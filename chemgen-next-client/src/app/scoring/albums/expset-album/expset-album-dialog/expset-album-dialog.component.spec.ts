@@ -2,12 +2,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ExpsetAlbumDialogComponent} from './expset-album-dialog.component';
 import {FormsModule} from '@angular/forms';
-import {Lightbox, LightboxModule} from 'angular2-lightbox';
-import {ModalDirective, ModalModule} from 'ngx-bootstrap';
-import {ExpsetAlbumComponent} from '../expset-album.component';
-import {ExpSetApi} from '../../../../../types/sdk/services/custom';
-import {ComponentLoaderFactory} from "ngx-bootstrap";
+import {LightboxModule} from 'angular2-lightbox';
+import { ModalModule} from 'ngx-bootstrap';
 import {SDKBrowserModule} from "../../../../../types/sdk";
+import {MockExpsetAlbumComponent} from "../../../../../../test/MockComponents";
 
 describe('ExpsetAlbumDialogComponent', () => {
   let component: ExpsetAlbumDialogComponent;
@@ -16,7 +14,7 @@ describe('ExpsetAlbumDialogComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ModalModule.forRoot(), LightboxModule, SDKBrowserModule.forRoot()],
-      declarations: [ExpsetAlbumDialogComponent, ExpsetAlbumComponent],
+      declarations: [ExpsetAlbumDialogComponent, MockExpsetAlbumComponent],
     })
       .compileComponents();
   }));

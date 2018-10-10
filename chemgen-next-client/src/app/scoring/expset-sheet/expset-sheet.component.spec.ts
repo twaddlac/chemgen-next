@@ -1,30 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ExpsetSheetComponent } from './expset-sheet.component';
+import {ExpsetSheetComponent} from './expset-sheet.component';
 import {FormsModule} from '@angular/forms';
-import {ExpsetAlbumComponent} from '../albums/expset-album/expset-album.component';
-import {ExpsetAlbumDialogComponent} from '../albums/expset-album/expset-album-dialog/expset-album-dialog.component';
 import {ModalModule} from 'ngx-bootstrap';
+import {MockExpsetAlbumComponent, MockExpsetAlbumDialog} from "../../../../test/MockComponents";
+import {SDKBrowserModule} from "../../../types/sdk";
 
 describe('ExpsetSheetComponent', () => {
-  let component: ExpsetSheetComponent;
-  let fixture: ComponentFixture<ExpsetSheetComponent>;
+    let component: ExpsetSheetComponent;
+    let fixture: ComponentFixture<ExpsetSheetComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [FormsModule, ModalModule],
-      declarations: [ ExpsetSheetComponent, ExpsetAlbumComponent, ExpsetAlbumDialogComponent]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule, ModalModule, SDKBrowserModule.forRoot()],
+            declarations: [ExpsetSheetComponent, MockExpsetAlbumComponent, MockExpsetAlbumDialog]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ExpsetSheetComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ExpsetSheetComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

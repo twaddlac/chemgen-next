@@ -17,7 +17,7 @@ export class ExpsetToggleComponent implements OnInit {
     @Input() expWorkflow: ExpScreenUploadWorkflowResultSet;
     @Input() treatmentGroupId: number;
     @Input() assayId: any = null;
-    @Input() contactSheetResults: any;
+    @Input() contactSheetResults: any = {interesting: {}};
     @Input() expManualScores: ExpManualScoresResultSet[] = [];
     //For the contact sheet we want to submit all as one batch as opposed to in real time
     @Input() submit: boolean = true;
@@ -29,8 +29,12 @@ export class ExpsetToggleComponent implements OnInit {
     constructor(private expManualScoresApi: ExpManualScoresApi, private renderer: Renderer2) {
         const userName = document.getElementById('userName');
         const userId = document.getElementById('userId');
-        this.userName = userName.innerText || 'dummyUser';
-        this.userId = userId.innerText || 0;
+        if (userName) {
+            this.userName = userName.innerText || 'dummyUser';
+        }
+        if (userId) {
+            this.userId = userId.innerText || 0;
+        }
         this.submit = true;
         this.returnedResults = {};
     }
@@ -86,9 +90,6 @@ export class ExpsetToggleComponent implements OnInit {
                 return false;
             }
         };
-        if (!has(this.contactSheetResults, 'interesting')) {
-            this.contactSheetResults.interesting = {};
-        }
         if (!has(this.contactSheetResults.interesting, this.treatmentGroupId)) {
             this.contactSheetResults.interesting[this.treatmentGroupId] = false;
         }
