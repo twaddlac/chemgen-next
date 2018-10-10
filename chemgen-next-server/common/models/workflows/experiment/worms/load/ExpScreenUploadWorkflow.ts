@@ -5,7 +5,7 @@ import {
   PlateResultSet
 } from "../../../../../types/sdk/models";
 import {WorkflowModel} from "../../../../index";
-import {PlateCollection, WellCollection, ScreenCollection} from "../../../../../types/wellData";
+import {PlateCollection, WellCollection, ScreenCollection} from "../../../../../types/custom/wellData";
 import jsonfile = require('jsonfile');
 import {isEqual, isEmpty, get} from 'lodash';
 import deepcopy = require('deepcopy');
@@ -206,7 +206,7 @@ ExpScreenUploadWorkflow.load.createWorkflowInstance = function (workflowData: Ex
         // where: search,
       })
       .then((results) => {
-        //TODO Update the results with the current workflow
+        //TODO Update the contactSheetResults with the current workflow
         if (!isEmpty(results)) {
           app.winston.info('ExpScreen Upload Workflow found!');
           resolve(results);
@@ -333,7 +333,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (wor
       })
       .then(() => {
         app.winston.info(`Complete Experiment Interfaces! ${workflowData.name}`);
-        // I don't actually do anything with the results from the interfaces
+        // I don't actually do anything with the contactSheetResults from the interfaces
         // They are just there to look pretty
         resolve(screenData);
       })

@@ -10,12 +10,12 @@ import {
     ExpScreenUploadWorkflowApi,
     ReagentLibraryApi,
     SDKModels
-} from "../../../../../sdk/services/custom";
+} from "../../../../../types/sdk/services/custom";
 import {HttpClient, HttpHandler} from "@angular/common/http";
-import {ErrorHandler, LoopBackAuth} from "../../../../../sdk/services/core";
-import {SocketConnection} from "../../../../../sdk/sockets/socket.connections";
-import {SocketDriver} from "../../../../../sdk/sockets/socket.driver";
-import {InternalStorage, SDKBrowserModule} from "../../../../../sdk";
+import {ErrorHandler, LoopBackAuth} from "../../../../../types/sdk/services/core";
+import {SocketConnection} from "../../../../../types/sdk/sockets/socket.connections";
+import {SocketDriver} from "../../../../../types/sdk/sockets/socket.driver";
+import {InternalStorage, SDKBrowserModule} from "../../../../../types/sdk";
 
 @Component({
     selector: 'app-exp-screen-info',

@@ -4,7 +4,7 @@ import {WorkflowModel} from "../../index";
 
 import Promise = require('bluebird');
 import * as _ from "lodash";
-import {PlateCollection, WellCollection, ScreenCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection, ScreenCollection} from "../../../types/custom/wellData";
 import {ExpGroupResultSet} from "../../../types/sdk/models";
 
 const ExpGroup = app.models['ExpGroup'] as (typeof WorkflowModel);

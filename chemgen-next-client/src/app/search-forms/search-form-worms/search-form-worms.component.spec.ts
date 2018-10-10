@@ -13,13 +13,13 @@ import {GridAlbumComponent} from '../../scoring/albums/grid-album/grid-album.com
 import {ExpsetAlbumComponent} from '../../scoring/albums/expset-album/expset-album.component';
 import {ExpsetAlbumDialogComponent} from '../../scoring/albums/expset-album/expset-album-dialog/expset-album-dialog.component';
 import {ModalModule} from 'ngx-bootstrap';
-import {ExpScreenApi, ExpScreenUploadWorkflowApi, ExpSetApi, SDKModels} from '../../../sdk/services/custom';
+import {ExpScreenApi, ExpScreenUploadWorkflowApi, ExpSetApi, SDKModels} from '../../../types/sdk/services/custom';
 import {NgProgress, NgProgressModule} from '@ngx-progressbar/core';
 import {HttpClient, HttpHandler} from '@angular/common/http';
-import {SocketConnection} from '../../../sdk/sockets/socket.connections';
-import {SocketDriver} from '../../../sdk/sockets/socket.driver';
-import {ErrorHandler, LoopBackAuth} from '../../../sdk/services/core';
-import {InternalStorage} from '../../../sdk';
+import {SocketConnection} from '../../../types/sdk/sockets/socket.connections';
+import {SocketDriver} from '../../../types/sdk/sockets/socket.driver';
+import {ErrorHandler, LoopBackAuth} from '../../../types/sdk/services/core';
+import {InternalStorage, SDKBrowserModule} from '../../../types/sdk';
 
 describe('SearchFormWormsComponent', () => {
     let component: SearchFormWormsComponent;
@@ -27,7 +27,7 @@ describe('SearchFormWormsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [LoadingModule, FormsModule, NouisliderModule, ModalModule, NgProgressModule],
+            imports: [LoadingModule, FormsModule, NouisliderModule, ModalModule, NgProgressModule, SDKBrowserModule.forRoot()],
             declarations: [SearchFormWormsComponent, SearchFormExpScreenComponent,
                 SearchFormRnaiComponent, SearchFormViewOptionsComponent, ContactSheetComponent,
                 ExpsetSheetComponent, GridAlbumComponent, ExpsetAlbumComponent, ExpsetAlbumDialogComponent],

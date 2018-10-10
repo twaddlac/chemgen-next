@@ -120,7 +120,7 @@ var findPlates = function (workflowData) {
         app.models.Plate
             .find(search)
             .then(function (results) {
-            // console.log(`Results length: ${results.length}`);
+            // console.log(`Results length: ${contactSheetResults.length}`);
             console.log(JSON.stringify(results));
             if (results.length == 0) {
                 reject(new Error("No Plates found for search " + JSON.stringify(search)));

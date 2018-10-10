@@ -57,7 +57,8 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Primary <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-worms">Contact Sheet</a></li>
+                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-form-contact-sheet-plate">Contact Sheet - By Plate</a></li>
+                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-expsets-worms">Search For Exp Sets</a></li>
                         </ul>
                     </li>
                 </ul>

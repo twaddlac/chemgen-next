@@ -13,12 +13,12 @@ import {
     PlateApi, PlatePlan96Api,
     ReagentLibraryApi,
     SDKModels
-} from "../../../../../sdk/services/custom";
+} from "../../../../../types/sdk/services/custom";
 import {HttpClient, HttpHandler} from "@angular/common/http";
-import {SocketConnection} from "../../../../../sdk/sockets/socket.connections";
-import {SocketDriver} from "../../../../../sdk/sockets/socket.driver";
-import {ErrorHandler, LoopBackAuth} from "../../../../../sdk/services/core";
-import {InternalStorage, SDKBrowserModule} from "../../../../../sdk";
+import {SocketConnection} from "../../../../../types/sdk/sockets/socket.connections";
+import {SocketDriver} from "../../../../../types/sdk/sockets/socket.driver";
+import {ErrorHandler, LoopBackAuth} from "../../../../../types/sdk/services/core";
+import {InternalStorage, SDKBrowserModule} from "../../../../../types/sdk";
 
 @Component({
     selector: 'app-plate-imaging-dates',

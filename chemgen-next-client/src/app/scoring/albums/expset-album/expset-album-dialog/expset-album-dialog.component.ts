@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, ViewChild, ChangeDetectionStrategy} from '@angular/core';
-import {ModelPredictedCountsResultSet} from '../../../../../sdk/models';
-import {ExpSetApi} from '../../../../../sdk/services/custom';
+import {ModelPredictedCountsResultSet} from '../../../../../types/sdk/models';
+import {ExpSetApi} from '../../../../../types/sdk/services/custom';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Lightbox} from 'angular2-lightbox';
 import {get} from 'lodash';
@@ -16,6 +16,7 @@ export class ExpsetAlbumDialogComponent implements OnInit {
     // @Input('modelPredictedCounts') modelPredictedCounts: ModelPredictedCountsResultSet;
     @Input('albums') albums: any;
     @Input('score') score: boolean;
+    @Input('contactSheetResults') contactSheetResults: any = {interesting: {}};
 
     @ViewChild('lgModal') lgModal: ModalDirective;
 
@@ -26,6 +27,10 @@ export class ExpsetAlbumDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+        if(!this.contactSheetResults){
+            this.contactSheetResults = {};
+            this.contactSheetResults.interesting = {};
+        }
     }
 
     getExpSets(counts: ModelPredictedCountsResultSet) {

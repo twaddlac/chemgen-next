@@ -1,8 +1,11 @@
 import {Component, OnInit, Input, Renderer2, Output} from '@angular/core';
-import {ExpManualScoresApi} from "../../../sdk/services/custom";
-import {ExpManualScoresResultSet, ExpScreenResultSet, ExpScreenUploadWorkflowResultSet} from "../../../sdk/models";
-import {ContactSheetComponent} from "../contact-sheet/contact-sheet.component";
-import {get, find, isEqual} from 'lodash';
+import {ExpManualScoresApi} from "../../../types/sdk/services/custom";
+import {
+    ExpManualScoresResultSet,
+    ExpScreenResultSet,
+    ExpScreenUploadWorkflowResultSet
+} from "../../../types/sdk/models";
+import {get, has, find, isEqual} from 'lodash';
 
 @Component({
     selector: 'app-expset-toggle',
@@ -14,13 +17,14 @@ export class ExpsetToggleComponent implements OnInit {
     @Input() expWorkflow: ExpScreenUploadWorkflowResultSet;
     @Input() treatmentGroupId: number;
     @Input() assayId: any = null;
-    @Input() results: any;
+    @Input() contactSheetResults: any;
     @Input() expManualScores: ExpManualScoresResultSet[] = [];
     //For the contact sheet we want to submit all as one batch as opposed to in real time
     @Input() submit: boolean = true;
     public error: any;
     public userName: string;
     public userId: string | number;
+    public returnedResults: any = {};
 
     constructor(private expManualScoresApi: ExpManualScoresApi, private renderer: Renderer2) {
         const userName = document.getElementById('userName');
@@ -28,22 +32,21 @@ export class ExpsetToggleComponent implements OnInit {
         this.userName = userName.innerText || 'dummyUser';
         this.userId = userId.innerText || 0;
         this.submit = true;
+        this.returnedResults = {};
     }
 
     ngOnInit() {
-        if (!this.results) {
-            this.results = {};
-            this.results[this.treatmentGroupId] = false;
-        } else if (this.results && !get(this.results, this.treatmentGroupId)) {
-            this.results[this.treatmentGroupId] = false;
-        }
-        this.getManualScores();
+        //Witnout the setTimeoutet function, this gets some weird error
+        setTimeout(() => {
+            this.getManualScores();
+        });
     }
+
 
     setManualScores() {
         if (this.submit) {
             let manualScoreValue = 0;
-            if (this.results[this.treatmentGroupId]) {
+            if (this.contactSheetResults.interesting[this.treatmentGroupId]) {
                 manualScoreValue = 1;
             }
             let score = {
@@ -83,8 +86,19 @@ export class ExpsetToggleComponent implements OnInit {
                 return false;
             }
         };
-        if (this.expManualScores && this.expManualScores.length) {
-            this.results[this.treatmentGroupId] = filterExpManualScores(this.expManualScores)
+        if (!has(this.contactSheetResults, 'interesting')) {
+            this.contactSheetResults.interesting = {};
+        }
+        if (!has(this.contactSheetResults.interesting, this.treatmentGroupId)) {
+            this.contactSheetResults.interesting[this.treatmentGroupId] = false;
+        }
+
+        //Need to make sure this is bound to the contact sheet
+        let alreadySet = false;
+        if (has(this.contactSheetResults.interesting, this.treatmentGroupId)) {
+            alreadySet = true;
+        } else if (this.expManualScores && this.expManualScores.length) {
+            this.contactSheetResults.interesting[this.treatmentGroupId] = filterExpManualScores(this.expManualScores)
         } else {
             let where: any = {and: [{'manualscoreGroup': 'FIRST_PASS'}]};
             if (this.assayId) {
@@ -99,7 +113,7 @@ export class ExpsetToggleComponent implements OnInit {
                     where: where
                 })
                 .subscribe((results: ExpManualScoresResultSet[]) => {
-                    this.results[this.treatmentGroupId] = filterExpManualScores(results);
+                    this.contactSheetResults.interesting[this.treatmentGroupId] = filterExpManualScores(results);
                 }, (error) => {
                     this.error(error.toString());
                 })

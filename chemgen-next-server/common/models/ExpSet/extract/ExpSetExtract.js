@@ -3,35 +3,52 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var lodash_1 = require("lodash");
 var Promise = require("bluebird");
-var types_1 = require("../types");
+var index_1 = require("../../../types/custom/ExpSetTypes/index");
 var config = require("config");
 var ExpSet = app.models.ExpSet;
 /**
- *  ExpSetSearch the expAssay2reagents table given the search results
- *  From there get assays, and get includeCounts
- * @param {ExpSetSearchResults} data
- * @param {ExpSetSearch} search
+ * ExpSet.extract.workflows.getExpSets is a wrapper around a bunch of other api points
+ * @param data
+ * @param search
  */
-ExpSet.extract.searchExpAssay2reagents = function (data, search) {
+ExpSet.extract.workflows.getExpSets = function (search) {
     return new Promise(function (resolve, reject) {
-        var expAssay2reagentSearch = app.models.ExpSet.extract.buildExpAssay2reagentSearch(data, search);
-        app.models.ExpAssay2reagent
-            .find(expAssay2reagentSearch)
-            .then(function (results) {
-            data.expAssay2reagents = results;
-            return app.models.ExpSet.extract.buildExpSets(data, search);
-        })
-            .then(function (data) {
-            resolve(data);
-        })
-            .catch(function (error) {
-            app.winston.error(error);
-            reject(new Error(error));
-        });
+        //come on compile!!!
+        app.winston.info("B: Search : " + JSON.stringify(search));
+        search = new index_1.ExpSetSearch(search);
+        app.winston.info("A: Search : " + JSON.stringify(search));
+        var data = new index_1.ExpSetSearchResults({});
+        if (lodash_1.isEqual(search.scoresExist, true)) {
+            //Use the  scoring
+            app.winston.info("ExpSet.extract.workflows.getUnscoredExpSet");
+            resolve(ExpSet.extract.workflows.getUnscoredExpSet(search));
+        }
+        else if (lodash_1.isEqual(search.scoresExist, false)) {
+            app.winston.info("ExpSet.extract.workflows.getUnscoredExpSetsByPlate");
+            resolve(ExpSet.extract.workflows.getUnscoredExpSetsByPlate(search));
+        }
+        else if (lodash_1.isEqual(search.scoresExist, null) && !(lodash_1.isEmpty(search.rnaiSearch))) {
+            //Search the RnaiLibrary Api
+            app.winston.info("RnaiExpSet.extract.workflows.getExpSetsByGeneList");
+            resolve(app.models.RnaiExpSet.extract.workflows.getExpSetsByGeneList(search));
+        }
+        else if (lodash_1.isEqual(search.scoresExist, null) && !(lodash_1.isEmpty(search.chemicalSearch))) {
+            //Place holder - I haven't written in this one yet
+            app.winston.info("TODO Chemical Exp Set");
+            resolve();
+        }
+        else {
+            search.pageSize = 1;
+            //Return the expSet
+            app.winston.info("ExpSet.extract.workflows.getExpSetsByWorkflowId");
+            resolve(ExpSet.extract.workflows.getExpSetsByWorkflowId(search));
+        }
     });
 };
 /**
  * Build the 'where' query against the ExpAssay2reagent table (the main experiment table)
+ * You need to use this function if you are querying against a specific set of genes or chemicals
+ * Otherwise use the ExpWorkflowFunctions
  * @param {ExpSetSearchResults} data
  * @param {ExpSetSearch} search
  * @returns {any[]}
@@ -105,31 +122,7 @@ ExpSet.extract.buildExpAssay2reagentSearch = function (data, search) {
     };
 };
 /**
- * This only builds the most basic pagination
- * It does not do any filtering for assays that already have scores
- * Or ordering expAssays by any rank
- * To do eithe of these things see ExpSet.extract.workflows.scoring
- * @param {ExpSetSearchResults} data
- * @param {ExpSetSearch} search
- */
-ExpSet.extract.buildBasicPaginationData = function (data, search) {
-    return new Promise(function (resolve, reject) {
-        var or = app.models.ExpSet.extract.buildQuery(data, search);
-        app.paginateModel('ExpAssay2reagent', { or: or }, search.pageSize)
-            .then(function (pagination) {
-            data.currentPage = search.currentPage;
-            data.skip = search.skip;
-            data.pageSize = search.pageSize;
-            data.totalPages = pagination.totalPages;
-            resolve(data);
-        })
-            .catch(function (error) {
-            app.winston.error(error);
-            reject(new Error(error));
-        });
-    });
-};
-/**
+ /**
  * This is the main workflow
  * Once we have a set of expAssay2reagents, get the corresponding expAssays, includeCounts, expPlates, expScreens, and expWorkflows
  * Also generate an album for use in the interface
@@ -166,7 +159,7 @@ ExpSet.extract.buildExpSets = function (data, search) {
         })
             .then(function (results) {
             //TODO if returning includeCounts also return ExpAssay is redundent
-            // data['expAssays'] = results;
+            // data['expAssays'] = contactSheetResults;
             data.expAssays = results;
             var expGroupIds = results.map(function (expAssay) {
                 return { expGroupId: expAssay.expGroupId };
@@ -276,6 +269,8 @@ ExpSet.extract.sanityChecks = function (data, search) {
                     reagentId: { 'neq': null }
                 },
                 fields: {
+                    screenId: true,
+                    expWorkflowId: true,
                     treatmentGroupId: true,
                     assay2reagentId: true,
                     expGroupId: true,
@@ -284,6 +279,7 @@ ExpSet.extract.sanityChecks = function (data, search) {
                     reagentId: true,
                     libraryId: true,
                     reagentType: true,
+                    reagentTable: true,
                 },
             });
         })
@@ -374,123 +370,86 @@ ExpSet.extract.getExpData = function (data, search) {
 };
 ExpSet.extract.getCounts = function (data, search) {
     return new Promise(function (resolve, reject) {
-        if (!search.includeCounts) {
-            resolve(data);
-        }
-        else {
-            app.models.ModelPredictedCounts
-                .find({
-                where: {
-                    assayId: {
-                        inq: data.expAssays.map(function (expAssay) {
-                            return expAssay.assayId;
-                        }),
-                    }
+        app.models.ModelPredictedCounts
+            .find({
+            where: {
+                assayId: {
+                    inq: data.expAssays.map(function (expAssay) {
+                        return expAssay.assayId;
+                    }),
                 }
-            })
-                .then(function (results) {
-                data.modelPredictedCounts = results;
-                resolve(data);
-            })
-                .catch(function (error) {
-                app.winston.error(error);
-                reject(new Error(error));
-            });
-        }
-    });
-};
-ExpSet.extract.genExpSetAlbums = function (data, search) {
-    if (!search.includeAlbums) {
-        return data;
-    }
-    else {
-        data.expSets.map(function (expSet) {
-            var album = {};
-            album.expWorkflowId = expSet[0].expWorkflowId;
-            album.treatmentReagentId = expSet[0].treatmentGroupId;
-            album.treatmentGroupId = expSet[0].treatmentGroupId;
-            try {
-                album.ctrlReagentId = lodash_1.find(expSet, function (set) {
-                    return lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_rnai') || lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_compound') || lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_chemical');
-                }).controlGroupId;
-            }
-            catch (error) {
-                // app.winston.error('There is no ctrl for the reagent!');
-            }
-            try {
-                album.ctrlStrainId = lodash_1.find(expSet, function (set) {
-                    return lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_strain');
-                }).controlGroupId;
-            }
-            catch (error) {
-                // app.winston.error('There is no ctrl strain');
-            }
-            try {
-                album.ctrlNullId = lodash_1.find(expSet, function (set) {
-                    return lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_null');
-                }).controlGroupId;
-            }
-            catch (error) {
-                // app.winston.error('There is no ctrl null');
-            }
-            ['treatmentReagent', 'ctrlReagent', 'ctrlStrain', 'ctrlNull'].map(function (expGroupType) {
-                album[expGroupType + "Images"] = data.expAssays.filter(function (expAssay) {
-                    return lodash_1.isEqual(expAssay.expGroupId, album[expGroupType + "Id"]);
-                }).map(function (expAssay) {
-                    return ExpSet.extract["buildImageObj" + config.get('site')](expAssay);
-                });
-                album[expGroupType + "Images"] = lodash_1.uniqBy(album[expGroupType + "Images"], 'assayImagePath');
-            });
-            data.albums.push(album);
-        });
-        return data;
-    }
-};
-/**
- * Grab ExpSets by workflowId - this is the the most optimized function if there is no geneList/chemicalList
- * @param {ExpSetSearch} search
- */
-ExpSet.extract.workflows.getExpSetsByWorkflowId = function (search) {
-    return new Promise(function (resolve, reject) {
-        search = new types_1.ExpSetSearch(search);
-        var data = new types_1.ExpSetSearchResults({});
-        var or = ExpSet.extract.buildQuery(data, search);
-        app.models.ExpAssay2reagent
-            .findOne({ or: or, reagentId: { 'neq': null } })
-            .then(function (expAssay2reagent) {
-            data.expAssay2reagents = [expAssay2reagent];
-            if (!data.expAssay2reagents || !data.expAssay2reagents.length) {
-                resolve();
-            }
-            else {
-                return ExpSet.extract.fetchFromCache(data, search, data.expAssay2reagents[0].expWorkflowId);
             }
         })
-            .then(function (data) {
-            // Check to see if it was fetched from the cache
-            if (!data.fetchedFromCache) {
-                return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expAssay2reagents[0].expWorkflowId);
-            }
-            else {
-                return data;
-            }
-        })
-            .then(function (data) {
-            return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
-        })
-            .then(function (data) {
-            return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
-        })
-            .then(function (data) {
-            data = ExpSet.extract.insertCountsDataImageMeta(data);
-            data = ExpSet.extract.insertExpManualScoresImageMeta(data);
+            .then(function (results) {
+            data.modelPredictedCounts = results;
             resolve(data);
         })
             .catch(function (error) {
+            app.winston.error(error);
             reject(new Error(error));
         });
     });
 };
+/**
+ * TODO ADD in a function that will preferentially look for ctrls from the same plate
+ * Then from the same date
+ * Then just from the expSet
+ * @param data
+ * @param search
+ */
+ExpSet.extract.genExpSetAlbums = function (data, search) {
+    app.winston.info("In genExpSetAlbums");
+    data.expSets.map(function (expSet) {
+        var album = {};
+        album.expWorkflowId = expSet[0].expWorkflowId;
+        album.treatmentReagentId = expSet[0].treatmentGroupId;
+        album.treatmentGroupId = expSet[0].treatmentGroupId;
+        try {
+            album.ctrlReagentId = lodash_1.find(expSet, function (set) {
+                return lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_rnai') || lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_compound') || lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_chemical');
+            }).controlGroupId;
+        }
+        catch (error) {
+            // app.winston.error('There is no ctrl for the reagent!');
+        }
+        try {
+            album.ctrlStrainId = lodash_1.find(expSet, function (set) {
+                return lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_strain');
+            }).controlGroupId;
+        }
+        catch (error) {
+            // app.winston.error('There is no ctrl strain');
+        }
+        try {
+            album.ctrlNullId = lodash_1.find(expSet, function (set) {
+                return lodash_1.isEqual(set.controlGroupReagentType, 'ctrl_null');
+            }).controlGroupId;
+        }
+        catch (error) {
+            // app.winston.error('There is no ctrl null');
+        }
+        ['treatmentReagent', 'ctrlReagent', 'ctrlStrain', 'ctrlNull'].map(function (expGroupType) {
+            album[expGroupType + "Images"] = data.expAssays.filter(function (expAssay) {
+                return lodash_1.isEqual(expAssay.expGroupId, album[expGroupType + "Id"]);
+            }).map(function (expAssay) {
+                return ExpSet.extract["buildImageObj" + config.get('site')](expAssay);
+            });
+            album[expGroupType + "Images"] = lodash_1.uniqBy(album[expGroupType + "Images"], 'assayImagePath');
+        });
+        ['ctrlNullImages', 'ctrlStrainImages'].map(function (ctrlKey) {
+            if (lodash_1.get(album, ctrlKey)) {
+                album[ctrlKey] = lodash_1.shuffle(album[ctrlKey]).slice(0, 4);
+            }
+        });
+        data.albums.push(album);
+    });
+    return data;
+};
+/**
+ * At the end of every workflow get all the reagent Data - RnaiLibrary or Chemical Library Data
+ * @param data
+ * @param search
+ */
 ExpSet.extract.workflows.getReagentData = function (data, search) {
     var reagentTypes = lodash_1.groupBy(data.expAssay2reagents, 'reagentTable');
     delete reagentTypes['undefined'];
@@ -555,6 +514,11 @@ ExpSet.extract.workflows.getReagentDataRnaiLibraryStock = function (data, expAss
                         })
                     }
                 },
+                fields: {
+                    wbGeneSequenceId: true,
+                    wbGeneAccession: true,
+                    wbGeneCgcName: true,
+                },
                 limit: 1000,
             });
         })
@@ -578,6 +542,8 @@ ExpSet.extract.buildImageObjDEV = function (expAssay) {
         src: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
         caption: "Image " + expAssay.assayImagePath + " caption here",
         thumb: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel-600x600.jpeg",
+        assayId: expAssay.assayId,
+        plateId: expAssay.plateId,
     };
 };
 ExpSet.extract.buildImageObjAD = function (expAssay) {
@@ -586,6 +552,8 @@ ExpSet.extract.buildImageObjAD = function (expAssay) {
         src: config.get('sites')['AD']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel.jpeg",
         caption: "Image " + expAssay.assayImagePath + " caption here",
         thumb: config.get('sites')['DEV']['imageUrl'] + "/" + expAssay.assayImagePath + "-autolevel-600x600.jpeg",
+        assayId: expAssay.assayId,
+        plateId: expAssay.plateId,
     };
 };
 ExpSet.extract.buildImageObjNY = function (expAssay) {
@@ -594,6 +562,8 @@ ExpSet.extract.buildImageObjNY = function (expAssay) {
         src: config.get('sites')['NY']['imageUrl'] + "/" + expAssay.assayImagePath + ".bmp",
         caption: "Image " + expAssay.assayImagePath + " caption here",
         thumb: config.get('sites')['NY']['imageUrl'] + "/" + expAssay.assayImagePath + ".bmp",
+        assayId: expAssay.assayId,
+        plateId: expAssay.plateId,
     };
 };
 //# sourceMappingURL=ExpSetExtract.js.map

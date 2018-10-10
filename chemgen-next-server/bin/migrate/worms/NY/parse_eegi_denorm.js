@@ -362,7 +362,7 @@ function createExpScreenWorkflows(groupedResults, screens, biosamples, platePlan
                 results[0].platePlanId = workflow.platePlanId;
                 results[0].instrumentLookUp = workflow.instrumentLookUp;
                 return app.models.ExpScreenUploadWorkflow.upsert(results[0]);
-                // return results[0];
+                // return contactSheetResults[0];
             })
                 .catch(function (error) {
                 return new Error(error);

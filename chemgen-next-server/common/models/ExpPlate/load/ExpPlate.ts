@@ -4,7 +4,7 @@ import {WorkflowModel} from "../../index";
 import Promise = require('bluebird');
 import path = require('path');
 import {ExpScreenUploadWorkflowResultSet} from "../../../types/sdk/models";
-import {ScreenCollection} from "../../../types/wellData";
+import {ScreenCollection} from "../../../types/custom/wellData";
 import Mustache = require('mustache');
 // import deepclone = require('deepclone');
 import * as _ from "lodash";

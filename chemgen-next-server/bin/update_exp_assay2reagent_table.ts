@@ -38,6 +38,7 @@ countExpAssays()
 
 function getPagedExpAssays(paginationResults) {
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(paginationResults.pages, (page) => {
       let skip = Number(page) * Number(paginationResults.limit);
       console.log(`Page: ${page} Skip: ${skip}`);
@@ -51,8 +52,8 @@ function getPagedExpAssays(paginationResults) {
         })
         .then((results: ExpAssay2reagentResultSet[]) => {
           data['expAssay2reagents'] = results;
-          // console.log(`Results Len : ${results.length}`);
-          // console.log(JSON.stringify(results, null, 2));
+          // console.log(`Results Len : ${contactSheetResults.length}`);
+          // console.log(JSON.stringify(contactSheetResults, null, 2));
           let or = results.map((row: ExpAssay2reagentResultSet) => {
             return {assayId: row.assayId};
           });
@@ -88,6 +89,7 @@ function getExpAssay2reagent(expAssays: ExpAssayResultSet[], expAssay2reagentsAl
   console.log('In getExpAssay2reagent');
   // console.log(JSON.stringify(expAssay2reagentsAll[0], null, 2));
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(expAssays, (expAssay: ExpAssayResultSet) => {
       // console.log(JSON.stringify(expAssay));
       let expAssay2reagents = filter(expAssay2reagentsAll, (expAssay2reagent) => {
@@ -114,6 +116,7 @@ function getExpAssay2reagent(expAssays: ExpAssayResultSet[], expAssay2reagentsAl
 
 function updateExpAssay2reagent(expAssay: ExpAssayResultSet, expAssay2reagents: ExpAssay2reagentResultSet[]) {
   return new Promise((resolve, reject) => {
+    //@ts-ignore
     Promise.map(expAssay2reagents, (expAssay2reagent: ExpAssay2reagentResultSet) => {
       expAssay2reagent.expGroupId = expAssay.expGroupId;
       expAssay2reagent.expWorkflowId = expAssay.expWorkflowId;

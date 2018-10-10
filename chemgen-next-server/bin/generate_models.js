@@ -74,7 +74,7 @@ function createModels (models) {
       console.log(`Creating Model for : ${table}`)
       return getForiegnKeys(datasource, model, results)
       // const outputFile = path.resolve(outputDir, `${table}.json`)
-      // const fileContents = JSON.stringify(results, null, 2)
+      // const fileContents = JSON.stringify(contactSheetResults, null, 2)
     })
   )
     .then(() => {

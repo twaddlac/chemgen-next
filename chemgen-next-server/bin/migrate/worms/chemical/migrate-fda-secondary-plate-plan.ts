@@ -162,10 +162,10 @@ const parseWell = function (workflowData, wellData) {
               results['comment'] = comment;
               results['lookUp'] = data;
               resolve(results);
-              // return findOtherGeneNames(results.chemicalName)
+              // return findOtherGeneNames(contactSheetResults.chemicalName)
               //   .then((otherTaxTerms) =>{
-              //     results.chemicalData = otherTaxTerms;
-              //     resolve(results);
+              //     contactSheetResults.chemicalData = otherTaxTerms;
+              //     resolve(contactSheetResults);
               //   })
             }
           })

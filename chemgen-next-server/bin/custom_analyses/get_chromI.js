@@ -59,8 +59,8 @@ function getGeneXRefs(genes) {
         })
             .then(function (results) {
             results = JSON.parse(JSON.stringify(results));
-            // results = slice(results, 0, 5);
-            // let csv = Papa.unparse(results);
+            // contactSheetResults = slice(contactSheetResults, 0, 5);
+            // let csv = Papa.unparse(contactSheetResults);
             // fs.writeFileSync(path.resolve(__dirname,'chromI_list.csv'), csv);
             //TODO Split this query
             return getExpDesign(results);
@@ -276,7 +276,7 @@ function makeInterfaces(data) {
             },
         }, createObj)
             .then(function (analysisResults) {
-            analysisResults[0].results = goToTheWebz;
+            analysisResults[0].contactSheetResults = goToTheWebz;
             analysisResults[0].dateModified = Date.now();
             if (lodash_1.isEqual(analysisResults[1], false)) {
                 analysisResults[0].dateCreated = Date.now();
@@ -359,7 +359,7 @@ function getExpDesign(genesList) {
             .find({ where: { or: or }, fields: { expGroupId: true, assayId: true, reagentId: true, libraryId: true } })
             .then(function (results) {
             //This is a hack until the expAssay2reagent table update finishes
-            // let expGroupIds = results.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
+            // let expGroupIds = contactSheetResults.map((expAssay2reagent: ExpAssay2reagentResultSet) => {
             //   console.log(JSON.stringify(expAssay2reagent));
             //   return {expGroupId: expAssay2reagent.expGroupId};
             // });

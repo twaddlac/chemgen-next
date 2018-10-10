@@ -1,7 +1,7 @@
 import app  = require('../../../../server/server.js');
 import {WorkflowModel} from "../../index";
 import {ExpDesignResultSet, ExpGroupResultSet, ExpScreenUploadWorkflowResultSet} from "../../../types/sdk/models";
-import {PlateCollection, WellCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection} from "../../../types/custom/wellData";
 
 import Promise = require('bluebird');
 import {uniqWith, shuffle, isEqual} from 'lodash';
@@ -27,7 +27,7 @@ ExpDesign.load.workflows.createExpDesigns = function (workflowData: ExpScreenUpl
         });
     })
       .then((results: ExpDesignResultSet[]) => {
-        // let expDesignRows = results.map((result) => {
+        // let expDesignRows = contactSheetResults.map((result) => {
         //   return result[0];
         // });
         resolve(results);

@@ -6,7 +6,7 @@ import {
   WpTermsResultSet, WpTermTaxonomyResultSet
 } from "../../../types/sdk/models/index";
 import {WorkflowModel} from "../../index";
-import {PlateCollection, WellCollection, annotationData} from "../../../types/wellData";
+import {PlateCollection, WellCollection, annotationData} from "../../../types/custom/wellData";
 
 import Promise = require('bluebird');
 import * as _ from "lodash";
@@ -91,7 +91,7 @@ ExpAssay.load.workflows.processExpPlate = function (workflowData: any, expPlate:
       })
       .then((results: WellCollection) => {
         //TODO Clean this up - shouldn't be creating new objects all over the place
-        // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: results});
+        // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: contactSheetResults});
         return app.models[workflowData.libraryStockModel].load.createStocks(workflowData, {
           expPlate: expPlate,
           wellDataList: results
@@ -108,8 +108,8 @@ ExpAssay.load.workflows.processExpPlate = function (workflowData: any, expPlate:
         return ExpAssay.load.workflows.imageConversionPipeline.all(workflowData, plateData);
       })
       .then((results) => {
-        // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: results});
-        // resolve({expPlate: expPlate, wellDataList: results});
+        // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: contactSheetResults});
+        // resolve({expPlate: expPlate, wellDataList: contactSheetResults});
         resolve(results);
       })
       .catch((error) => {

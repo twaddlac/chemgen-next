@@ -4,7 +4,7 @@ import {ExpPlateResultSet} from "../../";
 import {WorkflowModel} from "../../index";
 import Promise = require('bluebird');
 
-import {PlateCollection, WellCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection} from "../../../types/custom/wellData";
 
 const RnaiLibraryStock = app.models['RnaiLibraryStock'] as (typeof WorkflowModel);
 

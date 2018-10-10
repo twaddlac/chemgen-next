@@ -11,11 +11,26 @@ module.exports = function(ExpSet) {
 
   ExpSet.on('attached', function () {
     require('../extract/ExpSetExtract')
+    require('../extract/ExpSetExtractPagination')
+    require('../extract/ExpSetExtractQueryByExpWorkflow')
+    require('../extract/ExpSetExtractQueryByAssay')
     require('../extract/scoring/ExpSetScoringExtract')
     require('../extract/scoring/ExpSetScoringExtractByCounts')
     require('../extract/scoring/ExpSetScoringExtractByPlate')
-    require('../extract/scoring/ExpSetResults')
+    require('../extract/ExpSetResults')
   })
+
+  ExpSet.getExpSets = function (search, cb) {
+    return new Promise((resolve, reject) => {
+      ExpSet.extract.workflows.getExpSets(search)
+        .then((results) => {
+          resolve(results)
+        })
+        .catch((error) => {
+          reject(new Error(error))
+        })
+    })
+  }
 
   ExpSet.getExpSetsByWorkflowId = function (search, cb) {
     return new Promise((resolve, reject) => {
@@ -64,6 +79,14 @@ module.exports = function(ExpSet) {
         })
     })
   }
+
+  ExpSet.remoteMethod(
+    'getExpSets', {
+      http: {path: '/getExpSets', verb: 'post'},
+      accepts: {arg: 'search', type: 'any', http: {source: 'query'}},
+      returns: {arg: 'results', type: 'any'}
+    }
+  )
 
   ExpSet.remoteMethod(
     'getExpSetsByWorkflowId', {

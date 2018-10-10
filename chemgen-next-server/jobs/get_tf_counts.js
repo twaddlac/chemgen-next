@@ -10,17 +10,67 @@ var lodash_2 = require("lodash");
 var glob = require("glob-promise");
 var Papa = require("papaparse");
 var fs = require('fs');
-//TODO This should be paginated
-app.models.ExpPlate
-    .find({ limit: 100 })
-    .then(function (expPlates) {
-    //@ts-ignore
-    return Promise.map(expPlates, function (expPlate) {
-        return getCountsApi(expPlate);
-    });
+var search = {};
+countExpPlates()
+    .then(function (paginationResults) {
+    return getPagedExpPlates(paginationResults);
+})
+    .then(function () {
+    console.log('finished!');
+    process.exit(0);
 })
     .catch(function (error) {
+    console.log(error);
+    process.exit(1);
 });
+function getPagedExpPlates(paginationResults) {
+    return new Promise(function (resolve, reject) {
+        //@ts-ignore
+        Promise.map(paginationResults.pages, function (page) {
+            var skip = Number(page) * Number(paginationResults.limit);
+            console.log("Page: " + page + " Skip: " + skip);
+            var data = {};
+            return app.models.ExpPlate
+                .find({
+                limit: paginationResults.limit,
+                skip: skip,
+                where: search,
+            })
+                .then(function (results) {
+                data['expPlates'] = results;
+                return app.models.ExpAssay
+                    .find({
+                    where: {
+                        plateId: {
+                            inq: results.map(function (expPlate) {
+                                return expPlate.plateId;
+                            })
+                        }
+                    },
+                });
+            }, { concurrency: 1 })
+                .then(function (expPlates) {
+                //@ts-ignore
+                return Promise.map(expPlates, function (expPlate) {
+                    return getCountsApi(expPlate);
+                });
+            })
+                .then(function () {
+                return;
+            })
+                .catch(function (error) {
+                return new Error(error);
+            });
+        })
+            .then(function () {
+            resolve();
+        })
+            .catch(function (error) {
+            console.log(error);
+            reject(new Error(error));
+        });
+    });
+}
 function getCountsApi(expPlate) {
     return new Promise(function (resolve, reject) {
         var imagePath = "/mnt/image/" + expPlate.plateImagePath;
@@ -36,7 +86,7 @@ function getCountsApi(expPlate) {
                 counts: countsFile,
             })
                 .then(function (results) {
-                console.log(results.data);
+                // console.log(contactSheetResults.data);
                 return getAssays(results.data.counts);
                 // return;
             })
@@ -321,7 +371,7 @@ function parseCountsFile(countsFile) {
                 imagePath = imagePath.replace('-autolevel.bmp', '');
                 imagePath = imagePath.replace('-autolevel.png', '');
                 results.data[0].imagePathModified = imagePath;
-                // orig.push(results.data[0]);
+                // orig.push(contactSheetResults.data[0]);
                 data.push(results.data[0]);
                 if (data.length >= 10) {
                     getAssays([data])
@@ -351,6 +401,24 @@ function parseCountsFile(countsFile) {
                     });
                 }
             },
+        });
+    });
+}
+function countExpPlates() {
+    return new Promise(function (resolve, reject) {
+        app.models.ExpPlate
+            .count()
+            .then(function (count) {
+            var limit = 50;
+            var numPages = Math.round(count / limit);
+            var pages = lodash_1.range(0, numPages + 2);
+            pages = lodash_1.shuffle(pages);
+            console.log("count is " + count);
+            resolve({ count: count, pages: pages, limit: limit });
+        })
+            .catch(function (error) {
+            console.log(error);
+            reject(new Error(error));
         });
     });
 }

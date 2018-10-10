@@ -11,7 +11,7 @@ import {
   RnaiLibraryResultSet,
   RnaiWormbaseXrefsResultSet
 } from "../../../../common/types/sdk/models";
-import {ExpScreenUploadWorkflowResultSet} from "../../../../../chemgen-next-client/src/sdk/models";
+import {ExpScreenUploadWorkflowResultSet} from "../../../../../chemgen-next-client/src/types/sdk/models";
 
 const path = require('path');
 const fs = require('fs');
@@ -395,7 +395,7 @@ function createExpScreenWorkflows(groupedResults: any, screens: ExpScreenResultS
           results[0].platePlanId = workflow.platePlanId;
           results[0].instrumentLookUp = workflow.instrumentLookUp;
           return app.models.ExpScreenUploadWorkflow.upsert(results[0]);
-          // return results[0];
+          // return contactSheetResults[0];
         })
         .catch((error) =>{
           return new Error(error);

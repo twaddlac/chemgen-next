@@ -1,7 +1,7 @@
 import app = require('../../../../server/server.js');
 import {WorkflowModel} from "../../index";
 import {ExpDesignResultSet, ExpGroupResultSet, ExpScreenUploadWorkflowResultSet} from "../../../types/sdk/models";
-import {PlateCollection, WellCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection} from "../../../types/custom/wellData";
 
 import Promise = require('bluebird');
 import * as _ from "lodash";

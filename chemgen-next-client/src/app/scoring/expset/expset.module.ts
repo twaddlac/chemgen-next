@@ -12,9 +12,9 @@ import {
     ExpAssay2reagentResultSet,
     ExpPlateResultSet,
     ExpManualScoresResultSet, RnaiWormbaseXrefsResultSet
-} from '../../../sdk/models';
+} from '../../../types/sdk/models';
 import {Memoize} from 'lodash-decorators';
-
+import {ExpSetSearchResults} from "../../../types/custom/ExpSetTypes";
 
 @NgModule({
     imports: [
@@ -26,22 +26,30 @@ import {Memoize} from 'lodash-decorators';
 export class ExpsetModule {
 
     public expSets: ExpSetSearchResults;
+    public expSetsDeNorm: Array<any> = [];
 
     constructor(expSets: ExpSetSearchResults) {
         this.expSets = expSets;
-    }
-
-    @Memoize()
-    findExpWorkflow(expWorkflowId: string) {
-        return find(this.expSets.expWorkflows, (expWorkflow: ExpScreenUploadWorkflowResultSet) => {
-            return isEqual(expWorkflowId, expWorkflow.id);
+        this.expSets.expWorkflows = this.expSets.expWorkflows.map((expWorkflow) => {
+            return this.findExpWorkflow(String(expWorkflow.id));
         });
     }
 
     @Memoize()
-    findExpManualScores(treatmentGroupId: number){
-        return this.expSets.expManualScores.filter((expManualScore: ExpManualScoresResultSet) =>{
-           return isEqual(expManualScore.treatmentGroupId, treatmentGroupId);
+    findExpWorkflow(expWorkflowId: string) {
+        let expWorkflow = find(this.expSets.expWorkflows, (expWorkflow: ExpScreenUploadWorkflowResultSet) => {
+            return isEqual(expWorkflowId, expWorkflow.id);
+        });
+        if (get(expWorkflow, ["temperature", "$numberDouble"])) {
+            expWorkflow.temperature = expWorkflow.temperature["$numberDouble"];
+        }
+        return expWorkflow;
+    }
+
+    @Memoize()
+    findExpManualScores(treatmentGroupId: number) {
+        return this.expSets.expManualScores.filter((expManualScore: ExpManualScoresResultSet) => {
+            return isEqual(expManualScore.treatmentGroupId, treatmentGroupId);
         });
     }
 
@@ -90,6 +98,13 @@ export class ExpsetModule {
     }
 
     @Memoize()
+    findExpAssay2reagents(expGroupId: number) {
+        return this.expSets.expAssay2reagents.filter((expAssay2reagent: ExpAssay2reagentResultSet) => {
+            return isEqual(expGroupId, expAssay2reagent.expGroupId);
+        });
+    }
+
+    @Memoize()
     findReagents(treatmentGroupId) {
         const expAssay2reagents: ExpAssay2reagentResultSet[] = this.expSets.expAssay2reagents.filter((expAssay2reagent) => {
             return isEqual(Number(expAssay2reagent.treatmentGroupId), Number(treatmentGroupId));
@@ -133,14 +148,54 @@ export class ExpsetModule {
         return {rnaisList: rnaisList, compoundsList: compoundsList};
     }
 
+    /**
+     * The data structure that is returned from the server is very flattened and normalized to save on size
+     * We denormalize it here
+     */
+    deNormalizeExpSets() {
+        this.expSetsDeNorm = this.expSets.albums.map((album: any) => {
+            return this.deNormalizeAlbum(album);
+        });
+        return this.expSetsDeNorm;
+    }
+
+    //TO DO This is basically the same thing as the getExpSet function - fix that
+    deNormalizeAlbum(album: any) {
+        let expWorkflow: ExpScreenUploadWorkflowResultSet = this.findExpWorkflow(album.expWorkflowId);
+        let expScreen: ExpScreenResultSet = this.findExpScreen(expWorkflow.screenId);
+        let expPlates: ExpPlateResultSet[] = this.findExpPlates(album.expWorkflowId);
+        let reagentsList = this.findReagents(album.treatmentGroupId);
+        let expManualScores = this.findExpManualScores(album.treatmentGroupId);
+        album.expWorkflow = expWorkflow;
+        album.expSet = this.findExpSets(album.treatmentGroupId);
+        //I cannot figure out why this isn't taken care of on the backend
+        ['ctrlNullImages', 'ctrlStrainImages'].map((ctrlKey) => {
+            if (get(album, ctrlKey)) {
+                album[ctrlKey] = shuffle(album[ctrlKey]).slice(0, 4);
+            }
+        });
+        return {
+            treatmentGroupId: album.treatmentGroupId,
+            albums: album,
+            expWorkflow: expWorkflow,
+            expSet: album.expSet,
+            expScreen: expScreen,
+            rnaisList: reagentsList.rnaisList,
+            compoundsList: reagentsList.compoundsList,
+            expPlates: expPlates,
+            expManualScores: expManualScores,
+        };
+    }
+
     // TODO Fix this - it assumes there are counts
     getExpSet(wellCounts: ModelPredictedCountsResultSet) {
         const o: any = {};
 
-        let treatmentGroupId = wellCounts.treatmentGroupId;
         o.expWorkflow = this.findExpWorkflow(wellCounts.expWorkflowId);
+
         o.expScreen = this.findExpScreen(wellCounts.screenId);
 
+        let treatmentGroupId = wellCounts.treatmentGroupId;
         if (!treatmentGroupId) {
             const expSet = this.getTreatmentGroupIdFromDesign(wellCounts.expGroupId);
             if (expSet) {
@@ -155,6 +210,10 @@ export class ExpsetModule {
             o.albums = this.findAlbums(treatmentGroupId);
             o.expPlates = this.findExpPlates(o.expWorkflow.id);
             o.expManualScores = this.findExpManualScores(treatmentGroupId);
+            o.treatmentGroupId = treatmentGroupId;
+            let reagentsList = this.findReagents(treatmentGroupId);
+            o.rnaisList = reagentsList.rnaisList;
+            o.compoundsList = reagentsList.compoundsList;
         } else {
             o.modelPredictedCounts = [];
             o.expSets = [];
@@ -186,48 +245,3 @@ export class ExpsetModule {
 
 }
 
-export interface ExpSetSearchResultsInterface {
-    rnaisList?: RnaiLibraryResultSet;
-    rnaisXrefs?: RnaiWormbaseXrefsResultSet[];
-    compoundsList?: ChemicalLibraryResultSet[];
-    expAssays?: ExpAssayResultSet;
-    expAssay2reagents?: ExpAssay2reagentResultSet[];
-    modelPredictedCounts?: ModelPredictedCountsResultSet[];
-    expPlates?: ExpPlateResultSet[];
-    expScreens?: ExpScreenResultSet[];
-    expWorkflows?: ExpScreenUploadWorkflowResultSet[];
-    expManualScores?: ExpManualScoresResultSet[];
-    expSets?: Array<ExpDesignResultSet[]>;
-    fetchedFromCache: boolean;
-    currentPage?: number;
-    skip?: number;
-    totalPages?: number;
-    pageSize?: number;
-    albums?: Array<any>;
-    expGroupTypeAlbums: any;
-}
-
-export class ExpSetSearchResults {
-    rnaisList?: RnaiLibraryResultSet[] = [];
-    rnaisXrefs?: RnaiWormbaseXrefsResultSet[] = [];
-    compoundsList?: ChemicalLibraryResultSet[] = [];
-    expAssays?: ExpAssayResultSet[] = [];
-    expAssay2reagents?: ExpAssay2reagentResultSet[] = [];
-    modelPredictedCounts?: ModelPredictedCountsResultSet[] = [];
-    expPlates?: ExpPlateResultSet[] = [];
-    expScreens?: ExpScreenResultSet[] = [];
-    expWorkflows?: ExpScreenUploadWorkflowResultSet[] = [];
-    expManualScores?: ExpManualScoresResultSet[] = [];
-    fetchedFromCache: boolean = false;
-    expSets?: Array<ExpDesignResultSet[]>;
-    currentPage ?: number = 1;
-    skip ?: number = 0;
-    totalPages ?: number = 0;
-    pageSize ?: number = 20;
-    albums ?: Array<any> = [];
-    expGroupTypeAlbums: any;
-
-    constructor(data?: ExpSetSearchResultsInterface) {
-        Object.assign(this, data);
-    }
-}

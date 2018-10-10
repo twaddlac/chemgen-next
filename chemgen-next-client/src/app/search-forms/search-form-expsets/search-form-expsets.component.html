@@ -21,7 +21,7 @@
                         <ul class="nav nav-tabs tabs-left">
                             <li class="active"><a href="#screenData" data-toggle="tab">Screen</a>
                             </li>
-                            <!--<li><a href="#rnaiData" data-toggle="tab">RNAi</a>-->
+                            <li><a href="#rnaiData" data-toggle="tab">RNAi</a>
                             <!--</li>-->
                             <!--<li><a href="#chemicalData" data-toggle="tab">Chemical</a>-->
                             <!--</li>-->
@@ -57,32 +57,61 @@
 </div>
 <!--End Search Form-->
 
+<ngx-spinner
+        bdColor="rgba(51, 51, 51, 0.8)"
+        size="large"
+        color="#fff"
+        type="ball-atom"
+></ngx-spinner>
+
 <!--Start Content-->
 <div class="row">
     <div class="col-md-12">
 
+
         <div *ngIf="formSubmitted">
-            <div id="loader" class="container">
-                <div *ngIf="showProgress">
-                    <div style="text-align: center; text-align:-moz-center; font-size:large">
-                        Loading...
-                    </div>
-                </div>
-            </div>
-            <!--Begin Content-->
-            <!--[infiniteScrollUpDistance]="1.5"-->
-            <!--[infiniteScrollThrottle]="50"-->
+            <!--Begin Current Content-->
             <div *ngIf="expSets" class="expSets">
-                <div class="search-results"
-                     infiniteScroll
-                     [infiniteScrollDistance]="0.1"
-                     (scrolled)="onScrollDown()"
-                     (scrolledUp)="onScrollUp()">
-                    <app-expset-sheet [expSets]="expSets" [expSetSearch]="expSetSearch"></app-expset-sheet>
-                </div>
+                <app-expset-sheet [expSets]="expSets" [expSetModule]="expSetsModule"
+                                  [expSetSearch]="expSetSearch"></app-expset-sheet>
             </div>
-            <!--End Content-->
+            <div *ngIf="expSets && ! expSets.expWorkflows?.length">
+                <h2>Empty ResultSet</h2>
+                <p>The search you performed returned an empty result set.</p>
+                <p>Either your search is incorrect, or not in the database.</p>
+            </div>
+            <!--End Current Content-->
         </div>
     </div>
 </div>
 <!--End Content-->
+<!--Start Pagination-->
+<div class="row" *ngIf="expSetsModule">
+    <div class="col-md-12">
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-lg" *ngIf="expSets.currentPage > 1">
+                <li class="page-item"><a class="page-link" (click)="getNewPage(expSets.currentPage - 1)">Previous</a>
+                </li>
+            </ul>
+            <ul class="pagination pagination-lg">
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1">{{expSets.currentPage}}</a>
+                </li>
+            </ul>
+            <ul class="pagination pagination-lg" *ngFor="let pageNo of lowerPageRange">
+                <li class="page-item"><a class="page-link" (click)="getNewPage(pageNo)">{{pageNo}}</a></li>
+            </ul>
+            <ul class="pagination pagination-lg">
+                <li class="page-item disabled"><a class="page-link">...</a></li>
+            </ul>
+            <ul class="pagination pagination-lg" *ngFor="let pageNo of upperPageRange">
+                <li class="page-item"><a class="page-link" (click)="getNewPage(pageNo)">{{pageNo}}</a></li>
+            </ul>
+            <ul class="pagination pagination-lg" *ngIf="expSets.currentPage < expSets.totalPages">
+                <li class="page-item"><a class="page-link" (click)="getNewPage(expSets.currentPage + 1)">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--End Pagination-->

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var Promise = require("bluebird");
-var wellData_1 = require("../../../types/wellData");
+var wellData_1 = require("../../../types/custom/wellData");
 var ChemicalLibrary = app.models['ChemicalLibrary'];
 ChemicalLibrary.load.workflows.processExpPlates = function (workflowData, expPlates) {
     app.winston.info("ChemicalLibrary.load. Processing plates " + workflowData.name);

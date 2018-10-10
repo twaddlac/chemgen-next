@@ -24,7 +24,7 @@ ExpDesign.load.workflows.createExpDesigns = function (workflowData, expDesignRow
             });
         })
             .then(function (results) {
-            // let expDesignRows = results.map((result) => {
+            // let expDesignRows = contactSheetResults.map((result) => {
             //   return result[0];
             // });
             resolve(results);

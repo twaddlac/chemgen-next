@@ -41,8 +41,8 @@ describe('ExpDesign.load secondary', function () {
         })
             .then(function (results) {
             assert.equal(results.length, 9);
-            // assert.equal(ExpDesign.extract.isTreatmentId(1, results), false);
-            // assert.equal(ExpDesign.extract.isTreatmentId(6, results), true);
+            // assert.equal(ExpDesign.extract.isTreatmentId(1, contactSheetResults), false);
+            // assert.equal(ExpDesign.extract.isTreatmentId(6, contactSheetResults), true);
             done();
         })
             .catch(function (error) {

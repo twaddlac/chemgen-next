@@ -1,13 +1,12 @@
-import {Component, OnInit, Output, Input, ChangeDetectionStrategy} from '@angular/core';
-import {ExpScreenApi, ExpScreenUploadWorkflowApi} from '../../../sdk/services/custom';
-import {ExpScreenResultSet, ExpScreenUploadWorkflowResultSet} from '../../../sdk/models';
+import {Component, OnInit, Output, Input} from '@angular/core';
+import {ExpScreenApi, ExpScreenUploadWorkflowApi} from '../../../types/sdk/services/custom';
+import {ExpScreenResultSet, ExpScreenUploadWorkflowResultSet} from '../../../types/sdk/models';
 // import {TypeaheadMatch} from 'ngx-bootstrap/typeahead';
-import {uniq, orderBy} from 'lodash';
+import {get, uniq, orderBy} from 'lodash';
 
 @Component({
     selector: 'app-search-form-exp-screen',
     templateUrl: './search-form-exp-screen.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./search-form-exp-screen.component.css']
 })
 export class SearchFormExpScreenComponent implements OnInit {
@@ -27,6 +26,7 @@ export class SearchFormExpScreenComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getExpScreens();
     }
 
     getExpScreens() {
@@ -60,10 +60,15 @@ export class SearchFormExpScreenComponent implements OnInit {
                 },
             })
             .subscribe((results: ExpScreenUploadWorkflowResultSet[]) => {
-                this.expScreenWorkflows = orderBy(results, 'name');
-                this.temperatures = results.map((result) => {
-                    return result.temperature;
+                results.map((expWorkflow) => {
+                    if (get(expWorkflow, "temperature.$numberDouble")) {
+                        expWorkflow.temperature = expWorkflow.temperature["$numberDouble"];
+                    }
                 });
+                this.expScreenWorkflows = orderBy(results, 'name');
+                this.temperatures = uniq(results.map((result) => {
+                    return result.temperature;
+                }));
                 this.temperatures = uniq(this.temperatures);
                 return;
             });

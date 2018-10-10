@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {PlateCollection, WellCollection} from "../common/types/wellData";
+import {PlateCollection, WellCollection} from "../common/types/custom/wellData";
 
 const app = require('../server/server');
 // import {WorkflowModel} from "../../common/models";

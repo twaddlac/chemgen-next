@@ -2,7 +2,7 @@ import app = require('../../../../../server/server.js')
 
 import {PlateResultSet, WpTermTaxonomyResultSet} from "../../../../types/sdk/models";
 import {WorkflowModel} from "../../../index";
-import {ExpSet, ScreenCollection} from "../../../../types/wellData";
+import {ExpSet, ScreenCollection} from "../../../../types/custom/wellData";
 import assert = require('assert');
 
 import * as _ from "lodash";

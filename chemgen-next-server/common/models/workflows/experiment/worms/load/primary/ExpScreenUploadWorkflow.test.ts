@@ -1,7 +1,7 @@
 import {ExpPlateResultSet, PlateResultSet} from "../../../../../../types/sdk/models";
 import app = require('../../../../../../../server/server.js');
 import Promise = require('bluebird');
-import {PlateCollection, ScreenCollection} from "../../../../../../types/wellData";
+import {PlateCollection, ScreenCollection} from "../../../../../../types/custom/wellData";
 import {WorkflowModel} from "../../../../../index";
 import jsonfile = require('jsonfile');
 import {orderBy, find, filter, isEqual} from 'lodash';
@@ -27,7 +27,7 @@ describe('ExpScreenUploadWorkflow.worms.primary', function () {
     ExpScreenUploadWorkflow.load.workflows.worms.primary.populatePlateData(workflowData, instrumentPlates)
       .then((results: PlateCollection[]) => {
         assert.equal(results.length, 8);
-        // results = orderBy(results, 'instrumentPlateId');
+        // contactSheetResults = orderBy(contactSheetResults, 'instrumentPlateId');
         let expPlates: ExpPlateResultSet[] = results.map((result) => {
           return result.expPlate;
         });

@@ -31,9 +31,9 @@ function getPagedExpDesigns(paginationResults) {
                 skip: skip,
             })
                 .then(function (results) {
-                // console.log(`Results Len : ${results.length}`);
-                // console.log(JSON.stringify(results));
-                // return getExpDesign(results);
+                // console.log(`Results Len : ${contactSheetResults.length}`);
+                // console.log(JSON.stringify(contactSheetResults));
+                // return getExpDesign(contactSheetResults);
                 return getExpDesignsByTreatment(results);
             })
                 .catch(function (error) {

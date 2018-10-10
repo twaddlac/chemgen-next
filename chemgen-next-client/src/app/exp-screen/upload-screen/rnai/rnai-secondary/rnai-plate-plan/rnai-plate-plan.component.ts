@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {get, padStart, isNull, isEmpty} from 'lodash';
 
-import {LoopBackConfig} from '../../../../../../sdk';
-import {RnaiLibraryApi, PlatePlan96Api, RnaiWormbaseXrefsApi} from '../../../../../../sdk/services/custom';
-import {PlatePlan96ResultSet, RnaiLibraryResultSet, RnaiWormbaseXrefsResultSet} from '../../../../../../sdk/models';
+import {LoopBackConfig} from '../../../../../../types/sdk';
+import {RnaiLibraryApi, PlatePlan96Api, RnaiWormbaseXrefsApi} from '../../../../../../types/sdk/services/custom';
+import {PlatePlan96ResultSet, RnaiLibraryResultSet, RnaiWormbaseXrefsResultSet} from '../../../../../../types/sdk/models';
 import {SearchPlatePlans} from '../../../helpers';
 
 @Component({
@@ -128,7 +128,7 @@ export class RnaiPlatePlanComponent implements OnInit {
         if (!isEmpty(where)) {
           this.findRnaiLibrary(where)
             .then((result: RnaiLibraryResultSet) => {
-              console.log('Got results');
+              console.log('Got contactSheetResults');
               console.log(JSON.stringify(result));
               if (!isEmpty(result)) {
                 this.wellData[well].taxTerm = result.geneName;

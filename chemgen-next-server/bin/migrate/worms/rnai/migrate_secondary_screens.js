@@ -105,12 +105,12 @@ function createPlatePlans(secondaryScreens) {
                 results.libraryId = 1;
                 jsonfile.writeFileSync(path.resolve(__dirname, 'data', 'secondary', secondaryScreen.platePlanName + ".json"), results, { spaces: 2 });
                 return app.models.PlatePlan96.create(results);
-                // return results;
+                // return contactSheetResults;
             });
         }, { concurrency: 1 })
             .then(function (results) {
-            // console.log(JSON.stringify(results));
-            // return app.models.PlatePlan96.create(results);
+            // console.log(JSON.stringify(contactSheetResults));
+            // return app.models.PlatePlan96.create(contactSheetResults);
             process.exit(0);
         })
             .catch(function (error) {

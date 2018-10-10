@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PagesComponent} from './pages.component';
 import {FormsModule} from "@angular/forms";
-import {SDKBrowserModule} from "../../sdk";
+import {SDKBrowserModule} from "../../types/sdk";
 import {ChildrenOutletContexts, RouterModule} from "@angular/router";
 
 describe('PagesComponent', () => {

@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {ExpScreenApi} from '../../../../../sdk/services/custom';
+import {ExpScreenApi} from '../../../../../types/sdk/services/custom';
 import {JsonPipe} from '@angular/common';
-import {ExpBiosampleResultSet, ExpScreenResultSet, PlateResultSet, ReagentLibraryResultSet} from '../../../../../sdk/models';
-import {PlateApi, ExpBiosampleApi, ExpScreenUploadWorkflowApi, ReagentLibraryApi} from '../../../../../sdk/services/custom';
+import {ExpBiosampleResultSet, ExpScreenResultSet, PlateResultSet, ReagentLibraryResultSet} from '../../../../../types/sdk/models';
+import {PlateApi, ExpBiosampleApi, ExpScreenUploadWorkflowApi, ReagentLibraryApi} from '../../../../../types/sdk/services/custom';
 
 import {isNull, isEmpty} from 'lodash';
 import {SearchPlatePlans, ExperimentData, SearchExpBiosamples} from '../../helpers';
 
-import {ExpScreenUploadWorkflowResultSet} from '../../../../../sdk/models';
+import {ExpScreenUploadWorkflowResultSet} from '../../../../../types/sdk/models';
 
-import {PlatePlan96ResultSet} from '../../../../../sdk/models';
-import {PlatePlan96Api} from '../../../../../sdk/services/custom';
+import {PlatePlan96ResultSet} from '../../../../../types/sdk/models';
+import {PlatePlan96Api} from '../../../../../types/sdk/services/custom';
 
 import {ChemicalExpUpload} from '../exp-screen-upload-screen-chemical-helpers/exp-screen-upload-screen-chemical-helpers.module';
 import {ChemicalScreenDesign} from '../exp-screen-upload-screen-chemical-helpers/exp-screen-upload-screen-chemical-helpers.module';

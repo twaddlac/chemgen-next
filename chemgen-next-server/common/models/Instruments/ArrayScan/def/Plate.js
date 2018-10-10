@@ -132,7 +132,7 @@ module.exports = function (Plate) {
   /**
    * Start the initial workflow for processing plates
    * @param  {Object} FormData [See test/helpers.js for the FormData object]
-   * @return {Promise<submitKueResults>}          [Returns an array of promises of results from the submitKue function]
+   * @return {Promise<submitKueResults>}          [Returns an array of promises of contactSheetResults from the submitKue function]
    */
   Plate.processFormData = function (FormData) {
     return new Promise(function (resolve, reject) {

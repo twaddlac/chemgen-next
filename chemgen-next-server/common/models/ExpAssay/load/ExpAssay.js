@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var config = require("config");
 var index_1 = require("../../../types/sdk/models/index");
-var wellData_1 = require("../../../types/wellData");
+var wellData_1 = require("../../../types/custom/wellData");
 var Promise = require("bluebird");
 var _ = require("lodash");
 var lodash_1 = require("lodash");
@@ -80,7 +80,7 @@ ExpAssay.load.workflows.processExpPlate = function (workflowData, expPlate) {
         })
             .then(function (results) {
             //TODO Clean this up - shouldn't be creating new objects all over the place
-            // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: results});
+            // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: contactSheetResults});
             return app.models[workflowData.libraryStockModel].load.createStocks(workflowData, {
                 expPlate: expPlate,
                 wellDataList: results
@@ -97,8 +97,8 @@ ExpAssay.load.workflows.processExpPlate = function (workflowData, expPlate) {
             return ExpAssay.load.workflows.imageConversionPipeline.all(workflowData, plateData);
         })
             .then(function (results) {
-            // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: results});
-            // resolve({expPlate: expPlate, wellDataList: results});
+            // let plateData = new PlateCollection({expPlate: expPlate, wellDataList: contactSheetResults});
+            // resolve({expPlate: expPlate, wellDataList: contactSheetResults});
             resolve(results);
         })
             .catch(function (error) {

@@ -3,15 +3,17 @@ import {SearchFormViewOptionsResults} from '../../search-forms/search-form-view-
 import {SearchFormExpScreenFormResults} from '../../search-forms/search-form-exp-screen/search-form-exp-screen.component';
 import {SearchFormRnaiFormResults} from '../../search-forms/search-form-rnai/search-form-rnai.component';
 import {isEmpty, isEqual} from 'lodash';
-import {ExpSetApi} from '../../../sdk/services/custom';
-import {NgProgress} from '@ngx-progressbar/core';
+import {ExpSetApi} from '../../../types/sdk/services/custom';
+import {NgxSpinnerService} from "ngx-spinner";
+import {ExpSetSearch} from "../../../types/custom/ExpSetTypes";
 
 /**
  * This form is very much the kitchen sink of all the forms
  * It has all the options, which is great for dev, but not much else
  */
+
 @Component({
-    selector: 'app-search-form-worms',
+    // selector: 'app-search-form-worms',
     templateUrl: './search-form-worms.component.html',
     styleUrls: ['./search-form-worms.component.css'],
     // changeDetection: ChangeDetectionStrategy.OnPush
@@ -31,7 +33,7 @@ export class SearchFormWormsComponent implements OnInit {
     public contactSheetPlateView = false;
     public expSetView = false;
 
-    constructor(private expSetApi: ExpSetApi, public progress: NgProgress) {
+    constructor(private expSetApi: ExpSetApi) {
     }
 
     ngOnInit() {
@@ -40,7 +42,6 @@ export class SearchFormWormsComponent implements OnInit {
     getNewExpSets() {
         this.formSubmitted = false;
         this.showProgress = false;
-        this.progress.complete();
         this.onSubmit();
     }
 
@@ -63,43 +64,40 @@ export class SearchFormWormsComponent implements OnInit {
 
         // Set the View
         if (isEqual(this.searchFormViewOptionsResults.viewOptions, 'expSetView')) {
-            this.expSetSearch.filterManualScores = false;
-            this.expSetSearch.includeManualScores = true;
+            this.expSetSearch.scoresExist = null;
             this.expSetView = true;
             this.contactSheetView = false;
         } else if (isEqual(this.searchFormViewOptionsResults.viewOptions, 'contactSheetView')) {
             // this.expSetSearch.filterManualScores = true;
-            this.expSetSearch.filterManualScores = false;
+            this.expSetSearch.scoresExist= false;
             this.expSetView = false;
             this.contactSheetView = true;
         } else if (isEqual(this.searchFormViewOptionsResults.viewOptions, 'contactSheetPlateView')) {
             // this.expSetSearch.filterManualScores = true;
-            this.expSetSearch.filterManualScores = false;
+            this.expSetSearch.scoresExist= false;
             this.expSetView = false;
             this.contactSheetPlateView = true;
         }
 
         // Order
         // TODO if filtering based on an rnaiList / chemicalsList, this is done on the client side
-        if (isEqual(this.searchFormViewOptionsResults.rankOrder, 'plateId')) {
-            this.expSetSearch.orderBy = 'plateId';
-        } else if (!isEqual(this.searchFormViewOptionsResults.rankOrder, 'none')) {
-            const orders = this.searchFormViewOptionsResults.rankOrder.split('-');
-            this.expSetSearch.orderBy = orders[0];
-            this.expSetSearch.order = orders[1];
-        }
+        // if (isEqual(this.searchFormViewOptionsResults.rankOrder, 'plateId')) {
+        //     this.expSetSearch.orderBy = 'plateId';
+        // } else if (!isEqual(this.searchFormViewOptionsResults.rankOrder, 'none')) {
+        //     const orders = this.searchFormViewOptionsResults.rankOrder.split('-');
+        //     this.expSetSearch.orderBy = orders[0];
+        //     this.expSetSearch.order = orders[1];
+        // }
 
         this.formSubmitted = true;
         this.showProgress = true;
-        this.progress.start();
         if(this.expSetView){
             this.expSetApi.getUnScoredExpSetsByPlate(this.expSetSearch)
                 .toPromise()
                 .then((results) => {
-                    console.log('got results');
+                    console.log('got contactSheetResults');
                     this.expSets = results.results;
                     this.showProgress = false;
-                    this.progress.complete();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -110,10 +108,9 @@ export class SearchFormWormsComponent implements OnInit {
             this.expSetApi.getUnScoredExpSetsByPlate(this.expSetSearch)
                 .toPromise()
                 .then((results) => {
-                    console.log('got results');
+                    console.log('got contactSheetResults');
                     this.expSets = results.results;
                     this.showProgress = false;
-                    this.progress.complete();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -124,10 +121,9 @@ export class SearchFormWormsComponent implements OnInit {
             this.expSetApi.getUnScoredExpSets(this.expSetSearch)
                 .toPromise()
                 .then((results) => {
-                    console.log('got results');
+                    console.log('got contactSheetResults');
                     this.expSets = results.results;
                     this.showProgress = false;
-                    this.progress.complete();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -137,9 +133,8 @@ export class SearchFormWormsComponent implements OnInit {
             this.expSetApi.getUnScoredExpSetsByCounts(this.expSetSearch)
                 .toPromise()
                 .then((results) => {
-                    console.log('got results');
+                    console.log('got contactSheetResults');
                     this.showProgress = false;
-                    this.progress.complete();
                     console.log(JSON.stringify(results.results));
                     this.expSets = results.results;
                 })
@@ -151,54 +146,3 @@ export class SearchFormWormsComponent implements OnInit {
     }
 }
 
-//TODO THIS IS NOT GOOD IT NEEDS TO GO SOMEPLACE ELSE!!!
-declare var Object: any;
-
-export interface ExpSetSearchInterface {
-    chemicalSearch?: Array<string>;
-    rnaiSearch?: Array<string>;
-    assaySearch?: Array<number>;
-    librarySearch?: Array<any>;
-    screenSearch?: Array<any>;
-    expWorkflowSearch?: Array<any>;
-    plateSearch?: Array<number>;
-    currentPage?: number;
-    skip?: number;
-    pageSize?: number;
-    ctrlLimit?: number;
-    expGroupSearch?: Array<number>;
-    includeCounts?: Boolean;
-    includeAlbums?: Boolean;
-    includeManualScores?: Boolean;
-    filterManualScores?: Boolean;
-    orderBy?: string;
-    order?: string;
-}
-
-
-export class ExpSetSearch {
-    rnaiSearch ?: Array<string>;
-    chemicalSearch ?: Array<string>;
-    assaySearch ?: Array<number>;
-    librarySearch ?: Array<any>;
-    screenSearch ?: Array<any>;
-    expWorkflowSearch ?: Array<any>;
-    plateSearch ?: Array<number>;
-    currentPage ?: number;
-    skip ?: number;
-    pageSize ?: number;
-    ctrlLimit ?: number;
-    expGroupSearch ?: Array<number>;
-    includeCounts ?: Boolean = true;
-    includeAlbums ?: Boolean = true;
-    includeManualScores ?: Boolean = false;
-    filterManualScores ?: Boolean = false;
-
-    // If ordering by counts
-    orderBy ?: string;
-    order ?: string;
-
-    constructor(data?: ExpSetSearchInterface) {
-        Object.assign(this, data);
-    }
-}

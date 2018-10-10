@@ -1,5 +1,5 @@
 import app  = require('../../../../server/server.js');
-import {WellCollection} from "../../../types/wellData";
+import {WellCollection} from "../../../types/custom/wellData";
 import {
   ExpPlateResultSet,
   RnaiLibraryResultSet,
@@ -10,7 +10,7 @@ import {WorkflowModel} from "../../index";
 import Promise = require('bluebird');
 import {get, isNull, isEmpty, find, isEqual} from 'lodash';
 // import {ExpSetSearch} from "../../RnaiExpSet/load/RnaiExpSet";
-import {ExpSetSearch} from "../../ExpSet/types";
+import {ExpSetSearch} from "../../../types/custom/ExpSetTypes/index";
 
 const RnaiLibrary = app.models['RnaiLibrary'] as (typeof WorkflowModel);
 

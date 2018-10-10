@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {JsonPipe} from '@angular/common';
-import {ExpBiosampleResultSet, ExpScreenResultSet, PlateResultSet, ReagentLibraryResultSet} from '../../../../../sdk/models';
-import {PlateApi, ExpBiosampleApi, ExpScreenUploadWorkflowApi, ReagentLibraryApi} from '../../../../../sdk/services/custom';
+import {ExpBiosampleResultSet, ExpScreenResultSet, PlateResultSet, ReagentLibraryResultSet} from '../../../../../types/sdk/models';
+import {PlateApi, ExpBiosampleApi, ExpScreenUploadWorkflowApi, ReagentLibraryApi} from '../../../../../types/sdk/services/custom';
 
-import {ExpScreenApi} from '../../../../../sdk/services/custom';
+import {ExpScreenApi} from '../../../../../types/sdk/services/custom';
 
-import {RnaiScreenUploadWorkflowResultSet} from '../../../../../sdk/models';
+import {RnaiScreenUploadWorkflowResultSet} from '../../../../../types/sdk/models';
 import {isNull, isEmpty} from 'lodash';
 import {SearchPlatePlans, ScreenDesign, ExperimentData, SearchExpBiosamples, RNAiExpUpload, RnaiScreenDesign} from '../../helpers';
 
-import {PlatePlan96ResultSet} from '../../../../../sdk/models';
-import {PlatePlan96Api} from '../../../../../sdk/services/custom';
+import {PlatePlan96ResultSet} from '../../../../../types/sdk/models';
+import {PlatePlan96Api} from '../../../../../types/sdk/services/custom';
 
 @Component({
   // selector: 'app-rnai-secondary',

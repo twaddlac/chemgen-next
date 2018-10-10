@@ -7,7 +7,7 @@ import {
   WpTermsResultSet, WpTermTaxonomyResultSet
 } from "../../../types/sdk/models/index";
 import {WorkflowModel} from "../../index";
-import {PlateCollection, WellCollection, ScreenCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection, ScreenCollection} from "../../../types/custom/wellData";
 
 import Promise = require('bluebird');
 import * as _ from "lodash";

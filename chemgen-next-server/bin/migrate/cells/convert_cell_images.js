@@ -118,7 +118,7 @@ var submitImageJob = function (imagesList) {
             });
         }, { concurrency: 1 })
             .then(function (results) {
-            console.log('resolving results!');
+            console.log('resolving contactSheetResults!');
             resolve(results);
         })
             .catch(function (error) {

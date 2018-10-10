@@ -5,9 +5,9 @@ import {FormsModule} from '@angular/forms';
 import {Lightbox, LightboxModule} from 'angular2-lightbox';
 import {ModalDirective, ModalModule} from 'ngx-bootstrap';
 import {ExpsetAlbumComponent} from '../expset-album.component';
-import {ExpSetApi} from '../../../../../sdk/services/custom';
+import {ExpSetApi} from '../../../../../types/sdk/services/custom';
 import {ComponentLoaderFactory} from "ngx-bootstrap";
-import {SDKBrowserModule} from "../../../../../sdk";
+import {SDKBrowserModule} from "../../../../../types/sdk";
 
 describe('ExpsetAlbumDialogComponent', () => {
   let component: ExpsetAlbumDialogComponent;

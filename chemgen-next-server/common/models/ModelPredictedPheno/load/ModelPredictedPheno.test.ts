@@ -6,7 +6,7 @@ import jsonfile = require('jsonfile');
 import loopback = require('loopback');
 import {WorkflowModel} from "../../index";
 import {PlateResultSet} from "../../../types/sdk/models";
-import {PlateCollection, WellCollection, ScreenCollection} from "../../../types/wellData";
+import {PlateCollection, WellCollection, ScreenCollection} from "../../../types/custom/wellData";
 
 import * as _ from "lodash";
 

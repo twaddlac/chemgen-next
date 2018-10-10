@@ -2,9 +2,9 @@ import app  = require('../../../../server/server.js');
 import config = require('config');
 
 import {WorkflowModel} from "../../index";
-import {annotationData, WellCollection} from "../../../types/wellData";
+import {annotationData, WellCollection} from "../../../types/custom/wellData";
 import {ExpPlateResultSet, ExpScreenUploadWorkflowResultSet, WpTermsResultSet} from "../../../types/sdk/models";
-import {PlateCollection, ScreenCollection} from "../../../types/wellData";
+import {PlateCollection, ScreenCollection} from "../../../types/custom/wellData";
 import {WpTermTaxonomyResultSet} from "../../../types/sdk/models";
 import slug = require('slug');
 import Promise = require('bluebird');
@@ -34,7 +34,7 @@ WpTerms.load.workflows.createAnnotationData = function (workflowData, screenData
         app.winston.info(JSON.stringify(results[0]));
         screenData.annotationData = new annotationData({taxTerms: results});
         app.winston.info(`Complete: WpTerms.load.workflows.createAnnotationData ${workflowData.name}`);
-        // screenData.annotationData.taxTerms = results;
+        // screenData.annotationData.taxTerms = contactSheetResults;
         resolve(screenData);
       })
       .catch((error) => {

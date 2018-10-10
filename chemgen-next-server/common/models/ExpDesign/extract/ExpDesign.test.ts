@@ -6,7 +6,7 @@ import {
   ExpDesignResultSet, ExpGroupResultSet, ExpScreenUploadWorkflowResultSet,
   PlateResultSet
 } from "../../../types/sdk/models";
-import {PlateCollection} from "../../../types/wellData";
+import {PlateCollection} from "../../../types/custom/wellData";
 import * as _ from "lodash";
 
 const ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow as (typeof WorkflowModel);

@@ -10,7 +10,7 @@ module.exports = function (RnaiExpSet) {
   RnaiExpSet.transform.workflows = {}
 
   RnaiExpSet.on('attached', function () {
-    require('../load/RnaiExpSet')
+    require('../extract/RnaiExpSet')
     // require('../transform/RnaiExpSet')
     // require('../extract/RnaiExpSet')
   })
