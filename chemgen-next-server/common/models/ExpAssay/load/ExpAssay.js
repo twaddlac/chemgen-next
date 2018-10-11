@@ -501,6 +501,7 @@ ExpAssay.load.workflows.imageConversionPipeline.arrayScan = function (workflowDa
                     // if (!fs.existsSync(`${images.baseImage}-autolevel.png`) || true) {
                     //TODO Make this a parameter somewhere
                     return request({
+                        timeout: 50,
                         uri: "http://" + config.get('imageConversionHost') + ":" + config.get('imageConversionPort'),
                         body: imageJob,
                         method: 'POST',

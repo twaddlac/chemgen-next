@@ -285,38 +285,39 @@ ExpScreenUploadWorkflow.load.workflows.worms.populateExpDesignData = function (w
 ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (workflowData, screenData) {
     app.winston.info("Creating Experiment Interfaces: " + workflowData.name);
     return new Promise(function (resolve, reject) {
-        //TODO Add in create exp terms here
-        app.models.WpTerms.load.workflows.createAnnotationData(workflowData, screenData)
-            .then(function (screenData) {
-            //@ts-ignore
-            return Promise.map(screenData.plateDataList, function (plateData) {
-                app.winston.info("Begin Exp Plate: " + plateData.expPlate.barcode + " create interfaces");
-                return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
-                    .then(function () {
-                    //TODO Make sure to have plateUrl
-                    return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
-                })
-                    .catch(function (error) {
-                    app.winston.error(error);
-                    return (new Error(error));
-                });
-            }, { concurrency: 1 })
-                .then(function () {
-                return;
-            })
-                .catch(function (error) {
-                return new Error(error);
-            });
-        })
-            .then(function () {
-            app.winston.info("Complete Experiment Interfaces! " + workflowData.name);
-            // I don't actually do anything with the contactSheetResults from the interfaces
-            // They are just there to look pretty
-            resolve(screenData);
-        })
-            .catch(function (error) {
-            reject(new Error(error));
-        });
+        //TODO These need to be spruced up quite a bit, and may be deprecated with new angular interfaces
+        resolve();
+        // app.models.WpTerms.load.workflows.createAnnotationData(workflowData, screenData)
+        //   .then((screenData: ScreenCollection) => {
+        //     //@ts-ignore
+        //     return Promise.map(screenData.plateDataList, (plateData: PlateCollection) => {
+        //       app.winston.info(`Begin Exp Plate: ${plateData.expPlate.barcode} create interfaces`);
+        //       return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
+        //         .then(() => {
+        //           //TODO Make sure to have plateUrl
+        //           return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
+        //         })
+        //         .catch((error) => {
+        //           app.winston.error(error);
+        //           return (new Error(error));
+        //         });
+        //     }, {concurrency: 1})
+        //       .then(() => {
+        //         return;
+        //       })
+        //       .catch((error) => {
+        //         return new Error(error);
+        //       })
+        //   })
+        //   .then(() => {
+        //     app.winston.info(`Complete Experiment Interfaces! ${workflowData.name}`);
+        //     // I don't actually do anything with the contactSheetResults from the interfaces
+        //     // They are just there to look pretty
+        //     resolve(screenData);
+        //   })
+        //   .catch((error) => {
+        //     reject(new Error(error));
+        //   });
     });
 };
 //# sourceMappingURL=ExpScreenUploadWorkflow.js.map

@@ -17,6 +17,7 @@
   "instrumentLookUp": "arrayScan",
   "biosampleType": "worm",
   "screenName": "mel-28 Primary RNAi Enhancer Screen",
+  "name": "mel-28 Primary RNAi Enhancer Screen TEST WORKFLOW",
   "assayViewType": "experiment_assay_ahringer2",
   "plateViewType": "experiment_plate_ahringer2",
   "temperature": "25.5C",

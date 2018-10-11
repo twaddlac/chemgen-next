@@ -1,4 +1,4 @@
-import {ExpAssayResultSet, ExpPlateResultSet} from "../../../types/sdk/models/index";
+import {ExpAssayResultSet, ExpPlateResultSet} from "../../../types/sdk/models";
 import {PlateCollection} from "../../../types/custom/wellData";
 import {WorkflowModel} from "../../index";
 
