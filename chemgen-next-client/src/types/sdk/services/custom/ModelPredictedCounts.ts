@@ -10,7 +10,6 @@ import { ErrorHandler } from '../core/error.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ModelPredictedCountsResultSet } from '../../models/ModelPredictedCountsResultSet';
-import { SocketConnection } from '../../sockets/socket.connections';
 import { ExpPlateResultSet } from '../../models/ExpPlateResultSet';
 import { ExpAssay2reagentResultSet } from '../../models/ExpAssay2reagentResultSet';
 import { ExpScreenResultSet } from '../../models/ExpScreenResultSet';
@@ -26,12 +25,11 @@ export class ModelPredictedCountsApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
-    @Inject(SocketConnection) protected connection: SocketConnection,
     @Inject(SDKModels) protected models: SDKModels,
     @Inject(LoopBackAuth) protected auth: LoopBackAuth,
     @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
-    super(http,  connection,  models, auth, errorHandler);
+    super(http,  models, auth, errorHandler);
   }
 
   /**

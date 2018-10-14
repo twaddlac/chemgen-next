@@ -6,34 +6,19 @@ import {
   shuffle,
   isEqual,
   find,
-  compact,
   has,
+  isArray,
   get,
   filter,
-  memoize,
   orderBy,
   camelCase,
-  round,
-  isObject
+  cloneDeep,
 } from 'lodash';
-import {interpolateYlOrBr, interpolateViridis} from 'd3';
-import {ExpSetSearch, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes/index";
-import {
-  ChemicalLibraryResultSet,
-  ExpAssay2reagentResultSet,
-  ExpAssayResultSet, ExpDesignResultSet, ExpManualScoreCodeResultSet, ExpManualScoresResultSet,
-  ExpPlateResultSet,
-  ExpScreenResultSet,
-  ExpScreenUploadWorkflowResultSet,
-  ModelPredictedCountsResultSet,
-  RnaiLibraryResultSet
-} from "../../../../types/sdk/models";
-import decamelize = require('decamelize');
+import {ExpSetSearch, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes";
 
 import config = require('config');
 
 let knex = config.get('knex');
-import {cloneDeep} from 'lodash';
 
 import redis = require('redis');
 // @ts-ignore
@@ -94,7 +79,6 @@ ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search: ExpSetSea
         }
       })
       .then((data) => {
-        // data = ExpSet.extract.insertCountsDataImageMeta(data);
         try {
           data = ExpSet.extract.insertExpManualScoresImageMeta(data);
         } catch (error) {
@@ -133,13 +117,11 @@ ExpSet.extract.workflows.getExpPlatesByScores = function (data: ExpSetSearchResu
         data.skip = data.skip + data.pageSize;
         // rowData = compact(rowData);
         // app.winston.info(JSON.stringify(rowData));
-        app.winston.info(JSON.stringify(rows));
         if (rows.length) {
           data.expPlates = [shuffle(rows)[0]];
         } else {
           data.expPlates = [];
         }
-        app.winston.info(`ExpPlates: ${JSON.stringify(data.expPlates)}`);
         return resolve(data);
       }
     });
@@ -156,7 +138,7 @@ ExpSet.extract.genExpGroupTypeAlbums = function (data: ExpSetSearchResults, sear
 
   data.albums.map((album) => {
     ['ctrlNullImages', 'ctrlStrainImages'].map((albumType) => {
-      album[albumType] = shuffle(album[albumType].slice(0, search.ctrlLimit));
+      // album[albumType] = shuffle(album[albumType].slice(0, search.ctrlLimit));
     });
   });
 
@@ -230,6 +212,34 @@ ExpSet.extract.extractPlatesNoScore = function (data: ExpSetSearchResults, searc
   data.expGroupTypeAlbums.treatReagent = orderBy(data.expGroupTypeAlbums.treatReagent, 'well');
   data.expGroupTypeAlbums.ctrlReagent = orderBy(data.expGroupTypeAlbums.ctrlReagent, 'well');
 
+  data = ExpSet.extract.preferentiallyChooseScoresSamePlate(data, search);
   return data;
 };
 
+
+/**
+ * For all secondary screens, and some primary, the ctrls are on the same plate
+ * So a plate will have mel-28 + RNAis and mel-28 + L4440
+ * This is true (so far) of all RNAi secondary screens and Chembridge primary screens
+ * @param data
+ * @param search
+ */
+ExpSet.extract.preferentiallyChooseScoresSamePlate = function (data: ExpSetSearchResults, search: ExpSetSearch) {
+  app.winston.info('Preferentially choosing by plate');
+  if (has(data.expGroupTypeAlbums, 'ctrlStrain')) {
+    let treatPlateId = data.expGroupTypeAlbums.treatReagent[0].plateId;
+    let ctrlStrainSamePlate = filter(data.expGroupTypeAlbums.ctrlStrain, {plateId: treatPlateId});
+    if (isArray(ctrlStrainSamePlate) && ctrlStrainSamePlate.length) {
+      data.expGroupTypeAlbums.ctrlStrain = ctrlStrainSamePlate;
+    }
+  }
+
+  if (has(data.expGroupTypeAlbums, 'ctrlNull')) {
+    let ctrlReagentPlateId = data.expGroupTypeAlbums.ctrlReagent[0].plateId;
+    let ctrlNullSamePlate = filter(data.expGroupTypeAlbums.ctrlNull, {plateId: ctrlReagentPlateId});
+    if (isArray(ctrlNullSamePlate) && ctrlNullSamePlate.length) {
+      data.expGroupTypeAlbums.ctrlNull = ctrlNullSamePlate;
+    }
+  }
+  return data;
+};

@@ -9,17 +9,12 @@ import {ContactSheetComponent} from '../../scoring/contact-sheet/contact-sheet.c
 import {ExpsetSheetComponent} from '../../scoring/expset-sheet/expset-sheet.component';
 import {FormsModule} from '@angular/forms';
 import {NouisliderModule} from 'ng2-nouislider';
-import {GridAlbumComponent} from '../../scoring/albums/grid-album/grid-album.component';
 import {ExpsetAlbumComponent} from '../../scoring/albums/expset-album/expset-album.component';
 import {ExpsetAlbumDialogComponent} from '../../scoring/albums/expset-album/expset-album-dialog/expset-album-dialog.component';
 import {ModalModule} from 'ngx-bootstrap';
-import {ExpScreenApi, ExpScreenUploadWorkflowApi, ExpSetApi, SDKModels} from '../../../types/sdk/services/custom';
-import {NgProgress, NgProgressModule} from '@ngx-progressbar/core';
-import {HttpClient, HttpHandler} from '@angular/common/http';
-import {SocketConnection} from '../../../types/sdk/sockets/socket.connections';
-import {SocketDriver} from '../../../types/sdk/sockets/socket.driver';
-import {ErrorHandler, LoopBackAuth} from '../../../types/sdk/services/core';
-import {InternalStorage, SDKBrowserModule} from '../../../types/sdk';
+import {NgProgressModule} from '@ngx-progressbar/core';
+import {SDKBrowserModule} from '../../../types/sdk';
+import {MockExpsetToggleComponent, MockGridAlbumComponent} from "../../../../test/MockComponents";
 
 describe('SearchFormWormsComponent', () => {
     let component: SearchFormWormsComponent;
@@ -28,11 +23,9 @@ describe('SearchFormWormsComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [LoadingModule, FormsModule, NouisliderModule, ModalModule, NgProgressModule, SDKBrowserModule.forRoot()],
-            declarations: [SearchFormWormsComponent, SearchFormExpScreenComponent,
+            declarations: [SearchFormWormsComponent, SearchFormExpScreenComponent, MockExpsetToggleComponent, MockGridAlbumComponent,
                 SearchFormRnaiComponent, SearchFormViewOptionsComponent, ContactSheetComponent,
-                ExpsetSheetComponent, GridAlbumComponent, ExpsetAlbumComponent, ExpsetAlbumDialogComponent],
-            providers: [ExpSetApi, ExpScreenApi, ExpScreenUploadWorkflowApi,
-                HttpClient, HttpHandler, SocketConnection, SocketDriver, SDKModels, LoopBackAuth, InternalStorage, ErrorHandler]
+                ExpsetSheetComponent, ExpsetAlbumComponent, ExpsetAlbumDialogComponent],
         })
             .compileComponents();
     }));

@@ -12,6 +12,7 @@ var ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow;
 ExpScreenUploadWorkflow.load.workflows.worms.primary.doWork = function (workflowData) {
     return new Promise(function (resolve, reject) {
         if (workflowData instanceof Array) {
+            //@ts-ignore
             Promise.map(workflowData, function (data) {
                 return ExpScreenUploadWorkflow.load.workflows.worms.primary.processWorkflow(data);
             }, { concurrency: 1 })
@@ -155,31 +156,32 @@ ExpScreenUploadWorkflow.load.workflows.worms.primary.populateExpDesignData = fun
  * @param workflowData
  * @param {ScreenCollection} screenData
  */
-ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (workflowData, screenData) {
-    app.winston.info('Creating Experiment Interfaces');
-    return new Promise(function (resolve, reject) {
-        Promise.map(screenData.plateDataList, function (plateData) {
-            app.winston.info('Creating Exp Plate Interfaces');
-            return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
-                .then(function () {
-                //TODO Make sure to have plateUrl
-                app.winston.info('Creating Exp Assay Interfaces');
-                return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
-            })
-                .catch(function (error) {
-                app.winston.error(error.stack);
-                // reject(new Error(error));
-                return (new Error(error));
-            });
-        }, { concurrency: 1 })
-            .then(function () {
-            // I don't actually do anything with the contactSheetResults from the interfaces
-            // They are just there to look pretty
-            resolve(screenData);
-        })
-            .catch(function (error) {
-            reject(new Error(error));
-        });
-    });
-};
+// ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (workflowData: ExpScreenUploadWorkflowResultSet, screenData: ScreenCollection) {
+//   app.winston.info('Creating Experiment Interfaces');
+//   return new Promise((resolve, reject) => {
+//     resolve();
+//     // Promise.map(screenData.plateDataList, (plateData: PlateCollection) => {
+//     //   app.winston.info('Creating Exp Plate Interfaces');
+//     //   return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
+//     //     .then(() => {
+//     //       //TODO Make sure to have plateUrl
+//     //       app.winston.info('Creating Exp Assay Interfaces');
+//     //       return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
+//     //     })
+//     //     .catch((error) => {
+//     //       app.winston.error(error.stack);
+//     //       // reject(new Error(error));
+//     //       return (new Error(error));
+//     //     });
+//     // }, {concurrency: 1})
+//     //   .then(() => {
+//     //     // I don't actually do anything with the contactSheetResults from the interfaces
+//     //     // They are just there to look pretty
+//     //     resolve(screenData);
+//     //   })
+//     //   .catch((error) => {
+//     //     reject(new Error(error));
+//     //   });
+//   });
+// };
 //# sourceMappingURL=ExpScreenUploadWorkflow.js.map

@@ -60,8 +60,12 @@ export class ContactSheetComponent implements OnInit {
         this.contactSheetUiOptions = new ContactSheetUIOptions();
         const userName = document.getElementById('userName');
         const userId = document.getElementById('userId');
-        this.userName = userName.innerText || 'dummyUser';
-        this.userId = userId.innerText || 0;
+        if (userName) {
+            this.userName = userName.innerText || 'dummyUser';
+        }
+        if (userId) {
+            this.userId = userId.innerText || 0;
+        }
     }
 
 

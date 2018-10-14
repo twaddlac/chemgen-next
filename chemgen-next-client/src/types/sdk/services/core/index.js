@@ -7,5 +7,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./auth.service"));
 __export(require("./error.service"));
 __export(require("./base.service"));
-__export(require("./real.time"));
 //# sourceMappingURL=index.js.map

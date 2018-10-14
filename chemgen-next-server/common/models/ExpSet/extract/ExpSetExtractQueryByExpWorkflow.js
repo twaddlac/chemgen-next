@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../server/server.js");
 var lodash_1 = require("lodash");
 var Promise = require("bluebird");
-var index_1 = require("../../../types/custom/ExpSetTypes/index");
+var ExpSetTypes_1 = require("../../../types/custom/ExpSetTypes");
 var config = require("config");
 var redis = require("redis");
 // @ts-ignore
@@ -20,8 +20,8 @@ ExpSet.extract.workflows.getExpSetsByWorkflowId = function (search) {
         app.winston.info("B: " + JSON.stringify(search));
         //Since the result is already very large - the pageSize is 1
         search.pageSize = 1;
-        search = new index_1.ExpSetSearch(search);
-        var data = new index_1.ExpSetSearchResults({});
+        search = new ExpSetTypes_1.ExpSetSearch(search);
+        var data = new ExpSetTypes_1.ExpSetSearchResults({});
         app.winston.info("A: " + JSON.stringify(search));
         var or = ExpSet.extract.buildQueryExpWorkflow(data, search);
         var searchQuery = {

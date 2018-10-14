@@ -55,10 +55,6 @@ var common_1 = require("@angular/common");
 var core_1 = require("@angular/core");
 var cookie_browser_1 = require("./storage/cookie.browser");
 var storage_browser_1 = require("./storage/storage.browser");
-var socket_browser_1 = require("./sockets/socket.browser");
-var socket_driver_1 = require("./sockets/socket.driver");
-var socket_connections_1 = require("./sockets/socket.connections");
-var real_time_1 = require("./services/core/real.time");
 var BiosampleStock_1 = require("./services/custom/BiosampleStock");
 var ChemicalLibrary_1 = require("./services/custom/ChemicalLibrary");
 var ExpDesign_1 = require("./services/custom/ExpDesign");
@@ -117,7 +113,6 @@ var SDKBrowserModule = /** @class */ (function () {
                 auth_service_1.LoopBackAuth,
                 logger_service_1.LoggerService,
                 SDKModels_1.SDKModels,
-                real_time_1.RealTime,
                 BiosampleStock_1.BiosampleStockApi,
                 ChemicalLibrary_1.ChemicalLibraryApi,
                 ExpDesign_1.ExpDesignApi,
@@ -153,8 +148,7 @@ var SDKBrowserModule = /** @class */ (function () {
                 ExpSet_1.ExpSetApi,
                 Models_1.ModelsApi,
                 internalStorageProvider,
-                { provide: storage_swaps_1.SDKStorage, useClass: storage_browser_1.StorageBrowser },
-                { provide: socket_driver_1.SocketDriver, useClass: socket_browser_1.SocketBrowser }
+                { provide: storage_swaps_1.SDKStorage, useClass: storage_browser_1.StorageBrowser }
             ]
         };
     };
@@ -164,8 +158,7 @@ var SDKBrowserModule = /** @class */ (function () {
             declarations: [],
             exports: [],
             providers: [
-                error_service_1.ErrorHandler,
-                socket_connections_1.SocketConnection
+                error_service_1.ErrorHandler
             ]
         })
     ], SDKBrowserModule);

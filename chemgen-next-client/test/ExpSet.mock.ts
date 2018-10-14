@@ -1,4 +1,5 @@
-import {ExpSetSearchResults} from "../src/app/scoring/expset/expset.module";
+import {ExpSetSearchResults} from "../src/types/custom/ExpSetTypes";
+
 const data : any = {
     "expAssays": [
         {

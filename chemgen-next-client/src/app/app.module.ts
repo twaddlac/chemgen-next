@@ -57,8 +57,6 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {ScatterplotCountsComponent} from './viz/scatterplot-counts/scatterplot-counts.component';
 
-// import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-
 import { HighchartsChartModule } from 'highcharts-angular';
 import * as Highcharts from 'highcharts';
 import exporting from 'highcharts/modules/exporting.src';

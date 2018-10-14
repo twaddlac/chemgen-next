@@ -3,6 +3,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SearchFormExpsetsComponent} from './search-form-expsets.component';
 import {SDKBrowserModule} from "../../../types/sdk";
 import {FormsModule} from "@angular/forms";
+import {MockExpScreenInfoComponent, MockSearchFormExpScreen, MockSearchFormRnai, MockExpsetSheet} from "../../../../test/MockComponents";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 describe('SearchFormExpsetsComponent', () => {
     let component: SearchFormExpsetsComponent;
@@ -10,8 +12,8 @@ describe('SearchFormExpsetsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, SDKBrowserModule.forRoot()],
-            declarations: [SearchFormExpsetsComponent]
+            imports: [FormsModule, SDKBrowserModule.forRoot(), NgxSpinnerModule],
+            declarations: [SearchFormExpsetsComponent, MockExpScreenInfoComponent, MockSearchFormExpScreen, MockSearchFormRnai, MockExpsetSheet]
         })
             .compileComponents();
     }));

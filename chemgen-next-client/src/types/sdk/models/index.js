@@ -39,5 +39,4 @@ __export(require("./ChemicalExpSetResultSet"));
 __export(require("./ExpSetResultSet"));
 __export(require("./ModelsResultSet"));
 __export(require("./BaseModels"));
-__export(require("./FireLoopRef"));
 //# sourceMappingURL=index.js.map

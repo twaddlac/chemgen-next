@@ -11,12 +11,12 @@ import {get, uniq, orderBy} from 'lodash';
 })
 export class SearchFormExpScreenComponent implements OnInit {
 
+    @Input('formResults') formResults: SearchFormExpScreenFormResults;
     expScreens: ExpScreenResultSet[];
     expScreenWorkflows: ExpScreenUploadWorkflowResultSet[];
     temperatures: Array<number>;
     // expScreenFormResults: SearchFormExpScreenFormResults = new SearchFormExpScreenFormResults();
 
-    @Input('formResults') formResults: SearchFormExpScreenFormResults;
 
     constructor(private expScreenApi: ExpScreenApi, private expScreenUploadWorkflowApi: ExpScreenUploadWorkflowApi) {
         this.expScreens = [];
