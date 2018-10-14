@@ -34,6 +34,7 @@ ChemicalLibrary.extract.parseLibraryResults = function (workflowData, expPlate: 
     let taxTermRefs = ['compoundSystematicName', 'compoundMw', 'compoundFormula'];
     app.models.ChemicalXrefs.find({where: {or: platedbXrefSearch}})
       .then((dbXrefs) => {
+        //@ts-ignore
         return Promise.map(allWells, function (well) {
           //TODO These should be library RESULTS
           let libraryResult: ChemicalLibraryResultSet = ChemicalLibrary.helpers.genLibraryResult(barcode, libraryResults, well);
@@ -48,7 +49,7 @@ ChemicalLibrary.extract.parseLibraryResults = function (workflowData, expPlate: 
               let isControl = false;
 
               // For secondary plates we need to add an additional taxTerm for control wells
-              chemicalTaxTerms.taxTerms.forEach(function (chemicalTaxTerm) {
+              chemicalTaxTerms['taxTerms'].forEach(function (chemicalTaxTerm) {
                 taxTerms.push(chemicalTaxTerm);
               });
 

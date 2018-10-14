@@ -2,7 +2,7 @@ import app = require('../../../../../server/server.js');
 import {WorkflowModel} from "../../../index";
 import Promise = require('bluebird');
 import {divide, isNull, isUndefined, isEmpty, camelCase} from 'lodash';
-import {ExpSetSearch, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes/index";
+import {ExpSetSearch, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes";
 import {ChemicalLibraryResultSet, ExpAssay2reagentResultSet, RnaiLibraryResultSet} from "../../../../types/sdk/models";
 import decamelize = require('decamelize');
 
@@ -65,7 +65,7 @@ ExpSet.extract.workflows.getExpAssay2reagentsByScores = function (data: ExpSetSe
     //A much faster way to do this would be to get all the expWorkflowIds that match the query
     //Then get the ones that haven't been scored
     sqlQuery = sqlQuery
-      .orderByRaw('RAND()')
+    // .orderByRaw('RAND()')
       .limit(data.pageSize)
       .offset(data.skip);
 
@@ -119,9 +119,13 @@ ExpSet.extract.buildUnscoredPaginationData = function (data: ExpSetSearchResults
  */
 ExpSet.extract.buildNativeQueryExpWorkflowId = function (data: ExpSetSearchResults, search: ExpSetSearch, hasManualScores: Boolean) {
 
-  let query = knex('exp_plate');
-
-  ['screen', 'expWorkflow', 'plate'].map((searchType) => {
+  let query = knex('exp_assay2reagent');
+  query = query
+    .distinct('exp_workflow_id')
+    .where('reagent_type', 'LIKE', 'treat%')
+    .whereNot({reagent_id: null});
+  //Add Base experiment lookup
+  ['screen', 'library', 'expWorkflow', 'plate', 'expGroup', 'assay'].map((searchType) => {
     if (!isEmpty(search[`${searchType}Search`])) {
       let sql_col = decamelize(`${searchType}Id`);
       let sql_values = search[`${searchType}Search`];
@@ -129,23 +133,76 @@ ExpSet.extract.buildNativeQueryExpWorkflowId = function (data: ExpSetSearchResul
     }
   });
 
+  //Add Rnai reagent Lookup
+  if (!isEmpty(data.rnaisList)) {
+    query = query
+      .where(function () {
+        let firstVal: RnaiLibraryResultSet = data.rnaisList.shift();
+        let firstWhere = this.orWhere({'reagent_id': firstVal.rnaiId, library_id: firstVal.libraryId});
+        data.rnaisList.map((rnai: RnaiLibraryResultSet) => {
+          firstWhere = firstWhere.orWhere({reagent_id: rnai.rnaiId, library_id: firstVal.libraryId});
+        });
+        data.rnaisList.push(firstVal);
+      })
+  }
+
+  //Add Chemical Lookup
+  if (!isEmpty(data.compoundsList)) {
+    query = query
+      .where(function () {
+        let firstVal: ChemicalLibraryResultSet = data.compoundsList.shift();
+        let firstWhere = this.orWhere({'reagent_id': firstVal.compoundId, library_id: firstVal.libraryId});
+        data.compoundsList.map((compound: ChemicalLibraryResultSet) => {
+          firstWhere = firstWhere.orWhere({reagent_id: compound.compoundId, library_id: firstVal.libraryId});
+        });
+        data.compoundsList.push(firstVal);
+      })
+  }
+
   //Get if value exists in the manual score table
   if (hasManualScores) {
     query = query
       .whereExists(function () {
         this.select(1)
           .from('exp_manual_scores')
-          .whereRaw('exp_plate.exp_workflow_id = exp_manual_scores.exp_workflow_id');
+          .whereRaw('exp_assay2reagent.assay_id = exp_manual_scores.assay_id');
       });
   } else {
     query = query
       .whereNotExists(function () {
         this.select(1)
           .from('exp_manual_scores')
-          .whereRaw('exp_plate.exp_workflow_id = exp_manual_scores.exp_workflow_id');
+          .whereRaw('exp_assay2reagent.assay_id = exp_manual_scores.assay_id');
       });
 
   }
+  // let query = knex('exp_plate');
+  //
+  // ['screen', 'expWorkflow', 'plate'].map((searchType) => {
+  //   if (!isEmpty(search[`${searchType}Search`])) {
+  //     let sql_col = decamelize(`${searchType}Id`);
+  //     let sql_values = search[`${searchType}Search`];
+  //     query = query.whereIn(sql_col, sql_values);
+  //   }
+  // });
+  //
+  // //Get if value exists in the manual score table
+  // if (hasManualScores) {
+  //   query = query
+  //     .whereExists(function () {
+  //       this.select(1)
+  //         .from('exp_manual_scores')
+  //         .whereRaw('exp_plate.exp_workflow_id = exp_manual_scores.exp_workflow_id');
+  //     });
+  // } else {
+  //   query = query
+  //     .whereNotExists(function () {
+  //       this.select(1)
+  //         .from('exp_manual_scores')
+  //         .whereRaw('exp_plate.exp_workflow_id = exp_manual_scores.exp_workflow_id');
+  //     });
+  //
+  // }
 
   return query;
 };
@@ -180,6 +237,7 @@ ExpSet.extract.buildNativeQuery = function (data: ExpSetSearchResults, search: E
         data.rnaisList.map((rnai: RnaiLibraryResultSet) => {
           firstWhere = firstWhere.orWhere({reagent_id: rnai.rnaiId, library_id: firstVal.libraryId});
         });
+        data.rnaisList.push(firstVal);
       })
   }
 
@@ -192,6 +250,7 @@ ExpSet.extract.buildNativeQuery = function (data: ExpSetSearchResults, search: E
         data.compoundsList.map((compound: ChemicalLibraryResultSet) => {
           firstWhere = firstWhere.orWhere({reagent_id: compound.compoundId, library_id: firstVal.libraryId});
         });
+        data.compoundsList.push(firstVal);
       })
   }
 

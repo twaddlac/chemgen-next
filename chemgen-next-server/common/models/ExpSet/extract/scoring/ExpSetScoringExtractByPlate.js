@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app = require("../../../../../server/server.js");
 var Promise = require("bluebird");
 var lodash_1 = require("lodash");
-var index_1 = require("../../../../types/custom/ExpSetTypes/index");
+var ExpSetTypes_1 = require("../../../../types/custom/ExpSetTypes");
 var config = require("config");
 var knex = config.get('knex');
 var redis = require("redis");
@@ -23,9 +23,9 @@ var ExpSet = app.models.ExpSet;
 ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search) {
     return new Promise(function (resolve, reject) {
         app.winston.info("B: " + JSON.stringify(search));
-        search = new index_1.ExpSetSearch(search);
+        search = new ExpSetTypes_1.ExpSetSearch(search);
         app.winston.info("A: " + JSON.stringify(search));
-        var data = new index_1.ExpSetSearchResults({});
+        var data = new ExpSetTypes_1.ExpSetSearchResults({});
         data.pageSize = 1;
         var sqlQuery = ExpSet.extract.buildNativeQueryExpWorkflowId(data, search, false);
         sqlQuery = sqlQuery.count();
@@ -63,7 +63,6 @@ ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search) {
             }
         })
             .then(function (data) {
-            // data = ExpSet.extract.insertCountsDataImageMeta(data);
             try {
                 data = ExpSet.extract.insertExpManualScoresImageMeta(data);
             }
@@ -102,14 +101,12 @@ ExpSet.extract.workflows.getExpPlatesByScores = function (data, search, scoresEx
                 data.skip = data.skip + data.pageSize;
                 // rowData = compact(rowData);
                 // app.winston.info(JSON.stringify(rowData));
-                app.winston.info(JSON.stringify(rows));
                 if (rows.length) {
                     data.expPlates = [lodash_1.shuffle(rows)[0]];
                 }
                 else {
                     data.expPlates = [];
                 }
-                app.winston.info("ExpPlates: " + JSON.stringify(data.expPlates));
                 return resolve(data);
             }
         });
@@ -124,7 +121,7 @@ ExpSet.extract.genExpGroupTypeAlbums = function (data, search) {
     };
     data.albums.map(function (album) {
         ['ctrlNullImages', 'ctrlStrainImages'].map(function (albumType) {
-            album[albumType] = lodash_1.shuffle(album[albumType].slice(0, search.ctrlLimit));
+            // album[albumType] = shuffle(album[albumType].slice(0, search.ctrlLimit));
         });
     });
     var expGroupTypes = lodash_1.groupBy(data.expAssay2reagents, 'reagentType');
@@ -190,6 +187,32 @@ ExpSet.extract.extractPlatesNoScore = function (data, search) {
     data.expGroupTypeAlbums.ctrlReagent = data.expGroupTypeAlbums.ctrlReagent[ctrlPlateId];
     data.expGroupTypeAlbums.treatReagent = lodash_1.orderBy(data.expGroupTypeAlbums.treatReagent, 'well');
     data.expGroupTypeAlbums.ctrlReagent = lodash_1.orderBy(data.expGroupTypeAlbums.ctrlReagent, 'well');
+    data = ExpSet.extract.preferentiallyChooseScoresSamePlate(data, search);
+    return data;
+};
+/**
+ * For all secondary screens, and some primary, the ctrls are on the same plate
+ * So a plate will have mel-28 + RNAis and mel-28 + L4440
+ * This is true (so far) of all RNAi secondary screens and Chembridge primary screens
+ * @param data
+ * @param search
+ */
+ExpSet.extract.preferentiallyChooseScoresSamePlate = function (data, search) {
+    app.winston.info('Preferentially choosing by plate');
+    if (lodash_1.has(data.expGroupTypeAlbums, 'ctrlStrain')) {
+        var treatPlateId = data.expGroupTypeAlbums.treatReagent[0].plateId;
+        var ctrlStrainSamePlate = lodash_1.filter(data.expGroupTypeAlbums.ctrlStrain, { plateId: treatPlateId });
+        if (lodash_1.isArray(ctrlStrainSamePlate) && ctrlStrainSamePlate.length) {
+            data.expGroupTypeAlbums.ctrlStrain = ctrlStrainSamePlate;
+        }
+    }
+    if (lodash_1.has(data.expGroupTypeAlbums, 'ctrlNull')) {
+        var ctrlReagentPlateId = data.expGroupTypeAlbums.ctrlReagent[0].plateId;
+        var ctrlNullSamePlate = lodash_1.filter(data.expGroupTypeAlbums.ctrlNull, { plateId: ctrlReagentPlateId });
+        if (lodash_1.isArray(ctrlNullSamePlate) && ctrlNullSamePlate.length) {
+            data.expGroupTypeAlbums.ctrlNull = ctrlNullSamePlate;
+        }
+    }
     return data;
 };
 //# sourceMappingURL=ExpSetScoringExtractByPlate.js.map

@@ -1,41 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Input, Output, EventEmitter} from "@angular/core";
-
 import {ChemicalSecondaryComponent} from './chemical-secondary.component';
 import {FormsModule} from "@angular/forms";
-import {ScreenDesign} from "../../helpers";
-import {ExperimentData} from "../../helpers";
-import {SearchExpBiosamples} from "../../helpers";
-import {DndModule, DragDropConfig, DragDropService, DragDropSortableService} from "ng2-dnd";
-import {
-    ExpBiosampleApi, ExpScreenApi,
-    ExpScreenUploadWorkflowApi,
-    PlateApi, PlatePlan96Api,
-    ReagentLibraryApi,
-    SDKModels
-} from "../../../../../types/sdk/services/custom";
-import {HttpClient, HttpHandler} from "@angular/common/http";
-import {SocketConnection} from "../../../../../types/sdk/sockets/socket.connections";
-import {SocketDriver} from "../../../../../types/sdk/sockets/socket.driver";
-import {ErrorHandler, LoopBackAuth} from "../../../../../types/sdk/services/core";
-import {InternalStorage, SDKBrowserModule} from "../../../../../types/sdk";
-
-@Component({
-    selector: 'app-plate-imaging-dates',
-    template: '<p>Mock Plate Imaging Dates Component</p>'
-})
-class MockPlateImagingDatesComponent {
-    @Input() plateModel: ScreenDesign;
-}
-
-@Component({
-    selector: 'app-exp-screen-info',
-    template: '<p>Mock Plate Imaging Dates Component</p>'
-})
-class MockExpScreenInfoComponent {
-    @Input() expDataModel: ExperimentData;
-    @Input() expBiosampleModel: SearchExpBiosamples;
-}
+import {DndModule,} from "ng2-dnd";
+import {SDKBrowserModule} from "../../../../../types/sdk";
+import {MockPlateImagingDatesComponent, MockExpScreenInfoComponent} from "../../../../../../test/MockComponents";
 
 describe('ChemicalSecondaryComponent', () => {
     let component: ChemicalSecondaryComponent;

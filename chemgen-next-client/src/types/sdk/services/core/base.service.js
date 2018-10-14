@@ -18,7 +18,6 @@ var lb_config_1 = require("../../lb.config");
 var SDKModels_1 = require("../custom/SDKModels");
 var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
-var socket_connections_1 = require("../../sockets/socket.connections");
 var CustomQueryEncoderHelper = /** @class */ (function () {
     function CustomQueryEncoderHelper() {
     }
@@ -48,9 +47,8 @@ var CustomQueryEncoderHelper = /** @class */ (function () {
 * WebSockets.
 **/
 var BaseLoopBackApi = /** @class */ (function () {
-    function BaseLoopBackApi(http, connection, models, auth, errorHandler) {
+    function BaseLoopBackApi(http, models, auth, errorHandler) {
         this.http = http;
-        this.connection = connection;
         this.models = models;
         this.auth = auth;
         this.errorHandler = errorHandler;
@@ -79,15 +77,7 @@ var BaseLoopBackApi = /** @class */ (function () {
             url = url.replace(new RegExp(":" + key + "(\/|$)", "g"), routeParams[key] + "$1");
         });
         if (pubsub) {
-            if (url.match(/fk/)) {
-                var arr = url.split('/');
-                arr.pop();
-                url = arr.join('/');
-            }
-            var event_1 = ("[" + method + "]" + url).replace(/\?/, '');
-            var subject_1 = new rxjs_1.Subject();
-            this.connection.on(event_1, function (res) { return subject_1.next(res); });
-            return subject_1.asObservable();
+            console.info('SDK: PubSub functionality is disabled, generate SDK using -io enabled');
         }
         else {
             var httpParams_1 = new http_1.HttpParams({ encoder: new CustomQueryEncoderHelper() });
@@ -197,24 +187,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
-     * @method onCreate
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @param {T[]} data Generic data type array
-     * @return {Observable<T[]>}
-     * @description
-     * Generic pubsub oncreate many method
-     */
-    BaseLoopBackApi.prototype.onCreate = function (data) {
-        var _this = this;
-        return this.request('POST', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path
-        ].join('/'), undefined, undefined, { data: data }, true)
-            .pipe(operators_1.map(function (datum) { return datum.map(function (data) { return _this.model.factory(data); }); }));
-    };
-    /**
      * @method createMany
      * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
      * @license MIT
@@ -230,24 +202,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             lb_config_1.LoopBackConfig.getApiVersion(),
             this.model.getModelDefinition().path
         ].join('/'), undefined, undefined, { data: data }, null, customHeaders)
-            .pipe(operators_1.map(function (datum) { return datum.map(function (data) { return _this.model.factory(data); }); }));
-    };
-    /**
-     * @method onCreateMany
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @param {T[]} data Generic data type array
-     * @return {Observable<T[]>}
-     * @description
-     * Generic create many method
-     */
-    BaseLoopBackApi.prototype.onCreateMany = function (data) {
-        var _this = this;
-        return this.request('POST', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path
-        ].join('/'), undefined, undefined, { data: data }, true)
             .pipe(operators_1.map(function (datum) { return datum.map(function (data) { return _this.model.factory(data); }); }));
     };
     /**
@@ -347,26 +301,6 @@ var BaseLoopBackApi = /** @class */ (function () {
         ].join('/'), undefined, _urlParams, { data: data }, null, customHeaders);
     };
     /**
-     * @method onUpdateAll
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T[]>}
-     * @description
-     * Generic pubsub onUpdateAll method
-     */
-    BaseLoopBackApi.prototype.onUpdateAll = function (where, data) {
-        if (where === void 0) { where = {}; }
-        var _urlParams = {};
-        if (where)
-            _urlParams.where = where;
-        return this.request('POST', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-            'update'
-        ].join('/'), undefined, _urlParams, { data: data }, true);
-    };
-    /**
      * @method deleteById
      * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
      * @license MIT
@@ -382,24 +316,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             this.model.getModelDefinition().path,
             ':id'
         ].join('/'), { id: id }, undefined, undefined, null, customHeaders)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
-     * @method onDeleteById
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic pubsub onDeleteById method
-     */
-    BaseLoopBackApi.prototype.onDeleteById = function (id) {
-        var _this = this;
-        return this.request('DELETE', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-            ':id'
-        ].join('/'), { id: id }, undefined, undefined, true)
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
@@ -441,24 +357,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
-     * @method onUpdateAttributes
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic onUpdateAttributes method
-     */
-    BaseLoopBackApi.prototype.onUpdateAttributes = function (id, data) {
-        var _this = this;
-        return this.request('PUT', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-            ':id'
-        ].join('/'), { id: id }, undefined, { data: data }, true)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
      * @method upsert
      * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
      * @license MIT
@@ -477,24 +375,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
-     * @method onUpsert
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic pubsub onUpsert method
-     */
-    BaseLoopBackApi.prototype.onUpsert = function (data) {
-        var _this = this;
-        if (data === void 0) { data = {}; }
-        return this.request('PUT', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-        ].join('/'), undefined, undefined, { data: data }, true)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
      * @method upsertPatch
      * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
      * @license MIT
@@ -510,24 +390,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             lb_config_1.LoopBackConfig.getApiVersion(),
             this.model.getModelDefinition().path,
         ].join('/'), undefined, undefined, { data: data }, null, customHeaders)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
-     * @method onUpsertPatch
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic pubsub onUpsertPatch method using patch http method
-     */
-    BaseLoopBackApi.prototype.onUpsertPatch = function (data) {
-        var _this = this;
-        if (data === void 0) { data = {}; }
-        return this.request('PATCH', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-        ].join('/'), undefined, undefined, { data: data }, true)
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
@@ -554,29 +416,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
-     * @method onUpsertWithWhere
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic pubsub onUpsertWithWhere method
-     */
-    BaseLoopBackApi.prototype.onUpsertWithWhere = function (where, data) {
-        var _this = this;
-        if (where === void 0) { where = {}; }
-        if (data === void 0) { data = {}; }
-        var _urlParams = {};
-        if (where)
-            _urlParams.where = where;
-        return this.request('POST', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-            'upsertWithWhere'
-        ].join('/'), undefined, _urlParams, { data: data }, true)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
      * @method replaceOrCreate
      * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
      * @license MIT
@@ -596,25 +435,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
-     * @method onReplaceOrCreate
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic onReplaceOrCreate method
-     */
-    BaseLoopBackApi.prototype.onReplaceOrCreate = function (data) {
-        var _this = this;
-        if (data === void 0) { data = {}; }
-        return this.request('POST', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-            'replaceOrCreate'
-        ].join('/'), undefined, undefined, { data: data }, true)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
      * @method replaceById
      * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
      * @license MIT
@@ -631,25 +451,6 @@ var BaseLoopBackApi = /** @class */ (function () {
             this.model.getModelDefinition().path,
             ':id', 'replace'
         ].join('/'), { id: id }, undefined, { data: data }, null, customHeaders)
-            .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
-    };
-    /**
-     * @method onReplaceById
-     * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
-     * @license MIT
-     * @return {Observable<T>}
-     * @description
-     * Generic onReplaceById method
-     */
-    BaseLoopBackApi.prototype.onReplaceById = function (id, data) {
-        var _this = this;
-        if (data === void 0) { data = {}; }
-        return this.request('POST', [
-            lb_config_1.LoopBackConfig.getPath(),
-            lb_config_1.LoopBackConfig.getApiVersion(),
-            this.model.getModelDefinition().path,
-            ':id', 'replace'
-        ].join('/'), { id: id }, undefined, { data: data }, true)
             .pipe(operators_1.map(function (data) { return _this.model.factory(data); }));
     };
     /**
@@ -681,10 +482,9 @@ var BaseLoopBackApi = /** @class */ (function () {
     BaseLoopBackApi = __decorate([
         core_1.Injectable(),
         __param(0, core_1.Inject(http_1.HttpClient)),
-        __param(1, core_1.Inject(socket_connections_1.SocketConnection)),
-        __param(2, core_1.Inject(SDKModels_1.SDKModels)),
-        __param(3, core_1.Inject(auth_service_1.LoopBackAuth)),
-        __param(4, core_1.Optional()), __param(4, core_1.Inject(error_service_1.ErrorHandler))
+        __param(1, core_1.Inject(SDKModels_1.SDKModels)),
+        __param(2, core_1.Inject(auth_service_1.LoopBackAuth)),
+        __param(3, core_1.Optional()), __param(3, core_1.Inject(error_service_1.ErrorHandler))
     ], BaseLoopBackApi);
     return BaseLoopBackApi;
 }());

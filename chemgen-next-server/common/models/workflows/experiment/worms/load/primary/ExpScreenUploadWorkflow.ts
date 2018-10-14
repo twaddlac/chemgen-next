@@ -14,6 +14,7 @@ const ExpScreenUploadWorkflow = app.models.ExpScreenUploadWorkflow as (typeof Wo
 ExpScreenUploadWorkflow.load.workflows.worms.primary.doWork = function (workflowData: ExpScreenUploadWorkflowResultSet | ExpScreenUploadWorkflowResultSet[]) {
   return new Promise((resolve, reject) => {
     if (workflowData instanceof Array) {
+      //@ts-ignore
       Promise.map(workflowData, (data: ExpScreenUploadWorkflowResultSet) => {
         return ExpScreenUploadWorkflow.load.workflows.worms.primary.processWorkflow(data);
       }, {concurrency: 1})
@@ -38,7 +39,7 @@ ExpScreenUploadWorkflow.load.workflows.worms.primary.doWork = function (workflow
   });
 };
 
-ExpScreenUploadWorkflow.load.getInstrumentPlates = function (workflowData: PlateResultSet) {
+ExpScreenUploadWorkflow.load.getInstrumentPlates = function (workflowData: ExpScreenUploadWorkflowResultSet) {
   let instrumentPlates: PlateResultSet[] = [];
   Object.keys(workflowData.experimentGroups).map((expGroup) => {
     workflowData.experimentGroups[expGroup].plates.map((plate: PlateResultSet) => {
@@ -167,30 +168,31 @@ ExpScreenUploadWorkflow.load.workflows.worms.primary.populateExpDesignData = fun
  * @param workflowData
  * @param {ScreenCollection} screenData
  */
-ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (workflowData: ExpScreenUploadWorkflowResultSet, screenData: ScreenCollection) {
-  app.winston.info('Creating Experiment Interfaces');
-  return new Promise((resolve, reject) => {
-    Promise.map(screenData.plateDataList, (plateData: PlateCollection) => {
-      app.winston.info('Creating Exp Plate Interfaces');
-      return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
-        .then(() => {
-          //TODO Make sure to have plateUrl
-          app.winston.info('Creating Exp Assay Interfaces');
-          return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
-        })
-        .catch((error) => {
-          app.winston.error(error.stack);
-          // reject(new Error(error));
-          return (new Error(error));
-        });
-    }, {concurrency: 1})
-      .then(() => {
-        // I don't actually do anything with the contactSheetResults from the interfaces
-        // They are just there to look pretty
-        resolve(screenData);
-      })
-      .catch((error) => {
-        reject(new Error(error));
-      });
-  });
-};
+// ExpScreenUploadWorkflow.load.workflows.worms.createExpInterfaces = function (workflowData: ExpScreenUploadWorkflowResultSet, screenData: ScreenCollection) {
+//   app.winston.info('Creating Experiment Interfaces');
+//   return new Promise((resolve, reject) => {
+//     resolve();
+//     // Promise.map(screenData.plateDataList, (plateData: PlateCollection) => {
+//     //   app.winston.info('Creating Exp Plate Interfaces');
+//     //   return app.models.ExpPlate.load.workflows.createExpPlateInterface(workflowData, screenData, plateData)
+//     //     .then(() => {
+//     //       //TODO Make sure to have plateUrl
+//     //       app.winston.info('Creating Exp Assay Interfaces');
+//     //       return app.models.ExpAssay.load.workflows.createExpAssayInterfaces(workflowData, screenData, plateData);
+//     //     })
+//     //     .catch((error) => {
+//     //       app.winston.error(error.stack);
+//     //       // reject(new Error(error));
+//     //       return (new Error(error));
+//     //     });
+//     // }, {concurrency: 1})
+//     //   .then(() => {
+//     //     // I don't actually do anything with the contactSheetResults from the interfaces
+//     //     // They are just there to look pretty
+//     //     resolve(screenData);
+//     //   })
+//     //   .catch((error) => {
+//     //     reject(new Error(error));
+//     //   });
+//   });
+// };

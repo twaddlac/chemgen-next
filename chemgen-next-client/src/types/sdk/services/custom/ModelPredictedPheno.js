@@ -27,16 +27,14 @@ var base_service_1 = require("../core/base.service");
 var lb_config_1 = require("../../lb.config");
 var auth_service_1 = require("../core/auth.service");
 var error_service_1 = require("../core/error.service");
-var socket_connections_1 = require("../../sockets/socket.connections");
 /**
  * Api services for the `ModelPredictedPhenoResultSet` model.
  */
 var ModelPredictedPhenoApi = /** @class */ (function (_super) {
     __extends(ModelPredictedPhenoApi, _super);
-    function ModelPredictedPhenoApi(http, connection, models, auth, errorHandler) {
-        var _this = _super.call(this, http, connection, models, auth, errorHandler) || this;
+    function ModelPredictedPhenoApi(http, models, auth, errorHandler) {
+        var _this = _super.call(this, http, models, auth, errorHandler) || this;
         _this.http = http;
-        _this.connection = connection;
         _this.models = models;
         _this.auth = auth;
         _this.errorHandler = errorHandler;
@@ -114,10 +112,9 @@ var ModelPredictedPhenoApi = /** @class */ (function (_super) {
     ModelPredictedPhenoApi = __decorate([
         core_1.Injectable(),
         __param(0, core_1.Inject(http_1.HttpClient)),
-        __param(1, core_1.Inject(socket_connections_1.SocketConnection)),
-        __param(2, core_1.Inject(SDKModels_1.SDKModels)),
-        __param(3, core_1.Inject(auth_service_1.LoopBackAuth)),
-        __param(4, core_1.Optional()), __param(4, core_1.Inject(error_service_1.ErrorHandler))
+        __param(1, core_1.Inject(SDKModels_1.SDKModels)),
+        __param(2, core_1.Inject(auth_service_1.LoopBackAuth)),
+        __param(3, core_1.Optional()), __param(3, core_1.Inject(error_service_1.ErrorHandler))
     ], ModelPredictedPhenoApi);
     return ModelPredictedPhenoApi;
 }(base_service_1.BaseLoopBackApi));
