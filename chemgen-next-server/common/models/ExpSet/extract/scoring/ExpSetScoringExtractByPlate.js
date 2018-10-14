@@ -198,15 +198,20 @@ ExpSet.extract.extractPlatesNoScore = function (data, search) {
  * @param search
  */
 ExpSet.extract.preferentiallyChooseScoresSamePlate = function (data, search) {
-    var treatPlateId = data.expGroupTypeAlbums.treatReagent[0].plateId;
-    var ctrlStrainSamePlate = lodash_1.filter(data.expGroupTypeAlbums.ctrlStrain, { plateId: treatPlateId });
-    if (lodash_1.isArray(ctrlStrainSamePlate) && ctrlStrainSamePlate.length) {
-        data.expGroupTypeAlbums.ctrlStrain = ctrlStrainSamePlate;
+    app.winston.info('Preferentially choosing by plate');
+    if (lodash_1.has(data.expGroupTypeAlbums, 'ctrlStrain')) {
+        var treatPlateId = data.expGroupTypeAlbums.treatReagent[0].plateId;
+        var ctrlStrainSamePlate = lodash_1.filter(data.expGroupTypeAlbums.ctrlStrain, { plateId: treatPlateId });
+        if (lodash_1.isArray(ctrlStrainSamePlate) && ctrlStrainSamePlate.length) {
+            data.expGroupTypeAlbums.ctrlStrain = ctrlStrainSamePlate;
+        }
     }
-    var ctrlReagentPlateId = data.expGroupTypeAlbums.ctrlReagent[0].plateId;
-    var ctrlNullSamePlate = lodash_1.filter(data.expGroupTypeAlbums.ctrlNull, { plateId: ctrlReagentPlateId });
-    if (lodash_1.isArray(ctrlNullSamePlate) && ctrlNullSamePlate.length) {
-        data.expGroupTypeAlbums.ctrlNull = ctrlNullSamePlate;
+    if (lodash_1.has(data.expGroupTypeAlbums, 'ctrlNull')) {
+        var ctrlReagentPlateId = data.expGroupTypeAlbums.ctrlReagent[0].plateId;
+        var ctrlNullSamePlate = lodash_1.filter(data.expGroupTypeAlbums.ctrlNull, { plateId: ctrlReagentPlateId });
+        if (lodash_1.isArray(ctrlNullSamePlate) && ctrlNullSamePlate.length) {
+            data.expGroupTypeAlbums.ctrlNull = ctrlNullSamePlate;
+        }
     }
     return data;
 };

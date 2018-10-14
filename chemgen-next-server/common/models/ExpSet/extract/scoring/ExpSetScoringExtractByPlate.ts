@@ -17,6 +17,7 @@ import {
 import {ExpSetSearch, ExpSetSearchResults} from "../../../../types/custom/ExpSetTypes";
 
 import config = require('config');
+
 let knex = config.get('knex');
 
 import redis = require('redis');
@@ -224,17 +225,21 @@ ExpSet.extract.extractPlatesNoScore = function (data: ExpSetSearchResults, searc
  * @param search
  */
 ExpSet.extract.preferentiallyChooseScoresSamePlate = function (data: ExpSetSearchResults, search: ExpSetSearch) {
-  let treatPlateId = data.expGroupTypeAlbums.treatReagent[0].plateId;
-  let ctrlStrainSamePlate = filter(data.expGroupTypeAlbums.ctrlStrain, {plateId: treatPlateId});
-  if(isArray(ctrlStrainSamePlate) && ctrlStrainSamePlate.length){
-    data.expGroupTypeAlbums.ctrlStrain = ctrlStrainSamePlate;
+  app.winston.info('Preferentially choosing by plate');
+  if (has(data.expGroupTypeAlbums, 'ctrlStrain')) {
+    let treatPlateId = data.expGroupTypeAlbums.treatReagent[0].plateId;
+    let ctrlStrainSamePlate = filter(data.expGroupTypeAlbums.ctrlStrain, {plateId: treatPlateId});
+    if (isArray(ctrlStrainSamePlate) && ctrlStrainSamePlate.length) {
+      data.expGroupTypeAlbums.ctrlStrain = ctrlStrainSamePlate;
+    }
   }
 
-  let ctrlReagentPlateId = data.expGroupTypeAlbums.ctrlReagent[0].plateId;
-  let ctrlNullSamePlate = filter(data.expGroupTypeAlbums.ctrlNull, {plateId: ctrlReagentPlateId});
-  if(isArray(ctrlNullSamePlate) && ctrlNullSamePlate.length){
-    data.expGroupTypeAlbums.ctrlNull = ctrlNullSamePlate;
+  if (has(data.expGroupTypeAlbums, 'ctrlNull')) {
+    let ctrlReagentPlateId = data.expGroupTypeAlbums.ctrlReagent[0].plateId;
+    let ctrlNullSamePlate = filter(data.expGroupTypeAlbums.ctrlNull, {plateId: ctrlReagentPlateId});
+    if (isArray(ctrlNullSamePlate) && ctrlNullSamePlate.length) {
+      data.expGroupTypeAlbums.ctrlNull = ctrlNullSamePlate;
+    }
   }
   return data;
-
 };

@@ -7,7 +7,6 @@ import {ExpScreenUploadWorkflowResultSet} from "../../../../types/sdk";
 
 if(! isEqual(process.env.NODE_ENV, 'dev')){
   process.exit(0);
-
 }
 describe('ExpSetExtractByPlate', function () {
   it('Should run the function and get expGroups by same plate', function (done) {
@@ -43,7 +42,8 @@ describe('ExpSetExtractByPlate', function () {
       })
   });
   it('Should run the function and not get expGroups by same plate', function (done) {
-    this.timeout(10000);
+    //TODO This is ridiculous
+    this.timeout(30000);
     app.models.ExpScreenUploadWorkflow.findOne({where: {and: [{name: 'AHR2 2016-04-19 mel-28 N2 Chr III Plate 3 Q Q4'}, {screenStage: 'primary'}]}})
       .then((workflowData: ExpScreenUploadWorkflowResultSet) => {
         return app.models.ExpScreenUploadWorkflow.load.workflows.doWork(workflowData)
