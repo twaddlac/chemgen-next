@@ -24,7 +24,7 @@ The dev servers do not have any experimental data, only the configurations. In o
 source chemgen_docker_vars.sh
 cd chemgen-next-server
 ## See the one time setup to install pm2
-pm2 start server/server/.js --name chemgen-next-server --watch -i 1
+pm2 start server/server.js --name chemgen-next-server --watch -i 1
 pm2 start jobs/defineQueues.js --name chemgen-next-define-queues --watch -i 1
 ## TODO Add in a dev script just to load some data
 node jobs/processQueues.js --limit 1 --site AD --search-pattern CHEM
@@ -102,6 +102,8 @@ To start the angular dev server
 
 ```
 cd chemgen-next-client
+# bind wasn't found
+# ng serve --host=0.0.0.0 instead
 ng serve --bind 0.0.0.0
 ```
 
