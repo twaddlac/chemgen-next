@@ -7,6 +7,9 @@ Client Side code is written using Angular6, and is then ported over to a wordpre
 In order to build the latest client side code and add it to the wordpress app
 
 ```
+# May have to run:
+# npm install --save-dev @angular-devkit/build-angular
+# npm audit fix
 cd chemgen-next-client
 ng build --prod  --output-hashing none --output-path ../chemgen-next-wptheme/js/ng
 ```
