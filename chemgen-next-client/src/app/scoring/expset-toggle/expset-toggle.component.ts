@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Renderer2, Output} from '@angular/core';
+import {Component, OnInit, Input, Renderer2, Output, OnChanges} from '@angular/core';
 import {ExpManualScoresApi} from "../../../types/sdk/services/custom";
 import {
     ExpManualScoresResultSet,
@@ -12,7 +12,7 @@ import {get, has, find, isEqual} from 'lodash';
     templateUrl: './expset-toggle.component.html',
     styleUrls: ['./expset-toggle.component.css']
 })
-export class ExpsetToggleComponent implements OnInit {
+export class ExpsetToggleComponent implements OnInit, OnChanges {
     @Input() expScreen: ExpScreenResultSet;
     @Input() expWorkflow: ExpScreenUploadWorkflowResultSet;
     @Input() treatmentGroupId: number;
@@ -39,6 +39,11 @@ export class ExpsetToggleComponent implements OnInit {
         this.returnedResults = {};
     }
 
+    ngOnChanges(){
+        setTimeout(() => {
+            this.getManualScores();
+        });
+    }
     ngOnInit() {
         //Witnout the setTimeoutet function, this gets some weird error
         setTimeout(() => {
@@ -96,7 +101,7 @@ export class ExpsetToggleComponent implements OnInit {
 
         //Need to make sure this is bound to the contact sheet
         let alreadySet = false;
-        if (has(this.contactSheetResults.interesting, this.treatmentGroupId)) {
+        if (get(this.contactSheetResults.interesting, this.treatmentGroupId)) {
             alreadySet = true;
         } else if (this.expManualScores && this.expManualScores.length) {
             this.contactSheetResults.interesting[this.treatmentGroupId] = filterExpManualScores(this.expManualScores)
@@ -114,6 +119,7 @@ export class ExpsetToggleComponent implements OnInit {
                     where: where
                 })
                 .subscribe((results: ExpManualScoresResultSet[]) => {
+                    this.expManualScores = results;
                     this.contactSheetResults.interesting[this.treatmentGroupId] = filterExpManualScores(results);
                 }, (error) => {
                     this.error(error.toString());

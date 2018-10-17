@@ -29,48 +29,59 @@ ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search) {
         data.pageSize = 1;
         var sqlQuery = ExpSet.extract.buildNativeQueryExpWorkflowId(data, search, false);
         sqlQuery = sqlQuery.count();
+        app.winston.info("SqlQuery Count: " + sqlQuery.toString());
         ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
             .then(function (data) {
             //TODO Should preferentially get plates, and if no plates are found THEN look for assays
-            return ExpSet.extract.workflows.getExpPlatesByScores(data, search, search.scoresExist);
-        })
-            .then(function (data) {
-            if (!data.expPlates || !data.expPlates.length) {
+            if (!data.totalPages) {
+                app.winston.info("No total pages!");
                 resolve(data);
             }
             else {
-                return ExpSet.extract.fetchFromCache(data, search, data.expPlates[0].expWorkflowId);
+                return ExpSet.extract.workflows.getExpPlatesByScores(data, search, search.scoresExist)
+                    .then(function (data) {
+                    if (!data.expPlates || !data.expPlates.length) {
+                        resolve(data);
+                    }
+                    else {
+                        return ExpSet.extract.fetchFromCache(data, search, data.expPlates[0].expWorkflowId);
+                    }
+                })
+                    .then(function (data) {
+                    // Check to see if it was fetched from the cache
+                    if (!data.fetchedFromCache && lodash_1.has(data.expPlates, ['0', 'expWorkflowId'])) {
+                        return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expPlates[0].expWorkflowId);
+                    }
+                    else {
+                        return data;
+                    }
+                })
+                    .then(function (data) {
+                    return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
+                })
+                    .then(function (data) {
+                    if (!lodash_1.isEqual(data.modelPredictedCounts.length, data.expAssays.length)) {
+                        return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
+                    }
+                    else {
+                        return data;
+                    }
+                })
+                    .then(function (data) {
+                    try {
+                        data = ExpSet.extract.insertExpManualScoresImageMeta(data);
+                    }
+                    catch (error) {
+                        app.winston.error(error);
+                    }
+                    data = ExpSet.extract.genAlbumsByPlate(data, search);
+                    data = ExpSet.extract.cleanUp(data, search);
+                    // resolve(data);
+                    return data;
+                });
             }
         })
             .then(function (data) {
-            // Check to see if it was fetched from the cache
-            if (!data.fetchedFromCache && lodash_1.has(data.expPlates, ['0', 'expWorkflowId'])) {
-                return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expPlates[0].expWorkflowId);
-            }
-            else {
-                return data;
-            }
-        })
-            .then(function (data) {
-            return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
-        })
-            .then(function (data) {
-            if (!lodash_1.isEqual(data.modelPredictedCounts.length, data.expAssays.length)) {
-                return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
-            }
-            else {
-                return data;
-            }
-        })
-            .then(function (data) {
-            try {
-                data = ExpSet.extract.insertExpManualScoresImageMeta(data);
-            }
-            catch (error) {
-                app.winston.error(error);
-            }
-            data = ExpSet.extract.genAlbumsByPlate(data, search);
-            data = ExpSet.extract.cleanUp(data, search);
             resolve(data);
         })
             .catch(function (error) {

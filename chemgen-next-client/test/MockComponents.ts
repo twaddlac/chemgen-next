@@ -18,6 +18,7 @@ export class MockGridAlbumComponent {
     @Input('albumType') albumType: string;
     @Input('contactSheetResults') contactSheetResults: any;
     @Input('displayCounts') displayCounts: any;
+    @Input('expSetModule') expSetModule: ExpsetModule;
 
     @Output() parseInterestingEvent = new EventEmitter<string>();
     @Output() getExpSetsEvent = new EventEmitter<any>();
@@ -61,9 +62,9 @@ export class MockExpsetToggleComponent{
 export class MockContactSheetComponent{
     @Input() expSets: ExpSetSearchResults;
     @Input() byPlate: Boolean = true;
+    // @Input() expSetModule: ExpsetModule;
     @Output() expSetsScored = new EventEmitter<boolean>();
 }
-
 
 @Component({
     selector: 'app-expset-album',
@@ -71,6 +72,7 @@ export class MockContactSheetComponent{
 })
 export class MockExpsetAlbumComponent{
     @Input('expSet') expSet: any;
+    @Input('expSetModule') expSetModule: ExpsetModule;
     @Input('albums') albums: any;
     @Input('score') score: boolean;
     @Input('expSetAlbums') expSetAlbums: any;
@@ -113,4 +115,16 @@ export class MockExpsetAlbumDialog {
     @Input('albums') albums: any;
     @Input('score') score: boolean;
     @Input('contactSheetResults') contactSheetResults: any = {interesting: {}};
+}
+
+@Component({
+    selector: 'app-expset-score-primary',
+    template: '<p>Mock ExpSet Score Primary</p>',
+})
+export class MockExpsetScorePrimaryComponent {
+    @Input('expSet') expSet: any;
+    @Input('expSetModule') expSetModule: ExpsetModule;
+    @Input('score') score: boolean;
+    @Input('contactSheetResults') contactSheetResults: any = {interesting: {}};
+    @Output() getMoreExpSets = new EventEmitter<boolean>();
 }

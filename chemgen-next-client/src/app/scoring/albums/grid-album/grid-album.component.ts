@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {isEqual} from 'lodash';
 import {Lightbox, LightboxConfig} from 'angular2-lightbox';
+import {ExpsetModule} from "../../expset/expset.module";
 
 @Component({
     selector: 'app-grid-album',
@@ -16,6 +17,7 @@ export class GridAlbumComponent implements OnInit {
     @Input('albumType') albumType: string;
     @Input('contactSheetResults') contactSheetResults: any;
     @Input('displayCounts') displayCounts: any;
+    @Input('expSetModule') expSetModule: ExpsetModule;
 
     @Output() parseInterestingEvent = new EventEmitter<string>();
     @Output() getExpSetsEvent = new EventEmitter<any>();

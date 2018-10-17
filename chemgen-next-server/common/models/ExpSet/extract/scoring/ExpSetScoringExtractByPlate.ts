@@ -46,46 +46,56 @@ ExpSet.extract.workflows.getUnscoredExpSetsByPlate = function (search: ExpSetSea
 
     let sqlQuery = ExpSet.extract.buildNativeQueryExpWorkflowId(data, search, false);
     sqlQuery = sqlQuery.count();
+    app.winston.info(`SqlQuery Count: ${sqlQuery.toString()}`);
 
     ExpSet.extract.buildUnscoredPaginationData(data, search, sqlQuery.toString())
       .then((data: ExpSetSearchResults) => {
         //TODO Should preferentially get plates, and if no plates are found THEN look for assays
-        return ExpSet.extract.workflows.getExpPlatesByScores(data, search, search.scoresExist);
-      })
-      .then((data: ExpSetSearchResults) => {
-        if (!data.expPlates || !data.expPlates.length) {
+        if (!data.totalPages) {
+          app.winston.info(`No total pages!`);
           resolve(data);
         } else {
-          return ExpSet.extract.fetchFromCache(data, search, data.expPlates[0].expWorkflowId);
-        }
-      })
-      .then((data: ExpSetSearchResults) => {
-        // Check to see if it was fetched from the cache
-        if (!data.fetchedFromCache && has(data.expPlates, ['0', 'expWorkflowId'])) {
-          return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expPlates[0].expWorkflowId);
-        } else {
-          return data;
-        }
+          return ExpSet.extract.workflows.getExpPlatesByScores(data, search, search.scoresExist)
+            .then((data: ExpSetSearchResults) => {
+              if (!data.expPlates || !data.expPlates.length) {
+                resolve(data);
+              } else {
+                return ExpSet.extract.fetchFromCache(data, search, data.expPlates[0].expWorkflowId);
+              }
+            })
+            .then((data: ExpSetSearchResults) => {
+              // Check to see if it was fetched from the cache
+              if (!data.fetchedFromCache && has(data.expPlates, ['0', 'expWorkflowId'])) {
+                return ExpSet.extract.getExpDataByExpWorkflowId(data, search, data.expPlates[0].expWorkflowId);
+              } else {
+                return data;
+              }
 
-      })
-      .then((data: ExpSetSearchResults) => {
-        return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
-      })
-      .then((data: ExpSetSearchResults) => {
-        if (!isEqual(data.modelPredictedCounts.length, data.expAssays.length)) {
-          return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
-        } else {
-          return data;
+            })
+            .then((data: ExpSetSearchResults) => {
+              return ExpSet.extract.getExpManualScoresByExpWorkflowId(data, search);
+            })
+            .then((data: ExpSetSearchResults) => {
+              if (!isEqual(data.modelPredictedCounts.length, data.expAssays.length)) {
+                return ExpSet.extract.getModelPredictedCountsByExpWorkflowId(data, search);
+              } else {
+                return data;
+              }
+            })
+            .then((data: ExpSetSearchResults) => {
+              try {
+                data = ExpSet.extract.insertExpManualScoresImageMeta(data);
+              } catch (error) {
+                app.winston.error(error);
+              }
+              data = ExpSet.extract.genAlbumsByPlate(data, search);
+              data = ExpSet.extract.cleanUp(data, search);
+              // resolve(data);
+              return data;
+            })
         }
       })
-      .then((data) => {
-        try {
-          data = ExpSet.extract.insertExpManualScoresImageMeta(data);
-        } catch (error) {
-          app.winston.error(error);
-        }
-        data = ExpSet.extract.genAlbumsByPlate(data, search);
-        data = ExpSet.extract.cleanUp(data, search);
+      .then((data: ExpSetSearchResults) =>{
         resolve(data);
       })
       .catch((error) => {

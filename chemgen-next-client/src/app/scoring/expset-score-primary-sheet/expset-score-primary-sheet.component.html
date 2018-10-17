@@ -1,0 +1,17 @@
+<div class="row" *ngIf="expSetModule && expSetModule.expSetsDeNorm?.length">
+  <div class="col-md-12">
+    <!--<div *ngFor="let expSet of expSetModule.expSetsDeNorm; let i=index">-->
+      <app-expset-score-primary
+              [score]="true"
+              [expSetModule]="expSetModule"
+              [expSet]="expSetModule.expSetsDeNorm[0]"
+      ></app-expset-score-primary>
+    <!--</div>-->
+
+  </div>
+</div>
+<div class="row" *ngIf="expSetModule && !expSetModule.expSetsDeNorm?.length">
+  <div class="col-md-12">
+      <h2>Fetching new Exp Sets...</h2>
+  </div>
+</div>

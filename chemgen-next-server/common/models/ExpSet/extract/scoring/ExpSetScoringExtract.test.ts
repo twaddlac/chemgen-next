@@ -26,4 +26,13 @@ describe('ExpSetScoringExtract.test.ts', function () {
     let matchedSql = "select distinct `exp_workflow_id` from `exp_assay2reagent` where `reagent_type` like 'treat%' and `reagent_id` is not null and `exp_workflow_id` in ('ABCDEFG') and not exists (select 1 from `exp_manual_scores` where exp_assay2reagent.assay_id = exp_manual_scores.assay_id)";
     assert.equal(matchedSql, sqlString);
   });
+
+  it('Should return the query for getting scores with a FIRST_PASS and does no HAS_MANUAL_SCORE', function () {
+    // let search = new ExpSetSearch({expWorkflowSearch: [String('ABCDEFG')]});
+    let search = new ExpSetSearch({});
+    let data = new ExpSetSearchResults({});
+    let sqlQuery = app.models.ExpSet.extract.buildNativeQueryByFirstPass(data, search, true);
+    let sqlString = sqlQuery.toString();
+    assert.ok(sqlString);
+  });
 });

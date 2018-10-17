@@ -73,122 +73,128 @@
 
                         <!--Begin ExpSet Toggle-->
                         <div class="col-md-4">
-                            <app-expset-toggle [treatmentGroupId]="expSet.albums.treatmentGroupId"
-                                               [expScreen]="expSet.expScreen"
-                                               [expWorkflow]="expSet.expWorkflow"
-                                               [contactSheetResults]="contactSheetResults"
-                                               [expManualScores]="expSet.expManualScores"
-                                               [submit]="true"
-                            ></app-expset-toggle>
-
+                            <div *ngIf="displayToggle">
+                                <app-expset-toggle [treatmentGroupId]="expSet.albums.treatmentGroupId"
+                                                   [expScreen]="expSet.expScreen"
+                                                   [expWorkflow]="expSet.expWorkflow"
+                                                   [contactSheetResults]="contactSheetResults"
+                                                   [expManualScores]="expSet.expManualScores"
+                                                   [submit]="true"
+                                ></app-expset-toggle>
+                            </div>
                         </div>
                         <!--End ExpSet Toggle-->
 
                     </div>
                     <!--Begin ExpSet Data-->
 
-                    <!--Begin CtrlStrain Row - 4 images per row-->
-                    <div class="row" id="ctrl_strain">
+                    <div class="row">
                         <div class="col-md-12">
-                            <h3>Control Strain (ts)</h3>
-                            <div class="row">
-                                <div *ngFor="let image of expSet.albums.ctrlStrainImages; let i=index">
-                                    <div *ngIf="image">
-                                        <div class="col-md-3">
-                                            <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                                                 (click)="open(expSet.albums.ctrlStrainImages, i)"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End CtrlStrain Row - 4 images per row-->
-
-                    <!--Begin TreatReagent Row - 4 images per row-->
-                    <div class="row" id="treat">
-                        <div class="col-md-12">
-                            <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + Reagent</h3>
-                            <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">
-                                <div class="row">
-                                    <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
-                                        <div *ngIf="image">
-                                            <div class="col-md-3">
-                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                                                     (click)="open(expSet.albums.treatmentReagentImages, i)"/>
+                            <!--Begin CtrlStrain Row - 4 images per row-->
+                            <div class="row" id="ctrl_strain">
+                                <div class="col-md-12">
+                                    <h3>Control Strain (ts)</h3>
+                                    <div class="row">
+                                        <div *ngFor="let image of expSet.albums.ctrlStrainImages; let i=index">
+                                            <div *ngIf="image">
+                                                <div class="col-md-3">
+                                                    <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                         (click)="open(expSet.albums.ctrlStrainImages, i)"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="expSet.expWorkflow.screenStage == 'primary'">
-                                <div class="row">
-                                    <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
-                                        <div *ngIf="image">
-                                            <div class="col-md-6">
-                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                                                     (click)="open(expSet.albums.treatmentReagentImages, i)"/>
+                            <!--End CtrlStrain Row - 4 images per row-->
+
+                            <!--Begin TreatReagent Row - 4 images per row-->
+                            <div class="row" id="treat">
+                                <div class="col-md-12">
+                                    <h3>{{expSet.expWorkflow.biosamples.experimentBiosample.name}} + Reagent</h3>
+                                    <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">
+                                        <div class="row">
+                                            <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
+                                                <div *ngIf="image">
+                                                    <div class="col-md-3">
+                                                        <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                             (click)="open(expSet.albums.treatmentReagentImages, i)"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="expSet.expWorkflow.screenStage == 'primary'">
+                                        <div class="row">
+                                            <div *ngFor="let image of expSet.albums.treatmentReagentImages; let i=index">
+                                                <div *ngIf="image">
+                                                    <div class="col-md-6">
+                                                        <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                             (click)="open(expSet.albums.treatmentReagentImages, i)"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--End TreatReagent Row - 4 images per row-->
+
+                            <!--Begin CtrlNull Row - 4 images per row-->
+                            <div class="row" id="ctrl_null">
+                                <div class="col-md-12">
+                                    <h3>Control Null </h3>
+                                    <div class="row">
+                                        <div *ngFor="let image of expSet.albums.ctrlNullImages; let i=index">
+                                            <div *ngIf="image">
+                                                <div class="col-md-3">
+                                                    <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                         (click)="open(expSet.albums.ctrlNullImages, i)"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!--End CtrlNull Row - 4 images per row-->
 
-                        </div>
-                    </div>
-                    <!--End TreatReagent Row - 4 images per row-->
+                            <!--Begin TreatReagent Row - 4 images per row-->
+                            <div class="row" id="ctrl_reagent">
+                                <div class="col-md-12">
+                                    <!--<h3>{{expSetAlbum.contactSheetResults.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.contactSheetResults.genesList[0].wbGeneCgcName}} {{expSetAlbum.contactSheetResults.genesList[0].geneName}}</h3>-->
+                                    <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + Reagent </h3>
 
-                    <!--Begin CtrlNull Row - 4 images per row-->
-                    <div class="row" id="ctrl_null">
-                        <div class="col-md-12">
-                            <h3>Control Null </h3>
-                            <div class="row">
-                                <div *ngFor="let image of expSet.albums.ctrlNullImages; let i=index">
-                                    <div *ngIf="image">
-                                        <div class="col-md-3">
-                                            <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                                                 (click)="open(expSet.albums.ctrlNullImages, i)"/>
+                                    <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">
+                                        <div class="row">
+                                            <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
+                                                <div *ngIf="image">
+                                                    <div class="col-md-3">
+                                                        <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                             (click)="open(expSet.albums.ctrlReagentImages, i)"/>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End CtrlNull Row - 4 images per row-->
-
-                    <!--Begin TreatReagent Row - 4 images per row-->
-                    <div class="row" id="ctrl_reagent">
-                        <div class="col-md-12">
-                            <!--<h3>{{expSetAlbum.contactSheetResults.expWorkflows[0].biosamples.ctrlBiosample.name}} + {{expSetAlbum.contactSheetResults.genesList[0].wbGeneCgcName}} {{expSetAlbum.contactSheetResults.genesList[0].geneName}}</h3>-->
-                            <h3>{{expSet.expWorkflow.biosamples.ctrlBiosample.name}} + Reagent </h3>
-
-                            <div *ngIf="expSet.expWorkflow.screenStage == 'secondary'">
-                                <div class="row">
-                                    <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
-                                        <div *ngIf="image">
-                                            <div class="col-md-3">
-                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                                                     (click)="open(expSet.albums.ctrlReagentImages, i)"/>
+                                    <div *ngIf="expSet.expWorkflow.screenStage == 'primary'">
+                                        <div class="row">
+                                            <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
+                                                <div *ngIf="image">
+                                                    <div class="col-md-6">
+                                                        <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
+                                                             (click)="open(expSet.albums.ctrlReagentImages, i)"/>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="expSet.expWorkflow.screenStage == 'primary'">
-                                <div class="row">
-                                    <div *ngFor="let image of expSet.albums.ctrlReagentImages; let i=index">
-                                        <div *ngIf="image">
-                                            <div class="col-md-6">
-                                                <img tabindex="0" class="img-thumbnail" [src]="image.thumb"
-                                                     (click)="open(expSet.albums.ctrlReagentImages, i)"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--End TreatReagent Row - 4 images per row-->
                         </div>
                     </div>
-                    <!--End TreatReagent Row - 4 images per row-->
+
                 </div>
                 <!--End Images Tab-->
 

@@ -1,0 +1,36 @@
+<!--Begin Display ExpSet Album-->
+<div *ngIf="score">
+    <button (click)="scoreExpSets()" type="button" class="btn btn-default btn-lg">
+        <span class="fa fa-microscope" aria-hidden="true"></span>
+    </button>
+</div>
+
+<!--End Display ExpSet Album-->
+<div bsModal #scoreExpSetModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Score ExpSet</h4>
+                <button type="button" class="close pull-right" (click)="scoreExpSetModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-body">
+
+                <div *ngIf="expSet">
+                    <app-expset-score-primary
+                            [score]="true"
+                            [expSetModule]="expSetModule"
+                            [expSet]="expSet"
+                    ></app-expset-score-primary>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

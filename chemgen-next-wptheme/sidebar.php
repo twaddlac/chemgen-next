@@ -6,13 +6,13 @@
  *
  * @package WPAdmin
  * This is the original get sidebar, which I mostly don't want
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
-?>
-<aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+ * if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+ * return;
+ * }
+ * ?>
+ * <aside id="secondary" class="widget-area">
+ * <?php dynamic_sidebar( 'sidebar-1' ); ?>
+ * </aside><!-- #secondary -->
  */
 ?>
 
@@ -20,7 +20,8 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="<?php echo get_site_url() ?>" class="site_title"><i class="fa fa-book"></i> <span>ChemGen</span></a>
+            <a href="<?php echo get_site_url() ?>" class="site_title"><i class="fa fa-book"></i>
+                <span>ChemGen</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -28,7 +29,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <?php
-            if ( is_user_logged_in() ) {
+            if (is_user_logged_in()) {
                 $current_user = wp_get_current_user();
                 ?>
                 <div class="profile_info">
@@ -48,23 +49,49 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
         </div>
         <!-- /menu profile quick info -->
 
-        <br />
+        <br/>
 
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-                <h3>Start Scoring</h3>
+                <!--Begin Score Menu-->
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Primary <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-search-minus"></i> Score <span
+                                    class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-form-contact-sheet-plate">Contact Sheet - By Plate</a></li>
-                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-expsets-worms">Search For Exp Sets</a></li>
+                            <!--RouterLink does not work in index.html-->
+                            <!--But the theme does not work if this is in a component-->
+                            <!--TODO Update the theme to an angular theme-->
+                            <li>
+                                <a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-form-contact-sheet-plate">
+                                    Score with 96 Well Contact Sheet</a>
+                            </li>
+                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/score-expsets-worms">Score Exp
+                                    Set</a></li>
                         </ul>
                     </li>
                 </ul>
+                <!--Begin Score Menu-->
+
+                <!--Begin Search Menu-->
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-search"></i> Search <span
+                                    class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <!--RouterLink does not work in index.html-->
+                            <!--But the theme does not work if this is in a component-->
+                            <!--TODO Update the theme to an angular theme-->
+                            <li><a href="<?php echo(get_bloginfo('wpurl')) ?>/app/#/search-expsets-worms">Search
+                                    for Exp Sets</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--End Search Menu-->
             </div>
         </div>
         <!-- /sidebar menu -->
+
 
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">

@@ -21,6 +21,7 @@ import Promise = require('bluebird');
 import {ExpSetSearch, ExpSetSearchResults} from "../../../types/custom/ExpSetTypes/index";
 
 import config = require('config');
+import {ExpManualScoresResultSet} from "../../../types/sdk";
 
 const ExpSet = app.models.ExpSet as (typeof WorkflowModel);
 
@@ -165,7 +166,6 @@ ExpSet.extract.buildExpSets = function (data: ExpSetSearchResults, search: ExpSe
     if (isEmpty(data.expAssay2reagents)) {
       app.winston.error(JSON.stringify(data, null, 2));
       resolve(data);
-      // reject(new Error('invalid data - no expAssay2reagents'));
     }
 
     // This ONLY returns the treat_rnai and ctrl_rnai  expGroups
@@ -204,6 +204,12 @@ ExpSet.extract.buildExpSets = function (data: ExpSetSearchResults, search: ExpSe
       .then((results: ExpSetSearchResults) => {
         return ExpSet.extract.getCounts(results, search);
       })
+      .then((results: ExpSetSearchResults) =>{
+        return ExpSet.extract.getExpManualScoresByExpGroupId(results, search);
+      })
+      .then((results: ExpSetSearchResults) =>{
+        return ExpSet.extract.workflows.getReagentData(results, search);
+      })
       .then((results: ExpSetSearchResults) => {
         return ExpSet.extract.getExpData(results, search);
       })
@@ -221,6 +227,29 @@ ExpSet.extract.buildExpSets = function (data: ExpSetSearchResults, search: ExpSe
   });
 };
 
+ExpSet.extract.getExpManualScoresByExpGroupId = function (data: ExpSetSearchResults, search ?: ExpSetSearch) {
+  return new Promise((resolve, reject) => {
+    app.models.ExpManualScores
+      .find({
+        where: {
+          treatmentGroupId: {
+            inq: data.expAssay2reagents.map((expAssay2reagent) => {
+              return expAssay2reagent.expGroupId;
+            }).filter((expGroupId) => {
+              return expGroupId;
+            })
+          }
+        }
+      })
+      .then((expManualScores: ExpManualScoresResultSet[]) =>{
+        data.expManualScores = expManualScores;
+        resolve(data);
+      })
+      .catch((error) =>{
+        reject(new Error(error));
+      })
+  });
+};
 /**
  * Depending on how the search is run (genes list, expGroup, etc)
  * We may be missing different pieces of data
