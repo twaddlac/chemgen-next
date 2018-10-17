@@ -93,8 +93,10 @@ To start the loopback server
 ```
 cd chemgen-next-server
 ## Run in the foreground
+# if Error: Cannot find module 'loopback'
+# `run npm install` in this directory
 nodemon server/server.js
-## Run in the background
+## Run in the backgroundEr
 pm2 start server/server.js --name chemgen-next-server --watch
 ```
 
