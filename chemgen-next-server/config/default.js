@@ -8,6 +8,7 @@ try {
       user: process.env.CHEMGEN_USER || 'chemgen',
       password: process.env.CHEMGEN_PASS || 'password',
       database: process.env.CHEMGEN_DB || 'chemgen-next-dev',
+      port: process.env.CHEMGEN_PORT || 3308,
     },
     debug: true,
   })

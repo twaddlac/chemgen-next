@@ -135,7 +135,6 @@ ExpSet.extract.buildExpSets = function (data, search) {
         if (lodash_1.isEmpty(data.expAssay2reagents)) {
             app.winston.error(JSON.stringify(data, null, 2));
             resolve(data);
-            // reject(new Error('invalid data - no expAssay2reagents'));
         }
         // This ONLY returns the treat_rnai and ctrl_rnai  expGroups
         // ctrl_null and ctrl_strain are L4440s and don't have a reagentId
@@ -174,6 +173,12 @@ ExpSet.extract.buildExpSets = function (data, search) {
             return ExpSet.extract.getCounts(results, search);
         })
             .then(function (results) {
+            return ExpSet.extract.getExpManualScoresByExpGroupId(results, search);
+        })
+            .then(function (results) {
+            return ExpSet.extract.workflows.getReagentData(results, search);
+        })
+            .then(function (results) {
             return ExpSet.extract.getExpData(results, search);
         })
             .then(function (data) {
@@ -185,6 +190,29 @@ ExpSet.extract.buildExpSets = function (data, search) {
         })
             .catch(function (error) {
             app.winston.error(error);
+            reject(new Error(error));
+        });
+    });
+};
+ExpSet.extract.getExpManualScoresByExpGroupId = function (data, search) {
+    return new Promise(function (resolve, reject) {
+        app.models.ExpManualScores
+            .find({
+            where: {
+                treatmentGroupId: {
+                    inq: data.expAssay2reagents.map(function (expAssay2reagent) {
+                        return expAssay2reagent.expGroupId;
+                    }).filter(function (expGroupId) {
+                        return expGroupId;
+                    })
+                }
+            }
+        })
+            .then(function (expManualScores) {
+            data.expManualScores = expManualScores;
+            resolve(data);
+        })
+            .catch(function (error) {
             reject(new Error(error));
         });
     });

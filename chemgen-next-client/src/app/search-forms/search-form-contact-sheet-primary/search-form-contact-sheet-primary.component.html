@@ -3,8 +3,7 @@
     <div class="col-md-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Search all the worms!
-                </h2>
+                <h2>Select Interesting Wells from the 96 Well Plate</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -66,9 +65,12 @@
 
         <div *ngIf="formSubmitted">
             <!--Begin Content-->
+
             <div *ngIf="expSets && expSets.expWorkflows?.length" class="expSets">
-                <app-contact-sheet [expSets]="expSets" [byPlate]="true"
-                                   (expSetsScored)="getNewExpSets($event)"></app-contact-sheet>
+                <app-contact-sheet [expSets]="expSets"
+                                   [byPlate]="true"
+                                   (expSetsScored)="getNewExpSets($event)"
+                ></app-contact-sheet>
             </div>
             <!--End Content-->
             <div *ngIf="expSets && ! expSets.expWorkflows?.length">

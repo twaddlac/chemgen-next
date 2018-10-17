@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Search All Exp Sets</h2>
+                <h2>Score Exp Sets</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -22,9 +22,9 @@
                             <li class="active"><a href="#screenData" data-toggle="tab">Screen</a>
                             </li>
                             <li><a href="#rnaiData" data-toggle="tab">RNAi</a>
-                            <!--</li>-->
-                            <!--<li><a href="#chemicalData" data-toggle="tab">Chemical</a>-->
-                            <!--</li>-->
+                                <!--</li>-->
+                                <!--<li><a href="#chemicalData" data-toggle="tab">Chemical</a>-->
+                                <!--</li>-->
                         </ul>
                         <div class="clearfix"></div>
                         <button type="submit" id="searchFormSubmit" class="btn btn-success">Submit</button>
@@ -67,51 +67,52 @@
 <!--Start Content-->
 <div class="row">
     <div class="col-md-12">
-
-
         <div *ngIf="formSubmitted">
             <!--Begin Current Content-->
             <div *ngIf="expSets" class="expSets">
-                <app-expset-sheet [expSets]="expSets" [expSetModule]="expSetsModule"
-                                  [expSetSearch]="expSetSearch"></app-expset-sheet>
+                <!--Begin Hotkeys Info-->
+                <div class="row" *ngIf="expSetModule && expSetModule.expSetsDeNorm?.length">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h3>Hot Keys</h3>
+                            </div>
+                            <div class="x_content">
+                                <p>Hot keys for Mutant are enabled by default 0-9,shift+1-shift+5, in the order of the
+                                    form</p>
+                                <p>Hot keys for the N2 are enabled with shift+n, and then are 0-9, shift+1,shift+3, in
+                                    the order of the form</p>
+                                <p>ReEnable mutant hotkeys with shift+m</p>
+                                <p>Submit the form with shift+s</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--End Hotkeys Info-->
+                <!--Begin expset-score component-->
+                <div class="row" *ngIf="expSetModule && expSetModule.expSetsDeNorm?.length">
+                    <div class="col-md-12">
+                        <app-expset-score-primary
+                                [score]="true"
+                                [expSetModule]="expSetModule"
+                                [expSet]="expSetModule.expSetsDeNorm[0]"
+                                (getMoreExpSets)="getNewExpSets()"
+                        ></app-expset-score-primary>
+                    </div>
+                </div>
+                <!--End expset-score component-->
             </div>
+            <!--End Current Content-->
+
+            <!--Begin Empty Result Info-->
             <div *ngIf="expSets && ! expSets.expWorkflows?.length">
                 <h2>Empty ResultSet</h2>
                 <p>The search you performed returned an empty result set.</p>
                 <p>Either your search is incorrect, or not in the database.</p>
             </div>
-            <!--End Current Content-->
+            <!--Begin Empty Result Info-->
         </div>
     </div>
 </div>
 <!--End Content-->
-<!--Start Pagination-->
-<div class="row" *ngIf="expSets && expSets.expWorkflows?.length">
-    <div class="col-md-12">
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-lg" *ngIf="expSets.currentPage > 1">
-                <li class="page-item"><a class="page-link" (click)="getNewPage(expSets.currentPage - 1)">Previous</a>
-                </li>
-            </ul>
-            <ul class="pagination pagination-lg">
-                <li class="page-item disabled">
-                    <a class="page-link" tabindex="-1">{{expSets.currentPage}}</a>
-                </li>
-            </ul>
-            <ul class="pagination pagination-lg" *ngFor="let pageNo of lowerPageRange">
-                <li class="page-item"><a class="page-link" (click)="getNewPage(pageNo)">{{pageNo}}</a></li>
-            </ul>
-            <ul class="pagination pagination-lg">
-                <li class="page-item disabled"><a class="page-link">...</a></li>
-            </ul>
-            <ul class="pagination pagination-lg" *ngFor="let pageNo of upperPageRange">
-                <li class="page-item"><a class="page-link" (click)="getNewPage(pageNo)">{{pageNo}}</a></li>
-            </ul>
-            <ul class="pagination pagination-lg" *ngIf="expSets.currentPage < expSets.totalPages">
-                <li class="page-item"><a class="page-link" (click)="getNewPage(expSets.currentPage + 1)">Next</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-<!--End Pagination-->

@@ -154,6 +154,7 @@
                                                 [albumType]="'treatReagent'"
                                                 [albums]="expSets.expGroupTypeAlbums"
                                                 [displayCounts]="contactSheetUiOptions.displayCounts"
+                                                [expSetModule]="expSetModule"
                                                 (parseInterestingEvent)="parseInterestingToAlbumListener($event)"
                                                 (getExpSetsEvent)="getExpSetsListener($event)"
                                 ></app-grid-album>
@@ -174,6 +175,7 @@
                                         [albumType]="'ctrlReagent'"
                                         (parseInterestingEvent)="parseInterestingToAlbumListener($event)"
                                         (getExpSetsEvent)="getExpSetsListener($event)"
+                                        [expSetModule]="expSetModule"
                                         [albums]="expSets.expGroupTypeAlbums"
                                         [displayCounts]="contactSheetUiOptions.displayCounts"
                                 ></app-grid-album>
