@@ -10,6 +10,7 @@ In order to build the latest client side code and add it to the wordpress app
 # May have to run:
 # npm install --save-dev @angular-devkit/build-angular
 # npm audit fix
+source chemgen_docker_vars.sh
 cd chemgen-next-client
 ng build --prod  --output-hashing none --output-path ../chemgen-next-wptheme/js/ng
 ```
@@ -29,9 +30,9 @@ cd chemgen-next-server
 ## See the one time setup to install pm2
 pm2 start server/server.js --name chemgen-next-server --watch -i 1
 pm2 start jobs/defineQueues.js --name chemgen-next-define-queues --watch -i 1
-## TODO Add in a dev script just to load some data
-node jobs/processQueues.js --limit 1 --site AD --search-pattern CHEM
-node jobs/processQueues.js --limit 1 --site AD --search-pattern AHR 
+node jobs/processScreens.js --limit 2 --site AD --search-pattern CHEM
+node jobs/processScreens.js --limit 2 --site AD --search-pattern AHR 
+#ctrl+c to escape either of these
 ```
 
 You should some info messages print to the screen: 
@@ -48,12 +49,20 @@ pm2 restart chemgen-next-define-queues
 pm2 logs chemgen-next-define-queues
 ```
 
+Check the server and the job queue logs with -  
+
+```
+pm2 logs chemgen-next-server
+pm2 logs chemgen-next-define-queues
+```
+
+
 If you want to ensure you have a clean startup 
 
 ```
 docker-compose stop
 docker-compose rm -f -v
-docker-compose up --build -d
+./run_chemgen_server.sh
 ```
 
 If for some reason you want to empty the wordpress database and startup info:
@@ -68,10 +77,17 @@ Make sure to set the site as appropriate, NY, AD, or DEV. The default is dev.
 
 ### Important API EndPoints
 
+#### Get Exp Sets (Regardless of scored/not status)
+
+(For now you can only search for RNAis. Chemicals are coming soon!)
+
+```
+http://localhost:3000/api/ExpSets/getExpSets?search={"pageSize": 20, "rnaisList": ["vab-10"]}
+```
+
 #### Unscored ExpSets
 
 This is the most optimized query - if you are not searching across the entire database for a gene or chemical list use this
-
 ```
 http://localhost:3000/api/ExpSets/getUnscoredExpSetsByPlate?search={"pageSize" : 1 }
 ```
@@ -79,6 +95,11 @@ http://localhost:3000/api/ExpSets/getUnscoredExpSetsByPlate?search={"pageSize" :
 This is another endpoint that is less optimized, but allows for search across the entire database for rnais/chemicals 
 ```
 http://localhost:3000/api/ExpSets/getUnscoredExpSets?search={"pageSize" : 1 }
+```
+
+### Get Exp Sets that have a FIRST_PASS=1 Score
+```
+http://localhost:3000/api/ExpSets/getUnScoredExpSetsByFirstPass?search={"pageSize": 20, "scoresExist": true}
 ```
 
 ### One time startup instructions
@@ -99,14 +120,15 @@ cd chemgen-next-server
 # if Error: Cannot find module 'loopback'
 # `run npm install` in this directory
 nodemon server/server.js
-## Run in the backgroundEr
-pm2 start server/server.js --name chemgen-next-server --watch
+## Run in the background
+pm2 start server/server.js --name chemgen-next-server --watch -i 1
 ```
 
 To start the angular dev server
 
 ```
 cd chemgen-next-client
+npm install
 # bind wasn't found
 # ng serve --host=0.0.0.0 instead
 ng serve --bind 0.0.0.0
