@@ -12,6 +12,7 @@ In order to build the latest client side code and add it to the wordpress app
 # npm audit fix
 source chemgen_docker_vars.sh
 cd chemgen-next-client
+npm install
 ng build --prod  --output-hashing none --output-path ../chemgen-next-wptheme/js/ng
 ```
 
